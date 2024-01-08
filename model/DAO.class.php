@@ -78,6 +78,13 @@ class DAO {
       }
       // 
     }
+
+
+    // Demande l'identifiant du dernier élémnt qui a été inséré
+    public function lastInsertId(): string
+    {
+      return $this->db->lastInsertId();
+    }
   
   
   }
