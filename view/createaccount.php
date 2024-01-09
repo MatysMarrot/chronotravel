@@ -9,11 +9,13 @@
     <script>
         function togglePasswordVisibility() {
             var passwordInput = document.getElementById('password');
+            passwordInput.type === 'password' ? passwordInput.type = 'text' : passwordInput.type = 'password'; 
+/*
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
             } else {
                 passwordInput.type = 'password';
-            }
+            }*/
         }
 
         function validateForm() {
