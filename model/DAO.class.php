@@ -42,7 +42,7 @@ class DAO {
   
   
     // Lance une requête sur la BD, et retourne une table
-    public function query(string $query, array $data): array{
+    public function query(string $query, array $data = []): array{
       try {
         // Compile la requête, produit un PDOStatement
         $s = $this->db->prepare($query);
@@ -61,7 +61,7 @@ class DAO {
       return $table;
     }
 
-    public function exec(string $query, array $data): void{
+    public function exec(string $query, array $data = []): void{
       try {
         // Compile la requête, produit un PDOStatement
         $s = $this->db->prepare($query);

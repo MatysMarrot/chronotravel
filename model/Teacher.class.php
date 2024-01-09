@@ -30,6 +30,23 @@ class Teacher extends User {
 
     }
 
+    public static function readTeacher(int $id) : Teacher{
+    
+        $dao = DAO::get();
+        $query = "SELECT * FROM User WHERE id = ?";
+        $table = $dao->query($query, $id);
+
+        if (count($table) == 0) {
+            throw new Exception("Contact non trouvé id=$id");
+        }
+
+        $row = $table[0];
+        $teacher = new Teacher($row['lastname'],$row['firstname'],$row['login'],$row['password']);
+        $teacher->id = $row['id'];
+        return $teacher;
+
+    }
+
 }
 
 ?>
