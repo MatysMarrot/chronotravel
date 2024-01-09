@@ -14,8 +14,8 @@ Info: Password est le hash du mot de passe, jamais le mot de passe
 CREATE TABLE Person (
     id serial PRIMARY KEY,
     roleID int REFERENCES Role(id) NOT NULL,
-    nom varchar(30),
-    prenom varchar(30),
+    lastName varchar(30),
+    name varchar(30),
     login varchar(30),
     password varchar(64),
     currency int,
@@ -28,7 +28,7 @@ Info: creation date est la date courante si pas donnée
 */
 CREATE TABLE Class (
     id serial PRIMARY KEY,
-    nom varchar(30),
+    name varchar(30),
     creationDate DATE DEFAULT CURRENT_DATE
 );
 
@@ -40,7 +40,7 @@ CREATE TABLE StudentClass (
 
 
 /*Table ClassTeacher:*/
-CREATE TABLE ClasseProf (
+CREATE TABLE ClassTeacher (
     classId INT PRIMARY KEY REFERENCES Class(id) NOT NULL,
     teacherId INT REFERENCES Person(id)
 );
@@ -51,7 +51,7 @@ Contrainte: Libelle en majuscule
 */
 CREATE TABLE PartyState (
     id SERIAL PRIMARY KEY,
-    libelle VARCHAR(5) CHECK (libelle = UPPER(libelle))
+    content VARCHAR(5) CHECK (libelle = UPPER(libelle))
 );
 
 /*Table Theme:
@@ -92,15 +92,15 @@ CREATE TABLE History (
 /*Table Question:*/
 CREATE TABLE Questions (
     id SERIAL PRIMARY KEY,
-    libelle VARCHAR(180),
-    theme_id INT REFERENCES Theme(id)
+    content VARCHAR(180),
+    themeId INT REFERENCES Theme(id)
 );
 
 /*Table Awnsers:*/
 CREATE TABLE Answers (
     id SERIAL PRIMARY KEY,
     questionId INT REFERENCES Questions(id),
-    libelle VARCHAR(100),
+    content VARCHAR(100),
     correct BOOLEAN
 );
 

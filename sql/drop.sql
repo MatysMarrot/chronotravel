@@ -1,6 +1,6 @@
 -- Drop les foreign key
 DROP TABLE IF EXISTS public.studentclass;
-DROP TABLE IF EXISTS public.classeprof;
+DROP TABLE IF EXISTS public.classeteacher;
 DROP TABLE IF EXISTS public.history;
 DROP TABLE IF EXISTS public.answers;
 DROP TABLE IF EXISTS public.questions;
@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS public.party;
 DROP TABLE IF EXISTS public.theme;
 DROP TABLE IF EXISTS public.partystate;
 DROP TABLE IF EXISTS public.class;
-DROP TABLE IF EXISTS public.Person;
+DROP TABLE IF EXISTS public.person;
 DROP TABLE IF EXISTS public.role;
 
 /**-- Drop des sequences
