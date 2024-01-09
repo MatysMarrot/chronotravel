@@ -19,7 +19,8 @@ CREATE TABLE User (
     login varchar(30),
     password varchar(64),
     currency int,
-    creationDate DATE DEFAULT CURRENT_DATE
+    creationDate DATE DEFAULT CURRENT_DATE,
+    birthdate DATE
 );
 
 /*Table Class:
