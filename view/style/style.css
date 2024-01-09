@@ -82,38 +82,39 @@ p{
 
 
 header{
-    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-    padding: 0.8em; 
-    margin-bottom: 3em;
-    z-index: 1;
-    top: 0px;
-    position: sticky;
-    height: 2.5vh;
-    width: 50%;
-    background-color: rgb(56, 62, 66); 
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border-top: none;
-   }
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+  padding: 0.8em; 
+  margin-bottom: 3em;
+  z-index: 1;
+  top: 0px;
+  position: sticky;
+  height: 2.5vh;
+  width: 50%;
+  background-color: rgb(56, 62, 66); 
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top: none;
+}
 
 
-   header li{
-     text-align: center;
-     flex-basis: 25%;
-   }
-   
-   header a{
-     color: rgb(255, 255, 255);
-     font-size: large;
-     font-weight: 1000;
-     transition: all 0.4s;
-     text-decoration: none;
-   }
-   
-   header a:hover{
-     font-size: 15pt;
-     transition: all 0.4s;
-   }
+header li{
+  text-align: center;
+  flex-basis: 25%;
+}
+
+header a{
+  color: rgb(255, 255, 255);
+  font-size: large;
+  font-weight: 1000;
+  transition: all 0.4s;
+  text-decoration: none;
+}
+
+header a:hover{
+  font-size: 15pt;
+  transition: all 0.4s;
+}
+
 
         /* Main */
 main {
@@ -121,4 +122,60 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Connection page */
+#connection {
+  display: flex;
+  flex-direction: column;
+}
+#connection form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+#connection form p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.connectionpage h1 {
+  margin:0;
+  color: white;
+}
+.connectionpage {
+  height: 4vh;
+}
+/* Footer */
+footer {
+  background-color: rgb(49, 49, 49);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
+  clip-path: polygon(8% 0, 92% 0, 100% 100%, 0% 100%);
+  position: fixed;
+  bottom: 0;
+}
+footer a {
+  color: white;
+  text-decoration: none;
+  font-style: italic;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+footer nav {
+  width: 60%;
+}
+footer nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+footer p, footer ul {
+  margin: 8px 0px 8px 0px;
 }
