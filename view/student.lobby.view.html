@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+  <html lang="fr">
+    <head>
+      <meta charset="UTF-8">
+      <title>Chrono Travel- Salle d'attente</title>
+      <link rel="stylesheet" type="text/css" href="../style.css">
+    </head>
+
+    <body>
+        
+        <header>
+            <nav>
+                <ul class="ul_horizontal">
+                    <li ><a class="actif" href="#">ACCUEIL</a></li>
+                    <li><a href="#">MON PROFIL</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </nav>
+            <?php include(__DIR__.'/header.viewpart.php'); ?>
+
+        </header>
+
+        <main>
+            <h1>Rejoindre une partie</h2>
+            <p>Partagez le code ci-dessous pour inviter à jouer</p>
+            <h3>Code: INCLURE AVEC PHP</h3>
+            <p>Temps restant: 05:00 à initialiser avec php</p>
+            <img class="skin" src="../../bonhomme-visage-vide-25691.jpg" alt="">    
+            <h2>Pseudo</h2>
+            <label for="code">Liste des joueurs:</label>
+            <section>
+                <!-- Inclure php pour afficher les élèves-->
+                <ul class="ul_horizontal">
+                    <li ><p>en attente j2</p></li>
+                    <li ><p>en attente j3</p></li>
+                    <li ><p>en attente j4</p></li>
+                </ul>
+            </section>
+
+            <button>QUITTER</button>
+            
+        </main>
+
+        <footer>
+            <?php include(__DIR__.'/footer.viewpart.php'); ?>
+        </footer>
+    </body>
+</html>
