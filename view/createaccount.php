@@ -6,6 +6,15 @@
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <title>Créer un compte</title>
     <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById('password');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        }
+
         function validateForm() {
             var isValid = true;
 
@@ -71,42 +80,43 @@
     <header class="connectionpage">
         <h1>Chronotravel</h1>
     </header>
-    <main id="connection">
+    <main class="connection">
         <form onsubmit="return validateForm()" action="" method="post">
             <div>
                 <p>
                     <label for="surname">Nom</label>
                     <input id="surname" type="text" name="surname" value="" required>
                 </p>
-                <span id="surnameError"></span>
+                <span id="surnameError" class="error"></span>
             </div>
             <div>
                 <p>
                     <label for="firstName">Prénom</label>
                     <input id="firstName" type="text" name="firstName" value="" required>
                 </p>
-                <span id="firstNameError"></span>
+                <span id="firstNameError" class="error"></span>
             </div>
             <div>
                 <p>
                     <label for="login">Identifiant</label>
                     <input id="login" type="text" name="login" value="" required>
                 </p>
-                <span id="loginError"></span>
+                <span id="loginError" class="error"></span>
             </div>
             <div>
                 <p>
                     <label for="password">Mot de passe</label>
                     <input id="password" type="password" name="password" value="" required>
+                    <button type="button" id="togglePassword" onclick="togglePasswordVisibility()">Visualiser</button>
                 </p>
-                <span id="passwordError"></span>
+                <span id="passwordError" class="error"></span>
             </div>
             <div>
                <p>
                     <label for="mail">E-mail</label>
                     <input id="mail" type="email" name="mail" value="" required>
                 </p> 
-                <span id="mailError"></span>
+                <span id="mailError" class="error"></span>
             </div>
             <button type="submit" name="create">Créer mon compte</button>
         </form>
