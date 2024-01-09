@@ -2,7 +2,7 @@
 
 class Student extends User {
 
-    const BD_ID = 1; // type de l'utilisateur dans la bd
+    const ROLE_ID = 1; // type de l'utilisateur dans la bd
 
     public function create() : void{
 
@@ -15,12 +15,14 @@ class Student extends User {
         $data[] = $this->firstname;
         $data[] = $this->login;
         $data[] = $this->password;
-        $data[] = Student::BD_ID;
+        $data[] = Student::ROLE_ID;
 
         // A MODIFIER QUAND LA BD SERA FAITE
         $query = "INSERT INTO Users (lastname,firstname,login,password,privileges) VALUES (?,?,?,?,?)";
 
         $dao = DAO::get();
+
+        $res = $dao->exec($query,$data);
 
         if ($res === false) {
             throw new Exception("Le contact n'a pas été ajouté");
