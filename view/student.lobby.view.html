@@ -3,7 +3,7 @@
     <head>
       <meta charset="UTF-8">
       <title>Chrono Travel- Salle d'attente</title>
-      <link rel="stylesheet" type="text/css" href="../style.css">
+      <link rel="stylesheet" type="text/css" href="../../style.css">
     </head>
 
     <body>
@@ -22,13 +22,14 @@
         </header>
 
         <main>
-            <h1>Rejoindre une partie</h2>
-            <p>Partagez le code ci-dessous pour inviter à jouer</p>
-            <h3>Code: INCLURE AVEC PHP</h3>
-            <p>Temps restant: 05:00 à initialiser avec php</p>
-            <img class="skin" src="../../bonhomme-visage-vide-25691.jpg" alt="">    
+            <h1>Lancement de la partie</h2>
+            <p>Partagez ce code pour inviter à jouer: <span class="bold">JSHH5</span></p>
+            
+            <p>Temps restant: <span class="countdown"></p>
+            <script src="../controler/countdown.lobby.ctrl.js"></script>
+            <img class="skin" src="../../skin.png" alt="">    
             <h2>Pseudo</h2>
-            <label for="code">Liste des joueurs:</label>
+            <label for="code">Liste des autres joueurs:</label>
             <section>
                 <!-- Inclure php pour afficher les élèves-->
                 <ul class="ul_horizontal">
@@ -38,8 +39,10 @@
                 </ul>
             </section>
 
-            <button>QUITTER</button>
-            
+            <div class="button-container">
+                <button class="button">QUITTER</button>
+                <button class="button">LANCER</button>
+            </div>
         </main>
 
         <footer>
