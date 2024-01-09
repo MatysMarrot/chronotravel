@@ -30,6 +30,23 @@ class Student extends User {
 
     }
 
+    public static function readStudent(int $id) : Student{
+    
+        $dao = DAO::get();
+        $query = "SELECT * FROM User WHERE id = ?";
+        $table = $dao->query($query, $id);
+
+        if (count($table) == 0) {
+            throw new Exception("Contact non trouvé id=$id");
+        }
+
+        $row = $table[0];
+        $student = new Student($row['lastname'],$row['firstname'],$row['login'],$row['password']);
+        $student->id = $row['id'];
+        return $student;
+
+    }
+
 }
 
 ?>
