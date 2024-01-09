@@ -108,7 +108,7 @@
                 <p>
                     <label for="password">Mot de passe</label>
                     <input id="password" type="password" name="password" value="" required>
-                    <button type="button" id="togglePassword" onclick="togglePasswordVisibility()"><i class="material-symbols-outlined"></i></button>
+                    <button type="button" id="togglePassword" onclick="togglePasswordVisibility()"><i class="material-symbols-outlined" style="font-size:20px;" >visibility</i></button>
                 </p>
                 <span id="passwordError" class="error"></span>
             </div>
