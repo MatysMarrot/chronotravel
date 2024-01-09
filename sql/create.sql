@@ -7,11 +7,11 @@ CREATE TABLE Role (
     libelle VARCHAR(5) CHECK (libelle = UPPER(libelle))
 );
 
-/*Table "User":
+/*Table Person:
 Info: Password est le hash du mot de passe, jamais le mot de passe
     - creation date est la date courante si pas donnée
 */
-CREATE TABLE "User" (
+CREATE TABLE Person (
     id serial PRIMARY KEY,
     roleID int REFERENCES Role(id) NOT NULL,
     nom varchar(30),
@@ -34,7 +34,7 @@ CREATE TABLE Class (
 
 /*Table StudentClass:*/
 CREATE TABLE StudentClass (
-    studentId INT PRIMARY KEY REFERENCES "User"(id) NOT NULL,
+    studentId INT PRIMARY KEY REFERENCES Person(id) NOT NULL,
     classId INT REFERENCES Class(id)
 );
 
@@ -42,7 +42,7 @@ CREATE TABLE StudentClass (
 /*Table ClassTeacher:*/
 CREATE TABLE ClasseProf (
     classId INT PRIMARY KEY REFERENCES Class(id) NOT NULL,
-    teacherId INT REFERENCES "User"(id)
+    teacherId INT REFERENCES Person(id)
 );
 
 
@@ -69,10 +69,10 @@ CREATE TABLE Party (
     id SERIAL PRIMARY KEY,
     partyState INT REFERENCES PartyState(id),
     theme INT REFERENCES Theme(id),
-    creatorId INT REFERENCES "User"(id) NOT NULL,
-    member2id INT REFERENCES "User"(id),
-    member1id INT REFERENCES "User"(id),
-    member3id INT REFERENCES "User"(id),
+    creatorId INT REFERENCES Person(id) NOT NULL,
+    member2id INT REFERENCES Person(id),
+    member1id INT REFERENCES Person(id),
+    member3id INT REFERENCES Person(id),
     date DATE DEFAULT CURRENT_DATE
 );
 
@@ -86,7 +86,7 @@ CREATE TABLE History (
     nbrRightAnswers INT,
     PRIMARY KEY (partyId, playerId),
     FOREIGN KEY (partyId) REFERENCES Party(id),
-    FOREIGN KEY (playerId) REFERENCES "User"(id)
+    FOREIGN KEY (playerId) REFERENCES Person(id)
 );
 
 /*Table Question:*/
