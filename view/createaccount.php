@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Scooby Gang" />
-    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/login.css">
     <title>Créer un compte</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script>
         function togglePasswordVisibility() {
             var passwordInput = document.getElementById('password');
@@ -19,8 +20,8 @@
             var isValid = true;
 
             // Vérifie la validité du nom 
-            var errorMessage = document.getElementById('surnameError');
-            var input = document.getElementById('surname');
+            var errorMessage = document.getElementById('lastnameError');
+            var input = document.getElementById('lastname');
             // Vérifier que le nom ne contient pas des caractères autres que des minuscules, majuscules et accents ou tiret
             if (/[^a-zA-ZÀ-ÖØ-öø-ÿ-]/.test(input.value)) {
                 errorMessage.innerHTML = 'Votre nom ne peut contenir des caractères spéciaux ou des chiffres.';
@@ -84,10 +85,10 @@
         <form onsubmit="return validateForm()" action="" method="post">
             <div>
                 <p>
-                    <label for="surname">Nom</label>
-                    <input id="surname" type="text" name="surname" value="" required>
+                    <label for="lastname">Nom</label>
+                    <input id="lastname" type="text" name="lastname" value="" required>
                 </p>
-                <span id="surnameError" class="error"></span>
+                <span id="lastnameError" class="error"></span>
             </div>
             <div>
                 <p>
@@ -107,7 +108,7 @@
                 <p>
                     <label for="password">Mot de passe</label>
                     <input id="password" type="password" name="password" value="" required>
-                    <button type="button" id="togglePassword" onclick="togglePasswordVisibility()">Visualiser</button>
+                    <button type="button" id="togglePassword" onclick="togglePasswordVisibility()"><i class="material-symbols-outlined"></i></button>
                 </p>
                 <span id="passwordError" class="error"></span>
             </div>
