@@ -146,6 +146,8 @@
   .connection #togglePassword {
     position: absolute;
     right: 0;
+    border: none;
+    background-color: transparent;
   }
   .connectionpage h1 {
     margin:0;
