@@ -1,0 +1,17 @@
+{
+    "name": "yanis",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "php -S 127.0.0.1:8000 -t ."
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "php": "^1.0.2",
+      "php-cgi": "^0.2.0",
+      "php-server": "^1.0.0"
+    }
+  }
+  
