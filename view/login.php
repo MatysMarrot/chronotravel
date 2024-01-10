@@ -15,7 +15,9 @@
 </head>
 <body>
     <header class="connectionpage">
-        <h1>Chronotravel</h1>
+        <a href="">Règles</a>
+        <a href="landingpage.php"><h1>Chronotravel</h1></a>
+        <a href="">FAQ</a>
     </header>
     <main class="connection">
         <form action="" method="post">
