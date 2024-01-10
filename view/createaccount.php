@@ -98,7 +98,7 @@
             <div>
                 <p>
                     <label for="login">Identifiant</label>
-                    <input id="login" type="text" name="login" value="" required>
+                    <input id="login" type="text" name="login" value="<?=$loginError?>" required>
                 </p>
                 <span id="loginError" class="error"></span>
                 <p> <?=$loginError?></p>
