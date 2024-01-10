@@ -27,7 +27,7 @@
             
             <p>Temps restant: <span class="countdown"></p>
             <script src="../controler/countdown.lobby.ctrl.js"></script>
-            <img class="skin" src="../../skin.png" alt="">    
+            <img class="skin" src="./assets/background.png" alt="">    
             <h2>Pseudo</h2>
             <label for="code">Liste des autres joueurs:</label>
             <section>
