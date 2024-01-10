@@ -31,8 +31,8 @@
                     <th>Date et heure</td> 
                 </thead>
                 <tbody>   
-                    <tr class="message" onclick="window.location='#';">
-                           <td>Titouan Kevin</td>
+                    <tr class="message" onclick="window.location='admin.message.view.php';">
+                           <td>Titouan Kevin</td> 
                            <td>Problème de gestion des élèves</td>                               
                            <td>9:21</td> 
                     </tr>
