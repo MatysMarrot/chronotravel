@@ -13,7 +13,6 @@ class Student extends User {
         }
 
         $data = [];
-        $data[] = 
         $data[] = $this->lastname;
         $data[] = $this->firstname;
         $data[] = $this->login;
@@ -22,14 +21,14 @@ class Student extends User {
         
 
         // A MODIFIER QUAND LA BD SERA FAITE
-        $query = "INSERT INTO Person (lastname,name,login,password,roleID) VALUES (?,?,?,?,?)";
+        $query = "INSERT INTO Person (lastname,name,login,password,roleid) VALUES (?,?,?,?,?)";
 
         $dao = DAO::get();
 
         $res = $dao->exec($query,$data);
 
         if ($res === false) {
-            throw new Exception("Le contact n'a pas été ajouté");
+            throw new Exception("L'élève n'a pas été ajouté");
         }
 
         $this->id = $dao->lastInsertId();

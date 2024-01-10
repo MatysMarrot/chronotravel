@@ -9,10 +9,10 @@ class DAO {
     private PDO $db;
     
     //voir https://www.php.net/manual/fr/ref.pdo-pgsql.php
-    //private string $database = "pgsql:host=IP;dbname=nom_de_votre_base_de_donnees";
-    private string $database = 'sqlite:' . __DIR__ . '/../sql/chrono.db';
-    private string $user = "username";
-    private string $password = "password";
+    private string $database = "pgsql:host=postgres-info;dbname=harkatiy";
+    //private string $database = 'sqlite:' . __DIR__ . '/../sql/chrono.db';
+    private string $user = "harkatiy";
+    private string $password = "harkatiy";
   
     // Constructeur chargé d'ouvrir la BD
     private function __construct() {

@@ -29,8 +29,26 @@ class ClassGroup{
     public function create(){}
 
 
-    //TODO
-    public function insertStudent(){}
+    //TODO A TESTER
+    public function insertStudent(Student $student){
+
+        // Ajout dans l'objet
+        $this->students[] = $student; 
+        
+        // Ajout dans la BD
+        $dao = DAO::get();
+        $data = [$student->getId()];
+        $data[] = $this->id;
+        $query = "INSERT INTO StudentClass (studentId, classId)VALUES (?,?)";
+
+        $res = $dao->exec($query,$data);
+
+        if($res === false){
+            throw new Exception("Erreur, l'ajout d'un étudiant dans la classe ne s'est pas déroulé correctement");
+        }
+
+
+    }
 
     //Retourne la liste des groupes de classe d'un professeur
     //TODO Tester cette fonction

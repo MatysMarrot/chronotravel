@@ -27,7 +27,7 @@ class Teacher extends User {
         $res = $dao->exec($query,$data);
 
         if ($res === false) {
-            throw new Exception("Le contact n'a pas été ajouté");
+            throw new Exception("Le prof n'a pas été ajouté");
         }
 
         $this->id = $dao->lastInsertId();

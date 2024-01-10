@@ -8,7 +8,7 @@ require_once(__DIR__ . '/../model/Student.class.php');
 try{
     print("Vérification de la lecture d'un élève \n"); //TODO insérer un élève dans la BD 1/1/Chemin/Elisee/chemine/123/
     $student = new Student("Chemin","Elisee","chemine","123");
-    $studentRequest = Student::readStudent(1);
+    $studentRequest = Student::readStudent(3);
 
     if($student->compareTo($studentRequest) != 0 ){
         throw new Exception("Erreur lors de la lecture, mauvais élèves lues\n");
@@ -42,7 +42,7 @@ try{
 //Création d'un élève pas présent dans la BD
 try{
     print("Vérification de la création d'un élève\n");
-    $student = new Student("Meriche","Mazine","merichem","123\n");
+    $student = new Student("Meriche","Mazine","merichem","123");
     $student->create();
     $expected = Student::readStudent($student->getId());
     
