@@ -10,7 +10,7 @@
     <header class="connectionpage">
         <h1>Chronotravel</h1>
     </header>
-    <main id="connection">
+    <main class="connection">
         <form action="" method="post">
             <p>
                 <label>Identifiant</label>
