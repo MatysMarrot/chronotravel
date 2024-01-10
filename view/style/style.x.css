@@ -23,7 +23,7 @@ html {
 }
 
 body{
-  background-image: url(./assets/background.png);
+  background-image: url(../assets/background.png);
   color: white;
   margin: 0;
   display: flex;
