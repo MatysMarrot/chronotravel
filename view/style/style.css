@@ -82,39 +82,38 @@ p{
 
 
 header{
-  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-  padding: 0.8em; 
-  margin-bottom: 3em;
-  z-index: 1;
-  top: 0px;
-  position: sticky;
-  height: 2.5vh;
-  width: 50%;
-  background-color: rgb(56, 62, 66); 
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  border-top: none;
-}
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+    padding: 0.8em; 
+    margin-bottom: 3em;
+    z-index: 1;
+    top: 0px;
+    position: sticky;
+    height: 2.5vh;
+    width: 50%;
+    background-color: rgb(56, 62, 66); 
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top: none;
+   }
 
 
-header li{
-  text-align: center;
-  flex-basis: 25%;
-}
-
-header a{
-  color: rgb(255, 255, 255);
-  font-size: large;
-  font-weight: 1000;
-  transition: all 0.4s;
-  text-decoration: none;
-}
-
-header a:hover{
-  font-size: 15pt;
-  transition: all 0.4s;
-}
-
+   header li{
+     text-align: center;
+     flex-basis: 25%;
+   }
+   
+   header a{
+     color: rgb(255, 255, 255);
+     font-size: large;
+     font-weight: 1000;
+     transition: all 0.4s;
+     text-decoration: none;
+   }
+   
+   header a:hover{
+     font-size: 15pt;
+     transition: all 0.4s;
+   }
 
         /* Main */
 main {
