@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS public.classeteacher;
 DROP TABLE IF EXISTS public.history;
 DROP TABLE IF EXISTS public.answers;
 DROP TABLE IF EXISTS public.questions;
+DROP TABLE IF EXISTS public.partycode;
 DROP TABLE IF EXISTS public.party;
 
 -- Drop les tables
