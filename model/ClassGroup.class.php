@@ -52,7 +52,7 @@ class ClassGroup{
 
     //Retourne la liste des groupes de classe d'un professeur
     //TODO Tester cette fonction
-    public static function getClassGroupFromTeacher(Teacher $teacher) : array {
+    public static function getClassGroupsFromTeacher(Teacher $teacher) : array {
 
         $dao = DAO::get();
         $teacherId = $teacher->getId();

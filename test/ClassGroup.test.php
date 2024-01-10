@@ -7,7 +7,7 @@ require_once(__DIR__ . '/../model/ClassGroup.class.php');
 //Test méthode getClassGroupFromTeacher
 $teacher = new Teacher("Hakati","Yanis","harkaty","123");
 $teacher->setId(6);
-$group = ClassGroup::getClassGroupFromTeacher($teacher);
+$group = ClassGroup::getClassGroupsFromTeacher($teacher);
 print("Groupe du prof : \n");
 print("Elèves : \n");
 var_dump($group);
