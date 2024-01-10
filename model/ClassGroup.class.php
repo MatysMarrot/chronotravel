@@ -1,5 +1,8 @@
 <?php
 
+require_once(__DIR__ . '/Student.class.php');
+require_once(__DIR__ . '/Teacher.class.php');
+
 class ClassGroup{
 
     private int $id; // Laisser la BD gérer
@@ -23,9 +26,10 @@ class ClassGroup{
 
         $dao = DAO::get();
         $teacherId = $teacher->getId();
+        $data = [$teacherId];
         $query = "SELECT id FROM ClasseProf p, Class c WHERE classId = id and teacherId = ?";
 
-        $table = $dao->query($query,$teacherId);
+        $table = $dao->query($query,$data);
 
         if(count($table) == 0 ){
             throw new Exception("Ce professeur n'a pas de groupe de classe ! ");
@@ -60,6 +64,7 @@ class ClassGroup{
 
         $dao = DAO::get();
         $studentId = $student->getId();
+        $data = [$studentId];
         $query = "SELECT id FROM StudentClass s, Class c WHERE classId = id and studentId = ?";
         
         $table = $dao->query($query,$studentId);

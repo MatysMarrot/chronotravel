@@ -1,4 +1,6 @@
 <?php
+require_once(__DIR__ . '/DAO.class.php');
+require_once(__DIR__ . '/User.abstract.php');
 
 class Teacher extends User {
 
@@ -35,15 +37,16 @@ class Teacher extends User {
     public static function readTeacher(int $id) : Teacher{
     
         $dao = DAO::get();
-        $query = "SELECT * FROM User WHERE id = ?";
-        $table = $dao->query($query, $id);
+        $query = "SELECT * FROM Person WHERE id = ?";
+        $data = [$id];
+        $table = $dao->query($query, $data);
 
         if (count($table) == 0) {
             throw new Exception("Contact non trouvé id=$id");
         }
 
         $row = $table[0];
-        $teacher = new Teacher($row['lastname'],$row['firstname'],$row['login'],$row['password']);
+        $teacher = new Teacher($row['nom'],$row['prenom'],$row['login'],$row['password']);
         $teacher->id = $row['id'];
         return $teacher;
 

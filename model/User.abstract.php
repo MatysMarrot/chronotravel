@@ -3,7 +3,7 @@
 //Abstraite
 //Mere de Eleve et Professeur
 
-abstract class User implements Comparable {
+abstract class User {
 
 
     protected int $id; // Laisser la BD gérer
@@ -22,10 +22,10 @@ abstract class User implements Comparable {
     }
 
     //TODO 
-    public function compareTo(User $value){
-        if($s1->getLastname() == $s2->getLastname() && $s1->getFirstName() == $s2->getFirstName() && $s1->getLogin() == $s2->getLogin() && $s1->getPassword() 
+    public function compareTo(User $s2){
+        if($this->getLastname() == $s2->getLastname() && $this->getFirstName() == $s2->getFirstName() && $this->getLogin() == $s2->getLogin() && $this->getPassword() 
         == $s2->getPassword()){return 0;}
-
+        return -1;
     }
 
     abstract public function create();
@@ -48,6 +48,11 @@ abstract class User implements Comparable {
 
     public function getId(){
         return $this->id;
+    }
+
+    //TEMPORAIRE POUR TESTER
+    public function setId($id){
+        $this->id = $id;
     }
 
     

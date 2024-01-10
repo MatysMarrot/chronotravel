@@ -1,4 +1,3 @@
-//DAO avec PSQL
 <?php
 
 //Ici les requires des objects
@@ -10,7 +9,8 @@ class DAO {
     private PDO $db;
     
     //voir https://www.php.net/manual/fr/ref.pdo-pgsql.php
-    private string $database = "pgsql:host=IP;dbname=nom_de_votre_base_de_donnees";
+    //private string $database = "pgsql:host=IP;dbname=nom_de_votre_base_de_donnees";
+    private string $database = 'sqlite:' . __DIR__ . '/../sql/chrono.db';
     private string $user = "username";
     private string $password = "password";
   

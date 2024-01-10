@@ -1,4 +1,6 @@
 <?php
+require_once(__DIR__ . '/DAO.class.php');
+require_once(__DIR__ . '/User.abstract.php');
 
 class Student extends User {
 
@@ -11,14 +13,16 @@ class Student extends User {
         }
 
         $data = [];
+        $data[] = 
         $data[] = $this->lastname;
         $data[] = $this->firstname;
         $data[] = $this->login;
         $data[] = $this->password;
         $data[] = Student::ROLE_ID;
+        
 
         // A MODIFIER QUAND LA BD SERA FAITE
-        $query = "INSERT INTO Users (lastname,firstname,login,password,privileges) VALUES (?,?,?,?,?)";
+        $query = "INSERT INTO Person (nom,prenom,login,password,roleID) VALUES (?,?,?,?,?)";
 
         $dao = DAO::get();
 
@@ -35,15 +39,16 @@ class Student extends User {
     public static function readStudent(int $id) : Student{
     
         $dao = DAO::get();
-        $query = "SELECT * FROM User WHERE id = ?";
-        $table = $dao->query($query, $id);
+        $query = "SELECT * FROM Person WHERE id = ?";
+        $data = [$id];
+        $table = $dao->query($query, $data);
 
         if (count($table) == 0) {
-            throw new Exception("Contact non trouvé id=$id");
+            throw new Exception("Elève non trouvé id=$id");
         }
 
         $row = $table[0];
-        $student = new Student($row['lastname'],$row['firstname'],$row['login'],$row['password']);
+        $student = new Student($row['nom'],$row['prenom'],$row['login'],$row['password']);
         $student->id = $row['id'];
         return $student;
 
