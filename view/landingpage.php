@@ -8,14 +8,14 @@
 </head>
 <body id="">
     <header class="connectionpage">
-        <h1>Chronotravel</h1>
+        <a href="">Règles</a>
+        <a href="landingpage.php"><h1>Chronotravel</h1></a>
+        <a href="">FAQ</a>
     </header>
     <main class="landingpage">
         <h2>
-            Plongez dans l'aventure captivante de notre jeu éducatif et revisitez l'histoire de manière ludique, préparez-vous brillamment pour votre brevet tout en défiant votre esprit historique!
+            Plongez dans l'aventure captivante de notre jeu éducatif et revisitez l'histoire de manière ludique, préparez-vous brillamment pour votre brevet tout en défiant votre esprit historique !
         </h2>
-        <br>
-        <br>
         <a href="login.php" class="button">Jouer maintenant !</a>
     </main>
     <?php include(__DIR__.'/footer.viewpart.html')?>
