@@ -1,10 +1,10 @@
 
 /*Table role
-Contrainte: Libelle en majuscule
+Contrainte: content en majuscule
 */
 CREATE TABLE Role (
     id serial PRIMARY KEY,
-    libelle VARCHAR(5) CHECK (libelle = UPPER(libelle))
+    content VARCHAR(5) CHECK (content = UPPER(content))
 );
 
 /*Table Person:
@@ -47,19 +47,19 @@ CREATE TABLE ClassTeacher (
 
 
 /*Table PartyState:
-Contrainte: Libelle en majuscule
+Contrainte: content en majuscule
 */
 CREATE TABLE PartyState (
     id SERIAL PRIMARY KEY,
-    content VARCHAR(5) CHECK (libelle = UPPER(libelle))
+    content VARCHAR(5) CHECK (content = UPPER(content))
 );
 
 /*Table Theme:
-Contrainte: Libelle en majuscule
+Contrainte: content en majuscule
 */
 CREATE TABLE Theme (
     id SERIAL PRIMARY KEY,
-    libelle VARCHAR(10) CHECK (libelle = UPPER(libelle))
+    content VARCHAR(10) CHECK (content = UPPER(content))
 );
 
 /*Table Party:
@@ -73,10 +73,20 @@ CREATE TABLE Party (
     member2id INT REFERENCES Person(id),
     member1id INT REFERENCES Person(id),
     member3id INT REFERENCES Person(id),
-    date DATE DEFAULT CURRENT_DATE
+    date DATE DEFAULT CURRENT_DATE 
 );
 
-/*Table Party:
+/*Table de lien etre un code de partie et une partie:
+Contrainte: Code unique contenant seulement des lettres et sans I ou O
+*/
+
+CREATE TABLE PartyCode(
+    code varchar(5) primary key CHECK (code LIKE '%[A-HJ-NP-Z]{5}%'),
+    partyId INT REFERENCES Party(id) NOT NULL
+
+);
+
+/*Table History:
 Contraintes: position entre 1 et 3
 */
 CREATE TABLE History (
