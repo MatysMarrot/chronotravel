@@ -4,7 +4,7 @@
   }
   
   body {
-    background-image: url(background.png);
+    background-image: url(../assets/background.png);
     color: rgb(0, 0, 0);
     margin: 0;
     display: flex;
