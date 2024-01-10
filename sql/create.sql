@@ -1,10 +1,10 @@
 
 /*Table role
-Contrainte: Libelle en majuscule
+Contrainte: content en majuscule
 */
 CREATE TABLE Role (
     id serial PRIMARY KEY,
-    libelle VARCHAR(5) CHECK (libelle = UPPER(libelle))
+    content VARCHAR(5) CHECK (content = UPPER(content))
 );
 
 /*Table Person:
@@ -47,19 +47,19 @@ CREATE TABLE ClassTeacher (
 
 
 /*Table PartyState:
-Contrainte: Libelle en majuscule
+Contrainte: content en majuscule
 */
 CREATE TABLE PartyState (
     id SERIAL PRIMARY KEY,
-    content VARCHAR(5) CHECK (libelle = UPPER(libelle))
+    content VARCHAR(5) CHECK (content = UPPER(content))
 );
 
 /*Table Theme:
-Contrainte: Libelle en majuscule
+Contrainte: content en majuscule
 */
 CREATE TABLE Theme (
     id SERIAL PRIMARY KEY,
-    libelle VARCHAR(10) CHECK (libelle = UPPER(libelle))
+    content VARCHAR(10) CHECK (content = UPPER(content))
 );
 
 /*Table Party:
