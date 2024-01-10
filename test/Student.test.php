@@ -21,9 +21,7 @@ try{
 
     print($e);
     print("Premier élève : \n");
-    var_dump($student);
     print("Elève après la requête :\n");
-    var_dump($studentRequest);
 
 }
 
@@ -53,9 +51,7 @@ try{
 }catch(Exception $e){
     print($e);
     print("Premier student :\n");
-    var_dump($student);
     print("Student attendu : \n");
-    var_dump($expected);
 }
 
 //Création d'un élève déjà présent dans la BD
