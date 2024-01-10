@@ -1,0 +1,254 @@
+/* Variables du design */
+html {
+  /* Largeur du menu */
+  --menu-width: 10em;
+  /* Hauteur du header */
+  --header-height: 3em;
+  /* Couleur principale du thÃ¨me */
+  --main-color: rgb(245, 131, 0);
+  /* Couleur principale du fond */
+  --main-background-color: #EEE;
+  /* Couleur du fond en cas d'erreur */
+  --error-background-color: #ffe6e6;
+  /* Couleur du fond en cas de message */
+  --message-background-color: #f9ffe6;
+  /* Choix de la font */
+  font-family: sans-serif;
+}
+
+
+/* Général*/
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  background-image: url(../../../background.png);
+  color: white;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a{
+  color: white
+}
+
+
+
+section{
+  width: 85%;
+  padding: 15px;
+}
+
+li>p{
+  text-align: center;
+}
+/** Tableau */
+table {
+    border-collapse: collapse;
+    width: fit-content;
+}
+
+th, td {
+    border: 1px solid rgb(255, 255, 255);
+    padding: 8px;
+    text-align: center;
+}
+
+
+
+/**Titre **/
+h1{
+  font-size: xx-large;
+  text-align: center;
+}
+h2{
+  margin: 0;
+  padding: 0.5em;
+  transition: all 0.4s;
+}
+
+
+
+
+
+ul{
+  margin: 0;
+  list-style: none;
+ }
+.ul_horizontal{
+  display: flex;
+  padding: 0;
+}
+
+p{
+  text-align: justify;
+}
+
+/******************** Body *****************************/
+      /* Header */
+.actif{
+    color: rgb(255, 136, 0);
+    text-decoration: underline;
+}
+
+
+header{
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+    padding: 0.8em; 
+    margin-bottom: 3em;
+    z-index: 1;
+    top: 0px;
+    position: sticky;
+    height: 2.5vh;
+    width: 50%;
+    background-color: rgb(56, 62, 66); 
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top: none;
+   }
+
+
+    li{
+     text-align: center;
+     flex-basis: 25%;
+   }
+   
+   header a{
+     color: rgb(255, 255, 255);
+     font-size: large;
+     font-weight: 1000;
+     transition: all 0.4s;
+     text-decoration: none;
+   }
+   
+   header a:hover{
+     font-size: 15pt;
+     transition: all 0.4s;
+   }
+
+        /* Main */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  border: solid 3px rgb(255, 255, 255);
+  border-radius: 15px;
+  background-color: rgb(56, 62, 66); 
+  padding: 15px;
+}
+
+
+/**** Rajouter ***/
+
+.skin{
+  height: 250px;
+}
+
+section>ul{
+  justify-content: space-around;
+  width: 100%;
+}
+
+.bold{
+  font-weight: bolder;
+}
+
+/** bouton **/
+.button-container {
+  display: flex; /* Utiliser un conteneur flexible */
+  justify-content: space-between;
+}
+
+button{
+  margin: 1.75em;
+  background-color: orange;
+  color: white;
+  width: 8em;
+  padding: 0.5em;
+  border: none;
+  transition: all 0.7s;
+}
+
+button:hover{
+  background-color: rgb(158, 103, 0);
+  transition: all 0.7s;
+
+}
+
+label{
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+
+}
+
+
+/** formulaire**/
+
+.formulaire {
+  width: 75%;
+  margin: 0 auto;
+  padding: 2em;
+}
+
+.formulaire h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.formulaire label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.formulaire input[type="text"],
+.formulaire textarea {
+  width: 100%;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.formulaire textarea {
+  height: 100px;
+}
+
+.formulaire input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: var(--main-color);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.formulaire input[type="submit"]:hover {
+  background-color: rgb(197, 112, 0);;
+  transition: all 0.5s;
+}
+
+/** Messagerie ***/
+
+.messaging{
+  border: 1px solid  black;
+  width: 100%;
+  background-color: white;
+  color: black;
+}
+
+.messaging th, td {
+  border: 1px solid  black;
+}
+
+.message td{
+  cursor: pointer;
+}
