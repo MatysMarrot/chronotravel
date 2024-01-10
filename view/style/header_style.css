@@ -1,0 +1,54 @@
+/* Général*/
+* {
+  font-family: sans-serif;
+  margin-top: 0;
+}
+
+/******************** Body *****************************/
+
+/* Header */
+
+.actif {
+    color: rgb(255, 136, 0);
+    text-decoration: underline;
+}
+
+/* header {
+  z-index: 1;
+  top: 0px;
+  height: 200px;
+  width: 50%;
+  
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 15px;
+  border-top: none;
+} */
+
+header {
+  position: relative;
+  width: 80%;
+  left: 50%;
+  height: 1440px;
+  z-index: 1;
+  top: 0;
+  background-image: url("../img/trapeze_header.png");
+  background-size: 500px 100px;
+  background-repeat: no-repeat;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 20px;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+header nav ul li {
+  display: flex;
+}
+
+header img {
+  width: 50px;
+}
