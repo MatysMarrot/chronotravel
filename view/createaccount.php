@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Scooby Gang" />
-    <link rel="stylesheet" type="text/css" href="style/login.css">
+    <link rel="stylesheet" type="text/css" href="./style/login.css">
     <title>Créer un compte</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script>
@@ -78,7 +78,7 @@
         <h1>Chronotravel</h1>
     </header>
     <main class="connection">
-        <form onsubmit="return validateForm()" action="" method="post">
+        <form onsubmit="return validateForm()" action="../controler.ctrl.php" method="post">
             <div>
                 <p>
                     <label for="lastname">Nom</label>
