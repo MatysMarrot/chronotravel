@@ -3,7 +3,7 @@
     <head>
       <meta charset="UTF-8">
       <title>Chrono Travel- Salle d'attente</title>
-      <link rel="stylesheet" type="text/css" href="../../style.css">
+      <link rel="stylesheet" type="text/css" href="./style/style.x.css">
     </head>
 
     <body>
