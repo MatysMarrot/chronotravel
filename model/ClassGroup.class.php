@@ -74,10 +74,11 @@ class ClassGroup{
             $classGroup->id = $classId['id'];
             $query = "SELECT studentId FROM Class, StudentClass WHERE id = classId";
             $studentsId = $dao->query($query);
-
+            var_dump($studentsId);
             foreach($studentsId as $studentId){
+                var_dump($studentId);
 
-                $student = Student::readStudent($studentId['studentId']);
+                $student = Student::readStudent($studentId['studentid']);
                 $classGroup->students[] = $student;
 
             }
@@ -107,7 +108,7 @@ class ClassGroup{
 
         $query = "SELECT teacherId FROM ClassTeacher, Class WHERE classId = id";
         $teacherIdRes = $dao->query($query);
-        $teacherId = $teacherIdRes[0]['teacherId'];
+        $teacherId = $teacherIdRes[0]['teacherid'];
         $classGroup = new ClassGroup(Teacher::readTeacher($teacherId));
         $classGroup->id = $groupId;
 
@@ -115,7 +116,7 @@ class ClassGroup{
         $table = $dao->query($query);
 
         foreach($table as $student){
-            $classGroup->students[] = Student::readStudent($student['studentId']);
+            $classGroup->students[] = Student::readStudent($student['studentid']);
         }
 
         return $classGroup;
