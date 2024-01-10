@@ -30,7 +30,7 @@
             </p>
             <button type="submit" name="connect">Se connecter</button>
         </form>
-        <p>Vous n'avez pas de compte ? <a href="createaccount.php">Créez en vous un !</a></p>
+        <p>Vous n'avez pas de compte ? <a href="createaccount.ctrl.php">Créez en vous un !</a></p>
     </main>
     <?php include(__DIR__.'/footer.viewpart.html')?>
 </body>
