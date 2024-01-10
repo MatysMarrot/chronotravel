@@ -13,6 +13,18 @@ class ClassGroup{
         $this->owner = $owner;
     }
 
+    public function getStudents(){
+        return $this->students;
+    }
+
+    public function getId(){
+        return $this->id;
+    }
+
+    public function getOwner(){
+        return $this->owner;
+    }
+
     //TODO
     public function create(){}
 
@@ -27,7 +39,7 @@ class ClassGroup{
         $dao = DAO::get();
         $teacherId = $teacher->getId();
         $data = [$teacherId];
-        $query = "SELECT id FROM ClasseProf p, Class c WHERE classId = id and teacherId = ?";
+        $query = "SELECT id FROM ClassTeacher , Class  WHERE classId = id and teacherId = ?";
 
         $table = $dao->query($query,$data);
 
@@ -42,7 +54,7 @@ class ClassGroup{
 
             $classGroup = new ClassGroup($teacher);
             $classGroup->id = $classId['id'];
-            $query = "SELECT studentId FROM Class c, StudentClass s WHERE id = classId";
+            $query = "SELECT studentId FROM Class, StudentClass WHERE id = classId";
             $studentsId = $dao->query($query);
 
             foreach($studentsId as $studentId){
@@ -65,9 +77,9 @@ class ClassGroup{
         $dao = DAO::get();
         $studentId = $student->getId();
         $data = [$studentId];
-        $query = "SELECT id FROM StudentClass s, Class c WHERE classId = id and studentId = ?";
+        $query = "SELECT id FROM StudentClass, Class WHERE classId = id and studentId = ?";
         
-        $table = $dao->query($query,$studentId);
+        $table = $dao->query($query,$data);
 
         if(count($table) == 0 ){
             throw new Exception("Cet élève n'a pas de groupe de classe ! ");
@@ -75,10 +87,10 @@ class ClassGroup{
 
         $groupId = $table[0]['id'];
 
-        $query = "SELECT teacherId FROM ClasseProf p, Class c WHERE classId = id";
+        $query = "SELECT teacherId FROM ClassTeacher, Class WHERE classId = id";
         $teacherIdRes = $dao->query($query);
         $teacherId = $teacherIdRes[0]['teacherId'];
-        $classGroup = new GroupClass(Teacher::readTeacher($teacherId));
+        $classGroup = new ClassGroup(Teacher::readTeacher($teacherId));
         $classGroup->id = $groupId;
 
         $query = "SELECT studentId FROM Class c, StudentClass s WHERE id = classId";

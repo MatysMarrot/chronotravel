@@ -8,7 +8,10 @@ require_once(__DIR__ . '/../model/ClassGroup.class.php');
 $teacher = new Teacher("Hakati","Yanis","harkaty","123");
 $teacher->setId(2);
 $group = ClassGroup::getClassGroupFromTeacher($teacher);
+print("Groupe du prof : \n");
+print("Elèves : \n");
 var_dump($group);
+var_dump($group[0]->getStudents());
 
 //Test méhode getClassGroupFromStudent
 $student = new Student("Chemin","Elisee","chemine","123");

@@ -20,7 +20,7 @@ class Teacher extends User {
         $data[] = Student::ROLE_ID;
 
         // A MODIFIER QUAND LA BD SERA FAITE
-        $query = "INSERT INTO Users (lastname,firstname,login,password,privileges) VALUES (?,?,?,?,?)";
+        $query = "INSERT INTO Users (lastname,name,login,password,roleID) VALUES (?,?,?,?,?)";
 
         $dao = DAO::get();
 
@@ -46,7 +46,7 @@ class Teacher extends User {
         }
 
         $row = $table[0];
-        $teacher = new Teacher($row['nom'],$row['prenom'],$row['login'],$row['password']);
+        $teacher = new Teacher($row['lastname'],$row['name'],$row['login'],$row['password']);
         $teacher->id = $row['id'];
         return $teacher;
 

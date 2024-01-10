@@ -22,7 +22,7 @@ class Student extends User {
         
 
         // A MODIFIER QUAND LA BD SERA FAITE
-        $query = "INSERT INTO Person (nom,prenom,login,password,roleID) VALUES (?,?,?,?,?)";
+        $query = "INSERT INTO Person (lastname,name,login,password,roleID) VALUES (?,?,?,?,?)";
 
         $dao = DAO::get();
 
@@ -48,7 +48,7 @@ class Student extends User {
         }
 
         $row = $table[0];
-        $student = new Student($row['nom'],$row['prenom'],$row['login'],$row['password']);
+        $student = new Student($row['lastname'],$row['name'],$row['login'],$row['password']);
         $student->id = $row['id'];
         return $student;
 
