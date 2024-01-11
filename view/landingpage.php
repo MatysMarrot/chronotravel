@@ -10,7 +10,7 @@
     <header class="connectionpage">
         <a href="">Règles</a>
         <a href="landingpage.php" class="active"><h1>Chronotravel</h1></a>
-        <a href="">FAQ</a>
+        <a href="contact.view.php">Contact</a>
     </header>
     <main class="landingpage">
         <h2>
