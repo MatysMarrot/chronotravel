@@ -88,6 +88,9 @@
     font-weight: bold;
     font-size: 1.2em;
   }
+  .connectionpage .active {
+    text-decoration: underline;
+  }
   .connectionpage a:hover {
     text-decoration: underline;
   }
