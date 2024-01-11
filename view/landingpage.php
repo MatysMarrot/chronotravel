@@ -8,7 +8,7 @@
 </head>
 <body id="">
     <header class="connectionpage">
-        <a href="">Règles</a>
+        <a href="rules.view.php">Règles</a>
         <a href="landingpage.php" class="active"><h1>Chronotravel</h1></a>
         <a href="contact.view.php">Contact</a>
     </header>
