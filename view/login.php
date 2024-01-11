@@ -19,7 +19,7 @@
 </head>
 <body>
     <header class="connectionpage">
-        <a href="">Règles</a>
+        <a href="rules.view.php">Règles</a>
         <a href="landingpage.php"><h1>Chronotravel</h1></a>
         <a href="contact.view.php">Contact</a>
     </header>
