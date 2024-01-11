@@ -75,7 +75,9 @@
 </head>
 <body>
     <header class="connectionpage">
-        <h1>Chronotravel</h1>
+        <a href="rules.view.php">Règles</a>
+        <a href="landingpage.php"><h1>Chronotravel</h1></a>
+        <a href="contact.view.php">Contact</a>
     </header>
     <main class="connection">
         <form onsubmit="return validateForm()" action="" method="post">
@@ -117,7 +119,7 @@
             </div>
             <button type="submit" name="create">Créer mon compte</button>
         </form>
-        <p>Vous avez déjà un compte ?<a href="login.php">Connectez vous !</a></p>
+        <p>Vous avez déjà un compte ? <a href="login.php">Connectez vous !</a></p>
     </main>
     <?php include(__DIR__.'/footer.viewpart.html')?>
 </body>

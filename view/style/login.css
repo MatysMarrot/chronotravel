@@ -10,122 +10,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    min-height: 100%;
   }
-  
-  a{
-    color: rgb(0, 0, 0);
-  }
-  
-  section{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-    border: solid 3px rgb(255, 255, 255);
-    border-radius: 15px;
-    background-color: rgb(148, 148, 148);
-    padding: 15px;
-  }
-  
-  /** Tableau */
-  table {
-      border-collapse: collapse;
-      width: fit-content;
-  }
-  
-  th, td {
-      border: 1px solid rgb(255, 255, 255);
-      padding: 8px;
-      text-align: center;
-  }
-  
-  
-  
-  /**Titre **/
-  h1{
-    font-size: xx-large;
-    text-align: center;
-  }
-  h2{
-    margin: 0;
-    padding: 0.5em;
-    transition: all 0.4s;
-  }
-  
-  
-  
-  section ul{
-    list-style: disc;
-  }
-  
-  ul{
-    margin: 0;
-    list-style: none;
-   }
-  .ul_horizontal{
-    display: flex;
-    padding: 0;
-  }
-  
-  p{
-    text-align: justify;
-  }
+
   
   /******************** Body *****************************/
-        /* Header */
-  .actif{
-      color: rgb(255, 136, 0);
-      text-decoration: underline;
-  }
   
-  
-  header{
-    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-    padding: 0.8em; 
-    margin-bottom: 3em;
-    z-index: 1;
-    top: 0px;
-    position: sticky;
-    height: 2.5vh;
-    width: 50%;
-    background-color: rgb(56, 62, 66); 
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border-top: none;
-  }
-  
-  
-  header li{
-    text-align: center;
-    flex-basis: 25%;
-  }
-  
-  header a{
-    color: rgb(255, 255, 255);
-    font-size: large;
-    font-weight: 1000;
-    transition: all 0.4s;
-    text-decoration: none;
-  }
-  
-  header a:hover{
-    font-size: 15pt;
-    transition: all 0.4s;
-  }
-  
-  
-          /* Main */
+  /* Main */
   main {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100%;
+    margin-bottom: 150px;
   }
   
   /* Connection page */
   .connection {
     display: flex;
     flex-direction: column;
+    background-color: rgba(100, 100, 100, .9);
+    border: rgb(30, 30, 30) 5px double;
+    padding: 20px;
+    width: 380px;
+    border-radius: 10%;
   }
   .connection form {
     display: flex;
@@ -147,12 +57,47 @@
     border: none;
     background-color: transparent;
   }
+  .connection a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .connection a:hover {
+    text-decoration: underline;
+  }
   .connectionpage h1 {
-    margin:0;
-    color: white;
+    font-size: 1.5em;
+    margin: 0;
   }
   .connectionpage {
-    height: 4vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: baseline;
+    padding: 10px;
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+    top: 0px;
+    position: sticky;
+    width: 50%;
+    z-index: 1;
+    background-color: rgb(56, 62, 66); 
+    margin-bottom: 20px;
+  }
+  .connectionpage a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  .connectionpage .active {
+    text-decoration: underline;
+  }
+  .connectionpage a:hover {
+    text-decoration: underline;
+  }
+  .connection .error {
+    font-size: 0.8em;
+    color: red;
   }
 
   /* Landing Page */
@@ -166,6 +111,7 @@
   background-clip: text;
   color: transparent;
   text-align: center;
+  width: 70%;
 }
 .landingpage .button {
   border: 0;
@@ -179,7 +125,6 @@
   font-size: 1.5em;
   box-shadow: 0px -0px 0px 0px rgba(248, 64, 64, 0.5), 0px 0px 0px 0px rgba(255, 143, 39, 0.5);
   transition: all .2s;
-  z-index: 1;
   margin-bottom: 20px;
   text-decoration: none;
 }
@@ -203,6 +148,29 @@
   transform: scale(1.09);
 }
 
+/* Rules page */
+.rulespage {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: white;
+  background-color: rgba(100, 100, 100, .9);
+  padding: 20px;
+  border-radius: 5%;
+  border: rgb(30, 30, 30) 5px double;
+}
+.rulespage h2 {
+  margin: 5px;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #ff7b00;
+}
+.rulespage p, .rulespage ul, .rulespage li {
+  margin: 5px;
+  text-align: justify;
+}
+
   /* Footer */
   footer {
     background-color: rgb(49, 49, 49);
@@ -215,8 +183,8 @@
     margin: auto;
     clip-path: polygon(8% 0, 92% 0, 100% 100%, 0% 100%);
     position: fixed;
-    bottom: 0;
-  }
+    bottom: 0;  
+}
   footer a {
     color: white;
     text-decoration: none;
