@@ -12,15 +12,17 @@
 
         <main>
             <h1>Lancement de la partie</h2>
-            <p>Partagez ce code pour inviter à jouer: <span class="bold">JSHH5</span></p>
+            <!-- Arriver sur cette page une nouvelle partie est créer et un code est généré automatiquement-->
+            <p>Partagez ce code pour inviter à jouer: <span class="bold">(partie->code)</span></p>
             
+            <!--Compte à rebours avant lancement automatique de la partie -->
             <p>Temps restant: <span class="countdown"></p>
             <script src="../controler/countdown.lobby.ctrl.js"></script>
             <img class="skin" src="./assets/background.png" alt="">    
             <h2>Pseudo</h2>
             <label for="code">Liste des autres joueurs:</label>
             <section>
-                <!-- Inclure php pour afficher les élèves-->
+                <!-- Inclure php pour afficher les élèves qui rejoignent en temps réel-->
                 <ul class="ul_horizontal">
                     <li ><p>en attente j2</p></li>
                     <li ><p>en attente j3</p></li>
@@ -29,7 +31,7 @@
             </section>
 
             <div class="button-container">
-                <button class="button">QUITTER</button>
+                <button class="button">QUITTER</button> <!-- Retourne à la page d'accueil et supprimer la partie créer -->
                 <button class="button">LANCER</button>
             </div>
         </main>

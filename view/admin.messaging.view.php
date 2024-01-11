@@ -17,7 +17,7 @@
                 <thead>
                     <th>Expéditeur</th>
                     <th>Objet du message</th>
-                    <th>Date et heure</td> 
+                    <th>Date et heure</th> 
                 </thead>
                 <tbody>   
                     <tr class="message" onclick="window.location='admin.message.view.php';">
