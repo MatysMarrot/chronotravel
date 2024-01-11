@@ -21,7 +21,7 @@
     <header class="connectionpage">
         <a href="">Règles</a>
         <a href="landingpage.php"><h1>Chronotravel</h1></a>
-        <a href="">FAQ</a>
+        <a href="contact.view.php">Contact</a>
     </header>
     <main class="connection">
         <form action="../controler/login.crtl.php" method="post">
