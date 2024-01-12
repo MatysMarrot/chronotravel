@@ -3,8 +3,8 @@
     <head>
       <meta charset="UTF-8">
       <title>Chrono Travel- Rejoindre une partie</title>
-      <link rel="stylesheet" type="text/css" href="./style/style.css">
-    </head>
+      <link rel="stylesheet" type="text/css" href="../view/style/style.css">
+      </head>
 
     <body>
         <!--Header --> 
