@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Scooby Gang" />
-    <link rel="stylesheet" type="text/css" href="./style/style.css">
+    <link rel="stylesheet" type="text/css" href="../view/style/style.css">
     <title>Chrono Travel- Accueil</title>
 </head>
 <body id="">
