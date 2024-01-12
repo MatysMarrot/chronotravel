@@ -3,6 +3,8 @@
 include_once(__DIR__."/../framework/view.class.php");
 include_once(__DIR__."/../model/DAO.class.php");
 include_once(__DIR__."/../model/Student.class.php");
+include_once(__DIR__."/../model/Teacher.class.php");
+include_once(__DIR__."/utils/Utils.php");
 
 $view = new View();
 
@@ -33,10 +35,15 @@ if(count($_POST) == 0){
 
     if(count($table1) == 0){
         // Il n'ya pas le mail et le login dans la BD, on peut enregistrer le compte
-        $newAccount = new Student($_POST['lastname'],$_POST['firstName'],$login,password_hash($_POST['password'], PASSWORD_BCRYPT));
+        $newAccount = null;
+        if (isMailUniversitaire($mail)){
+            $newAccount = new Teacher($_POST['lastname'],$_POST['firstName'],$login,password_hash($_POST['password'], PASSWORD_BCRYPT));
+        } else $newAccount = new Student($_POST['lastname'],$_POST['firstName'],$login,password_hash($_POST['password'], PASSWORD_BCRYPT));
+        
+    
         $newAccount->create();
         $view->display("login.php");
-        
+    
     }
     else{
         $loginError = "Un compte avec le login $login existe déjà !";
