@@ -16,7 +16,7 @@ branche_actuelle=$(git -C "$repo_local" rev-parse --abbrev-ref HEAD)
 # On met les fichiers sur root du coup ? Ou dans les fichiers de l'utilisateur atikr? à clarifier avec Reda
 
 # Chemin sur la machine distante où le référentiel sera copié
-repo_distante="~/repositories/chronotravel/$branche_actuelle"
+repo_distante="/var/www/html/Projet_Sae/$branche_actuelle"
 
 #  S'assurer qu'on ait bien mit rsync sur la machine qu'on utilise
 # Utiliser rsync pour copier le référentiel vers le dossier de la branche
