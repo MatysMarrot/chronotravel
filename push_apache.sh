@@ -18,9 +18,17 @@ branche_actuelle=$(git -C "$repo_local" rev-parse --abbrev-ref HEAD)
 # Chemin sur la machine distante où le référentiel sera copié
 repo_distante="/var/www/html/Projet_Sae/$branche_actuelle"
 
+# Vérification si le fichier existe dans le répertoire local
+if [ ! -e "$repo_local/.git" ]; then
+    echo "Le répertoire local n'est pas un référentiel Git. Veuillez exécuter ce script à partir d'un référentiel Git."
+    exit 1
+fi
+
+
 #  S'assurer qu'on ait bien mit rsync sur la machine qu'on utilise
 # Utiliser rsync pour copier le référentiel vers le dossier de la branche
-rsync -avz -e "ssh -p $port" "$repo_local/" "$user@$host:$repo_distante/"
+ssh -p $port $user@$host "mkdir -p $repo_distante"
+rsync -avz "$repo_local/" "$user@$host:$repo_distante/"
 
 # Vérifier si la commande rsync s'est bien exécutée
 if [ $? -eq 0 ]; then
