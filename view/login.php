@@ -1,3 +1,7 @@
+<?php 
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -20,19 +24,21 @@
         <a href="contact.view.php">Contact</a>
     </header>
     <main class="connection">
-        <form action="" method="post">
+        <form action="../controler/login.crtl.php" method="post">
             <p>
                 <label>Identifiant</label>
                 <input id="login" type="text" name="login" value="" required>
+                
             </p>
             <p>
                 <label for="password">Mot de passe</label>
                 <input id="password" type="password" name="password" value="" required>
                 <button type="button" id="togglePassword" onclick="togglePasswordVisibility()"><i class="material-symbols-outlined" style="font-size:20px;" >visibility</i></button>
             </p>
+            <p> <?=$error?></p>
             <button type="submit" name="connect">Se connecter</button>
         </form>
-        <p>Vous n'avez pas de compte ? <a href="createaccount.php">Créez en vous un !</a></p>
+        <p>Vous n'avez pas de compte ? <a href="createaccount.ctrl.php">Créez en vous un !</a></p>
     </main>
     <?php include(__DIR__.'/footer.viewpart.html')?>
 </body>

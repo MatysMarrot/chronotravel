@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Scooby Gang" />
-    <link rel="stylesheet" type="text/css" href="style/login.css">
+    <link rel="stylesheet" type="text/css" href="../view/style/login.css">
     <title>Créer un compte</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script>
@@ -80,7 +80,7 @@
         <a href="contact.view.php">Contact</a>
     </header>
     <main class="connection">
-        <form onsubmit="return validateForm()" action="" method="post">
+        <form onsubmit="return validateForm()" action="../controler/createaccount.ctrl.php" method="post">
             <div>
                 <p>
                     <label for="lastname">Nom</label>
@@ -98,9 +98,10 @@
             <div>
                 <p>
                     <label for="login">Identifiant</label>
-                    <input id="login" type="text" name="login" value="" required>
+                    <input id="login" type="text" name="login" value="<?=$loginError?>" required>
                 </p>
                 <span id="loginError" class="error"></span>
+                <p> <?=$loginError?></p>
             </div>
             <div>
                 <p>
