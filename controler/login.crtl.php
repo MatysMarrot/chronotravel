@@ -36,12 +36,9 @@ if(count($_POST)){
         $reussite ? log_session(array("login" => $login, "password" => $table[0]['password'])) : "" ;
     }
 
+}
 
 $view->assign("error",$error);
 $view->display($outgoing);
-    
-
-
-}
 
 ?>
