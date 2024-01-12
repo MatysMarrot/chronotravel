@@ -38,7 +38,10 @@ if(count($_POST) == 0){
         $newAccount = null;
         if (isMailUniversitaire($mail)){
             $newAccount = new Teacher($_POST['lastname'],$_POST['firstName'],$login,password_hash($_POST['password'], PASSWORD_BCRYPT));
-        } else $newAccount = new Student($_POST['lastname'],$_POST['firstName'],$login,password_hash($_POST['password'], PASSWORD_BCRYPT));
+        } else {
+            $newAccount = new Student($_POST['lastname'],$_POST['firstName'],$login,password_hash($_POST['password'], PASSWORD_BCRYPT));
+        }
+        
         
     
         $newAccount->create();
