@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="author" content="Scooby Gang" />
     <link rel="stylesheet" type="text/css" href="style/login.css">
-    <title>Acceuil</title>
+    <title>Règles du jeu</title>
 </head>
 <body id="">
     <header class="connectionpage">
@@ -15,37 +15,45 @@
     <main class="rulespage">
         <h2>Contexte :</h2>
         <p>
-            Les joueurs sont placés sur un plateau au début de celui-ci. Ce dernier est voué à changer pour s’adapter aux 4 époques étudiées lors du cycle 4 (l’antiquité, le moyen-âge, le après révolution française et l’époque contemporaine).
+            Au début du jeu, vous serez placés sur un plateau. Le plateau est voué à se transformer pour s’adapter à 4 époques : 
+            l’antiquité, le moyen-âge, l'époque contemporaine et l’époque moderne.
         </p>
         <h2>But du jeu :</h2>
         <p>
-            Les joueurs se déplacent sur le plateau et doivent arriver en premier sur la case finale du plateau.        
+            Vous devrez vous déplacer en ayant les bonnes réponses aux questions et arriver en premier sur la case finale du plateau.        
         </p>
         <h2>Lancement de la Partie :</h2>
         <p>
-            Les élèves peuvent créer une partie. Ils seront alors placés dans une salle d'attente où ils pourront inviter leurs amis ou camarades de classe en leur envoyant le code de la salle d'attente. Ils peuvent lancer la partie même s'il n'y a pas 4 personnes, la partie sera alors complétée par des robots.
+            Vous pouvez créer une partie ou rejoindre en rejoindre une à l'aide d'un code que vos amis vous aurons partager. Vous serez alors placé dans une salle d'attente jusqu'à ce que le joueur qui a créé la partie la lance. 
+            Le créateur de la partie peut lancer la partie même s'il n'y a pas 4 personnes, la partie sera alors complétée par des robots.
         </p>
         <h2>Composition du plateau :</h2>
         <p>
-            Le plateau est composé de cases Pièce et de cases Événements. Les cases Pièce sont des cases basiques qui permettent de gagner ou de perdre un certain nombre de pièces. A la fin de la partie, un certain pourcentage de ces pièces sont données au joueur. Les cases Événements permettent le déplacement du joueur sur le plateau (en avançant ou en reculant), le changement du thème du plateau entraînant le changement du thème des questions etc...
+            Le plateau est composé de cases Pièce et de cases Événements. Les cases Pièce sont des cases qui permettent de gagner ou de perdre un certain nombre de 
+            pièces. A la fin de la partie, un certain pourcentage de ces pièces vous seront données. Les cases Événements déclenche différents types d'événement qui 
+            peuvent être aussi bien positif que négatif pour vous.
         </p>
         <h2>Le processus de tour :</h2>
         <p>
-            À chaque début de tour, une épreuve aléatoire est choisie parmi les mini-jeux, chaque joueur aura le même mini-jeu, mais chacun sur son propre écran. Le joueur ayant gagné le mini-jeu ira le plus loin sur le plateau, le dernier quant à lui ira le moins loin. Ainsi, le classement du mini-jeu influencera sur le nombre de cases parcourues. Le premier se déplace en premier, le deuxième ensuite etc… En cas d’ex aequo entre plusieurs joueurs, le joueur le plus haut au classement général commence. Ainsi, une fois que tous les joueurs se sont déplacés, le tour est terminé, et le suivant démarre.
+            À chaque début de tour, une épreuve aléatoire est choisie parmi les mini-jeux, tous les joueur aurons le même mini-jeu. 
+            Le joueur ayant gagné le mini-jeu ira le plus loin sur le plateau, le dernier quant à lui ira le moins loin. Ainsi, c'est le classement des joueurs 
+            lors des mini-jeu qui influencera le nombre de cases parcourues. Le premier lors du mini-jeu se déplacera en premier, puis le deuxième et ainsi de suite. 
+            En cas d'égalité entre plusieurs joueurs, le joueur étant le plus loin sur le plateau commencera. Ainsi, une fois que tous les joueurs se sont déplacés, 
+            le tour est terminé et un autre commence.
         </p>
         <h2>Les mini-jeux :</h2>
         <p>
-            Le thème des minis-jeux dépend du thème actuel du plateau (un mini-jeu lié au moyen-âge si le plateau est en état moyen-âge etc …)
+            Les questions posées lors des minis-jeux dépendent du thème actuel du plateau (Antiquité, Moyen-Âge, époque contemporaine et l’époque moderne).
             <ul>
-                <li><strong>Quiz classique :</strong> Répondre correctement aux séries questions rapporte des points. Le classement sera établi en fonction du nombre de points obtenus par les joueurs.</li>
-                <li><strong>Image à deviner :</strong> Une série d'images historiques (lieux, personnages historiques…)est montrée aux joueurs, ils doivent écrire à quoi correspondent ces images. Les réponses justes rapportent des points. Le classement sera établi en fonction du nombre de points obtenus par les joueurs.</li>
-                <li><strong>Complétion de phrase :</strong> Des phrases à trous apparaissent à l’écran. Les joueurs doivent remplir les cases correctement. Les réponses justes rapportent des points. Le classement sera établi en fonction du nombre de points obtenus par les joueurs.</li>
-                <li><strong>Bomb party :</strong> Les élèves doivent donner des mots/noms relatifs à un thème donné tour à tour. Au bout du temps imparti symbolisé par une bombe sur le point d’exploser, la bombe explose sur eux ce qui cause leur élimination. Le classement sera établi en fonction de l’ordre dans lequel les joueurs perdent la partie.</li>
+                <li><strong>Quiz classique :</strong> Vous devrez répondre correctement aux séries questions. Le classement sera établi en fonction du nombre de bonnes réponses obtenus par les joueurs.</li>
+                <li><strong>Image à deviner :</strong> Une série d'images historiques (lieux, personnages historiques…) vous sera affiché , vous devrez écrire à quoi correspondent ces images. Le classement sera établi en fonction du nombre de bonnes réponses obtenus par les joueurs.</li>
+                <li><strong>Complétion de phrase :</strong> Une série des phrases à trous apparaitra à l’écran. Vous devrez compléter les phrases correctement. Le classement sera établi en fonction du nombre de bonnes réponses obtenus par les joueurs.</li>
+                <li><strong>Bomb party :</strong> Vous devrez donner tour à tour des mots/noms relatifs à un thème donné dans un temps imparti. A la fin du temps, le joueur qui devait répondre sera éliminir. Le classement sera établi en fonction de l’ordre dans lequel les joueurs sont éliminer pendant la partie.</li>
             </ul>
         </p>
         <h2>Récompenses :</h2>
         <p>
-            Les pièces sont une monnaie fictive du jeu, à la fin d’une partie un joueur gagne des pièces. Grâce à ses pièces, ils peuvent acheter des cosmétiques en tout genre (comme des tenues, chapeaux, lunettes, accessoires…) pour personnaliser leur personnage en jeu. C’est un moyen de motiver les élèves à réviser leur Brevet.
+            Les ChronoCoins sont une monnaie fictive du jeu, à la fin d’une partie vous gagnerez des pièces en fonction de votre classement. Grâce à ses pièces, vous pourrez acheter des cosmétiques en tout genre (comme des tenues, chapeaux, lunettes, accessoires…) pour personnaliser votre personnage en jeu.
         </p>
     </main>
     <?php include(__DIR__.'/footer.viewpart.html')?>
