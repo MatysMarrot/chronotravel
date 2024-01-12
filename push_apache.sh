@@ -27,6 +27,7 @@ fi
 
 #  S'assurer qu'on ait bien mit rsync sur la machine qu'on utilise
 # Utiliser rsync pour copier le référentiel vers le dossier de la branche
+ssh -p $port $user@$host "mkdir -p $repo_distante"
 rsync -avz "$repo_local/" "$user@$host:$repo_distante/"
 
 # Vérifier si la commande rsync s'est bien exécutée
