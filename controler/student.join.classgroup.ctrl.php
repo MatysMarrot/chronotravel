@@ -1,5 +1,5 @@
 <?php
-
+// TODO : Tester quand il y aura les code dans la BD
 $code = $_POST['code'] ?? '';
 
 $dao = DAO::get();
@@ -15,15 +15,17 @@ if(count($table) == 0){
     $message = "Il n'y a pas de classe avec ce code !";
 }
 else{
-    $data = [$table[0]['id']];
-    $query = "SELECT teacherid FROM classteacher, class WHERE id = ? AND id = classid";
-    $table = $dao->query($query,$data);
-    $id = $_SESSION['id'];
-    $student = Student::readStudent($id);
-
-    
-
-
+    $idClass = [$table[0]['id']];
+    $idStudent = $_SESSION['id'];
+    $student = Student::readStudent($idStudent);
+    $class = ClassGroup::getClassGroupFromId($idClass);
+    $class->insertStudent($student);
+    $name = $class->getName();
+    $message = "Vous avez rejoins la classe $name !";
 }
+
+$view = new View();
+$view->assign("message",$message);
+$view->display("student.joinc.classgroup.view.php");
 
 ?>

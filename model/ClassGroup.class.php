@@ -26,6 +26,10 @@ class ClassGroup{
         return $this->owner;
     }
 
+    public function getName(){
+        return $this->name;
+    }
+
     //TODO
     public function create(){
         
