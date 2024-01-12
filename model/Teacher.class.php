@@ -34,7 +34,7 @@ class Teacher extends User {
 
     }
 
-    public static function readTeacher(int $id) : Teacher{
+    public static function readTeacher($id) : Teacher{
     
         $dao = DAO::get();
         $query = "SELECT * FROM Person WHERE id = ?";

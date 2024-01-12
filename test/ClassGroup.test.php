@@ -25,6 +25,6 @@ var_dump($group)
 */
 
 //Test méthode getClassGroupFromId
-$class = ClassGroup::readClassGroupFromId(1);
+$class = ClassGroup::getClassGroupFromId(1);
 var_dump($class);
 ?>

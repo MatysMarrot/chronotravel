@@ -26,21 +26,15 @@ class ClassGroup{
         return $this->owner;
     }
 
-    public function setName(string $name){
-        $this->name = $name;
-    }
-
     //TODO
     public function create(){
         
     }
 
 
-    //TODO A TESTER
+    // AJOUTE UN STUDENT DANS LA DB
     public function insertStudent(Student $student){
 
-        // Ajout dans l'objet
-        $this->students[] = $student; 
         
         // Ajout dans la BD
         $dao = DAO::get();
@@ -55,6 +49,11 @@ class ClassGroup{
         }
 
 
+    }
+
+    //AJOUTE LE STUDENT DANS L'ATRIBUT DE L'OBJECT COURANT DANS STUDENTS
+    public function addStudent(Student $tudent){
+        $this->students[] = $student; 
     }
 
     //Retourne la liste des groupes de classe d'un professeur
@@ -78,7 +77,7 @@ class ClassGroup{
         foreach($table as $row){
 
             $classGroup = new ClassGroup($teacher);
-            $classGroup->setName($row['name']);
+            $classGroup->name = $row['name'];
             $classGroup->id = $row['id'];
             $query = "SELECT studentId FROM Class, studentclass WHERE id = classId";
             $studentsId = $dao->query($query);
@@ -119,7 +118,7 @@ class ClassGroup{
         $teacherIdRes = $dao->query($query);
         $teacherId = $teacherIdRes[0]['teacherid'];
         $classGroup = new ClassGroup(Teacher::readTeacher($teacherId));
-        $classGroup->setName($name);
+        $classGroup->name = $name;
         $classGroup->id = $groupId;
 
         $query = "SELECT studentId FROM Class c, StudentClass s WHERE id = classId";
@@ -138,13 +137,15 @@ class ClassGroup{
         
         $dao = DAO::get();
         $data = [$id];
-        $query = "SELECT name teacherid, studentid FROM classteacher t, studentclass s, class c WHERE id = ? AND t.classid = id AND  s.classid = id" ;
+        $query = "SELECT name,teacherid, studentid FROM classteacher t, studentclass s, class c WHERE id = ? AND t.classid = id AND  s.classid = id" ;
         $table = $dao->query($query,$data);
         $teacher = Teacher::readTeacher($table[0]['teacherid']);
         $class = new ClassGroup($teacher);
+        $class->name = $table[0]['name'];
+        $class->id = $id;
 
         foreach($table as $row){
-            $class->insertStudent(Student::readStudent($row['studentid']));
+            $class->students[] = Student::readStudent($row['studentid']);
         }
 
         return $class;
