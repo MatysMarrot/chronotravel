@@ -3,7 +3,7 @@
     <head>
       <meta charset="UTF-8">
       <title>Chrono Travel- Salle d'attente</title>
-      <link rel="stylesheet" type="text/css" href="./style/style.x.css">
+      <link rel="stylesheet" type="text/css" href="./style/style.css">
     </head>
 
     <body>
@@ -21,7 +21,7 @@
             <img class="skin" src="./assets/background.png" alt="">    
             <h2>Pseudo</h2>
             <label for="code">Liste des autres joueurs:</label>
-            <section>
+            <section class="lobby">
                 <!-- Inclure php pour afficher les élèves qui rejoignent en temps réel-->
                 <ul class="ul_horizontal">
                     <li ><p>en attente j2</p></li>
@@ -31,8 +31,8 @@
             </section>
 
             <div class="button-container">
-                <button class="button">QUITTER</button> <!-- Retourne à la page d'accueil et supprimer la partie créer -->
-                <button class="button">LANCER</button>
+                <button class="button2">QUITTER</button> <!-- Retourne à la page d'accueil et supprimer la partie créer -->
+                <button class="button2">LANCER</button>
             </div>
         </main>
 

@@ -2,8 +2,8 @@
   <html lang="fr">
     <head>
       <meta charset="UTF-8">
-      <title>Chrono Travel- Salle d'attente</title>
-      <link rel="stylesheet" type="text/css" href="./style/style.x.css">
+      <title>Chrono Travel- Gestion des élèves</title>
+      <link rel="stylesheet" type="text/css" href="./style/style.css">
     </head>
 
     <body>  

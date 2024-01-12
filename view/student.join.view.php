@@ -2,8 +2,8 @@
   <html lang="fr">
     <head>
       <meta charset="UTF-8">
-      <title>Chrono Travel- Salle d'attente</title>
-      <link rel="stylesheet" type="text/css" href="./style/style.x.css">
+      <title>Chrono Travel- Rejoindre une partie</title>
+      <link rel="stylesheet" type="text/css" href="./style/style.css">
     </head>
 
     <body>
@@ -19,8 +19,11 @@
             <label for="code">Entrez le code de la partie pour la rejoindre:</label>
             <!-- Si le code ne correspond à aucune partie mettre un message d'erreur 
                 Sinon rejoindre la partie dans student.lobby.view.php-->
-            <input type="text" id="code" name="code" required minlength="5" maxlength="5" size="20" />
-            <button type="submit" >REJOINDRE</button>
+            <input type="text" id="code" name="code" required minlength="5" maxlength="5" size="7" style="font-size: 18px"/>
+            <div class="button-container">
+              <button class="button2" type="submit" >RETOUR</button>
+              <button class="button2" type="submit" >REJOINDRE</button>
+            </div>
             
         </main>
 
