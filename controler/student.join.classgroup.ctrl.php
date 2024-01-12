@@ -19,7 +19,10 @@ else{
     $query = "SELECT teacherid FROM classteacher, class WHERE id = ? AND id = classid";
     $table = $dao->query($query,$data);
     $id = $_SESSION['id'];
-    $student = ClassGroup::;
+    $student = Student::readStudent($id);
+
+    
+
 
 }
 
