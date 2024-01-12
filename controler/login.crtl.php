@@ -2,8 +2,11 @@
 include_once(__DIR__."/../framework/view.class.php");
 include_once(__DIR__."/../model/DAO.class.php");
 include_once(__DIR__."/../model/Student.class.php");
+include_once(__DIR__."/utils/Utils.php");
 
 $view = new View();
+session_start();
+
 $error = "";
 $outgoing = "login.php";
 
@@ -26,8 +29,13 @@ if(count($_POST)){
     else {
         $query = "SELECT password FROM Person WHERE login = ?";
         $table = $dao->query($query,$data);
-        password_verify($password,$table[0]['password']) ? $outgoing = "landingpage.php" : $error = "Mauvais mot de passe, réessayer";
+
+        //TODO : refaire
+        $reussite = false;
+        ($reussite = password_verify($password,$table[0]['password'])) ? $outgoing = "../controler/landing.ctrl.php" : $error = "Mauvais mot de passe, réessayer";
+        $reussite ? log_session(array("login" => $login, "password" => $table[0]['password'])) : "" ;
     }
+
 
 $view->assign("error",$error);
 $view->display($outgoing);
