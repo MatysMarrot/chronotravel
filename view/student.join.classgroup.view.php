@@ -11,7 +11,7 @@
         <?php include(__DIR__.'/header.viewpart.php'); ?>
 
         <main>
-            <h1>Rejoindre une partie</h2>
+            <h1>Rejoindre une classe</h2>
                 
             <img class="skin" src="../../skin.png" alt="">
                 

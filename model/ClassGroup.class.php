@@ -26,20 +26,22 @@ class ClassGroup{
     }
 
     //TODO
-    public function create(){}
+    public function create(){
+        
+    }
 
 
     //TODO A TESTER
     public function insertStudent(Student $student){
 
         // Ajout dans l'objet
-        $this->students[] = $student; 
+        //$this->students[] = $student; 
         
         // Ajout dans la BD
         $dao = DAO::get();
         $data = [$student->getId()];
         $data[] = $this->id;
-        $query = "INSERT INTO StudentClass (studentId, classId)VALUES (?,?)";
+        $query = "INSERT INTO studentclass (studentId, classId)VALUES (?,?)";
 
         $res = $dao->exec($query,$data);
 
@@ -57,7 +59,7 @@ class ClassGroup{
         $dao = DAO::get();
         $teacherId = $teacher->getId();
         $data = [$teacherId];
-        $query = "SELECT id FROM ClassTeacher , Class  WHERE classId = id and teacherId = ?";
+        $query = "SELECT id FROM classteacher , Class  WHERE classId = id and teacherId = ?";
 
         $table = $dao->query($query,$data);
 
@@ -72,7 +74,7 @@ class ClassGroup{
 
             $classGroup = new ClassGroup($teacher);
             $classGroup->id = $classId['id'];
-            $query = "SELECT studentId FROM Class, StudentClass WHERE id = classId";
+            $query = "SELECT studentId FROM Class, studentclass WHERE id = classId";
             $studentsId = $dao->query($query);
             var_dump($studentsId);
             foreach($studentsId as $studentId){
