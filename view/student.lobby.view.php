@@ -3,35 +3,26 @@
     <head>
       <meta charset="UTF-8">
       <title>Chrono Travel- Salle d'attente</title>
-      <link rel="stylesheet" type="text/css" href="./style/style.x.css">
+      <link rel="stylesheet" type="text/css" href="./style/style.css">
     </head>
 
     <body>
-        
-        <header>
-            <nav>
-                <ul class="ul_horizontal">
-                    <li ><a class="actif" href="#">ACCUEIL</a></li>
-                    <li><a href="#">MON PROFIL</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">CONTACT</a></li>
-                </ul>
-            </nav>
-            <?php include(__DIR__.'/header.viewpart.php'); ?>
-
-        </header>
+        <!--Header --> 
+        <?php include(__DIR__.'/header.viewpart.php'); ?>
 
         <main>
             <h1>Lancement de la partie</h2>
-            <p>Partagez ce code pour inviter à jouer: <span class="bold">JSHH5</span></p>
+            <!-- Arriver sur cette page une nouvelle partie est créer et un code est généré automatiquement-->
+            <p>Partagez ce code pour inviter à jouer: <span class="bold">(partie->code)</span></p>
             
+            <!--Compte à rebours avant lancement automatique de la partie -->
             <p>Temps restant: <span class="countdown"></p>
             <script src="../controler/countdown.lobby.ctrl.js"></script>
             <img class="skin" src="./assets/background.png" alt="">    
             <h2>Pseudo</h2>
             <label for="code">Liste des autres joueurs:</label>
-            <section>
-                <!-- Inclure php pour afficher les élèves-->
+            <section class="lobby">
+                <!-- Inclure php pour afficher les élèves qui rejoignent en temps réel-->
                 <ul class="ul_horizontal">
                     <li ><p>en attente j2</p></li>
                     <li ><p>en attente j3</p></li>
@@ -40,13 +31,12 @@
             </section>
 
             <div class="button-container">
-                <button class="button">QUITTER</button>
-                <button class="button">LANCER</button>
+                <button class="button2">QUITTER</button> <!-- Retourne à la page d'accueil et supprimer la partie créer -->
+                <button class="button2">LANCER</button>
             </div>
         </main>
 
-        <footer>
-            <?php include(__DIR__.'/footer.viewpart.php'); ?>
-        </footer>
+        <!--Footer -->
+        <?php include(__DIR__.'/footer.viewpart.html'); ?> 
     </body>
 </html>

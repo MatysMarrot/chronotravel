@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Scooby Gang" />
-    <link rel="stylesheet" type="text/css" href="../view/style/login.css">
-    <title>Créer un compte</title>
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
+    <title>Chrono Travel- Créer un compte</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script>
         function togglePasswordVisibility() {
@@ -118,7 +118,7 @@
                 </p> 
                 <span id="mailError" class="error"></span>
             </div>
-            <button type="submit" name="create">Créer mon compte</button>
+            <button class="button2" type="submit" name="create">Créer mon compte</button>
         </form>
         <p>Vous avez déjà un compte ? <a href="login.php">Connectez vous !</a></p>
     </main>

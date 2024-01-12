@@ -1,207 +1,395 @@
+/* Variables du design */
+html {
+  /* Largeur du menu */
+  --menu-width: 10em;
+  /* Hauteur du header */
+  --header-height: 3em;
+  /* Couleur principale du thÃ¨me */
+  --main-color: #ff7b00;
+  /* Couleur principale du fond */
+  --main-background-color: rgba(56, 62, 66, 0.8); 
+  /* Couleur du fond en cas de message */
+  --message-background-color: #8f8f8f;
+  /*Couleur bouton négatif*/
+  --color-negativ: rgb(216, 13, 13);
+  /* Choix de la font */
+  font-family: sans-serif;
+}
+
 /* Général*/
 *{
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  body {
-    background-image: url(../assets/background.png);
-    color: rgb(0, 0, 0);
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    min-height: 100%;
-  }
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-  
-  /******************** Body *****************************/
-  
-  /* Main */
-  main {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100%;
-    margin-bottom: 150px;
-  }
-  
-  /* Connection page */
-  .connection {
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(100, 100, 100, .9);
-    border: rgb(30, 30, 30) 5px double;
-    padding: 20px;
-    width: 380px;
-    border-radius: 10%;
-  }
-  .connection form {
-    display: flex;
-    flex-direction: column;
-    width: 350px;
-  }
-  .connection form p {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: relative;
-  }
-  .connection input {
-    width: 200px;
-  }
-  .connection #togglePassword {
-    position: absolute;
-    right: 0;
-    border: none;
-    background-color: transparent;
-  }
-  .connection a {
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  .connection a:hover {
-    text-decoration: underline;
-  }
-  .connectionpage h1 {
-    font-size: 1.5em;
-    margin: 0;
-  }
-  .connectionpage {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: baseline;
-    padding: 10px;
-    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-    top: 0px;
-    position: sticky;
-    width: 50%;
-    z-index: 1;
-    background-color: rgb(56, 62, 66); 
-    margin-bottom: 20px;
-  }
-  .connectionpage a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 1.2em;
-  }
-  .connectionpage .active {
-    text-decoration: underline;
-  }
-  .connectionpage a:hover {
-    text-decoration: underline;
-  }
-  .connection .error {
-    font-size: 0.8em;
-    color: red;
-  }
+select{
+  margin-bottom: 1em;
+}
 
-  /* Landing Page */
-.landingpage {
+ul{
+  margin: 0;
+  list-style: none;
+ }
+.ul_horizontal{
+  display: flex;
+  padding: 0;
+}
+/******************** Body *****************************/
+body {
+  background-image: url(../assets/background.png);
+  color: rgb(255, 255, 255);
+  margin: 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-height: 100%;
+}
+/* Main */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  border: solid 3px rgb(255, 255, 255);
+  border-radius: 15px;
+  background-color: var(--main-background-color); 
+  padding: 15px;
+}
+
+/* Connection page */
+
+.connection form {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+}
+.connection form p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
+.connection input {
+  width: 200px;
+}
+.connection #togglePassword {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  border: none;
+  background-color: transparent;
+}
+.connection a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight: bold;
+}
+.connection a:hover {
+  text-decoration: underline;
+}
+
+/* Header connection page */
+.connectionpage h1 {
+  font-size: 1.5em;
+  margin: 0;
+}
+.connectionpage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: baseline;
+  padding: 10px;
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+  top: 0px;
+  position: sticky;
+  width: 50%;
+  z-index: 1;
+  background-color: rgb(56, 62, 66); 
+  margin-bottom: 20px;
+}
+.connectionpage a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.connectionpage .active {
+  text-decoration: underline;
+}
+.connectionpage a:hover {
+  text-decoration: underline;
+}
+.connection .error {
+  font-size: 0.8em;
+  color: var(--color-negativ);
+}
+
+/* Landing Page */
+.landingpage {
+display: flex;
+flex-direction: column;
 }
 .landingpage h2 {
-  font-size: 2.5em;
-  background: radial-gradient(circle, #ff0000, #d9ff00, #ff0000);
-  background-clip: text;
-  color: transparent;
-  text-align: center;
-  width: 70%;
+font-size: 2.5em;
+background: radial-gradient(circle, #ff0000, #d9ff00, #ff0000);
+background-clip: text;
+color: transparent;
+text-align: center;
+width: 70%;
 }
 .landingpage .button {
-  border: 0;
-  background: transparent;
-  color: white;
-  position: relative;
-  overflow: hidden;
-  padding: 10px 20px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 1.5em;
-  box-shadow: 0px -0px 0px 0px rgba(248, 64, 64, 0.5), 0px 0px 0px 0px rgba(255, 143, 39, 0.5);
-  transition: all .2s;
-  margin-bottom: 20px;
-  text-decoration: none;
+border: 0;
+background: transparent;
+color: white;
+font-weight: bold;
+position: relative;
+overflow: hidden;
+padding: 10px 20px;
+border-radius: 30px;
+cursor: pointer;
+font-size: 1.5em;
+box-shadow: 0px -0px 0px 0px rgba(248, 64, 64, 0.5), 0px 0px 0px 0px rgba(255, 143, 39, 0.5);
+transition: all .2s;
+margin-bottom: 20px;
+text-decoration: none;
+z-index: 1;
 }
 .landingpage .button::after {
-  content: "";
-  width: 700px;
-  height: 700px;
-  background: linear-gradient(225deg, #f52528 0%, #f57525 50%, #f5a925 100%);
-  position: absolute;
-  top: -100px;
-  left: -125px;
-  transition: all .5s;
-  z-index: -1;
+content: "";
+width: 700px;
+height: 700px;
+background: linear-gradient(225deg, #f52528 0%, #f57525 50%, #f5a925 100%);
+position: absolute;
+top: -100px;
+left: -125px;
+transition: all .5s;
+z-index: -1;
 }
 .landingpage .button:hover::after {
-  transform: rotate(150deg);
+transform: rotate(150deg);
 }
 .landingpage .button:hover {
-  transition: translate(0, -6px);
-  box-shadow: 20px -20px 25px 0 rgba(248, 64, 64, .25), -20px 20px 25px 0 rgba(255, 143, 39, .25);
-  transform: scale(1.09);
+transition: translate(0, -6px);
+box-shadow: 20px -20px 25px 0 rgba(248, 64, 64, .25), -20px 20px 25px 0 rgba(255, 143, 39, .25);
+transform: scale(1.09);
 }
 
 /* Rules page */
 .rulespage {
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  color: white;
-  background-color: rgba(100, 100, 100, .9);
-  padding: 20px;
-  border-radius: 5%;
-  border: rgb(30, 30, 30) 5px double;
+width: 70%;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+color: white;
+background-color: rgba(100, 100, 100, .9);
+padding: 20px;
+border-radius: 5%;
+border: rgb(30, 30, 30) 5px double;
 }
 .rulespage h2 {
-  margin: 5px;
-  font-weight: bold;
-  font-size: 1.5em;
-  color: #ff7b00;
+margin: 5px;
+font-weight: bold;
+font-size: 1.5em;
+color: #ff7b00;
 }
 .rulespage p, .rulespage ul, .rulespage li {
-  margin: 5px;
-  text-align: justify;
+margin: 5px;
+text-align: justify;
 }
 
-  /* Footer */
-  footer {
-    background-color: rgb(49, 49, 49);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 90%;
-    margin: auto;
-    clip-path: polygon(8% 0, 92% 0, 100% 100%, 0% 100%);
-    position: fixed;
-    bottom: 0;  
+
+.skin{
+  height: 250px;
 }
-  footer a {
-    color: white;
-    text-decoration: none;
-    font-style: italic;
-  }
-  footer a:hover {
-    text-decoration: underline;
-  }
-  footer nav {
-    width: 60%;
-  }
-  footer nav ul {
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-  }
-  footer p, footer ul {
-    margin: 8px 0px 8px 0px;
-  }
-  
+
+.lobby{
+  width: 85%;
+  padding: 15px;
+}
+.lobby>ul{
+  justify-content: space-around;
+  width: 100%;
+}
+
+.bold{
+  font-weight: bolder;
+}
+
+/** bouton **/
+.button-container {
+  width: 50%;
+  display: flex; /* Utiliser un conteneur flexible */
+  justify-content: space-between;
+}
+.button-container button:nth-child(1) {
+  background-color: var(--color-negativ);
+  transition: all .7s;
+
+}
+.button-container button:nth-child(1):hover {
+  background-color: rgb(139, 16, 16);
+  transition: all .7s;
+}
+.button-container button:nth-child(2) {
+  background-color: rgb(8, 184, 8);
+  transition: all .7s;
+}
+.button-container button:nth-child(2):hover {
+  background-color: rgb(10, 114, 10);
+  transition: all .7s;
+}
+
+.button2{
+  border-radius: 15px;
+  color: white;
+  width: 8em;
+  padding: 0.5em;
+  border: none;
+  transition: all 0.7s;
+  cursor: pointer;
+  margin-top: 1em;
+  font-weight: bold;
+}
+
+.button2:hover{
+  background-color: rgb(199, 113, 1);
+  transition: all 0.7s;
+
+}
+
+
+label{
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+
+/** formulaire**/
+form .button2 {
+  width: 100%;
+  background-color: var(--main-color);
+}
+.formulaire {
+  margin: 0 auto;
+  padding: 2em;
+}
+.formulaire form {
+  padding: 2px;
+}
+.formulaire h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.formulaire label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.formulaire input[type="text"],
+.formulaire textarea {
+  margin: 2px;
+  padding: 2px;
+  resize: none;
+  width: 100%;
+  border-radius: 3px;
+  border: none;
+}
+
+.formulaire textarea {
+  height: 100px;
+}
+
+.formulaire input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.formulaire input[type="submit"]:hover {
+  background-color: rgb(197, 112, 0);;
+  transition: all 0.5s;
+}
+
+/** Messagerie ***/
+
+.messaging{
+  border: 1px solid  black;
+  width: 100%;
+  background-color: white;
+  color: black;
+}
+
+.messaging td {
+  border: 1px solid  black;
+}
+.messaging th{
+  border: 2px solid  black;
+}
+.message td{
+  cursor: pointer;
+}
+
+/** Message */
+.reader{
+  background-color: white;
+  color: black;
+}
+.reader p:nth-child(2) {
+  position: relative;
+  top: 0;
+  right: 0;
+}
+
+/** Tableau */
+table {
+  border-collapse: collapse;
+  width: fit-content;
+}
+
+th, td {
+  border: 1px solid rgb(255, 255, 255);
+  padding: 8px;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  background-color: rgb(49, 49, 49);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
+  clip-path: polygon(8% 0, 92% 0, 100% 100%, 0% 100%);
+  bottom: 0;  
+  margin-top: 2em;
+}
+footer a {
+  color: white;
+  text-decoration: none;
+  font-style: italic;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+footer nav {
+  width: 60%;
+}
+footer nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+footer p, footer ul {
+  margin: 8px 0px 8px 0px;
+}

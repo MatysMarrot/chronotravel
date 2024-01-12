@@ -7,8 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Scooby Gang" />
-    <link rel="stylesheet" type="text/css" href="style/login.css">
-    <title>Se connecter</title>
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
+    <title>Chrono Travel- Se connecter</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script>
         function togglePasswordVisibility() {
@@ -36,7 +36,7 @@
                 <button type="button" id="togglePassword" onclick="togglePasswordVisibility()"><i class="material-symbols-outlined" style="font-size:20px;" >visibility</i></button>
             </p>
             <p> <?=$error?></p>
-            <button type="submit" name="connect">Se connecter</button>
+            <button class="button2" type="submit" name="connect">Se connecter</button>
         </form>
         <p>Vous n'avez pas de compte ? <a href="createaccount.ctrl.php">Créez en vous un !</a></p>
     </main>
