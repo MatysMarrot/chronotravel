@@ -16,6 +16,7 @@ html {
   font-family: sans-serif;
 }
 
+
 /* Général*/
 *{
   font-family: Arial, Helvetica, sans-serif;
@@ -43,6 +44,7 @@ body {
   align-items: center;
   position: relative;
   min-height: 100%;
+  font-size: larger;
 }
 /* Main */
 main {
@@ -328,6 +330,8 @@ form .button2 {
 }
 
 .messaging td {
+  text-align: center;
+  padding: 0.5em;
   border: 1px solid  black;
 }
 .messaging th{
@@ -356,10 +360,23 @@ table {
   width: fit-content;
 }
 
-th, td {
-  border: 1px solid rgb(255, 255, 255);
+th[scope='col'] {
+  background-color: rgb(85, 85, 85);
+  color: #ffffff;
+}
+
+
+
+.tableau th, .tableau td {
   padding: 8px;
   text-align: center;
+  border: 1px solid white;
+}
+
+
+.data tr td:first-child {
+  font-weight: bold;
+  text-align: right;
 }
 
 /* Footer */

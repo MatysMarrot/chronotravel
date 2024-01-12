@@ -15,20 +15,20 @@
         <section >
             <table class="messaging">
                 <thead>
-                    <th>Expéditeur</th>
-                    <th>Objet du message</th>
-                    <th>Date et heure</th> 
-                    <th>Lu</th>
+                    <th scope="col">Expéditeur</th>
+                    <th scope="col">Objet du message</th>
+                    <th scope="col">Date et heure</th> 
+                    <th scope="col">Lu</th>
                 </thead>
                 <tbody>   
                     <tr class="message" onclick="window.location='admin.message.view.php';">
-                           <td>Titouan Kevin</td> 
+                           <td scope="row">Titouan Kevin</td> 
                            <td>Problème de gestion des élèves</td>                               
                            <td>9:21</td>
                            <td>X</td>
                     </tr>
                     <tr class="message" onclick="window.location='admin.message.view.php';">
-                           <td>heheh jajaja</td> 
+                           <td scope="row">heheh jajaja</td> 
                            <td>Problème de gestion des élèves</td>                               
                            <td>9:21</td>
                            <td></td>

@@ -21,7 +21,7 @@
             </select>
             
             <!--Tableau contenant les élèves de la classe sélectionner dans le selecte ci-dessus -->
-            <table>     
+            <table class="tableau">     
                 <tr>
                     <td>Nom Prénom</td>                             
                     <td><button type="submit">ACTION</button></td>
