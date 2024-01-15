@@ -5,7 +5,7 @@ include_once(__DIR__."/../model/DAO.class.php");
 
 $view = new View();
 session_start();
-$outgoing = "student.join.view.php";
+$outgoing = "waitroom.view.php";
 $message = "";
 
 if(count($_POST)) {
