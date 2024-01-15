@@ -484,7 +484,7 @@ th[scope='col'] {
 
 /* Footer */
 footer {
-  background-color: rgb(49, 49, 49);
+  background-color: var(--header-background-color);
   color: white;
   display: flex;
   flex-direction: column;
