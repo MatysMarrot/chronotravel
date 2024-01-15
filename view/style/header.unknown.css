@@ -30,6 +30,7 @@ html{
 }
 .connectionpage .active {
   text-decoration: underline;
+  color: #FF8C00;
 }
 .connectionpage a:hover {
   text-decoration: underline;
