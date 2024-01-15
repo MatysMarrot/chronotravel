@@ -1,11 +1,11 @@
 /*Header Teacher */
-.header_teacher .actif{
+.actif{
     color: rgb(255, 136, 0);
     text-decoration: underline;
   }
   
   
-  .header_teacher{
+header{
     clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
     padding: 0.8em; 
     margin-bottom: 3em;
@@ -21,12 +21,12 @@
    }
   
   
-   .header_teacher li{
+   header li{
      text-align: center;
      flex-basis: 25%;
    }
    
-   .header_teacher a{
+   header a{
      color: rgb(255, 255, 255);
      font-size: large;
      font-weight: 1000;
@@ -34,7 +34,7 @@
      text-decoration: none;
    }
    
-   .header_teacher a:hover{
+   header a:hover{
      font-size: 15pt;
      transition: all 0.4s;
    }  
