@@ -18,6 +18,7 @@ CREATE TABLE Person (
     name varchar(30),
     login varchar(30),
     password varchar(64),
+    email varchar(50),
     currency int,
     creationDate DATE DEFAULT CURRENT_DATE,
     birthdate DATE
