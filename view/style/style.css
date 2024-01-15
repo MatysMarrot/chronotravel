@@ -7,9 +7,7 @@ html {
   /* Couleur principale du thÃ¨me */
   --main-color: #ff7b00;
   /* Couleur principale du fond */
-  --main-background-color: rgba(56, 62, 66, 0.8); 
-  /* Couleur header*/
-  --header-background-color:  rgba(56, 62, 66); 
+  --main-background-color: rgba(56, 62, 66, 0.8);
   /* Couleur du fond en cas de message */
   --message-background-color: #8f8f8f;
   /*Couleur bouton négatif*/
@@ -47,105 +45,6 @@ body {
   min-height: 100%;
   font-size: larger;
 }
-
-/* Header */
-header{
-  margin-bottom: 100px;
-}
-
-header nav {
-  position: absolute;
-  top: 0;
-  background-color: var(--header-background-color);
-  width: 550px;
-  height: 80px;
-  left: 50%;
-  transform: translate(-50%);
-  border-radius: 0 0 25px 25px;
-  box-shadow: 2px 2px 2px black;
-}
-
-header nav ul {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  padding-top: 13px;
-
-}
-
-header nav ul li {
-  margin: 0 20px 0 20px;
-  text-align: center;
-  position: relative;
-}
-
-header nav ul li span.tooltip_text {
-  position: absolute;
-  visibility: hidden;
-  width: 135px;
-  background-color: var(--header-background-color);
-  color: white;
-  text-align: center;
-  border-radius: 0 0 10px 10px;
-  padding: 5px 0;
-  top: 67px;
-  left: 50%;
-  transform: translate(-50%);
-  box-shadow: 2px 2px 2px black;
-}
-
-header nav ul li:hover span.tooltip_text {
-  visibility: visible;
-  font-weight: bold;
-}
-
-header nav ul li a i.material-symbols-outlined {
-  font-size: 40px;
-  color: white;
-  background-color: #0059FF;
-  padding: 5px 15px 5px 15px;
-  border-radius: 10px;
-  border: 2px solid white;
-  transition: transform 0.5s ease;
-  box-shadow: 2px 2px 2px black;
-}
-
-header nav ul li a i.material-symbols-outlined:hover {
-  transform: scale(1.05);
-}
-
-header nav ul li.active a i.material-symbols-outlined {
-  background-color: #FF8C00;
-}
-
-header div {
-  position: absolute;
-  top: 15px;
-  left: 75%;
-  display: flex;
-  align-items: center;
-}
-
-header div img {
-  width: 60px;
-  position: absolute;
-  left: -20px;
-}
-
-header div span {
-  color: white;
-  padding: 10px 25px 10px 55px;
-  background-color: var(--main-background-color);
-  border-radius: 10px;
-  border: 2px solid white;
-  width: 75px;
-  font-weight: bold;
-  font-size: 18px;
-}
-
 
 /* Main */
 main {
@@ -193,37 +92,6 @@ main {
   text-decoration: underline;
 }
 
-/* Header connection page */
-.connectionpage h1 {
-  font-size: 1.5em;
-  margin: 0;
-}
-.connectionpage {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: baseline;
-  padding: 10px;
-  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-  top: 0px;
-  position: sticky;
-  width: 50%;
-  z-index: 1;
-  background-color: rgb(56, 62, 66); 
-  margin-bottom: 20px;
-}
-.connectionpage a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  font-size: 1.2em;
-}
-.connectionpage .active {
-  text-decoration: underline;
-}
-.connectionpage a:hover {
-  text-decoration: underline;
-}
 .connection .error {
   font-size: 0.8em;
   color: var(--color-negativ);

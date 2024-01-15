@@ -1,0 +1,37 @@
+html{
+  /* Couleur header*/
+  --header-background-color:  #303030;
+}
+
+/* Header connection page */
+.connectionpage h1 {
+  font-size: 1.5em;
+  margin: 0;
+}
+.connectionpage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: baseline;
+  padding: 10px;
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+  top: 0px;
+  position: sticky;
+  width: 50%;
+  z-index: 1;
+  background-color: var(--header-background-color);
+  margin-bottom: 20px;
+}
+.connectionpage a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.connectionpage .active {
+  text-decoration: underline;
+  color: #FF8C00;
+}
+.connectionpage a:hover {
+  text-decoration: underline;
+}

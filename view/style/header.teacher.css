@@ -1,0 +1,45 @@
+html{
+  /* Couleur header*/
+--header-background-color:  #303030;
+}
+
+/*Header Teacher */
+.actif{
+    color: #FF8C00;
+    text-decoration: underline;
+  }
+  
+  
+header{
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+    padding: 0.8em; 
+    margin-bottom: 3em;
+    z-index: 1;
+    top: 0px;
+    position: sticky;
+    height: 2.5vh;
+    width: 50%;
+    background-color: var(--header-background-color);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top: none;
+   }
+  
+  
+   header li{
+     text-align: center;
+     flex-basis: 25%;
+   }
+   
+   header a{
+     color: rgb(255, 255, 255);
+     font-weight: bold;
+     font-size: 1.2em;
+     transition: all 0.5s;
+     text-decoration: none;
+   }
+   
+   header a:hover{
+     transition: all 0.5s;
+     text-decoration: underline;
+   }  

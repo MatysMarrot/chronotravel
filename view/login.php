@@ -18,11 +18,9 @@
     </script>
 </head>
 <body>
-    <header class="connectionpage">
-        <a href="rules.view.php">Règles</a>
-        <a href="landingpage.php"><h1>Chronotravel</h1></a>
-        <a href="contact.view.php">Contact</a>
-    </header>
+    
+    <?php include(__DIR__.'/header.unknown.viewpart.php'); ?>
+
     <main class="connection">
         <form action="../controler/login.crtl.php" method="post">
             <p>

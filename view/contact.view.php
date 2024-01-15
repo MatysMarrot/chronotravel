@@ -8,7 +8,7 @@
 
     <body>
         <!--Header --> 
-        <?php include(__DIR__.'/header.viewpart.php'); ?>
+        <?php include(__DIR__.'/header.teacher.viewpart.php'); ?>
 
         <main>
         <h1>Nous contacter</h1>

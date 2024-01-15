@@ -7,11 +7,9 @@
     <title>Chrono Travel- Règles du jeu</title>
 </head>
 <body id="">
-    <header class="connectionpage">
-        <a href="rules.view.php" class="active">Règles</a>
-        <a href="landingpage.php"><h1>Chronotravel</h1></a>
-        <a href="contact.view.php">Contact</a>
-    </header>
+    
+    <?php include(__DIR__.'/header.unknown.viewpart.php'); ?>
+
     <main class="rulespage">
         <h2>Contexte :</h2>
         <p>
