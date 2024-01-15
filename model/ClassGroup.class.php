@@ -8,6 +8,7 @@ class ClassGroup{
     private int $id; // Laisser la BD gérer
     private Teacher $owner; // propriétaire du groupe de classe
     private array $students; // la liste des élèves du groupe de classe
+    private string $name;
 
     public function __construct(Teacher $owner){
         $this->owner = $owner;
@@ -25,21 +26,25 @@ class ClassGroup{
         return $this->owner;
     }
 
+    public function getName(){
+        return $this->name;
+    }
+
     //TODO
-    public function create(){}
+    public function create(){
+        
+    }
 
 
-    //TODO A TESTER
+    // AJOUTE UN STUDENT DANS LA DB
     public function insertStudent(Student $student){
 
-        // Ajout dans l'objet
-        $this->students[] = $student; 
         
         // Ajout dans la BD
         $dao = DAO::get();
         $data = [$student->getId()];
         $data[] = $this->id;
-        $query = "INSERT INTO StudentClass (studentId, classId)VALUES (?,?)";
+        $query = "INSERT INTO studentclass (studentId, classId)VALUES (?,?)";
 
         $res = $dao->exec($query,$data);
 
@@ -50,6 +55,11 @@ class ClassGroup{
 
     }
 
+    //AJOUTE LE STUDENT DANS L'ATRIBUT DE L'OBJECT COURANT DANS STUDENTS
+    public function addStudent(Student $tudent){
+        $this->students[] = $student; 
+    }
+
     //Retourne la liste des groupes de classe d'un professeur
     //TODO Tester cette fonction
     public static function getClassGroupsFromTeacher(Teacher $teacher) : array {
@@ -57,7 +67,7 @@ class ClassGroup{
         $dao = DAO::get();
         $teacherId = $teacher->getId();
         $data = [$teacherId];
-        $query = "SELECT id FROM ClassTeacher , Class  WHERE classId = id and teacherId = ?";
+        $query = "SELECT name,id FROM classteacher , Class  WHERE classId = id and teacherId = ?";
 
         $table = $dao->query($query,$data);
 
@@ -68,11 +78,12 @@ class ClassGroup{
         $result = [];
         $studentsId = [];
 
-        foreach($table as $classId){
+        foreach($table as $row){
 
             $classGroup = new ClassGroup($teacher);
-            $classGroup->id = $classId['id'];
-            $query = "SELECT studentId FROM Class, StudentClass WHERE id = classId";
+            $classGroup->name = $row['name'];
+            $classGroup->id = $row['id'];
+            $query = "SELECT studentId FROM Class, studentclass WHERE id = classId";
             $studentsId = $dao->query($query);
             var_dump($studentsId);
             foreach($studentsId as $studentId){
@@ -96,20 +107,22 @@ class ClassGroup{
         $dao = DAO::get();
         $studentId = $student->getId();
         $data = [$studentId];
-        $query = "SELECT id FROM StudentClass, Class WHERE classId = id and studentId = ?";
+        $query = "SELECT name,id FROM StudentClass, Class WHERE classId = id and studentId = ?";
         
         $table = $dao->query($query,$data);
 
         if(count($table) == 0 ){
-            throw new Exception("Cet élève n'a pas de groupe de classe ! ");
+            throw new Exception("Cet élève n'a pas de groupe de classe ! id : $studentId ");
         }
 
+        $name = $table[0]['name'];
         $groupId = $table[0]['id'];
 
         $query = "SELECT teacherId FROM ClassTeacher, Class WHERE classId = id";
         $teacherIdRes = $dao->query($query);
         $teacherId = $teacherIdRes[0]['teacherid'];
         $classGroup = new ClassGroup(Teacher::readTeacher($teacherId));
+        $classGroup->name = $name;
         $classGroup->id = $groupId;
 
         $query = "SELECT studentId FROM Class c, StudentClass s WHERE id = classId";
@@ -121,8 +134,37 @@ class ClassGroup{
 
         return $classGroup;
 
+    }
 
+    public static function getClassGroupFromId($id) : ClassGroup{
+        
+        $dao = DAO::get();
+        $data = [$id];
+        $query = "SELECT name,teacherid FROM classteacher t, class c WHERE id = ? AND t.classid = id" ;
+        $table = $dao->query($query,$data);
+        $teacher = Teacher::readTeacher($table[0]['teacherid']);
+        $class = new ClassGroup($teacher);
+        $class->name = $table[0]['name'];
+        $class->id = $id;
 
+        $query = "SELECT studentid from studentclass, class WHERE id = ? AND classid = id";
+        $table = $dao->query($query,$data);
+        if(count($table) != 0){
+            foreach($table as $row){
+                $class->students[] = Student::readStudent($row['studentid']);
+            }
+        }
+        
+
+        return $class;
+    }
+
+    public function removeStudent(Student $student){
+
+        $dao = DAO::get();
+        $data = [$student->getId()];
+        $query = "DELETE FROM studentclass WHERE studentid = ?";
+        $res = $dao->exec($query,$data);
 
     }
 }

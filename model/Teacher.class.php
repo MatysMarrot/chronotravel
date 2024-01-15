@@ -34,7 +34,7 @@ class Teacher extends User {
 
     }
 
-    public static function readTeacher(int $id) : Teacher{
+    public static function readTeacher($id) : Teacher{
     
         $dao = DAO::get();
         $query = "SELECT * FROM Person WHERE id = ?";
@@ -42,7 +42,7 @@ class Teacher extends User {
         $table = $dao->query($query, $data);
 
         if (count($table) == 0) {
-            throw new Exception("Contact non trouvé id=$id");
+            throw new Exception("Prof non trouvé id=$id");
         }
 
         $row = $table[0];

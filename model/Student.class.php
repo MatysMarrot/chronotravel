@@ -35,7 +35,7 @@ class Student extends User {
 
     }
 
-    public static function readStudent(int $id) : Student{
+    public static function readStudent($id) : Student{
     
         $dao = DAO::get();
         $query = "SELECT * FROM Person WHERE id = ?";
