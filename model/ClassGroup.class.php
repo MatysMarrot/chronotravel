@@ -112,7 +112,7 @@ class ClassGroup{
         $table = $dao->query($query,$data);
 
         if(count($table) == 0 ){
-            throw new Exception("Cet élève n'a pas de groupe de classe ! ");
+            throw new Exception("Cet élève n'a pas de groupe de classe ! id : $studentId ");
         }
 
         $name = $table[0]['name'];
@@ -136,7 +136,6 @@ class ClassGroup{
 
     }
 
-    // TODO : A tester
     public static function getClassGroupFromId($id) : ClassGroup{
         
         $dao = DAO::get();

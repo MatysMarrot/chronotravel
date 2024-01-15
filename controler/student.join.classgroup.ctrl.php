@@ -6,7 +6,6 @@ include_once(__DIR__."/../framework/view.class.php");
 // TODO : Tester quand il y aura les code dans la BD
 //Ra69100ra.
 session_start();
-var_dump($_SESSION);
 $dao = DAO::get();
 $view = new View();
 $message = "";
@@ -38,7 +37,6 @@ if(isset($_POST['code'])){
     }
     else{
         $idClass = $table[0][0];
-        var_dump($idClass);
         $idStudent = $_SESSION['id'];
         $student = Student::readStudent($idStudent);
         if($ingroup){
