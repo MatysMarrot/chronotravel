@@ -12,7 +12,7 @@ header{
 header nav {
   position: absolute;
   top: 0;
-  background-color: #303030;
+  background-color: var(--header-background-color);
   width: 550px;
   height: 80px;
   left: 50%;
@@ -42,7 +42,7 @@ header nav ul li span.tooltip_text {
   position: absolute;
   visibility: hidden;
   width: 135px;
-  background-color: #303030;
+  background-color: var(--header-background-color);
   color: white;
   text-align: center;
   border-radius: 0 0 10px 10px;
@@ -94,7 +94,7 @@ header div img {
 header div span {
   color: white;
   padding: 10px 25px 10px 55px;
-  background-color: #303030;
+  background-color: var(--header-background-color);
   border-radius: 10px;
   border: 2px solid white;
   width: 75px;

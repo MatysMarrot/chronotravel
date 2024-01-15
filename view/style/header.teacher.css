@@ -19,7 +19,7 @@ header{
     position: sticky;
     height: 2.5vh;
     width: 50%;
-    background-color: rgb(56, 62, 66); 
+    background-color: var(--header-background-color);
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     border-top: none;
