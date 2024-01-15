@@ -5,7 +5,7 @@ html{
 
 /*Header Teacher */
 .actif{
-    color: rgb(255, 136, 0);
+    color: #FF8C00;
     text-decoration: underline;
   }
   
@@ -42,4 +42,5 @@ header{
    header a:hover{
      font-size: 15pt;
      transition: all 0.4s;
+     text-decoration: underline;
    }  
