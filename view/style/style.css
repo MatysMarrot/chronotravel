@@ -7,9 +7,7 @@ html {
   /* Couleur principale du thÃ¨me */
   --main-color: #ff7b00;
   /* Couleur principale du fond */
-  --main-background-color: rgba(56, 62, 66, 0.8); 
-  /* Couleur header*/
-  --header-background-color:  rgba(56, 62, 66); 
+  --main-background-color: rgba(56, 62, 66, 0.8);
   /* Couleur du fond en cas de message */
   --message-background-color: #8f8f8f;
   /*Couleur bouton négatif*/

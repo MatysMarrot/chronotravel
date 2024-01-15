@@ -1,3 +1,9 @@
+  html{
+      /* Couleur header*/
+  --header-background-color:  rgba(56, 62, 66); 
+  }
+
+
 /* Header */
 header{
     margin-bottom: 100px;
