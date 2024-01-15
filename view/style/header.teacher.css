@@ -35,12 +35,11 @@ header{
      color: rgb(255, 255, 255);
      font-weight: bold;
      font-size: 1.2em;
-     transition: all 0.4s;
+     transition: all 0.5s;
      text-decoration: none;
    }
    
    header a:hover{
-     font-size: 15pt;
-     transition: all 0.4s;
+     transition: all 0.5s;
      text-decoration: underline;
    }  
