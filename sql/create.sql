@@ -116,3 +116,10 @@ CREATE TABLE Answers (
     correct BOOLEAN
 );
 
+CREATE TABLE Score (
+    id SERIAL PRIMARY KEY,
+    studentId INT REFERENCES Person(id) NOT NULL,
+    classId INT REFERENCES Class(id), 
+    date DATE DEFAULT CURRENT_DATE,
+    FOREIGN KEY (studentId) REFERENCES Person(id)
+);

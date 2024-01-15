@@ -4,32 +4,21 @@
 
 // Le Data Access Object pour la base de donnée
 class DAO {
-    //Singleton de la classe, accesseur de la db et credentials de la db
-    private static $instance = null;
-    private PDO $db;
-    
-    //voir https://www.php.net/manual/fr/ref.pdo-pgsql.php
-    private string $database = "pgsql:host=192.168.14.212;dbname=chronotravel_template";
-    //private string $database = 'sqlite:' . __DIR__ . '/../sql/chrono.db';
-    private string $user = "chemine";
-    private string $password = "Chronotravel";
-  
-    // Constructeur chargé d'ouvrir la BD
-    private function __construct() {
+  private static $instance = null;
+  private PDO $db;
+
+  private function __construct() {
+      // Charger la configuration depuis le fichier
+      $config = require_once 'config.php';
+
       try {
-        $this->db = new PDO($this->database, $this->user, $this->password);
-        //var_dump($this);
-        if (!$this->db) {
-          throw new Exception("Impossible d'ouvrir $this->database with username $this->username");
-          ("Database error");
-        }
-        // Positionne PDO pour lancer les erreurs sous forme d'exeptions
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          $this->db = new PDO($config['database'], $config['user'], $config['password']);
+          // Positionne PDO pour lancer les erreurs sous forme d'exceptions
+          $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       } catch (PDOException $e) {
-        throw new Exception("Erreur PDO : ".$e->getMessage().' sur '.$this->database);
+          throw new Exception("Erreur PDO : " . $e->getMessage());
       }
-  
-    }
+  }
   
     // Méthode statique pour acceder au singleton
     public static function get() : DAO {
@@ -80,7 +69,7 @@ class DAO {
     }
 
 
-    // Demande l'identifiant du dernier élémnt qui a été inséré
+    // Demande l'identifiant du dernier élément qui a été inséré
     public function lastInsertId(): string
     {
       return $this->db->lastInsertId();
