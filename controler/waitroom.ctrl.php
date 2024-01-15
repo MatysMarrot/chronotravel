@@ -6,10 +6,10 @@ include_once(__DIR__."/../model/DAO.class.php");
 $view = new View();
 session_start();
 $outgoing = "student.join.view.php";
-$message = "Pas d'info dans le POST";
+$message = "";
 
 if(count($_POST)) {
-    $playerId = $_POST["playerId"] ?? 0;
+    $playerId = $_SESSION["id"] ?? 0;
     $roomCode = $_POST["code"] ?? 0;
 
     $dao = DAO::get();
@@ -20,9 +20,7 @@ if(count($_POST)) {
     if(!count($table)) {
         $message = "Salon non trouvé";
     } else {
-        $_SESSION['playerId'] = $playerId;
         $_SESSION['roomCode'] = $roomCode;
-        $_SESSION['playerName'] = $playerName;
         $message = "Connexion effectué ";
         $outgoing="student.lobby.ctrl.php";
     }
