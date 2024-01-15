@@ -27,13 +27,15 @@ if(count($_POST)){
         $error = "Le login $login n'existe pas !";
     }
     else {
-        $query = "SELECT roleid,id,password FROM Person WHERE login = ?";
+        $query = "SELECT classid FROM studentclass WHERE studentid = ?";
         $table = $dao->query($query,$data);
 
 
         $reussite = false;
         ($reussite = password_verify($password,$table[0]['password'])) ? $outgoing = "../controler/landing.ctrl.php" : $error = "Mauvais mot de passe, réessayer";
-        $reussite ? log_session(array("roleid" => $table[0]["roleid"],"id" => $table[0]['id'],"login" => $login, "password" => $table[0]['password'])) : "" ;
+        $id = $tableau[0]['id'];
+        $roleid = $tableau[0]['roleid'];
+        $reussite ? log_session(array("id" => $id,"login" => $login, "password" => $table[0]['password'], "roleid" => $roleid)) : "" ;
     }
 
 }
