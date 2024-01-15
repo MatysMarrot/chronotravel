@@ -2,6 +2,7 @@
 
 require_once(__DIR__ . '/Student.class.php');
 require_once(__DIR__ . '/Teacher.class.php');
+require_once(__DIR__ . '../controler/utils/Utils.php');
 
 class ClassGroup{
 
@@ -9,6 +10,7 @@ class ClassGroup{
     private Teacher $owner; // propriétaire du groupe de classe
     private array $students; // la liste des élèves du groupe de classe
     private string $name;
+    private string $code;
 
     public function __construct(Teacher $owner){
         $this->owner = $owner;
@@ -30,9 +32,16 @@ class ClassGroup{
         return $this->name;
     }
 
-    //TODO
+    public function getCode(){
+        return $this->code;
+    }
+
+    //TODO a tester
     public function create(){
-        
+        $dao = DAO::get();
+        $data = [generateRandomCode()];
+        $query = "INSERT INTO class (code) VALUES (?)";
+        $res = $dao->exec($query,$data);
     }
 
 
@@ -67,7 +76,7 @@ class ClassGroup{
         $dao = DAO::get();
         $teacherId = $teacher->getId();
         $data = [$teacherId];
-        $query = "SELECT name,id FROM classteacher , Class  WHERE classId = id and teacherId = ?";
+        $query = "SELECT code,name,id FROM classteacher , Class  WHERE classId = id and teacherId = ?";
 
         $table = $dao->query($query,$data);
 
@@ -81,6 +90,7 @@ class ClassGroup{
         foreach($table as $row){
 
             $classGroup = new ClassGroup($teacher);
+            $classGroup->code = $row['code'];
             $classGroup->name = $row['name'];
             $classGroup->id = $row['id'];
             $query = "SELECT studentId FROM Class, studentclass WHERE id = classId";
@@ -107,7 +117,7 @@ class ClassGroup{
         $dao = DAO::get();
         $studentId = $student->getId();
         $data = [$studentId];
-        $query = "SELECT name,id FROM StudentClass, Class WHERE classId = id and studentId = ?";
+        $query = "SELECT code,name,id FROM StudentClass, Class WHERE classId = id and studentId = ?";
         
         $table = $dao->query($query,$data);
 
@@ -117,11 +127,13 @@ class ClassGroup{
 
         $name = $table[0]['name'];
         $groupId = $table[0]['id'];
+        $code = $table[0]['code'];
 
         $query = "SELECT teacherId FROM ClassTeacher, Class WHERE classId = id";
         $teacherIdRes = $dao->query($query);
         $teacherId = $teacherIdRes[0]['teacherid'];
         $classGroup = new ClassGroup(Teacher::readTeacher($teacherId));
+        $classGroup->code = $code;
         $classGroup->name = $name;
         $classGroup->id = $groupId;
 
@@ -140,10 +152,11 @@ class ClassGroup{
         
         $dao = DAO::get();
         $data = [$id];
-        $query = "SELECT name,teacherid FROM classteacher t, class c WHERE id = ? AND t.classid = id" ;
+        $query = "SELECT code,name,teacherid FROM classteacher t, class c WHERE id = ? AND t.classid = id" ;
         $table = $dao->query($query,$data);
         $teacher = Teacher::readTeacher($table[0]['teacherid']);
         $class = new ClassGroup($teacher);
+        $class->code = $table[0]['code'];
         $class->name = $table[0]['name'];
         $class->id = $id;
 

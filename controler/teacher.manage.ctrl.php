@@ -13,6 +13,31 @@ if($_SESSION["roleid"] != 2){
     include(__DIR__."/../controler/landing.ctrl.php");
 }
 else{
+    
+    $currentClass = ClassGroup::getClassGroupFromId($_POST['currentClass']) ?? null;
+    $teacher = Teacher::readTeacher($_SESSION['id']);
+    $classList = ClassGroup::getClassGroupsFromTeacher($teacher);
+
+    if(count($classList) == 0){
+        $students = [];
+        $className = "Pas de classe pour le moment ! ";
+        $classList = [];
+        $code = "";
+    }
+    elseif($currentClass == null){
+        $currentClass = $classList[0];
+    }
+    else{
+        $students = $currentClass->getStudents();
+        $className = $currentClass->getName();
+        // TODO : ajouter le code dans la class ClassGroup
+        $code = "Le code de la classe : " . $currentClass->getCode();
+    }
+    
+    $view->assign("code",$code);
+    $view->assign("students",$students);
+    $view->assign("className",$className);
+    $view->assign("classList",$classList);
     $view->display("teacher.manage.view.php");
 }
 
