@@ -141,18 +141,32 @@ class ClassGroup{
         
         $dao = DAO::get();
         $data = [$id];
-        $query = "SELECT name,teacherid, studentid FROM classteacher t, studentclass s, class c WHERE id = ? AND t.classid = id AND  s.classid = id" ;
+        $query = "SELECT name,teacherid FROM classteacher t, class c WHERE id = ? AND t.classid = id" ;
         $table = $dao->query($query,$data);
         $teacher = Teacher::readTeacher($table[0]['teacherid']);
         $class = new ClassGroup($teacher);
         $class->name = $table[0]['name'];
         $class->id = $id;
 
-        foreach($table as $row){
-            $class->students[] = Student::readStudent($row['studentid']);
+        $query = "SELECT studentid from studentclass, class WHERE id = ? AND classid = id";
+        $table = $dao->query($query,$data);
+        if(count($table) != 0){
+            foreach($table as $row){
+                $class->students[] = Student::readStudent($row['studentid']);
+            }
         }
+        
 
         return $class;
+    }
+
+    public function removeStudent(Student $student){
+
+        $dao = DAO::get();
+        $data = [$student->getId()];
+        $query = "DELETE FROM studentclass WHERE studentid = ?";
+        $res = $dao->exec($query,$data);
+
     }
 }
 

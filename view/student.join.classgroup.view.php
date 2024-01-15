@@ -15,8 +15,8 @@
                 
             <img class="skin" src="../../skin.png" alt="">
                 
-            <h2>Pseudo</h2>
-            <label for="code">Entrez le code de la partie pour la rejoindre:</label>
+            <p><?=$currentClass?></p>
+            <label for="code">Entrez le code fournit par votre professeur pour rejoindre votre classe ! :</label>
             <!-- Si le code ne correspond à aucune partie mettre un message d'erreur 
                 Sinon rejoindre la partie dans student.lobby.view.php-->
             <form action="../controler/student.join.classgroup.ctrl.php" method= "post">
