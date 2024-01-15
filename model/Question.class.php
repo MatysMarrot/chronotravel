@@ -4,28 +4,33 @@
 require_once(__DIR__ . '/DAO.class.php');
 
 class Question {
-    private $text;
-    private $answers;
+    private $id;
+    private $content;
+    private $themeid;
 
-    public function __construct($text, $answers) {
+    public function __construct($id,$content, $themeid) {
         $this->text = $text;
         $this->answers = $answers;
     }
 
-    public function getText() {
-        return $this->text;
+    public function getId() {
+        return $this->id;
     }
 
+    public function getContent() {
+        return $this->content;
+    }
+
+    private function getThemeId() {
+        return $this->themeId;
+    }
     public function getAnswers() {
         return $this->answers;
     }
 
     public function display() {
-        echo "Question: {$this->text}\n";
-        echo "Answers:\n";
-        foreach ($this->answers as $answer) {
-            echo "- $answer\n";
-        }
+        echo "Question: {$this->getContent()}\n";
+    
     }
 
      // Méthode pour récupérer une question aléatoire depuis la base de données
@@ -35,7 +40,7 @@ class Question {
         $dao = DAO::get();
 
         //Avoid getting the size of the table by ordering by random and getting only one.
-        $query = "SELECT id, content, themeId FROM Questions ORDER BY RANDOM() LIMIT 1";
+        $query = "SELECT id, content, themeid FROM Questions ORDER BY RANDOM() LIMIT 1";
  
     
         $result = $dao->query($query);
@@ -43,7 +48,7 @@ class Question {
  
         if ($result) {
             $rowData = $result[0];
-            return new Question($rowData['id'], $rowData['content'], $rowData['themeId']);
+            return new Question($rowData['id'], $rowData['content'], $rowData['themeid']);
         }
  
         // Aucune question trouvée
