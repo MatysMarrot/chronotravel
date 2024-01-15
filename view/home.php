@@ -8,10 +8,21 @@
     </head>
 
     <body>
+
     <?php
       $currentPage = 'home';
       include(__DIR__.'/header.viewpart.php');
     ?>
+
+    <aside>
+      <ul>
+        <li id="create_party_button"><a href="#">Créer une partie</a></li>
+        <li id="join_party_button"><a href="#">Rejoindre une partie</a></li>
+      </ul>
+      <ul>
+        <li id="join_class_button"><a href="#">Rejoindre une classe</a></li>
+      </ul>
+    </aside>
 
     </body>
   </html>

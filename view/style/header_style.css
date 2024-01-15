@@ -77,21 +77,21 @@ header nav ul li.active a i.material-symbols-outlined {
   background-color: #FF8C00;
 }
 
-header div {
+header div#number_chronocoin {
   position: absolute;
   top: 15px;
-  left: 75%;
+  left: 76%;
   display: flex;
   align-items: center;
 }
 
-header div img {
+header div#number_chronocoin img {
   width: 60px;
   position: absolute;
   left: -20px;
 }
 
-header div span {
+header div#number_chronocoin span {
   color: white;
   padding: 10px 25px 10px 55px;
   background-color: #303030;

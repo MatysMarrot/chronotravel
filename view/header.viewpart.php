@@ -19,7 +19,7 @@
             </li>
         </ul>
     </nav>
-    <div>
+    <div id="number_chronocoin">
         <img src="img/chrono_coin.png" alt="ChronoCoins">
         <span>12345</span>
     </div>
