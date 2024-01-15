@@ -5,6 +5,8 @@ html{
 
 /* Header */
 header{
+  top: 0px;
+  position: sticky;
   margin-bottom: 100px;
 }
 header nav {
@@ -76,9 +78,9 @@ header nav ul li.active a i.material-symbols-outlined {
 }
 
 header div {
-  position: absolute;
+  position: relative;
   top: 15px;
-  left: 75%;
+  left: 300%;
   display: flex;
   align-items: center;
 }
