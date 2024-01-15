@@ -30,7 +30,8 @@ Info: creation date est la date courante si pas donnée
 CREATE TABLE Class (
     id serial PRIMARY KEY,
     name varchar(30),
-    creationDate DATE DEFAULT CURRENT_DATE
+    creationDate DATE DEFAULT CURRENT_DATE,
+    code varchar(5)
 );
 
 /*Table StudentClass:*/
