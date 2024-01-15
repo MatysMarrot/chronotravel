@@ -7,11 +7,8 @@
     <title>Chrono Travel- Accueil</title>
 </head>
 <body id="">
-    <header class="connectionpage">
-        <a href="rules.view.php">Règles</a>
-        <a href="landingpage.php" class="active"><h1>Chronotravel</h1></a>
-        <a href="contact.view.php">Contact</a>
-    </header>
+    <?php include(__DIR__.'/header.unknown.viewpart.php'); ?>
+
     <main class="landingpage">
         <h2>
             Plongez dans l'aventure captivante de notre jeu éducatif et revisitez l'histoire de manière ludique, préparez-vous brillamment pour votre brevet tout en défiant votre esprit historique !

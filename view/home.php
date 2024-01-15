@@ -11,7 +11,7 @@
 
     <?php
       $currentPage = 'home';
-      include(__DIR__.'/header.viewpart.php');
+      include(__DIR__.'/header.student.viewpart.php');
     ?>
 
     <aside id="home_button">
