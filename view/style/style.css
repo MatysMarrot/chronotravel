@@ -47,6 +47,9 @@ body {
 }
 
 /* Header */
+header{
+  margin-bottom: 100px;
+}
 
 header nav {
   position: absolute;
