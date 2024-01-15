@@ -8,6 +8,8 @@ html {
   --main-color: #ff7b00;
   /* Couleur principale du fond */
   --main-background-color: rgba(56, 62, 66, 0.8); 
+  /* Couleur header*/
+  --header-background-color:  rgba(56, 62, 66); 
   /* Couleur du fond en cas de message */
   --message-background-color: #8f8f8f;
   /*Couleur bouton négatif*/
@@ -54,7 +56,7 @@ header{
 header nav {
   position: absolute;
   top: 0;
-  background-color: var(--main-background-color);
+  background-color: var(--header-background-color);
   width: 550px;
   height: 80px;
   left: 50%;
@@ -84,7 +86,7 @@ header nav ul li span.tooltip_text {
   position: absolute;
   visibility: hidden;
   width: 135px;
-  background-color: var(--main-background-color);
+  background-color: var(--header-background-color);
   color: white;
   text-align: center;
   border-radius: 0 0 10px 10px;
