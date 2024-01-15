@@ -83,7 +83,7 @@ Contrainte: Code unique contenant seulement des lettres et sans I ou O
 */
 
 CREATE TABLE PartyCode(
-    code varchar(5) primary key CHECK (code LIKE '%[A-HJ-NP-Z]{5}%'),
+    code varchar(5) primary key CHECK (code SIMILAR TO '%[A-HJ-NP-Z]{5}%'),
     partyId INT REFERENCES Party(id) NOT NULL
 
 );
