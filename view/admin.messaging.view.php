@@ -2,49 +2,44 @@
   <html lang="fr">
     <head>
       <meta charset="UTF-8">
-      <title>Chrono Travel- Salle d'attente</title>
-      <link rel="stylesheet" type="text/css" href="./style/style.x.css">
+      <title>Chrono Travel- Messagerie</title>
+      <link rel="stylesheet" type="text/css" href="../view/style/style.css">
     </head>
 
     <body>
-        
-        <header>
-            <nav>
-                <ul class="ul_horizontal">
-                    <li ><a class="actif" href="#">ACCUEIL</a></li>
-                    <li><a href="#">MON PROFIL</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">CONTACT</a></li>
-                </ul>
-            </nav>
-            <?php include(__DIR__.'/header.viewpart.php'); ?>
-
-        </header>
+        <!--Header --> 
+        <?php include(__DIR__.'/header.viewpart.php'); ?>
 
         <main>
         <h1>Messagerie</h1>
         <section >
             <table class="messaging">
                 <thead>
-                    <th>Expéditeur</th>
-                    <th>Objet du message</th>
-                    <th>Date et heure</td> 
+                    <th scope="col">Expéditeur</th>
+                    <th scope="col">Objet du message</th>
+                    <th scope="col">Date et heure</th> 
+                    <th scope="col">Lu</th>
                 </thead>
                 <tbody>   
                     <tr class="message" onclick="window.location='admin.message.view.php';">
-                           <td>Titouan Kevin</td> 
+                           <td scope="row">Titouan Kevin</td> 
                            <td>Problème de gestion des élèves</td>                               
-                           <td>9:21</td> 
+                           <td>9:21</td>
+                           <td>X</td>
+                    </tr>
+                    <tr class="message" onclick="window.location='admin.message.view.php';">
+                           <td scope="row">heheh jajaja</td> 
+                           <td>Problème de gestion des élèves</td>                               
+                           <td>9:21</td>
+                           <td></td>
                     </tr>
                 </tbody>    
             </table>
         </section>
 
-
         </main>
 
-        <footer>
-            <?php include(__DIR__.'/footer.viewpart.php'); ?>
-        </footer>
+        <!--Footer --> 
+        <?php include(__DIR__.'/footer.viewpart.html'); ?> 
     </body>
 </html>

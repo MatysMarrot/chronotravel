@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Scooby Gang" />
-    <link rel="stylesheet" type="text/css" href="style/login.css">
-    <title>Règles du jeu</title>
+    <link rel="stylesheet" type="text/css" href="../view/style/style.css">
+    <title>Chrono Travel- Règles du jeu</title>
 </head>
 <body id="">
     <header class="connectionpage">

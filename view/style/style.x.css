@@ -22,20 +22,13 @@ html {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
-  background-image: url(../assets/background.png);
-  color: white;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 a{
   color: white
 }
 
-
+select{
+  margin: 1em;
+}
 
 section{
   width: 85%;
@@ -70,10 +63,6 @@ h2{
   transition: all 0.4s;
 }
 
-
-
-
-
 ul{
   margin: 0;
   list-style: none;
@@ -88,46 +77,15 @@ p{
 }
 
 /******************** Body *****************************/
-      /* Header */
-.actif{
-    color: rgb(255, 136, 0);
-    text-decoration: underline;
+
+body{
+  background-image: url(../assets/background.png);
+  color: white;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-
-header{
-    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-    padding: 0.8em; 
-    margin-bottom: 3em;
-    z-index: 1;
-    top: 0px;
-    position: sticky;
-    height: 2.5vh;
-    width: 50%;
-    background-color: rgb(56, 62, 66); 
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border-top: none;
-   }
-
-
-    li{
-     text-align: center;
-     flex-basis: 25%;
-   }
-   
-   header a{
-     color: rgb(255, 255, 255);
-     font-size: large;
-     font-weight: 1000;
-     transition: all 0.4s;
-     text-decoration: none;
-   }
-   
-   header a:hover{
-     font-size: 15pt;
-     transition: all 0.4s;
-   }
 
         /* Main */
 main {
@@ -182,14 +140,12 @@ button:hover{
 label{
   margin-bottom: 0.5em;
   margin-top: 0.5em;
-
 }
 
 
 /** formulaire**/
 
 .formulaire {
-  width: 75%;
   margin: 0 auto;
   padding: 2em;
 }
@@ -245,10 +201,23 @@ label{
   color: black;
 }
 
-.messaging th, td {
+.messaging td {
   border: 1px solid  black;
 }
-
+.messaging th{
+  border: 2px solid  black;
+}
 .message td{
   cursor: pointer;
+}
+
+/** Message */
+.reader{
+  background-color: white;
+  color: black;
+}
+.reader p:nth-child(2) {
+  position: relative;
+  top: 0;
+  right: 0;
 }
