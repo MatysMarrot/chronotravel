@@ -26,8 +26,23 @@ class Question {
         return $this->themeId;
     }
     //TODO
-    public function getAnswers() {
+    public function getAnswers() : ?array{
         $dao = DAO::get();
+        $query = "SELECT * FROM Answers WHERE questionid = ?";
+
+        $data = [];
+        $data[] = $this->getId();
+
+        $result = $dao->$query($query,$data);
+
+        if ($result){
+            var_dump($result);
+            //Create Answers objects
+
+            //And then return
+        }
+
+        return null;
 
     }
 
