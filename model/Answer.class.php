@@ -27,14 +27,6 @@ class Answer{
         return $this->questionid;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getThemeid()
-    {
-        return $this->themeid;
-    }
-
     public function getContent() : string {
         return $this->content;
     }

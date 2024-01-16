@@ -68,20 +68,28 @@ class Question
         return $this->answers;
     }
 
+    /**
+     * @return int
+     */
+    public function getThemeid(): int
+    {
+        return $this->themeid;
+    }
     public function display(): void
     {
         echo "Question ID: " . $this->getId() . PHP_EOL;
         echo "Content: " . $this->getContent() . PHP_EOL;
+        echo "Theme ID: " . $this->getThemeid() . PHP_EOL;
 
         echo "Answers:" . PHP_EOL;
         foreach ($this->getAnswers() as $answer) {
             echo "  Answer ID: " . $answer->getId() . PHP_EOL;
             echo "  Content: " . $answer->getContent() . PHP_EOL;
-            echo "  Theme ID: " . $answer->getThemeId() . PHP_EOL;
             echo "  Correct: " . ($answer->isCorrect() ? 'Yes' : 'No') . PHP_EOL;
             echo PHP_EOL;
         }
     }
+
 
 
 // Méthode pour récupérer une question aléatoire depuis la base de données
