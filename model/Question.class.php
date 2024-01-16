@@ -33,7 +33,7 @@ class Question {
         $data = [];
         $data[] = $this->getId();
 
-        $result = $dao->$query($query,$data);
+        $result = $dao->query($query,$data);
 
         if ($result){
             var_dump($result);
