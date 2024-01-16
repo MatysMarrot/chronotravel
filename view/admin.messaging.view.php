@@ -21,13 +21,13 @@
                     <th scope="col">Lu</th>
                 </thead>
                 <tbody>   
-                    <tr class="message" onclick="window.location='admin.message.view.php';">
+                    <tr class="message" onclick="window.location='../controler/admin.message.ctrl.php';">
                            <td scope="row">Titouan Kevin</td> 
                            <td>Problème de gestion des élèves</td>                               
                            <td>9:21</td>
                            <td>X</td>
                     </tr>
-                    <tr class="message" onclick="window.location='admin.message.view.php';">
+                    <tr class="message" onclick="window.location='../controler/admin.message.ctrl.php';">
                            <td scope="row">heheh jajaja</td> 
                            <td>Problème de gestion des élèves</td>                               
                            <td>9:21</td>

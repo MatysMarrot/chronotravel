@@ -8,7 +8,7 @@ $view = new View();
 session_start();
 
 $error = "";
-$outgoing = "login.php";
+$outgoing = "login.view.php";
 
 if(count($_POST)){
     $login = $_POST['login'] ?? "";

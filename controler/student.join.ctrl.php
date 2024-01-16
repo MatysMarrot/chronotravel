@@ -22,7 +22,7 @@ if(count($_POST)) {
     } else {
         $_SESSION['roomCode'] = $roomCode;
         $message = "Connexion effectué ";
-        $outgoing="student.lobby.ctrl.php";
+        $outgoing="waitroom.ctrl.php";
     }
 }
 
