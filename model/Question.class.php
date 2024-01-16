@@ -151,7 +151,7 @@ class Question
 
         if ($result) {
             $rowData = $result[0];
-            return new Question($rowData['id'],$rowData['content'],$rowData['themeid']);
+            return new Question($rowData['id'], $rowData['content'], $rowData['themeid']);
         }
         //Result is null
         throw new Exception("La question numéro " . $id . " n'existe pas !");
