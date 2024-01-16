@@ -32,10 +32,7 @@ class Question
         return $this->content;
     }
 
-    private function getThemeId(): int
-    {
-        return $this->themeId;
-    }
+
 
     private function readAnswers(): ?array
     {
