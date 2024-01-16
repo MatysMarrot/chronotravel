@@ -5,15 +5,12 @@ require_once(__DIR__ . '/../model/Teacher.class.php');
 require_once(__DIR__ . '/../model/ClassGroup.class.php');
 
 //Test méthode getClassGroupFromTeacher
-/*
-$teacher = new Teacher("Hakati","Yanis","harkaty","123");
-$teacher->setId(6);
+
+$teacher = Teacher::readTeacher(108);
 $group = ClassGroup::getClassGroupsFromTeacher($teacher);
-print("Groupe du prof : \n");
-print("Elèves : \n");
 var_dump($group);
 var_dump($group[0]->getStudents());
-*/
+
 
 //Test méhode getClassGroupFromStudent
 
@@ -31,6 +28,8 @@ var_dump($class);
 */
 
 //Test méthode getClassGroupFromId
+/*
 $class = ClassGroup::getClassGroupFromId(-1);
 var_dump($class);
+*/
 ?>

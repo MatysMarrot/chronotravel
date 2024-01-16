@@ -19,8 +19,13 @@
                 <select name="currentClass" id="classe-select">
                     <?php if(count($classList) != 0) :?>
                         <?php foreach($classList as $class) :?>
-                            <option value= '<?= $class->getId() ?>'><?= $class->getName() ?></option>
+                            <?php if($class->getId() == $currentClass->getId()) : ?>
+                                <option value= '<?= $class->getId() ?>' selected><?= $class->getName() ?></option>
+                            <?php else : ?>
+                                <option value= '<?= $class->getId() ?>'><?= $class->getName() ?></option>
+                            <?php endif;?>
                         <?php endforeach;?>
+
                     <?php else : ?>
                         <option value= '-1'>PAS DE CLASSE</option>
                     <?php endif; ?>

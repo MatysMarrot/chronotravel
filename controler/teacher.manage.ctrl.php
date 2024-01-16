@@ -33,15 +33,20 @@ else{
         $classList = [];
         $code = "";
     }
-    elseif($currentClass == null){
-        $currentClass = $classList[0];
-    }
     else{
+        if($currentClass == null){
+            $currentClass = $classList[0];
+        }
         $students = $currentClass->getStudents();
         $className = $currentClass->getName();
         $code = "Le code de la classe : " . $currentClass->getCode();
     }
     
+    
+
+    
+    
+    $view->assign("currentClass",$currentClass);
     $view->assign("code",$code);
     $view->assign("students",$students);
     $view->assign("className",$className);

@@ -8,7 +8,7 @@ class ClassGroup{
 
     private int $id; // Laisser la BD gérer
     private Teacher $owner; // propriétaire du groupe de classe
-    private array $students; // la liste des élèves du groupe de classe
+    private array $students = []; // la liste des élèves du groupe de classe
     private string $name;
     private string $code;
 
@@ -93,12 +93,10 @@ class ClassGroup{
             $classGroup->code = $row['code'];
             $classGroup->name = $row['name'];
             $classGroup->id = $row['id'];
-            $query = "SELECT studentId FROM Class, studentclass WHERE id = classId";
-            $studentsId = $dao->query($query);
-            var_dump($studentsId);
+            $data = [$row['id']];
+            $query = "SELECT studentId FROM Class, studentclass WHERE id = classId AND classId = ?";
+            $studentsId = $dao->query($query,$data);
             foreach($studentsId as $studentId){
-                var_dump($studentId);
-
                 $student = Student::readStudent($studentId['studentid']);
                 $classGroup->students[] = $student;
 
@@ -113,6 +111,8 @@ class ClassGroup{
     }
 
     // Renvoie un objet ClassGroup ou null si pas trouvé
+
+    //TODO : Revoir cette fonction (il se peut qu'elle soit fausse)
     public static function getClassGroupFromStudent(Student $student){
 
         $dao = DAO::get();
