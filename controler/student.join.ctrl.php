@@ -5,7 +5,7 @@ include_once(__DIR__."/../model/DAO.class.php");
 
 $view = new View();
 session_start();
-$outgoing = "waitroom.view.php";
+$outgoing = "student.join.view.php";
 $message = "";
 
 if(count($_POST)) {
@@ -22,7 +22,7 @@ if(count($_POST)) {
     } else {
         $_SESSION['roomCode'] = $roomCode;
         $message = "Connexion effectué ";
-        $outgoing="student.lobby.ctrl.php";
+        $outgoing="waitroom.ctrl.php";
     }
 }
 
