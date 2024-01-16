@@ -140,6 +140,25 @@ class Question
         }
         return 0;
     }
+
+    public static function getQuestionFromId(int $id): ?Question
+    {
+        $dao = DAO::get();
+        $query = "SELECT * FROM Questions WHERE id = ?";
+        $data = array();
+        $data[] = $id;
+
+        $result = $dao->query($query,$data);
+
+        if ($result){
+            $rowData = $result[0];
+            return new Question($rowData['id'],$rowData['content'],$rowData['themeid']);
+        }
+        //Result is null
+        throw new Exception("La question numéro ". $id . " n'existe pas !");
+        return null;
+
+    }
 }
 
 ?>
