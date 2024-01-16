@@ -7,5 +7,7 @@ require_once(__DIR__ . '/../model/Question.class.php');
 
 //Récupérer le nombre de questions en DB
 $size = Question::getQuestionsSize();
-echo "size : ";
-echo $size;
+print ("size : ");
+print ($size);
+
+?>
