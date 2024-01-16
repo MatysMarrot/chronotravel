@@ -28,7 +28,7 @@ if(count($_POST)){
     }
     else {
         $reussite = false;
-        ($reussite = password_verify($password,$table[0]['password'])) ? $outgoing = "../controler/landing.ctrl.php" : $error = "Mauvais mot de passe, réessayer";
+        ($reussite = password_verify($password,$table[0]['password'])) ? $outgoing = "../controler/home.ctrl.php" : $error = "Mauvais mot de passe, réessayer";
         $id = $table[0]['id'];
         $roleid = $table[0]['roleid'];
         $reussite ? log_session(array("id" => $id,"login" => $login, "password" => $table[0]['password'], "roleid" => $roleid)) : "" ;
