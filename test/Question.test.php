@@ -13,4 +13,6 @@ print($size + PHP_EOL);*/
 
 //Trying to get answers
 $question->display();
+
+$question->registerQuestion("Comment s'appellent les habitants du Québec ?",2);
 ?>
