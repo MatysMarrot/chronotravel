@@ -125,6 +125,27 @@ class Question
         return null;
     }
 
+    public static function getRandomQuestionWithEra(Era $era): ?Question
+    {
+
+        $dao = DAO::get();
+
+        //Avoid getting the size of the table by ordering by random and getting only one.
+        $query = "SELECT id, content, themeid FROM Questions WHERE ORDER BY RANDOM() LIMIT 1";
+
+
+        $result = $dao->query($query);
+
+        if ($result) {
+            $rowData = $result[0];
+            return new Question($rowData['id'], $rowData['content'], $rowData['themeid']);
+        }
+
+        // Aucune question trouvée
+        return null;
+    }
+
+
     public static function getQuestionsSize(): int
     {
         $dao = DAO::get();
