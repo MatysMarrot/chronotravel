@@ -53,6 +53,7 @@ class Question
             //Create Answers objects and put it in array
             for ($i = 0; $i < count($result); $i++) {
                 $rowData = $result[$i];
+                var_dump($rowData['correct']);
                 $answers[] = new Answer($rowData['id'], $rowData['questionid'], $rowData['content'], $rowData['correct']);
 
             }
