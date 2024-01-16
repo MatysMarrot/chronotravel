@@ -249,13 +249,7 @@ dashboard {
     text-align: center;
   }
 
-  .user-info img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-
+ 
   .user-info p {
     margin: 10px 0;
   }
@@ -304,9 +298,8 @@ dashboard {
   }
 
   .user-info img {
-    max-width: 100%; /* La largeur maximale sera la taille réelle de l'image */
-    height: auto; /* Ajuste la hauteur automatiquement */
-    border-radius: 50%;
+    width: 124px;
+ 
     object-fit: cover;
     margin-bottom: 10px;
   }
@@ -369,7 +362,7 @@ body {
 .user-info img {
   max-width: 100%;
   height: auto;
-  border-radius: 50%;
+
   object-fit: cover;
   margin-bottom: 10px;
 }
@@ -443,4 +436,32 @@ main {
 
 .class-button.active {
   background-color: #ff7b00;
+}
+
+
+
+
+
+
+.user-info {
+  background-color: #3d3d3d; /* Fond gris foncé */
+  border: 2px solid #000; /* Contour noir */
+  border-radius: 10px; /* Coins arrondis */
+  overflow: hidden; /* Pour s'assurer que l'image ne dépasse pas la bordure */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  transition: background-color 0.3s; /* Animation de changement de couleur */
+}
+
+.user-info img {
+  width: 32%; /* Largeur de l'image à 100% de la largeur de la carte */
+  height: auto; /* Hauteur automatique pour maintenir les proportions */
+}
+
+.user-info p {
+  margin: 10px 0; /* Marge autour du texte */
+  color: #fff; /* Couleur du texte en blanc */
+}
+
+.user-info:hover {
+  background-color: #555; /* Nouvelle couleur au survol */
 }
