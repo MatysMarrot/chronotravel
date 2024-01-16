@@ -48,7 +48,7 @@ class Question
         $result = $dao->query($query, $data);
 
         if ($result) {
-            var_dump($result);
+
             $answers = array();
             //Create Answers objects and put it in array
             for ($i = 0; $i < count($result); $i++) {
