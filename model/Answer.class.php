@@ -6,7 +6,7 @@ class Answer{
     private int $id;
     private int $questionid;
     private string $content;
-    private boolean $correct;
+    private bool $correct;
 
     public function __construct($id,$questionid ,$content, $correct) {
         $this->id = $id;
