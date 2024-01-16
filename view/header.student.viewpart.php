@@ -6,7 +6,7 @@
     <nav>
         <ul>
             <li <?= ($currentPage == 'home') ? 'class="active"' : ''; ?>>
-                <a href="home.php"> <i class="material-symbols-outlined">Home</i></a>
+                <a href="../controler/home.ctrl.php"> <i class="material-symbols-outlined">Home</i></a>
                 <span class="tooltip_text">ACCUEIL</span>
             </li>
             <li <?= ($currentPage == 'profile') ? 'class="active"' : ''; ?>>
@@ -24,7 +24,7 @@
         </ul>
     </nav>
     <div id="number_chronocoin">
-        <img src="img/chrono_coin.png" alt="ChronoCoins">
+        <img src="../view/img/chrono_coin.png" alt="ChronoCoins">
         <span>12345</span>
     </div>
 </header>

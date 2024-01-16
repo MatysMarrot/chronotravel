@@ -22,7 +22,7 @@
     <?php include(__DIR__.'/header.unknown.viewpart.php'); ?>
 
     <main class="connection">
-        <form action="../controler/login.crtl.php" method="post">
+        <form action="../controler/login.ctrl.php" method="post">
             <p>
                 <label>Identifiant</label>
                 <input id="login" type="text" name="login" value="" required>
@@ -36,7 +36,7 @@
             <p> <?=$error?></p>
             <button class="button2" type="submit" name="connect">Se connecter</button>
         </form>
-        <p>Vous n'avez pas de compte ? <a href="createaccount.ctrl.php">Créez en vous un !</a></p>
+        <p>Vous n'avez pas de compte ? <a href="../controler/createaccount.ctrl.php">Créez en vous un !</a></p>
     </main>
     <?php include(__DIR__.'/footer.viewpart.html')?>
 </body>

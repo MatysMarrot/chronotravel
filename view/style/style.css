@@ -194,7 +194,7 @@ text-align: justify;
 .button-container {
   width: 50%;
   display: flex; /* Utiliser un conteneur flexible */
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .button-container button:nth-child(1) {
   background-color: var(--color-negativ);
@@ -352,6 +352,17 @@ th[scope='col'] {
   text-align: right;
 }
 
+/* Join party p&ge */
+.joinParty {
+  display: flex;
+  flex-direction: column;
+}
+.joinParty div {
+  width: 100%;
+}
+.joinParty div button {
+  width: 30%;
+}
 /* Footer */
 footer {
   background-color: var(--header-background-color);

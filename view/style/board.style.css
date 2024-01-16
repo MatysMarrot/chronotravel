@@ -1,0 +1,28 @@
+.board{
+    border-collapse: separate;
+    border-spacing: 1em;
+}
+
+.board td{
+    height: 125px;
+    width: 125px;
+}
+.board_available{
+    height: 100px;
+    width: 100px;
+    background-color: aqua;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.board tr:first-child>.board_available:first-child{
+    background-color: rgb(218, 20, 20);
+}
+
+.board tr:last-child>.board_available:last-child{
+    background-color: greenyellow;
+}
+
+.board_none{
+    height: 100px;
+    width: 100px;
+}

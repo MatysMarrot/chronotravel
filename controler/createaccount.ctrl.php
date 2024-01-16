@@ -12,7 +12,7 @@ $view = new View();
 if(count($_POST) == 0){
     $loginError = "";
     $view->assign("loginError",$loginError);
-    $view->display("createaccount.php");
+    $view->display("../view/createaccount.view.php");
 }else{
 
     $login = $_POST['login'];
@@ -45,7 +45,7 @@ if(count($_POST) == 0){
         
     
         $newAccount->create();
-        $view->display("login.php");
+        $view->display("../view/login.view.php");
     
     }
     else{
@@ -53,7 +53,7 @@ if(count($_POST) == 0){
         $mailError = "Un compte avec le mail $mail existe déjà ! ";
         $view->assign("loginError",$loginError);
         //$view->assign("mailError",$mailError);
-        $view->display("createaccount.php");
+        $view->display("../view/createaccount.view.php");
     }
 
 }

@@ -8,7 +8,7 @@ $view = new View();
 session_start();
 
 $error = "";
-$outgoing = "login.php";
+$outgoing = "login.view.php";
 
 if(count($_POST)){
     $login = $_POST['login'] ?? "";
@@ -20,21 +20,17 @@ if(count($_POST)){
 
     $dao = DAO::get();
     $data = [$login];
-    $query = "SELECT login FROM Person WHERE login = ?";
+    $query = "SELECT roleid,id,password,login FROM Person WHERE login = ?";
     $table = $dao->query($query,$data);
 
     if(!count($table)){
         $error = "Le login $login n'existe pas !";
     }
     else {
-        $query = "SELECT classid FROM studentclass WHERE studentid = ?";
-        $table = $dao->query($query,$data);
-
-
         $reussite = false;
         ($reussite = password_verify($password,$table[0]['password'])) ? $outgoing = "../controler/landing.ctrl.php" : $error = "Mauvais mot de passe, réessayer";
-        $id = $tableau[0]['id'];
-        $roleid = $tableau[0]['roleid'];
+        $id = $table[0]['id'];
+        $roleid = $table[0]['roleid'];
         $reussite ? log_session(array("id" => $id,"login" => $login, "password" => $table[0]['password'], "roleid" => $roleid)) : "" ;
     }
 
