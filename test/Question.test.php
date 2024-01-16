@@ -8,9 +8,9 @@ $question = Question::getRandomQuestion();
 //Récupérer le nombre de questions en DB
 /*$size = Question::getQuestionsSize();
 print("size : ");
-print($size + "\n");*/
+print($size + PHP_EOL);*/
 
 
 //Trying to get answers
-$question->getAnswers();
+$question->display();
 ?>
