@@ -39,7 +39,7 @@ class Answer{
         return $this->content;
     }
 
-    public function isCorrect() : boolean {
+    public function isCorrect() : bool {
         return $this->correct;
     }
 
