@@ -39,8 +39,16 @@ class ClassGroup{
     //TODO a tester
     public function create(){
         $dao = DAO::get();
-        $data = [generateRandomCode()];
-        $query = "INSERT INTO class (code) VALUES (?)";
+        $code  = generateRandomCode();
+        $this->code = $code;
+        $this->name = "Nouveau groupe";
+
+        $data = [$code];
+        $query = "INSERT INTO class (name,code) VALUES ('Nouveau groupe',?)";
+        $res = $dao->exec($query,$data);
+
+        $data = [$dao->lastInsertId(),$this->owner->getId()];
+        $query = "INSERT INTO classteacher (classid,teacherid) VALUES(?,?)";
         $res = $dao->exec($query,$data);
     }
 
@@ -48,7 +56,6 @@ class ClassGroup{
     // AJOUTE UN STUDENT DANS LA DB
     public function insertStudent(Student $student){
 
-        
         // Ajout dans la BD
         $dao = DAO::get();
         $data = [$student->getId()];

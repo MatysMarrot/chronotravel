@@ -13,7 +13,7 @@ if($_SESSION["roleid"] != 2){
     include(__DIR__."/../controler/landing.ctrl.php");
 }
 else{
-    
+
     $currentClassId = $_POST['currentClass'] ?? null;
 
     if ($currentClassId == null) {
@@ -24,6 +24,11 @@ else{
     $currentClass = ClassGroup::getClassGroupFromId($currentClassId);
 
     $teacher = Teacher::readTeacher($_SESSION['id']);
+
+    if(isset($_POST['create'])){
+        $newClass = new ClassGroup($teacher);
+        $newClass->create();
+    }
 
     $classList = ClassGroup::getClassGroupsFromTeacher($teacher);
 
@@ -37,11 +42,13 @@ else{
         if($currentClass == null){
             $currentClass = $classList[0];
         }
-        
+
         if(isset($_POST['delete'])){
             $studentToDel = Student::readStudent($_POST['delete']);
             $currentClass->removeStudent($studentToDel);
         }
+
+        
 
         $students = $currentClass->getStudents();
         $className = $currentClass->getName();

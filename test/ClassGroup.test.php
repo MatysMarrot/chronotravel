@@ -33,4 +33,11 @@ var_dump($class);
 $class = ClassGroup::getClassGroupFromId(-1);
 var_dump($class);
 */
+
+//Test méthode create
+$teacher = Teacher::readTeacher(108);
+$class = new ClassGroup($teacher);
+$class->create();
+var_dump($class);
+
 ?>

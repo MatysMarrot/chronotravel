@@ -13,10 +13,18 @@
         <main>
             <h1>Gestion des élèves</h2>
 
-            <h2><?=$className?></h2>
-            <h3><?=$code?></h3>
+
             <!--Select permettant de filtrer le contenue du tableau ci-dessous -->
             <form action="../controler/teacher.manage.ctrl.php" method = "post">
+                <input name = "create" value = "Créer un nouveau groupe de classe" type="submit">
+
+                <div><input value = "<?=$className?>"name = "className"type="text">
+            
+                <button type = "submit">Modifier nom</button>
+            
+                </div>
+
+                <h3><?=$code?></h3>
                 <select name="currentClass" id="classe-select">
                     <?php if(count($classList) != 0) :?>
                         <?php foreach($classList as $class) :?>
