@@ -402,6 +402,46 @@ th[scope='col'] {
 .joinParty div button {
   width: 30%;
 }
+
+/* Checkroom page */
+.checkroom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 15px;
+}
+.checkroom section:first-child {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+.checkroom section:first-child img {
+  width: 50%;
+  height: 50%;
+  margin: 20px 50px 20px 50px;
+
+}
+.checkroom section:last-child  {
+  width: 50%;
+  padding: 15px;
+  border: 10px ridge #e49144;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.checkroom section:last-child div {
+  width: 150px;
+  height: 150px;
+}
+
+.checkroom section:last-child div img {
+  width: 100px;
+  height: 10%;
+}
+
 /* Footer */
 footer {
   background-color: var(--header-background-color);
