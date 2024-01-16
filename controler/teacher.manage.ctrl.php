@@ -14,8 +14,17 @@ if($_SESSION["roleid"] != 2){
 }
 else{
     
-    $currentClass = ClassGroup::getClassGroupFromId($_POST['currentClass']) ?? null;
+    $currentClassId = $_POST['currentClass'] ?? null;
+
+    if ($currentClassId == null) {
+        // Définissez une valeur par défaut si 'currentClass' n'est pas défini dans $_POST
+        $currentClassId = -1; // Remplacez par l'ID par défaut souhaité
+    }
+
+    $currentClass = ClassGroup::getClassGroupFromId($currentClassId);
+
     $teacher = Teacher::readTeacher($_SESSION['id']);
+
     $classList = ClassGroup::getClassGroupsFromTeacher($teacher);
 
     if(count($classList) == 0){
@@ -30,7 +39,6 @@ else{
     else{
         $students = $currentClass->getStudents();
         $className = $currentClass->getName();
-        // TODO : ajouter le code dans la class ClassGroup
         $code = "Le code de la classe : " . $currentClass->getCode();
     }
     

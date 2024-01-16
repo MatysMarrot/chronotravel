@@ -2,7 +2,7 @@
 
 require_once(__DIR__ . '/Student.class.php');
 require_once(__DIR__ . '/Teacher.class.php');
-require_once(__DIR__ . '../controler/utils/Utils.php');
+require_once(__DIR__ . '/../controler/utils/Utils.php');
 
 class ClassGroup{
 
@@ -69,8 +69,7 @@ class ClassGroup{
         $this->students[] = $student; 
     }
 
-    //Retourne la liste des groupes de classe d'un professeur
-    //TODO Tester cette fonction
+    //Retourne la liste des groupes de classe d'un professeur ou une liste vide si rien trouvé
     public static function getClassGroupsFromTeacher(Teacher $teacher) : array {
 
         $dao = DAO::get();
@@ -81,7 +80,8 @@ class ClassGroup{
         $table = $dao->query($query,$data);
 
         if(count($table) == 0 ){
-            throw new Exception("Ce professeur n'a pas de groupe de classe ! ");
+            //renvoie une array vide si il n'ya pas de classe
+            return [];
         }
         
         $result = [];
@@ -112,7 +112,8 @@ class ClassGroup{
 
     }
 
-    public static function getClassGroupFromStudent(Student $student) : ClassGroup{
+    // Renvoie un objet ClassGroup ou null si pas trouvé
+    public static function getClassGroupFromStudent(Student $student){
 
         $dao = DAO::get();
         $studentId = $student->getId();
@@ -122,7 +123,8 @@ class ClassGroup{
         $table = $dao->query($query,$data);
 
         if(count($table) == 0 ){
-            throw new Exception("Cet élève n'a pas de groupe de classe ! id : $studentId ");
+            //renvoie null si il n'ya pas de classe
+            return null;
         }
 
         $name = $table[0]['name'];
@@ -148,12 +150,19 @@ class ClassGroup{
 
     }
 
-    public static function getClassGroupFromId($id) : ClassGroup{
+    //Renvoie un objet ClassGroup ou null si pas trouvé
+    public static function getClassGroupFromId($id){
         
         $dao = DAO::get();
         $data = [$id];
         $query = "SELECT code,name,teacherid FROM classteacher t, class c WHERE id = ? AND t.classid = id" ;
         $table = $dao->query($query,$data);
+
+        if(count($table) == 0){
+            //return null si il n'y a pas de classe avec cette id
+            return null;
+        }
+
         $teacher = Teacher::readTeacher($table[0]['teacherid']);
         $class = new ClassGroup($teacher);
         $class->code = $table[0]['code'];
@@ -167,7 +176,6 @@ class ClassGroup{
                 $class->students[] = Student::readStudent($row['studentid']);
             }
         }
-        
 
         return $class;
     }

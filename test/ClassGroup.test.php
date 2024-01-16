@@ -24,7 +24,13 @@ $group = ClassGroup::getClassGroupFromStudent($student);
 var_dump($group)
 */
 
+/*
+$teacher = Teacher::readTeacher(108);
+$class = ClassGroup::getClassGroupsFromTeacher($teacher);
+var_dump($class);
+*/
+
 //Test méthode getClassGroupFromId
-$class = ClassGroup::getClassGroupFromId(1);
+$class = ClassGroup::getClassGroupFromId(-1);
 var_dump($class);
 ?>
