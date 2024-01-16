@@ -8,11 +8,10 @@ class Answer{
     private string $content;
     private boolean $correct;
 
-    public function __construct($id,$questionid ,$content, $themeid, $correct) {
+    public function __construct($id,$questionid ,$content, $correct) {
         $this->id = $id;
-        $this->questionid;
+        $this->questionid = $questionid;
         $this->content = $content;
-        $this->themeid = $themeid;
         $this->correct = $correct;
     }
 
