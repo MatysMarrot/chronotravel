@@ -26,12 +26,26 @@ class Question {
         return $this->themeId;
     }
     //TODO
-    public function getAnswers() : array {
-        $dao = Dao::get();
-
-        
+    public function getAnswers() {
+        $dao = DAO::get();
 
     }
+
+    public static function getQuestionsSize() : int{
+        $dao = DAO::get();
+        $query = "SELECT count(*) FROM Questions";
+        $result = $dao->query($query);
+
+        //If the return of the query isn't null
+        if ($result){
+            //Get the first element of the list
+            $rowData = $result[0];
+            return $rowData['count'];
+        }
+        return 0;
+    }
+
+
 
     public function display() : void{
         echo "Question: $this->getContent()\n
@@ -40,7 +54,7 @@ class Question {
     }
 
      // Méthode pour récupérer une question aléatoire depuis la base de données
-     public static function getRandomQuestion() : Question
+     public static function getRandomQuestion() : ?Question
      {
     
         $dao = DAO::get();
