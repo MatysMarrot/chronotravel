@@ -33,7 +33,6 @@ class Question
     }
 
 
-
     private function readAnswers(): ?array
     {
         $dao = DAO::get();
@@ -75,6 +74,7 @@ class Question
     {
         return $this->themeid;
     }
+
     public function display(): void
     {
         echo "Question ID: " . $this->getId() . PHP_EOL;
@@ -102,7 +102,6 @@ class Question
         throw new Exception("Il n'y a pas de réponse correcte à la question " . $this->getId());
         return null;
     }
-
 
 
 // Méthode pour récupérer une question aléatoire depuis la base de données
@@ -148,17 +147,43 @@ class Question
         $data = array();
         $data[] = $id;
 
-        $result = $dao->query($query,$data);
+        $result = $dao->query($query, $data);
 
-        if ($result){
+        if ($result) {
             $rowData = $result[0];
             return new Question($rowData['id'],$rowData['content'],$rowData['themeid']);
         }
         //Result is null
-        throw new Exception("La question numéro ". $id . " n'existe pas !");
+        throw new Exception("La question numéro " . $id . " n'existe pas !");
         return null;
 
     }
+
+    /**
+     * Add a question to database, /!\ be careful
+     * @return void
+     */
+    public static function registerQuestion(string $content, int $themeid)
+    {
+        $dao = DAO::get();
+        $insertquery = "INSERT INTO Questions (content, themeid) VALUES (?,?)";
+        $data = array();
+        $data[] = $content;
+        $data[] = $themeid;
+
+        $dao->exec($insertquery,$data);
+
+        $result = $dao->query("SELECT id FROM Questions WHERE content = ? AND themeid = ?",$data);
+        if ($result){
+
+        }
+        //Insert went wrong
+        throw new Exception("L'insertion de la question s'est mal passée." . PHP_EOL . "Content: " . $content . PHP_EOL . "Themeid: " . $themeid);
+
+
+
+    }
+
 }
 
 ?>
