@@ -175,11 +175,11 @@ class Question
 
         $result = $dao->query("SELECT id FROM Questions WHERE content = ? AND themeid = ?",$data);
         if ($result){
-            echo "Votre question a été insérée sous l'id " . $result[0]['id'];
+            echo "Votre question a été insérée sous l'id " . $result[0]['id'] . PHP_EOL;
             return;
         }
         //Insert went wrong
-        throw new Exception("L'insertion de la question s'est mal passée." . PHP_EOL . "Content: " . $content . PHP_EOL . "Themeid: " . $themeid);
+        throw new Exception("L'insertion de la question s'est mal passée." . PHP_EOL . "Content: " . $content . PHP_EOL . "Themeid: " . $themeid . PHP_EOL);
 
 
     }
