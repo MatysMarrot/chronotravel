@@ -22,7 +22,7 @@
     <?php include(__DIR__.'/header.unknown.viewpart.php'); ?>
 
     <main class="connection">
-        <form action="../controler/login.crtl.php" method="post">
+        <form action="../controler/login.ctrl.php" method="post">
             <p>
                 <label>Identifiant</label>
                 <input id="login" type="text" name="login" value="" required>
