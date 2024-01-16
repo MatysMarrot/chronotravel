@@ -9,32 +9,38 @@ class Question {
     private $themeid;
 
     public function __construct($id,$content, $themeid) {
-        $this->text = $text;
-        $this->answers = $answers;
+        $this->id = $id;
+        $this->content = $content;
+        $this->themeid = $themeid;
     }
 
-    public function getId() {
+    public function getId() : int {
         return $this->id;
     }
 
-    public function getContent() {
+    public function getContent() : string{
         return $this->content;
     }
 
-    private function getThemeId() {
+    private function getThemeId() : int{
         return $this->themeId;
     }
-    public function getAnswers() {
-        return $this->answers;
+    //TODO
+    public function getAnswers() : array {
+        $dao = Dao::get();
+
+        
+
     }
 
-    public function display() {
-        echo "Question: {$this->getContent()}\n";
+    public function display() : void{
+        echo "Question: $this->getContent()\n
+        ";
     
     }
 
      // Méthode pour récupérer une question aléatoire depuis la base de données
-     public static function getRandomQuestion()
+     public static function getRandomQuestion() : Question
      {
     
         $dao = DAO::get();
