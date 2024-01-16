@@ -79,8 +79,7 @@ class Question {
  
     
         $result = $dao->query($query);
-        var_dump($result);
- 
+
         if ($result) {
             $rowData = $result[0];
             return new Question($rowData['id'], $rowData['content'], $rowData['themeid']);
