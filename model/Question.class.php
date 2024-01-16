@@ -50,7 +50,6 @@ class Question
             //Create Answers objects and put it in array
             for ($i = 0; $i < count($result); $i++) {
                 $rowData = $result[$i];
-                var_dump($rowData['correct']);
                 $answers[] = new Answer($rowData['id'], $rowData['questionid'], $rowData['content'], $rowData['correct']);
 
             }
@@ -69,14 +68,10 @@ class Question
         return $this->answers;
     }
 
-
-
-
     public function display(): void
     {
         echo "Question ID: " . $this->getId() . PHP_EOL;
         echo "Content: " . $this->getContent() . PHP_EOL;
-        echo "Theme ID: " . $this->getThemeId() . PHP_EOL;
 
         echo "Answers:" . PHP_EOL;
         foreach ($this->getAnswers() as $answer) {
