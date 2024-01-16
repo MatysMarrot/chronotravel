@@ -187,6 +187,12 @@ class ClassGroup{
         $query = "DELETE FROM studentclass WHERE studentid = ?";
         $res = $dao->exec($query,$data);
 
+        foreach($this->students as $key => $currentStudent){
+            if($student->getId() == $currentStudent->getId()){
+                unset($this->students[$key]);
+            }
+        }
+
     }
 }
 

@@ -6,11 +6,12 @@ require_once(__DIR__ . '/../model/ClassGroup.class.php');
 
 //Test méthode getClassGroupFromTeacher
 
+/*
 $teacher = Teacher::readTeacher(108);
 $group = ClassGroup::getClassGroupsFromTeacher($teacher);
 var_dump($group);
 var_dump($group[0]->getStudents());
-
+*/
 
 //Test méhode getClassGroupFromStudent
 

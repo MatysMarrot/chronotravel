@@ -12,6 +12,7 @@
 
         <main>
             <h1>Gestion des élèves</h2>
+
             <h2><?=$className?></h2>
             <h3><?=$code?></h3>
             <!--Select permettant de filtrer le contenue du tableau ci-dessous -->
@@ -31,11 +32,8 @@
                     <?php endif; ?>
                 </select>
                 <input type="submit" value = "Choisir classe">
-            </form>
-            
-            
-            <!--Tableau contenant les élèves de la classe sélectionner dans le selecte ci-dessus -->
-            <form action="../controler/teacher.statStudent.ctrl.php" method = "post">
+
+                <!--Tableau contenant les élèves de la classe sélectionner dans le selecte ci-dessus -->
                 <?php if(count($students) == 0) :?>
                     <p>PAS D'ELEVES</p>
                 <?php else : ?>
@@ -44,13 +42,13 @@
                             <tr>
                                 <td><?=$student->getFirstName()?> <?=$student->getLastName()?></td>                             
                                 <td><button type="submit">STATS</button></td>
-                                <td><button type="submit">SUPPRIMER</button></td>
+                                <td><button name = "delete" value = '<?=$student->getId()?>' type="submit">SUPPRIMER</button></td>
                             </tr>    
                         <?php endforeach;?>
                     </table>
                 <?php endif; ?>
             </form>
-            
+          
         </main>
 
         <!--Footer --> 

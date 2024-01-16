@@ -37,12 +37,18 @@ else{
         if($currentClass == null){
             $currentClass = $classList[0];
         }
+        
+        if(isset($_POST['delete'])){
+            $studentToDel = Student::readStudent($_POST['delete']);
+            $currentClass->removeStudent($studentToDel);
+        }
+
         $students = $currentClass->getStudents();
         $className = $currentClass->getName();
         $code = "Le code de la classe : " . $currentClass->getCode();
+
+        
     }
-    
-    
 
     
     
