@@ -90,6 +90,19 @@ class Question
         }
     }
 
+    public function getRightAnswer(): ?Answer
+    {
+        foreach ($this->answers as $answer) {
+            if ($answer->isCorrect()) {
+                return $answer;
+            }
+        }
+
+        // No right answer found
+        throw new Exception("Il n'y a pas de réponse correcte à la question " . $this->getId());
+        return null;
+    }
+
 
 
 // Méthode pour récupérer une question aléatoire depuis la base de données
