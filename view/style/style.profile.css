@@ -1,0 +1,446 @@
+html {
+  /* Largeur du menu */
+  --menu-width: 10em;
+  /* Hauteur du header */
+  --header-height: 3em;
+  /* Couleur principale du thÃ¨me */
+  --main-color: #ff7b00;
+  /* Couleur principale du fond */
+  --main-background-color: rgba(56, 62, 66, 0.8); 
+  /* Couleur header*/
+  --header-background-color: #303030; 
+  /* Couleur du fond en cas de message */
+  --message-background-color: #8f8f8f;
+  /*Couleur bouton négatif*/
+  --color-negativ: rgb(216, 13, 13);
+  /* Choix de la font */
+  font-family: sans-serif;
+}
+
+
+/* Général*/
+*{
+  font-family: sans-serif;
+}
+
+select{
+  margin-bottom: 1em;
+}
+
+ul{
+  margin: 0;
+  list-style: none;
+ }
+.ul_horizontal{
+  display: flex;
+  padding: 0;
+}
+/******************** Body *****************************/
+body {
+  background-image: url(../assets/background.png);
+  color: rgb(255, 255, 255);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  font-size: larger;
+}
+
+/* Main */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  border: solid 3px rgb(255, 255, 255);
+  border-radius: 15px;
+  background-color: var(--main-background-color); 
+  padding: 15px;
+  padding-bottom: 50px ;
+}
+
+/* Connection page */
+
+.connection form {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+}
+.connection form p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
+.connection input {
+  width: 200px;
+}
+.connection #togglePassword {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  border: none;
+  background-color: transparent;
+}
+.connection a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight: bold;
+}
+.connection a:hover {
+  text-decoration: underline;
+}
+
+.connection .error {
+  font-size: 0.8em;
+  color: var(--color-negativ);
+}
+
+/* Landing Page */
+.landingpage {
+display: flex;
+flex-direction: column;
+}
+.landingpage h2 {
+font-size: 2.5em;
+background: radial-gradient(circle, #ff0000, #d9ff00, #ff0000);
+background-clip: text;
+color: transparent;
+text-align: center;
+width: 70%;
+}
+.landingpage .button {
+border: 0;
+background: transparent;
+color: white;
+font-weight: bold;
+position: relative;
+overflow: hidden;
+padding: 10px 20px;
+border-radius: 30px;
+cursor: pointer;
+font-size: 1.5em;
+box-shadow: 0px -0px 0px 0px rgba(248, 64, 64, 0.5), 0px 0px 0px 0px rgba(255, 143, 39, 0.5);
+transition: all .2s;
+margin-bottom: 20px;
+text-decoration: none;
+z-index: 1;
+}
+.landingpage .button::after {
+content: "";
+width: 700px;
+height: 700px;
+background: linear-gradient(225deg, #f52528 0%, #f57525 50%, #f5a925 100%);
+position: absolute;
+top: -100px;
+left: -125px;
+transition: all .5s;
+z-index: -1;
+}
+.landingpage .button:hover::after {
+transform: rotate(150deg);
+}
+.landingpage .button:hover {
+transition: translate(0, -6px);
+box-shadow: 20px -20px 25px 0 rgba(248, 64, 64, .25), -20px 20px 25px 0 rgba(255, 143, 39, .25);
+transform: scale(1.09);
+}
+
+/* Rules page */
+.rulespage {
+width: 70%;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+color: white;
+background-color: rgba(100, 100, 100, .9);
+padding: 20px;
+border-radius: 5%;
+border: rgb(30, 30, 30) 5px double;
+}
+.rulespage h2 {
+margin: 5px;
+font-weight: bold;
+font-size: 1.5em;
+color: #ff7b00;
+}
+.rulespage p, .rulespage ul, .rulespage li {
+margin: 5px;
+text-align: justify;
+}
+
+
+.skin{
+  height: 250px;
+}
+
+.lobby{
+  width: 85%;
+  padding: 15px;
+}
+.lobby>ul{
+  justify-content: space-around;
+  width: 100%;
+}
+
+.bold{
+  font-weight: bolder;
+}
+
+/** bouton **/
+.button-container {
+  width: 50%;
+  display: flex; /* Utiliser un conteneur flexible */
+  justify-content: space-between;
+}
+.button-container button:nth-child(1) {
+  background-color: var(--color-negativ);
+  transition: all .7s;
+
+}
+.button-container button:nth-child(1):hover {
+  background-color: rgb(139, 16, 16);
+  transition: all .7s;
+}
+.button-container button:nth-child(2) {
+  background-color: rgb(8, 184, 8);
+  transition: all .7s;
+}
+.button-container button:nth-child(2):hover {
+  background-color: rgb(10, 114, 10);
+  transition: all .7s;
+}
+
+.button2{
+  border-radius: 15px;
+  color: white;
+  width: 8em;
+  padding: 0.5em;
+  border: none;
+  transition: all 0.7s;
+  cursor: pointer;
+  margin-top: 1em;
+  font-weight: bold;
+}
+
+.button2:hover{
+  background-color: rgb(199, 113, 1);
+  transition: all 0.7s;
+
+}
+
+
+label{
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+dashboard {
+    display: flex;
+    justify-content: space-between;
+    width: 80%; /* Ajustez la largeur selon vos besoins */
+    margin: 20px auto;
+  }
+
+  .user-info {
+    width: 30%;
+    text-align: center;
+  }
+
+  .user-info img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .user-info p {
+    margin: 10px 0;
+  }
+
+  .statistics {
+    width: 65%;
+  }
+
+  .statistics table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .statistics th,
+  .statistics td {
+    border: 1px solid #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .statistics th {
+    background-color: var(--header-background-color);
+    color: #fff;
+  }
+
+  body {
+    background-color: #1a1a1a; /* Nouvelle couleur de fond */
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Nouvelle police */
+    color: #fff;
+  }
+
+  .dashboard {
+    display: flex;
+    justify-content: space-around; /* Ajuste l'écart entre les sections */
+    align-items: center;
+    height: 50vh; /* Ajuste la hauteur selon tes besoins */
+    margin: 0; /* Supprime la marge pour le body */
+  }
+
+  .user-info,
+  .statistics {
+    text-align: center;
+    margin: 0 20px; /* Ajuste l'écart entre les éléments */
+  }
+
+  .user-info img {
+    max-width: 100%; /* La largeur maximale sera la taille réelle de l'image */
+    height: auto; /* Ajuste la hauteur automatiquement */
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+  .user-info p {
+    margin: 5px 0; /* Ajuste la marge selon tes besoins */
+  }
+
+  .statistics h2 {
+    margin-bottom: 10px; /* Ajuste la marge selon tes besoins */
+  }
+
+  .statistics table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .statistics th,
+  .statistics td {
+    border: 1px solid #fff;
+    padding: 8px; /* Ajuste la taille du padding selon tes besoins */
+    text-align: center;
+  }
+
+  .statistics th {
+    background-color: var(--header-background-color);
+    color: #fff;
+  }
+
+  /* Ajuste la largeur du contenu de la balise main */
+  main {
+    width: 80%; /* Ajuste la largeur selon tes besoins */
+    margin: 0 auto; /* Centre le contenu horizontalement */
+  }
+
+  /* style.css */
+
+body {
+  background-color: #1a1a1a;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50vh;
+  margin: 0;
+}
+
+.user-info,
+.statistics,
+.class-info {
+  text-align: center;
+  margin: 0 20px;
+}
+
+.user-info img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.user-info p {
+  margin: 5px 0;
+}
+
+.statistics h2,
+.class-info h2 {
+  display: none;
+}
+
+.statistics table,
+.class-info table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.statistics th,
+.statistics td,
+.class-info th,
+.class-info td {
+  border: 1px solid #fff;
+  padding: 8px;
+  text-align: center;
+}
+
+.statistics th,
+.class-info th {
+  background-color: var(--header-background-color);
+  color: #fff;
+}
+
+.class-info {
+  display: none;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.switch-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.switch-buttons button {
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.switch-buttons button:hover {
+  background-color: #45a049;
+}
+
+.statistics-button.active {
+  background-color: #4CAF50;
+}
+
+.class-button.active {
+  background-color: #ff7b00;
+}
