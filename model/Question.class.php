@@ -14,7 +14,7 @@ class Question
     private array $answers;
 
 
-    public function __construct($id, $content, $themeid)
+    private function __construct($id, $content, $themeid)
     {
         $this->id = $id;
         $this->content = $content;
