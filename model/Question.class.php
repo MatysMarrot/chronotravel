@@ -2,6 +2,8 @@
 
 
 require_once(__DIR__ . '/DAO.class.php');
+require_once(__DIR__ . '/Answer.class.php');
+
 
 class Question
 {
