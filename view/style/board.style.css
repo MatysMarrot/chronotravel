@@ -1,5 +1,5 @@
-.board{
-
+table#board{
+    margin: 100px;
     border-collapse: separate;
     border-spacing: 1em;
 }
