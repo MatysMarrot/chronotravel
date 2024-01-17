@@ -16,11 +16,11 @@
 
             <!--Select permettant de filtrer le contenue du tableau ci-dessous -->
             <form action="../controler/teacher.manage.ctrl.php" method = "post">
-                <input name = "create" value = "Créer un nouveau groupe de classe" type="submit">
+                <input class="button2" name = "create" value = "Créer un nouveau groupe de classe" type="submit">
                 <h3><?=$className?></h3>
                 <div>
                     <input value = "<?=$className?>"name = "className"type="text">
-                    <button value="update" name = "updateName"type = "submit">Modifier nom</button>
+                    <button class="button-teacher" value="update" name = "updateName"type = "submit">Modifier nom</button>
                 </div>
 
                 <h3><?=$code?></h3>

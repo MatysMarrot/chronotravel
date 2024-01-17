@@ -234,6 +234,20 @@ text-align: justify;
 
 }
 
+/*Bouton professeur */
+.button-teacher{
+  background-color: #ffffff;
+  border: 1px solid rgb(0, 0, 0);
+  cursor: pointer;
+  border-radius: 15px;
+  padding: 0.4em;
+  transition: all 0.5s;
+}
+
+.button-teacher:hover{
+  transition: all 0.5s;
+  background-color: #949494;
+}
 
 label{
   margin-bottom: 0.5em;
