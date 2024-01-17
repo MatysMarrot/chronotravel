@@ -56,6 +56,11 @@ function showCanvas() {
     drawCanvas();
 }
 
+function hideCanvas() {
+    const canvas = document.getElementById("myCanvas");
+    canvas.style.display = "none";
+}
+
 function resizeCanvas() {
     const canvas = document.getElementById("myCanvas");
     canvas.width = window.innerWidth;
@@ -106,4 +111,5 @@ window.addEventListener('resize', function () {
 });
 
 setTimeout(showCanvas, 2000);
+setTimeout(hideCanvas, 2000);
 
