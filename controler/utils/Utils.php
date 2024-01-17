@@ -69,4 +69,18 @@
         return false;
     }
 
+    // Génere un code de taille 5 par défaut
+    function generateRandomCode($length = 5) {
+        // Calcule le nombre d'octets nécessaires pour obtenir la longueur souhaitée
+        $byteLength = (int) ceil($length / 2);
+        // Génère les octets aléatoires
+        $bytes = random_bytes($byteLength);
+        // Convertit les octets en une chaîne hexadécimale
+        $code = bin2hex($bytes);
+        // Tronque la chaîne pour obtenir la longueur souhaitée
+        $code = substr($code, 0, $length);
+        // Convertit en majuscules pour obtenir des lettres majuscules
+        return strtoupper($code);
+    }
+
 ?>
