@@ -1,4 +1,4 @@
-import "./controler/jsUtils";
+//import "./controler/jsUtils";
 
 //to retreive the php session
 const session_loc = fetch("../serveurs/retreiveSession.php", {
