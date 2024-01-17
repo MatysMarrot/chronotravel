@@ -6,26 +6,26 @@ class Answer{
     correct;
 
     constructor(id,questionid,content,correct) {
-        this._id = id;
-        this._questionid = questionid;
-        this._content = content;
-        this._correct = correct;
+        this.id = id;
+        this.questionid = questionid;
+        this.content = content;
+        this.correct = correct;
     }
 
 
     get id() {
-        return this._id;
+        return this.id;
     }
 
     get questionid() {
-        return this._questionid;
+        return this.questionid;
     }
 
     get content() {
-        return this._content;
+        return this.content;
     }
 
     get correct() {
-        return this._correct;
+        return this.correct;
     }
 }

@@ -6,26 +6,26 @@ class Question {
     answers;
 
     constructor(id,content,themeid,answers) {
-        this._id = id;
-        this._content = content;
-        this._themeid = themeid;
-        this._answers = answers;
+        this.id = id;
+        this.content = content;
+        this.themeid = themeid;
+        this.answers = answers;
     }
 
 
     get id() {
-        return this._id;
+        return this.id;
     }
 
     get content() {
-        return this._content;
+        return this.content;
     }
 
     get themeid() {
-        return this._themeid;
+        return this.themeid;
     }
 
     get answers() {
-        return this._answers;
+        return this.answers;
     }
 }
