@@ -17,6 +17,7 @@
             #myCanvas {
                 display: none;
                 border: 1px solid #000;
+                background-color: white;
             }
 
             #content {
@@ -31,18 +32,13 @@
 
 
     <body>
-        <table id="board">
+    <div id="canvas-container">
+        <canvas id="myCanvas"></canvas>
+    </div>
 
-        </table>
-
-        <div id="canvas-container">
-            <button onclick="showCanvas()">Afficher Canvas</button>
-            <canvas id="myCanvas"></canvas>
-        </div>
-
-        <div id="content">
-            <!-- Votre contenu ici -->
-        </div>
+    <div id="content">
+        <!-- Votre contenu ici -->
+    </div>
         <script src="./board.ctrl.js"></script>
     </body>
 </html>
