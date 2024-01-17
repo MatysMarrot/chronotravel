@@ -38,7 +38,7 @@
                         <option value= '-1'>PAS DE CLASSE</option>
                     <?php endif; ?>
                 </select>
-                <input type="submit" value = "Choisir classe">
+                <input class="button-teacher" type="submit" value = "Choisir classe">
 
                 <!--Tableau contenant les élèves de la classe sélectionner dans le selecte ci-dessus -->
                 <?php if(count($students) == 0) :?>
@@ -48,8 +48,8 @@
                         <?php foreach($students as $student) :?>    
                             <tr>
                                 <td><?=$student->getFirstName()?> <?=$student->getLastName()?></td>                             
-                                <td><button name = "stats" value = '<?=$student->getId()?>' type="submit">STATS</button></td>
-                                <td><button name = "delete" value = '<?=$student->getId()?>' type="submit">SUPPRIMER</button></td>
+                                <td><button class="button-teacher" name = "stats" value = '<?=$student->getId()?>' type="submit">STATS</button></td>
+                                <td><button class="button-teacher-neg" name = "delete" value = '<?=$student->getId()?>' type="submit">SUPPRIMER</button></td>
                             </tr>    
                         <?php endforeach;?>
                     </table>

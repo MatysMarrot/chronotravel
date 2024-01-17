@@ -241,12 +241,30 @@ text-align: justify;
   cursor: pointer;
   border-radius: 15px;
   padding: 0.4em;
-  transition: all 0.5s;
+  transition: all 0.3s;
+  color: #000000;
+  font-weight: bold;
 }
 
 .button-teacher:hover{
-  transition: all 0.5s;
-  background-color: #949494;
+  transition: all 0.3s;
+  background-color: #dcdcdc;
+}
+
+.button-teacher-neg{
+  background-color: #e83030;
+  border: 1px solid rgb(0, 0, 0);
+  cursor: pointer;
+  border-radius: 15px;
+  padding: 0.4em;
+  transition: all 0.3s;
+  color: #000000;
+  font-weight: bold;
+
+}
+
+.button-teacher-neg:hover{
+  background-color: #fa4040;
 }
 
 label{
@@ -309,6 +327,9 @@ form .button2 {
   transition: all 0.5s;
 }
 
+#classe-select{
+  width: 180px;
+}
 /** Messagerie ***/
 
 .messaging{
@@ -354,7 +375,9 @@ th[scope='col'] {
   color: #ffffff;
 }
 
-
+.tableau{
+  width: 100%;
+}
 
 .tableau th, .tableau td {
   padding: 8px;
