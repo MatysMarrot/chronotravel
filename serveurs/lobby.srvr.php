@@ -23,11 +23,29 @@ define('APP_PORT', 1312);
 
 class ServerImpl implements MessageComponentInterface {
     protected $clients;
-    private array $rooms;
+    private array $rooms = array();
+
+    private array $clientidLogin;
+    private array $clientIdConn;
     
 
     public function __construct() {
         $this->clients = new \SplObjectStorage;
+        $this->rooms = array();
+        $this->clientidLogin = array();
+        $this->clientIdConn = array();
+    }
+
+    private function broadCast(WaitingRoom $room, string $data){
+        if (!$room){
+            return false;
+        }
+
+        foreach ($room->getSubscribers() as $sub){
+            $this->clientIdConn[$sub]->send($data);
+        }
+
+        return true;
     }
 
     public function onOpen(ConnectionInterface $conn) {
@@ -51,13 +69,33 @@ class ServerImpl implements MessageComponentInterface {
         }
         
         if ($decoded['action'] == "JOIN"){
+            $this->clientIdConn[$decoded['cid']] = $conn;
+            $this->clientidLogin[$decoded['cid']] = $decoded['login'];
+
             //Si la room n'existe pas on la crée
-            if ($this->rooms[$decoded['pid']] == null){
-                $rooms[$decoded['pid']] = new WaitingRoom($decoded['pid'], $decoded['cid']);
+            if (!isset($this->rooms[$decoded['pid']])){
+                $this->rooms[$decoded['pid']] = new WaitingRoom($decoded['pid'], $decoded['cid']);
+                echo sprintf("Created new room with partyid: '%d' and owner: '%d'\n",$decoded['pid'] ,$decoded['cid']);
             }
+
+            //TODO : VERIFIER LA TAILLE DE LA SALLE POUR LIMTER A 4
             
-            //On ajouter le client a la room
-            $this->rooms[$decoded['pid']]->addSubscriber($decoded['cid']);
+            //On ajoute le client a la room
+            $room = $this->rooms[$decoded['pid']];
+            $room->addSubscriber($decoded['cid']);
+
+            //On trouve les autres joueurs de la room
+            $listePseudo = array();
+            foreach ($room->getSubscribers() as $sub) {
+                $listePseudo[] = $this->clientidLogin[$sub];
+            }
+
+            $data = [
+                "action" => "playerJoin",
+                "names" => $listePseudo,
+            ];
+
+            $this->broadCast($room, json_encode($data));
         }
 
         if ($decoded['action'] == "LEAVE"){

@@ -19,19 +19,19 @@
             <p>Temps restant: <span class="countdown"></p>
             <script src="../controler/countdown.lobby.ctrl.js"></script>
             <img class="skin" src="./assets/background.png" alt="">    
-            <h2>Pseudo</h2>
+            <h2 id="player1">Pseudo</h2>
             <label for="code">Liste des autres joueurs:</label>
             <section class="lobby">
                 <!-- Inclure php pour afficher les élèves qui rejoignent en temps réel-->
                 <ul class="ul_horizontal">
-                    <li ><p>en attente j2</p></li>
-                    <li ><p>en attente j3</p></li>
-                    <li ><p>en attente j4</p></li>
+                    <li ><p id="player2">en attente j2</p></li>
+                    <li ><p id="player3">en attente j3</p></li>
+                    <li ><p id="player4">en attente j4</p></li>
                 </ul>
             </section>
 
             <div class="button-container">
-                <button class="button2">QUITTER</button> <!-- Retourne à la page d'accueil et supprimer la partie créer -->
+                <button class="button2" onclick="leave()">QUITTER</button> <!-- Retourne à la page d'accueil et supprimer la partie créer -->
                 <button class="button2">LANCER</button>
             </div>
         </main>

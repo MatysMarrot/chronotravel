@@ -16,7 +16,7 @@ class WaitingRoom{
         return $this->id;
     }
 
-    private function addSubscriber(array $clients = []) : void{
+    public function addSubscriber(...$clients) : void{
         foreach ($clients as $c){
             //Si la clé est déja présente on ne l'ajoute pas
             if (array_search($c, $this->subscribers)){
@@ -45,7 +45,7 @@ class WaitingRoom{
     }
 
     public function setOwner(int $subscriber) : void{
-        if (!array_search($c, $this->subscribers)){
+        if (!array_search($subscriber, $this->subscribers)){
             throw new Exception("$subscriber is not part of the subsribers for room $id");
         }
         $this->ownerId = $subscriber;
@@ -53,6 +53,14 @@ class WaitingRoom{
 
     public function getOwner() : int{
         return $this->ownerId;
+    }
+
+    public function getSubscribers() : array {
+        return $this->subscribers;
+    }
+
+    public function size() : int {
+        return $this->size;
     }
 
 

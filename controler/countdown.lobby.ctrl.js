@@ -16,7 +16,7 @@ function getChrono() {
     }
 
     if (countdownDate.getTime() <= now) {
-        clearInterval(countDownInterval); // Arrêter l'intervalle lorsque countdownDate atteint 0
+        clearInterval(countdownDate); // Arrêter l'intervalle lorsque countdownDate atteint 0
         text.innerText = "Temps écoulé"; // Vous pouvez mettre un message différent si nécessaire
     }
 
