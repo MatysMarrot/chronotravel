@@ -8,12 +8,7 @@
     <title>ChronoTravel - Quiz</title>
     <style>
         #qcm {
-            text-align: center;
             background-image: url('<?php echo $backgroundImage; ?>');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100vh; /* Assurez-vous que la hauteur est à 100% de la vue du port (viewport) */
         }
 
     </style>
