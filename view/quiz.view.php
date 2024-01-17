@@ -4,12 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/quiz.style.css">
-    <title>ChronoTravel - QCM</title>
+    <link rel="stylesheet" href="../view/style/quiz.style.css">
+    <title>ChronoTravel - Quiz</title>
+    <style>
+        #qcm {
+            text-align: center;
+            background-image: url('<?php echo $backgroundImage; ?>');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Assurez-vous que la hauteur est à 100% de la vue du port (viewport) */
+        }
+
+    </style>
 </head>
 <body id="qcm">
     <h1>Question à réponse unique</h1>
-    <h1>Thème : Antiquité</h1>
+    <h1>Thème : <?php echo $theme; ?></h1>
     <table id="answerTable">
         <tr>
             <td class="answer" id="answerA">
@@ -35,6 +46,7 @@
     <div id="selectedAnswerDisplay">
         Réponse sélectionnée : <span id="selectedAnswerText"></span>
     </div>
+
 
     <script src="../controler/quiz.ctrl.js"></script>
 </body>
