@@ -11,18 +11,20 @@ enum SkinPart: string {
 function getSkinPartByNumber(int $number): string {
     switch ($number) {
         case 1:
-            return SkinPart::Chapeau;
+            return SkinPart::Chapeau->value;
         case 2:
-            return SkinPart::Cheveux;
+            return SkinPart::Cheveux->value;
         case 3:
-            return SkinPart::TeeShirt;
+            return SkinPart::TeeShirt->value;
         case 4:
-            return SkinPart::Pantalon;
+            return SkinPart::Pantalon->value;
         case 5:
-            return SkinPart::Chaussures;
+            return SkinPart::Chaussures->value;
         default:
             return "Partie inconnue";
     }
 }
+
+
 
 ?>
