@@ -38,7 +38,7 @@
             <form action="../controler/checkroom.ctrl.php" method="post">
                 <?php foreach ($allSkins as $skin) : ?>
                 <div>
-                    <input type="image" src="../view/skin/<?=$skin->getLocation()?>" name="skin" value="<?=$skin->getSkinId()?>">
+                    <input type="submit" style="background-image: url('../view/skin/<?=$skin->getLocation()?>');" name="skin" value="<?=$skin->getSkinId()?>">
                 </div>
                 <?php endforeach; ?>
             </form>

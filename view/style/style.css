@@ -401,6 +401,13 @@ th[scope='col'] {
 .checkroom section:last-child input {
   width: 150px;
   height: 150px;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
 }
 /* Affichage des skin */
 .div_skin{

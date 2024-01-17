@@ -96,7 +96,12 @@ class SkinObject {
         return $currentSkin;
     }
 
-
+    public static function isPossessedBy(int $skinId, int $playerId) : bool {
+        $dao = DAO::get();
+        $query = "SELECT * FROM playerskin WHERE playerid=? AND skinid=?";
+        $table = $dao->query($query, [$playerId, $skinId]);
+        return count($table)!=0;
+    }
 
 
 }
