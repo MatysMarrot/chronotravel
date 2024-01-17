@@ -13,7 +13,7 @@
         <h2>
             Plongez dans l'aventure captivante de notre jeu éducatif et revisitez l'histoire de manière ludique, préparez-vous brillamment pour votre brevet tout en défiant votre esprit historique !
         </h2>
-        <a href="../controler/login.ctrl.php" class="button">Jouer maintenant !</a>
+        <a href="../controler/landing.ctrl.php" class="button">Jouer maintenant !</a>
     </main>
     <?php include(__DIR__.'/footer.viewpart.html')?>
 </body>

@@ -8,7 +8,15 @@ include_once(__DIR__."/../framework/view.class.php");
 
 // Controler
 $view = new View();
-$outgoing = "landing.view.php";
 
-$view->display("../view/".$outgoing);
+session_start();
+if(!isset($_SESSION['id'])){
+    include(__DIR__ . "/../controler/login.ctrl.php");
+}
+else{
+    include(__DIR__ . "/../view/home.view.php");
+}
+
+
+
 ?>

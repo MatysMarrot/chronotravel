@@ -1,2 +1,2 @@
 <?php
-header('Location: controler/landing.ctrl.php'); 
+header('Location: view/landing.view.php');
