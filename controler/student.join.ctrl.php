@@ -5,13 +5,13 @@ include_once(__DIR__."/../model/DAO.class.php");
 
 $view = new View();
 session_start();
-$outgoing = "student.join.view.php";
+$outgoing = "../view/student.join.view.php";
 $message = "";
 
-if(count($_POST)) {
-    $playerId = $_SESSION["id"] ?? 0;
-    $roomCode = $_POST["code"] ?? 0;
+$playerId = $_SESSION["id"] ?? 0;
+$roomCode = $_POST["code"] ?? 0;
 
+if(isset($_SESSION["id"])) {
     $dao = DAO::get();
     $data = [$roomCode];
     $query = "SELECT partyId FROM PartyCode WHERE code = ?";
@@ -22,11 +22,15 @@ if(count($_POST)) {
     } else {
         $_SESSION['roomCode'] = $roomCode;
         $message = "Connexion effectué ";
-        $outgoing="student.lobby.ctrl.php";
+        $outgoing="../controler/waitroom.ctrl.php";
     }
+} else {
+    $outgoing = "../controler/landing.ctrl.php";
 }
+    
+
 
 $view->assign("message",$message);
-$view->display("../view/".$outgoing);
+$view->display($outgoing);
 
 ?>

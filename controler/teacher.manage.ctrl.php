@@ -8,8 +8,9 @@ include_once(__DIR__."/../framework/view.class.php");
 
 session_start();
 $view = new View();
-
-if($_SESSION["roleid"] != 2){
+if(!isset($_SESSION["id"])) {
+    $view->display("landing.ctrl.php");
+} else if($_SESSION["roleid"] != 2){
     include(__DIR__."/../controler/landing.ctrl.php");
 }
 elseif(!isset($_POST["stats"])){
