@@ -34,5 +34,5 @@ if (isset($_SESSION['id'])) {
 }
 
 $view->assign("error", $error);
-$view->display("profile.view.php");
+$view->display("profile.php");
 ?>
