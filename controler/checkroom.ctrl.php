@@ -1,18 +1,20 @@
 <?php
 
 include_once(__DIR__."/../framework/view.class.php");
+include_once(__DIR__ . "/../model/SkinObject.class.php");
 
 $view = new View();
 $outgoing = "../view/checkroom.view.php";
-
+session_start();
 if(!isset($_SESSION["id"])) {
     $outgoing = "../controler/landing.ctrl.php";
 } else {
-    $dao = DAO::get();
-    $data = [$login];
-    $query = "SELECT roleid,id,password,login FROM Person WHERE login = ?";
-    $table = $dao->query($query,$data);
+    $playerId = $_SESSION["id"];
+    $allSkins = SkinObject::getAllSkinObjects();
+    $currentSkin = SkinObject::getCurrentSkinOfPlayer($playerId);
 
+    $view->assign("currentSkin",$currentSkin);
+    $view->assign("allSkins",$allSkins);
 }
 
 $view->display($outgoing);
