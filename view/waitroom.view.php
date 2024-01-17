@@ -11,9 +11,9 @@
         <?php include(__DIR__.'/header.student.viewpart.php'); ?>
 
         <main>
-            <h1>Lancement de la partie</h2>
+            <h1>Lancement de la partie</h1>
             <!-- Arriver sur cette page une nouvelle partie est créer et un code est généré automatiquement-->
-            <p>Partagez ce code pour inviter à jouer: <span class="bold">(partie->code)</span></p>
+            <p>Partagez ce code pour inviter à jouer: <span class="bold">"<?=$_SESSION['roomCode']?>"</span></p>
             
             <!--Compte à rebours avant lancement automatique de la partie -->
             <p>Temps restant: <span class="countdown"></p>
@@ -37,6 +37,7 @@
         </main>
 
         <!--Footer -->
-        <?php include(__DIR__.'/footer.viewpart.html'); ?> 
+        <?php include(__DIR__.'/footer.viewpart.html'); ?>
+        <script src="../controler/lobby.ctrl.js"></script>
     </body>
 </html>

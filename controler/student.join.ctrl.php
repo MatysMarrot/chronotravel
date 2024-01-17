@@ -11,7 +11,12 @@ $message = "";
 $playerId = $_SESSION["id"] ?? 0;
 $roomCode = $_POST["code"] ?? 0;
 
-if(isset($_SESSION["id"])) {
+if($roomCode){
+    //If the roomcode is set
+    $_SESSION["roomCode"] = $roomCode;
+    $outgoing = "../controler/student.lobby.ctrl.php";
+} else if (isset($_SESSION["id"])) {
+    //If connected
     $dao = DAO::get();
     $data = [$roomCode];
     $query = "SELECT partyId FROM PartyCode WHERE code = ?";
@@ -22,14 +27,17 @@ if(isset($_SESSION["id"])) {
     } else {
         $_SESSION['roomCode'] = $roomCode;
         $message = "Connexion effectué ";
-        $outgoing="../controler/waitroom.ctrl.php";
+        $outgoing="../controler/student.lobby.ctrl.php";
     }
+
 } else {
+    //Not connected
     $outgoing = "../controler/landing.ctrl.php";
 }
     
 
 
+var_dump($outgoing);
 $view->assign("message",$message);
 $view->display($outgoing);
 
