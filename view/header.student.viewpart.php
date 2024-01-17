@@ -18,7 +18,7 @@
                 <span class="tooltip_text">MES TENUES</span>
             </li>
             <li <?= ($currentPage == 'logout') ? 'class="active"' : ''; ?>>
-                <a href="logout.php"> <i class="material-symbols-outlined">Logout</i></a>
+                <a href="../logout.php"> <i class="material-symbols-outlined">Logout</i></a>
                 <span class="tooltip_text">DÉCONNEXION</span>
             </li>
         </ul>
