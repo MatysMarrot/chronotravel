@@ -21,7 +21,7 @@ CREATE TABLE Person (
     email varchar(50),
     currency int,
     creationDate DATE DEFAULT CURRENT_DATE,
-    birthdate DATE
+    birthdate DATE,
 );
 
 /*Table Class:
@@ -116,3 +116,35 @@ CREATE TABLE Answers (
     correct BOOLEAN
 );
 
+/* Table skinpart */
+CREATE TABLE SkinPart (
+    skinPartId SERIAL PRIMARY KEY,
+    name varchar(20) NOT NULL
+);
+
+/* Table skinobject */
+CREATE TABLE SkinObject (
+    skinId SERIAL PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    price INT NOT NULL,
+    location varchar(100) NOT NULL,
+    parts INT REFERENCES skinPart(skinPartId)
+);
+
+/* Table currentSkin */
+CREATE TABLE currentSkin (
+    playerId INT REFERENCES Person(id),
+    hat INT REFERENCES SkinObject(skinId),
+    hair INT REFERENCES SkinObject(skinId),
+    teeshirt INT REFERENCES SkinObject(skinId),
+    pants INT REFERENCES SkinObject(skinId),
+    shoes INT REFERENCES SkinObject(skinId),
+    skinColor varchar(6) NOT NULL
+);
+
+/* Table player/skin */
+CREATE TABLE PlayerSkin (
+    playerId INT REFERENCES Person(id),
+    skinId INT REFERENCES SkinObject(skinId),
+    PRIMARY KEY (playerId, skinId)
+);
