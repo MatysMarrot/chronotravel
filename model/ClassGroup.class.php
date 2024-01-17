@@ -36,7 +36,15 @@ class ClassGroup{
         return $this->code;
     }
 
-    //TODO a tester
+    public function setName($name){
+        $dao = DAO::get();
+        $this->name = $name;
+        $data = [$name,$this->id];
+        $query = "UPDATE class SET name = ? WHERE id = ?";
+        $res = $dao->exec($query,$data);
+    }
+
+
     public function create(){
         $dao = DAO::get();
         $code  = generateRandomCode();
@@ -72,7 +80,7 @@ class ClassGroup{
     }
 
     //AJOUTE LE STUDENT DANS L'ATRIBUT DE L'OBJECT COURANT DANS STUDENTS
-    public function addStudent(Student $tudent){
+    public function addStudent(Student $student){
         $this->students[] = $student; 
     }
 
@@ -119,7 +127,7 @@ class ClassGroup{
 
     // Renvoie un objet ClassGroup ou null si pas trouvé
 
-    //TODO : Revoir cette fonction (il se peut qu'elle soit fausse)
+    //TODO : Revoir cette fonction (query fausse)
     public static function getClassGroupFromStudent(Student $student){
 
         $dao = DAO::get();

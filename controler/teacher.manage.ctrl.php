@@ -12,13 +12,13 @@ $view = new View();
 if($_SESSION["roleid"] != 2){
     include(__DIR__."/../controler/landing.ctrl.php");
 }
-else{
+elseif(!isset($_POST["stats"])){
+
 
     $currentClassId = $_POST['currentClass'] ?? null;
 
     if ($currentClassId == null) {
-        // Définissez une valeur par défaut si 'currentClass' n'est pas défini dans $_POST
-        $currentClassId = -1; // Remplacez par l'ID par défaut souhaité
+        $currentClassId = -1;
     }
 
     $currentClass = ClassGroup::getClassGroupFromId($currentClassId);
@@ -48,7 +48,11 @@ else{
             $currentClass->removeStudent($studentToDel);
         }
 
-        
+        if(isset($_POST['updateName'])){
+            $currentClass->setName($_POST['className']);
+            $classList = ClassGroup::getClassGroupsFromTeacher($teacher);
+        }
+        var_dump($_POST);
 
         $students = $currentClass->getStudents();
         $className = $currentClass->getName();
@@ -65,6 +69,11 @@ else{
     $view->assign("className",$className);
     $view->assign("classList",$classList);
     $view->display("teacher.manage.view.php");
+}
+else{ //Gestion stats élève
+    $student = Student::readStudent($_POST["stats"]);
+    $view->assign("student",$student);
+    $view->display("teacher.statStudent.view.php");
 }
 
 ?>

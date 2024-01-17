@@ -11,17 +11,16 @@
         <?php include(__DIR__.'/header.student.viewpart.php'); ?>
 
         <main>
-            <h1>Gestion des élèves</h2>
+            <h2>Gestion des élèves</h2>
 
 
             <!--Select permettant de filtrer le contenue du tableau ci-dessous -->
             <form action="../controler/teacher.manage.ctrl.php" method = "post">
                 <input name = "create" value = "Créer un nouveau groupe de classe" type="submit">
-
-                <div><input value = "<?=$className?>"name = "className"type="text">
-            
-                <button type = "submit">Modifier nom</button>
-            
+                <h3><?=$className?></h3>
+                <div>
+                    <input value = "<?=$className?>"name = "className"type="text">
+                    <button value="update" name = "updateName"type = "submit">Modifier nom</button>
                 </div>
 
                 <h3><?=$code?></h3>
@@ -49,7 +48,7 @@
                         <?php foreach($students as $student) :?>    
                             <tr>
                                 <td><?=$student->getFirstName()?> <?=$student->getLastName()?></td>                             
-                                <td><button type="submit">STATS</button></td>
+                                <td><button name = "stats" value = '<?=$student->getId()?>' type="submit">STATS</button></td>
                                 <td><button name = "delete" value = '<?=$student->getId()?>' type="submit">SUPPRIMER</button></td>
                             </tr>    
                         <?php endforeach;?>
