@@ -6,7 +6,9 @@
       <link rel="stylesheet" type="text/css" href="../view/style/board.style.css">   
     </head>
 
+        <table id="board">
 
+        </table>
 
 
     <body>  
