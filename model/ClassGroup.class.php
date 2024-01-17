@@ -48,10 +48,21 @@ class ClassGroup{
     public function create(){
         $dao = DAO::get();
         $code  = generateRandomCode();
+
+        //vérification que le code est unique
+        $data = [$code];
+        $query = "SELECT code FROM class WHERE code = ?";
+        $table = $dao->query($query,$data);
+
+        while(count($table) != 0){
+            $code = generateRandomCode();
+            $data = [$code];
+            $table = $dao->query($query,$data);
+        }
+
         $this->code = $code;
         $this->name = "Nouveau groupe";
 
-        $data = [$code];
         $query = "INSERT INTO class (name,code) VALUES ('Nouveau groupe',?)";
         $res = $dao->exec($query,$data);
 

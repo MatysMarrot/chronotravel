@@ -53,7 +53,6 @@ elseif(!isset($_POST["stats"])){
             $currentClass->setName($_POST['className']);
             $classList = ClassGroup::getClassGroupsFromTeacher($teacher);
         }
-        var_dump($_POST);
 
         $students = $currentClass->getStudents();
         $className = $currentClass->getName();
