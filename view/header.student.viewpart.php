@@ -14,7 +14,7 @@
                 <span class="tooltip_text">MON PROFIL</span>
             </li>
             <li <?= ($currentPage == 'checkroom') ? 'class="active"' : ''; ?>>
-                <a href="../controler/checkroom.view.php"> <i class="material-symbols-outlined">Checkroom</i></a>
+                <a href="../controler/checkroom.ctrl.php"> <i class="material-symbols-outlined">Checkroom</i></a>
                 <span class="tooltip_text">MES TENUES</span>
             </li>
             <li <?= ($currentPage == 'logout') ? 'class="active"' : ''; ?>>
