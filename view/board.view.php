@@ -28,7 +28,9 @@
         </style>
     </head>
 
+        <table id="board">
 
+        </table>
 
 
     <body>
