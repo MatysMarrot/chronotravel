@@ -15,12 +15,11 @@ var_dump($group[0]->getStudents());
 
 //Test méhode getClassGroupFromStudent
 
-/* 
-$student = new Student("Chemin","Elisee","chemine","123");
-$student->setId(3);
+
+$student = Student::readStudent(2);
 $group = ClassGroup::getClassGroupFromStudent($student);
-var_dump($group)
-*/
+var_dump($group);
+
 
 /*
 $teacher = Teacher::readTeacher(108);
@@ -35,9 +34,11 @@ var_dump($class);
 */
 
 //Test méthode create
+/*
 $teacher = Teacher::readTeacher(108);
 $class = new ClassGroup($teacher);
 $class->create();
 var_dump($class);
+*/
 
 ?>

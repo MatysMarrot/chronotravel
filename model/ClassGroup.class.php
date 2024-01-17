@@ -157,16 +157,17 @@ class ClassGroup{
         $groupId = $table[0]['id'];
         $code = $table[0]['code'];
 
-        $query = "SELECT teacherId FROM ClassTeacher, Class WHERE classId = id";
-        $teacherIdRes = $dao->query($query);
+        $data = [$groupId];
+        $query = "SELECT teacherId FROM ClassTeacher, Class WHERE classId = id and classid = ?";
+        $teacherIdRes = $dao->query($query,$data);
         $teacherId = $teacherIdRes[0]['teacherid'];
         $classGroup = new ClassGroup(Teacher::readTeacher($teacherId));
         $classGroup->code = $code;
         $classGroup->name = $name;
         $classGroup->id = $groupId;
 
-        $query = "SELECT studentId FROM Class c, StudentClass s WHERE id = classId";
-        $table = $dao->query($query);
+        $query = "SELECT studentId FROM Class c, StudentClass s WHERE id = classId AND classid = ?";
+        $table = $dao->query($query,$data);
 
         foreach($table as $student){
             $classGroup->students[] = Student::readStudent($student['studentid']);
