@@ -3,6 +3,7 @@ var toutesLesCelulles = [];
 
 const CELPERLINE = 10;
 const LINES = 5;
+const CELL_SIZE = 10;
 /*
 // Ajouter des lignes au tableau
 for (var i = 0; i < LINES; i++) {
@@ -104,5 +105,5 @@ window.addEventListener('resize', function () {
     }
 });
 
-window.onload = showCanvas;
+setTimeout(showCanvas, 2000);
 
