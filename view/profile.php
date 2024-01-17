@@ -50,7 +50,7 @@
       <div class="class-info">
         <table>
           <tr>
-            <th>Info 1</th>
+            <th>Classe</th>
             <th>Info 2</th>
           </tr>
           <tr>
