@@ -1,12 +1,12 @@
-class Student {
+export class Student {
 
     id;
     login;
 
 
-    constructor(json) {
-        this.id = json.id;
-        this.login = json.login;
+    constructor(parsedJson) {
+        this.id = parsedJson.id;
+        this.login = parsedJson.login;
     }
 
 

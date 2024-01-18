@@ -1,49 +1,37 @@
-//import "./controler/jsUtils";
+import * as boardControler from "./boardControler.mjs";
+import {hideCanvas} from "./boardControler.mjs";
+import {Party} from "../model/js/Party.mjs";
 
-//to retreive the php session
-const session_loc = fetch("../serveurs/retreiveSession.php", {
-    method: "POST",
-    headers: {
-        "Content-type": "application/json; charset=UTF-8"
-    }
-}).then(reponse => {return reponse.json()}).valueOf();
-const socket = new WebSocket("ws://192.168.14.112:1312"); // Créer une connexion WebSocket
+// Créer une connexion WebSocket
+const socket = new WebSocket("ws://192.168.14.112:1313");
+const json = ("{\n" +
+    "  \"partyId\": 1,\n" +
+    "  \"owner\": 0,\n" +
+    "  \"players\":[\n" +
+    "    {\n" +
+    "      \"id\": 0,\n" +
+    "      \"login\": \"J1\"\n" +
+    "    },\n" +
+    "    {\n" +
+    "      \"id\": 1,\n" +
+    "      \"login\": \"J2\"\n" +
+    "    },\n" +
+    "    {\n" +
+    "      \"id\": 2,\n" +
+    "      \"login\": \"J3\"\n" +
+    "    },\n" +
+    "    {\n" +
+    "      \"id\": 3,\n" +
+    "      \"login\": \"J4\"\n" +
+    "    }\n" +
+    "  ]\n" +
+    "}");
 
-//Emplacements des pseudo pour changer le nom
-const pseudoEmplacements = [document.getElementById("player1"),
-    document.getElementById("player2"),
-    document.getElementById("player3"),
-    document.getElementById("player4")
-];
-
-
+const partie = new Party(document.getElementById("board"), JSON.parse(json));
+console.log(partie);
 // La connexion est ouverte
 socket.addEventListener("open", function (event) {
-    session_loc.then(function(session){
-        let clientId = session.id;
-        let partyId = session.partyId;
-        let login = session.login;
-
-        //Si on ne trouve pas un des deux en session
-        if (partyId == null || clientId == null){
-            socket.close(0, "Unable to find pid or cid !");
-            console.log("Unable to find pid or cid !");
-            window.location("./waitroom.ctrl.php");
-        }
-
-        data = {
-            cid: clientId,
-            pid: partyId,
-            login: login,
-            action: "JOIN",
-        }
-
-        socket.send(JSON.stringify(data));
-
-
-
-    });
-
+    console.log(session_loc.id);
 });
 
 // Écouter les messages
@@ -54,25 +42,14 @@ socket.addEventListener("close", function (event) {
 
 socket.addEventListener("error", function (event) {
     console.log("Erreur: ", event.data);
+
+
+    //hideCanvas()
 });
 
 // Écouter les messages
 socket.addEventListener("message", function (event) {
-    let data;
-    try {
-        data = JSON.parse(event.data);
-    } catch (error){
-        console.log("Could not parse: " + event.data);
-    }
-
-    switch (data.action){
-        case "playerJoin":
-            console.log(data);
-            for (let i = 0; i < data.names.length; i++){
-                pseudoEmplacements.at(i).textContent = data.names[i];
-            }
-
-    }
+    //TODO : PASSER LES BAILS A L'OBJET PARTIE
 });
 
 

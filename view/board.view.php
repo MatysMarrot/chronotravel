@@ -36,9 +36,11 @@
         <canvas id="myCanvas"></canvas>
     </div>
 
+    <table id="board"></table>
+
     <div id="content">
         <!-- Votre contenu ici -->
     </div>
-        <script src="./board.ctrl.js"></script>
+    <script type="module" src="../controler/partyws.ctrl.js" ></script>
     </body>
 </html>

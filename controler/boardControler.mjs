@@ -4,7 +4,7 @@ var toutesLesCelulles = [];
 const CELPERLINE = 10;
 const LINES = 5;
 const CELL_SIZE = 10;
-/*
+
 // Ajouter des lignes au tableau
 for (var i = 0; i < LINES; i++) {
     var row = table.insertRow(i);
@@ -48,8 +48,17 @@ for (const cellule of toutesLesCelulles) {
     id++;
 }
 
-*/
-function showCanvas() {
+
+export function showCanvas(){
+    table.style.display = "block";
+}
+
+export function hideCanvas(){
+    table.style.display = "none";
+}
+
+
+/*export function showCanvas() {
     const canvas = document.getElementById("myCanvas");
     canvas.style.display = "block";
     resizeCanvas();
@@ -108,8 +117,8 @@ window.addEventListener('resize', function () {
         resizeCanvas();
         drawCanvas();
     }
-});
+});*/
 
-setTimeout(showCanvas, 2000);
+//setTimeout(showCanvas, 2000);
 //setTimeout(hideCanvas, 2000);
 
