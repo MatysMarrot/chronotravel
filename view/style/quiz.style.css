@@ -48,7 +48,7 @@
 #answerTable {
     width: 950px;
     height: 200px;
-    margin: 0 auto 50px auto;
+    margin: 0 auto;
     border-collapse: separate;
     border-spacing: 50px;
 }
