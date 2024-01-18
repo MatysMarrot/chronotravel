@@ -53,6 +53,9 @@ if(isset($_POST['code'])){
 
 $view->assign("currentClass",$currentClass);
 $view->assign("message",$message);
+if(!isset($_SESSION)) {
+    $view->display("landing.ctrl.php");
+}
 $view->display("student.join.classgroup.view.php");
 
 ?>

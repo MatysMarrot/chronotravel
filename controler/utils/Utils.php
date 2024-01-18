@@ -69,4 +69,21 @@
         return false;
     }
 
+    // Génere un code de taille 5 par défaut
+
+function generateRandomCode($length = 5) : string{
+    $res = "";
+    for ($i = 0; $i < $length; $i++){
+        $res .= chr(generateWorker());
+    }
+    return $res;
+}
+function generateWorker() : int{
+    $res = random_int(65, 90);
+    if ($res == 73 || $res == 79){
+        $res = generateWorker();
+    }
+
+    return $res;
+}
 ?>

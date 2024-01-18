@@ -11,8 +11,8 @@
         <?php include(__DIR__.'/header.student.viewpart.php'); ?>
 
         <main>
-            <h1>Statistiques</h2>
-            <h2>Prénom Nom (élève)</h2>
+            <h1>Statistiques</h1>
+            <h2><?=$student->getFirstname() . " ".$student->getLastname()?> (<?=$student->getLogin()?>)</h2>
             <table class="data">     
                 <tr>
                     <td>Nombre de parties jouées :</td>                             
