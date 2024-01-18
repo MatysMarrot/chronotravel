@@ -125,16 +125,17 @@ class Question
         return null;
     }
 
-    public static function getRandomQuestionWithEra(Era $era): ?Question
+    public static function getRandomQuestionByEra(Era $era): ?Question
     {
 
         $dao = DAO::get();
-
+        $data = array();
+        $data[] = $era->value;
         //Avoid getting the size of the table by ordering by random and getting only one.
-        $query = "SELECT id, content, themeid FROM Questions ORDER BY RANDOM() LIMIT 1";
+        $query = "SELECT QUESTIONS.id, QUESTIONS.content, themeid FROM QUESTIONS LEFT JOIN THEME ON QUESTIONS.themeid = THEME.ID WHERE THEME.content LIKE '?' ORDER BY RANDOM() LIMIT 1;";
 
 
-        $result = $dao->query($query);
+        $result = $dao->query($query,$data);
 
         if ($result) {
             $rowData = $result[0];
