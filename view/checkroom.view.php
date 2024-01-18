@@ -36,7 +36,8 @@
         </section>
         <section>
             <?php if($buyView): ?>
-
+                <img src="<?=$emplacementSkin.$skin->getLocation()?>">
+                <p>Souhaitez-vous achetez ce cosmétique pour <?=$skin->getPrice()?></p>
             <?php else: ?>
                 <form action="../controler/checkroom.ctrl.php" method="post" class="chooseSkin">
                     <?php foreach ($possessedSkin as $skin) : ?>
