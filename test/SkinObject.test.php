@@ -21,11 +21,6 @@ $skin3 = new SkinObject(3, "Couronne", "1200", "crown.png", 1);
 //$skin2->isEquiped(109);
 //$skin2->toggleSkin(109);
 
-//$currentSkin = [$skin3, null, null, $skin1, null];
-//$skin2->previewSkin($currentSkin);
-
-$currentSkin = [null, $skin2, null, $skin1, null];
-$skin4 = new SkinObject(3, "Couronne", 1200, "crown.png", 1);
-$skin4->previewSkin($currentSkin);
-var_dump($currentSkin);
+$currentSkin = [$skin3, null, null, $skin1, null];
+$skin2->previewSkin($currentSkin);
 ?>

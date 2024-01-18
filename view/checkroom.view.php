@@ -35,7 +35,6 @@
             </div>
         </section>
         <section>
-            <?php if($buyView): ?>
             <form action="../controler/checkroom.ctrl.php" method="post">
                 <?php foreach ($possessedSkin as $skin) : ?>
                 <div class="unlockedSkin">
@@ -52,9 +51,6 @@
                     </div>
                 <?php endforeach; ?>
             </form>
-            <?php else: ?>
-            
-            <?php endif; ?>
         </section>
     </main>
     <?php include(__DIR__.'/footer.viewpart.html'); ?> 
