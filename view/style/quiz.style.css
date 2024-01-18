@@ -5,37 +5,50 @@
     background-repeat: no-repeat;
     height: 100vh;
     margin: 0;
+    color: white;
 }
 
 #qcm header {
     position: sticky;
     top: 0;
     background-color: #303030;
-    color: white;
     width: 550px;
     height: 80px;
-    left: 50%;
-    transform: translate(-50%);
     border-radius: 0 0 25px 25px;
     box-shadow: 2px 2px 2px black;
-    margin: 0;
-    margin-bottom: 50px;
+    margin: 0 auto;
 }
 
-#qcm h1 {
+#qcm header h1 {
     margin-top: 0;
-    top: 10px;
+    top: 21.5px;
     position: relative;
 }
 
-#qcm h4 {
-    font-size: 24px;
+#qcm #question {
+    background-color: rgba(48, 48, 48, 0.8);
+    width: 800px;
+    margin: 50px auto 0 auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px black;
+}
+
+#qcm #question h2 {
+    margin: 0;
+    margin-bottom: 25px;
+    text-decoration: underline;
+    padding-top: 20px;
+}
+
+#qcm #question h3 {
+    margin: 0;
+    padding: 0 20px 20px 20px;
 }
 
 #answerTable {
     width: 950px;
     height: 200px;
-    margin: 50px auto;
+    margin: 0 auto 50px auto;
     border-collapse: separate;
     border-spacing: 50px;
 }
