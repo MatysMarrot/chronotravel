@@ -37,7 +37,18 @@
         <section>
             <?php if($buyView): ?>
                 <img src="<?=$emplacementSkin.$skin->getLocation()?>">
-                <p>Souhaitez-vous achetez ce cosmétique pour <?=$skin->getPrice()?></p>
+                <p>Souhaitez-vous achetez ce cosmétique pour <?=$skin->getPrice()?> Chronocoins ?</p>
+                <p>Vous possédez XXX Chronocoins.</p>
+                <form>
+                    <div>
+                        <label>Quitter</label>
+                        <input type="submit" name="action" value="leave">
+                    </div>
+                    <div>
+                        <label>Acheter</label>
+                        <input type="submit" name="action" value="buy">
+                    </div>
+                </form>
             <?php else: ?>
                 <form action="../controler/checkroom.ctrl.php" method="post" class="chooseSkin">
                     <?php foreach ($possessedSkin as $skin) : ?>
