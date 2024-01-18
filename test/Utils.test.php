@@ -1,13 +1,15 @@
 <?php
 include_once(__DIR__ . '/../controler/utils/Utils.php');
 include_once(__DIR__ . '/../model/DAO.class.php');
-
+/*
 $blaz = "chemine";
 $pass = "pass";
+*/
 /*$roleid = "0";
 $id = "5";
 $data = array("login" => $blaz, "password" => $pass, "roleid" => $roleid, "id" => $id);
 */
+/*
 $query = "SELECT roleid, id,password FROM Person WHERE login = ?";
 $dao = DAO::get();
 
@@ -33,4 +35,9 @@ echo (isMailUniversitaire("mail\@meriche-mazine.fr") ? "true" : "false") ."\n";
 echo (isMailUniversitaire("mail@.fr") ? "true" : "false") ."\n";
 echo (isMailUniversitaire("mail@ac-paris.fr") ? "true" : "false") ."\n";
 echo (isMailUniversitaire("mail@ac-wallis-futuna.fr") ? "true" : "false") ."\n";
+*/
+
+//$randomCode = generateRandomPartyCode(5);
+//echo $randomCode;
+
 ?>

@@ -195,13 +195,15 @@ text-align: justify;
   width: 50%;
   display: flex; /* Utiliser un conteneur flexible */
   justify-content: space-around;
+  margin-top: 10px;
 }
-.button-container button:nth-child(1) {
+.button-container a {
   background-color: var(--color-negativ);
   transition: all .7s;
-
+  margin: 0px;
+  width: 30%;
 }
-.button-container button:nth-child(1):hover {
+.button-container a:hover {
   background-color: rgb(139, 16, 16);
   transition: all .7s;
 }
@@ -214,7 +216,7 @@ text-align: justify;
   transition: all .7s;
 }
 
-.button2{
+.button2, .button-container a{
   border-radius: 15px;
   color: white;
   width: 8em;
@@ -222,8 +224,8 @@ text-align: justify;
   border: none;
   transition: all 0.7s;
   cursor: pointer;
-  margin-top: 1em;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .button2:hover{
@@ -232,6 +234,38 @@ text-align: justify;
 
 }
 
+/*Bouton professeur */
+.button-teacher{
+  background-color: #ffffff;
+  border: 1px solid rgb(0, 0, 0);
+  cursor: pointer;
+  border-radius: 15px;
+  padding: 0.4em;
+  transition: all 0.3s;
+  color: #000000;
+  font-weight: bold;
+}
+
+.button-teacher:hover{
+  transition: all 0.3s;
+  background-color: #dcdcdc;
+}
+
+.button-teacher-neg{
+  background-color: #e83030;
+  border: 1px solid rgb(0, 0, 0);
+  cursor: pointer;
+  border-radius: 15px;
+  padding: 0.4em;
+  transition: all 0.3s;
+  color: #000000;
+  font-weight: bold;
+
+}
+
+.button-teacher-neg:hover{
+  background-color: #fa4040;
+}
 
 label{
   margin-bottom: 0.5em;
@@ -293,6 +327,9 @@ form .button2 {
   transition: all 0.5s;
 }
 
+#classe-select{
+  width: 180px;
+}
 /** Messagerie ***/
 
 .messaging{
@@ -338,7 +375,9 @@ th[scope='col'] {
   color: #ffffff;
 }
 
-
+.tableau{
+  width: 100%;
+}
 
 .tableau th, .tableau td {
   padding: 8px;

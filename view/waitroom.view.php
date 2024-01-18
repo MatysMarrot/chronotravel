@@ -11,32 +11,33 @@
         <?php include(__DIR__.'/header.student.viewpart.php'); ?>
 
         <main>
-            <h1>Lancement de la partie</h2>
+            <h1>Lancement de la partie</h1>
             <!-- Arriver sur cette page une nouvelle partie est créer et un code est généré automatiquement-->
-            <p>Partagez ce code pour inviter à jouer: <span class="bold">(partie->code)</span></p>
+            <p>Partagez ce code pour inviter à jouer: <span class="bold">"<?=$_SESSION['roomCode']?>"</span></p>
             
             <!--Compte à rebours avant lancement automatique de la partie -->
             <p>Temps restant: <span class="countdown"></p>
             <script src="../controler/countdown.lobby.ctrl.js"></script>
             <img class="skin" src="./assets/background.png" alt="">    
-            <h2>Pseudo</h2>
+            <h2 id="player1">Pseudo</h2>
             <label for="code">Liste des autres joueurs:</label>
             <section class="lobby">
                 <!-- Inclure php pour afficher les élèves qui rejoignent en temps réel-->
                 <ul class="ul_horizontal">
-                    <li ><p>en attente j2</p></li>
-                    <li ><p>en attente j3</p></li>
-                    <li ><p>en attente j4</p></li>
+                    <li ><p id="player2">en attente j2</p></li>
+                    <li ><p id="player3">en attente j3</p></li>
+                    <li ><p id="player4">en attente j4</p></li>
                 </ul>
             </section>
 
             <div class="button-container">
-                <button class="button2">QUITTER</button> <!-- Retourne à la page d'accueil et supprimer la partie créer -->
+                <button class="button2" onclick="leave()">QUITTER</button> <!-- Retourne à la page d'accueil et supprimer la partie créer -->
                 <button class="button2">LANCER</button>
             </div>
         </main>
 
         <!--Footer -->
-        <?php include(__DIR__.'/footer.viewpart.html'); ?> 
+        <?php include(__DIR__.'/footer.viewpart.html'); ?>
+        <script src="../controler/lobby.ctrl.js"></script>
     </body>
 </html>
