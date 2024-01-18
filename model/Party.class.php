@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__."/enum/era.enum.php");
+
 class Party{
 
     
@@ -9,10 +11,18 @@ class Party{
     private Student $owner; // élève qui a lancé la partie
     private string $code; // code de la game
     private int $id; // laisser la BD gérer
-    private string $era; // thème du plateau courant
+    private Era $era; // thème du plateau courant
 
     public function __construct(Student $owner){
         $this->owner = $owner;
+    }
+
+    public function getEra(): Era {
+        return $this->era;
+    }
+
+    public function setEra(Era $era): void {
+        $this->era = $era;
     }
 
     // fonction permettant d'initialisé le jeu
