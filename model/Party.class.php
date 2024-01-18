@@ -1,6 +1,8 @@
 <?php
 
 require_once(__DIR__."/enum/era.enum.php");
+require_once(__DIR__."/enum/PartyState.enum.php");
+
 
 class Party{
 
@@ -12,12 +14,14 @@ class Party{
     private string $code; // code de la game
     private int $id; // laisser la BD gérer
     private Era $era; // thème du plateau courant
+    private PartyState $partyState;
+    private array $questions;
 
     public function __construct(int $partyid,int $ownerid){
         $this->id = $partyid;
         $this->subscribers = array();
-        $this->ownerId = $owner;
-        $this->owner = $owner;
+        $this->ownerid = $ownerid;
+        $this->partyState = PartyState::WAITING_FOR_ANSWER;
     }
 
     public function getEra(): Era {
@@ -65,6 +69,11 @@ class Party{
         else{
             $this->students[] = $student;
         }
+    }
+
+    public function fetchQuestions(int $size, Era $era)
+    {
+        //TODO
     }
 
     
