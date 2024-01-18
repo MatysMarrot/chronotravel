@@ -36,7 +36,9 @@
         </section>
         <section>
             <?php if($buyView): ?>
-                <form action="../controler/checkroom.ctrl.php" method="post">
+
+            <?php else: ?>
+                <form action="../controler/checkroom.ctrl.php" method="post" class="chooseSkin">
                     <?php foreach ($possessedSkin as $skin) : ?>
                         <div class="unlockedSkin">
                             <input type="submit" style="background-image: url('../view/skin/<?=$skin->getLocation()?>');" name="skin" value="<?=$skin->getSkinId()?>">
@@ -52,8 +54,6 @@
                         </div>
                     <?php endforeach; ?>
                 </form>
-            <?php else: ?>
-
             <?php endif; ?>
         </section>
     </main>
