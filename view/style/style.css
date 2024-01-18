@@ -448,6 +448,38 @@ th[scope='col'] {
   background-size: cover;
   background-position: center;
 }
+.unlockedSkin {
+  position: relative;
+  background-color: #404040;
+  z-index: 1;
+}
+.unlockedSkin::before {
+  content: 'x';
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 275px;
+  z-index: 1;
+  color: #ff9318;
+  opacity: .8;
+  filter: grayscale(40%);
+  pointer-events: none;
+}
+.unlockedSkin input {
+  z-index: 0;
+  filter: grayscale(40%);
+}
+.unlockedSkin span {
+  font-weight: bold;
+  color: #ff6700;
+  font-size: 2em;
+  position: absolute;
+  bottom: 0;
+  top: 50px;
+  z-index: 2;
+  pointer-events: none;
+}
 /* Affichage des skin */
 .div_skin{
   position: relative;
