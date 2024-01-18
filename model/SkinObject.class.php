@@ -96,11 +96,34 @@ class SkinObject {
         return $currentSkin;
     }
 
-    public static function isPossessedBy(int $skinId, int $playerId) : bool {
+    public function isPossessedBy(int $playerId) : bool {
         $dao = DAO::get();
         $query = "SELECT * FROM playerskin WHERE playerid=? AND skinid=?";
-        $table = $dao->query($query, [$playerId, $skinId]);
+        $table = $dao->query($query, [$playerId, $this->getSkinId()]);
         return count($table)!=0;
+    }
+
+    public static function getAllPossessedSkin(int $playerId) : array {
+        $possessedSkin = [];
+        $dao = DAO::get();
+        $query = "SELECT so.* FROM skinobject so JOIN playerskin ps ON so.skinid = ps.skinid WHERE ps.playerid = ?";
+        $table = $dao->query($query, [$playerId]);
+        foreach($table as $skin) {
+            $newSkin = new SkinObject($skin["skinid"], $skin["name"], $skin["price"], $skin["location"], $skin["parts"]);
+            $possessedSkin[] = $newSkin;
+        }
+        return $possessedSkin;
+    }
+    public static function getAllunpossessedSkin(int $playerId) : array {
+        $possessedSkin = [];
+        $dao = DAO::get();
+        $query = "SELECT so.* FROM skinobject so LEFT JOIN playerskin ps ON so.skinid = ps.skinid AND ps.playerid = ? WHERE ps.playerid IS NULL";
+        $table = $dao->query($query, [$playerId]);
+        foreach($table as $skin) {
+            $newSkin = new SkinObject($skin["skinid"], $skin["name"], $skin["price"], $skin["location"], $skin["parts"]);
+            $possessedSkin[] = $newSkin;
+        }
+        return $possessedSkin;
     }
 
 

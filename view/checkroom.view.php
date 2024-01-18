@@ -36,10 +36,16 @@
         </section>
         <section>
             <form action="../controler/checkroom.ctrl.php" method="post">
-                <?php foreach ($allSkins as $skin) : ?>
+                <?php foreach ($possessedSkin as $skin) : ?>
                 <div>
                     <input type="submit" style="background-image: url('../view/skin/<?=$skin->getLocation()?>');" name="skin" value="<?=$skin->getSkinId()?>">
                 </div>
+                <?php endforeach; ?>
+                <?php foreach ($unpossessedSkin as $skin) : ?>
+                    <div class="unlockedSkin">
+                        <input type="submit" style="background-image: url('../view/skin/<?=$skin->getLocation()?>');" name="skin" value="<?=$skin->getSkinId()?>">
+                        <span><?=$skin->getPrice()?></span>
+                    </div>
                 <?php endforeach; ?>
             </form>
         </section>
