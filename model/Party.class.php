@@ -8,13 +8,11 @@ require_once(__DIR__ . "/../serveurs/CreatePartyPacket.class.php");
 
 require_once(__DIR__ . "/../serveurs/party.srvr.php");
 
-
-class Party
-{
-
-    private array $playerPosition = [];
+    private int $partyid;
     private int $ownerid;
-    private array $players; // liste des élèves
+    private bool $ingame = FALSE; // bool permettant de savoir si le jeu est en cours
+    private array $studentPosition; //Sous la forme Student1 => Case1, Student2 => Case2 etc ...
+    private array $subscribers; // liste des élèves
     private string $code; // code de la game
     private int $id; // laisser la BD gérer
     private $era; // thème du plateau courant
@@ -23,13 +21,11 @@ class Party
     private PartyImpl $partyRoom;
     private $packets;
 
-
-    public function __construct(int $ownerid)
-    {
-        $this->players = array();
-        $this->ownerid = $ownerid;
-        $this->questions = array();
-        $this->partyRoom = PartyImpl::get();
+    public function __construct(int $partyid,int $ownerid){
+        $this->id = $partyid;
+        $this->subscribers = array();
+        $this->ownerId = $owner;
+        $this->owner = $owner;
     }
 
     public function getEra(): Era

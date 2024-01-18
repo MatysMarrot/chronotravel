@@ -92,52 +92,31 @@ class PartyImpl implements MessageComponentInterface{
 
     function onMessage(ConnectionInterface $conn, $msg)
     {
-        echo sprintf("New message from '%s': %s\n", $conn->resourceId, $msg);
+        //echo sprintf("New message from '%s': %s\n", $conn->resourceId, $msg);
+        /*
+        data:
+            cid : int
+            pid : int (party id hein)
+            action : string
+        */
 
         $decoded = json_decode($msg, true);
 
         if (!$decoded['action']) {
             return;
         }
-        if ($decoded['action'] == Action::JOIN->value) {
-            echo sprintf("Received '%s' from %s\n",$decoded['action'], $conn->resourceId);
 
-            $packet = new JoinPacket($decoded);
-            $this->clientIdConn[$decoded['id']] = $conn;
+            if ($decoded['action'] == "JOIN") {
+                $this->clientIdConn[$decoded['cid']] = $conn;
+                $this->clientidLogin[$decoded['cid']] = $decoded['login'];
 
-            if(!isset($this->parties[$decoded['partyId']])){
-                $this->parties[$decoded['partyId']] = Party::getPartyFromId($decoded['partyId']);
-            }
-            $party = $this->parties[$decoded['partyId']];
-            $party->addPackets($packet);
-
-            var_dump($party->getPartyState());
-            //Si on a suffisament de joueurs
-            if ($party->getPartyState() == 1 && count($party->getPackets()) == count($party->getPlayers())){
-                var_dump("INIT GAME");
-                $party->initGame();
-            }
-
+                //Si la partie n'existe pas on la crée
+                if (!isset($this->rooms[$decoded['pid']])) {
+                    $this->rooms[$decoded['pid']] = new Party($decoded['pid'], $decoded['cid']);
+                    echo sprintf("Created new room with partyid: '%d' and owner: '%d'\n", $decoded['pid'], $decoded['cid']);
+                }
 
         }
-    }
-
-    public static function get(){
-        if (self::$instance == null){
-            self::$instance = new PartyImpl();
-            echo "Server created on port " . APP_PORT . "\n\n";
-            //self::$instance->run();
-        }
-
-        return self::$instance;
-    }
-    public function broadcast(array $subscribers, string $data)
-    {
-        foreach ($subscribers as $subscriber){
-            $this->clientIdConn[$subscriber]->send($data);
-        }
-
-        return true;
     }
 }
 
