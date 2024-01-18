@@ -1,16 +1,15 @@
-<?php require __DIR__.'/../vendor/autoload.php';
-require_once __DIR__.'/../model/DAO.class.php';
-require_once __DIR__.'/../model/Waitingroom.class.php';
+<?php require __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../model/DAO.class.php';
+require_once __DIR__ . '/../model/Waitingroom.class.php';
 
 /**
  * Serveur de salle d'attente:
- * Etabli une connection avec les joueurs en salle d'attente pour 
+ * Etabli une connection avec les joueurs en salle d'attente pour
  * leurs permettre de lancer une partie et pour connaitre le nombre de joueurs présents
- * 
- * 
+ *
+ *
  * DOIT ETRE LANCE AVEC PHP DANS LA CONSOLE!
  */
-
 
 
 use Ratchet\Server\IoServer;
@@ -21,39 +20,44 @@ use Ratchet\ConnectionInterface;
 
 define('APP_PORT', 1312);
 
-class ServerImpl implements MessageComponentInterface {
+class ServerImpl implements MessageComponentInterface
+{
     protected $clients;
     private array $rooms = array();
 
     private array $clientidLogin;
     private array $clientIdConn;
-    
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->clients = new \SplObjectStorage;
         $this->rooms = array();
         $this->clientidLogin = array();
         $this->clientIdConn = array();
     }
 
-    private function broadCast(WaitingRoom $room, string $data){
-        if (!$room){
+
+    private function broadCast(WaitingRoom $room, string $data)
+    {
+        if (!$room) {
             return false;
         }
 
-        foreach ($room->getSubscribers() as $sub){
+        foreach ($room->getSubscribers() as $sub) {
             $this->clientIdConn[$sub]->send($data);
         }
 
         return true;
     }
 
-    public function onOpen(ConnectionInterface $conn) {
+    public function onOpen(ConnectionInterface $conn)
+    {
         $this->clients->attach($conn);
         echo "New connection! ({$conn->resourceId}).\n";
     }
 
-    public function onMessage(ConnectionInterface $conn, $msg) {
+    public function onMessage(ConnectionInterface $conn, $msg)
+    {
         //echo sprintf("New message from '%s': %s\n", $conn->resourceId, $msg);
         /*
         data:
@@ -63,23 +67,23 @@ class ServerImpl implements MessageComponentInterface {
         */
 
         $decoded = json_decode($msg, true);
-        
-        if (!$decoded['action']){
+
+        if (!$decoded['action']) {
             return;
         }
-        
-        if ($decoded['action'] == "JOIN"){
+
+        if ($decoded['action'] == "JOIN") {
             $this->clientIdConn[$decoded['cid']] = $conn;
             $this->clientidLogin[$decoded['cid']] = $decoded['login'];
 
             //Si la room n'existe pas on la crée
-            if (!isset($this->rooms[$decoded['pid']])){
+            if (!isset($this->rooms[$decoded['pid']])) {
                 $this->rooms[$decoded['pid']] = new WaitingRoom($decoded['pid'], $decoded['cid']);
-                echo sprintf("Created new room with partyid: '%d' and owner: '%d'\n",$decoded['pid'] ,$decoded['cid']);
+                echo sprintf("Created new room with partyid: '%d' and owner: '%d'\n", $decoded['pid'], $decoded['cid']);
             }
 
             //TODO : VERIFIER LA TAILLE DE LA SALLE POUR LIMTER A 4
-            
+
             //On ajoute le client a la room
             $room = $this->rooms[$decoded['pid']];
             $room->addSubscriber($decoded['cid']);
@@ -98,18 +102,20 @@ class ServerImpl implements MessageComponentInterface {
             $this->broadCast($room, json_encode($data));
         }
 
-        if ($decoded['action'] == "LEAVE"){
+        if ($decoded['action'] == "LEAVE") {
             //On leave
             $this->rooms[$decoded['pid']]->removeSubscriber($decoded['cid']);
-        } 
+        }
     }
 
-    public function onClose(ConnectionInterface $conn) {
+    public function onClose(ConnectionInterface $conn)
+    {
         $this->clients->detach($conn);
         echo "Connection {$conn->resourceId} is gone.\n";
     }
 
-    public function onError(ConnectionInterface $conn, \Exception $e) {
+    public function onError(ConnectionInterface $conn, \Exception $e)
+    {
         echo "An error occured on connection {$conn->resourceId}: {$e->getMessage()}\n";
         $conn->close();
     }
