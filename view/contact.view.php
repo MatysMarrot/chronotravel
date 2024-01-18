@@ -8,13 +8,14 @@
 
     <body>
         <!--Header --> 
-        <?php include(__DIR__.'/header.unknown.viewpart.php'); ?>
+        <?php $currentPage= 'contact';
+        include(__DIR__.'/../controler/header.ctrl.php'); ?>
 
         <main>
         <h1>Nous contacter</h1>
         <div class="formulaire">
-            <p>Pour toute question, contactez nous par mail 
-            <a href="mailto:contact@chronotravel.com">contact@chronotravel.com</a>, ou en utilisant le formulaire ci-dessous: </p>
+            <p>Pour toute question, contactez nous par mail:
+            <a href="mailto:contact@chronotravel.com">contact@chronotravel.com</a>, ou en utilisant le formulaire ci-dessous. </p>
             <form> <!--Le mail doit être renseigné dans le message que nous recevons -->
                 <label for="email">Email :</label>
                 <input type="text" id="email" name="email" required>

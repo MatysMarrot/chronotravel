@@ -4,7 +4,7 @@ html{
 }
 
 /*Header Teacher */
-.actif{
+.active{
     color: #FF8C00;
     text-decoration: underline;
   }
@@ -23,6 +23,7 @@ header{
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     border-top: none;
+    min-width: 725px;
    }
   
   

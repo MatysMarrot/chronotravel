@@ -8,7 +8,8 @@
 
     <body>  
         <!--Header --> 
-        <?php include(__DIR__.'/header.student.viewpart.php'); ?>
+        <?php $currentPage='manage';
+        include(__DIR__.'/header.teacher.viewpart.php'); ?>
 
         <main>
             <h1>Statistiques</h1>
