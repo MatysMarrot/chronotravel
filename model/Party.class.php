@@ -6,10 +6,6 @@ require_once(__DIR__."/Question.class.php");
 require_once(__DIR__."/../serveurs/party.srvr.php");
 
 
-
-
-require_once(__DIR__ . "/../serveurs/party.srvr.php");
-
     private int $partyid;
     private int $ownerid;
     private bool $ingame = FALSE; // bool permettant de savoir si le jeu est en cours
@@ -22,14 +18,11 @@ require_once(__DIR__ . "/../serveurs/party.srvr.php");
     private array $questions;
     private PartyImpl $partyRoom;
 
-
     public function __construct(int $partyid,int $ownerid){
         $this->id = $partyid;
         $this->subscribers = array();
-        $this->ownerid = $ownerid;
-        $this->partyState = PartyState::WAITING_FOR_ANSWER;
-        $this->questions = array();
-        $this->partyRoom = new PartyImpl();
+        $this->ownerId = $owner;
+        $this->owner = $owner;
     }
 
     public function getEra(): Era
