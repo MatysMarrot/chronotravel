@@ -1,6 +1,5 @@
 <?php
 require_once(__DIR__ . '/DAO.class.php');
-require_once(__DIR__.'/enum/skinpart.enum.php');
 class SkinObject {
     private int $skinId;
     private string $name;
@@ -20,7 +19,7 @@ class SkinObject {
         $this->name = $name;
         $this->price = $price;
         $this->location = $location;
-        $this->parts = getSkinPartByNumber($parts);
+        $this->parts = SkinObject::getSkinPartByNumber($parts);
     }
 
     /**
@@ -58,7 +57,38 @@ class SkinObject {
         return $this->parts;
     }
 
-
+    public function getFrenchSkinPart(): string {
+        switch ($this->getParts()) {
+            case "hat":
+                return "Chapeau";
+            case "hair":
+                return "Cheveux";
+            case "teeshirt":
+                return "Tee-Shirt";
+            case "pants":
+                return "Pantalon";
+            case "shoes":
+                return "Chaussures";
+            default:
+                return "none";
+        }
+    }
+    private static function getSkinPartByNumber(int $number): string {
+        switch ($number) {
+            case 1:
+                return "hat";
+            case 2:
+                return "hair";
+            case 3:
+                return "teeshirt";
+            case 4:
+                return "pants";
+            case 5:
+                return "shoes";
+            default:
+                return "none";
+        }
+    }
     public static function getAllSkinObjects() : array {
         $dao = DAO::get();
         $query = "SELECT * FROM skinobject ORDER BY parts";
@@ -125,8 +155,57 @@ class SkinObject {
         }
         return $possessedSkin;
     }
+    public static function getSkin(int $skinId) : SkinObject {
+        $dao = DAO::get();
+        $query = "SELECT * FROM skinobject WHERE skinid=?";
+        $table = $dao->query($query, [$skinId]);
+        $skin = $table[0];
+        $newSkin = new SkinObject($skin["skinid"], $skin["name"], $skin["price"], $skin["location"], $skin["parts"]);
+        return $newSkin;
+    }
 
+    public function isEquiped(int $playerId) : bool {
+        $dao = DAO::get();
+        $query = "SELECT {$this->getParts()} FROM currentskin WHERE playerid={$playerId}";
+        $table = $dao->query($query);
+        return $table[0][$this->getParts()]!=null;
+    }
+    public function toggleSkin(int $playerId) : void {
+        $dao = DAO::get();
+        if($this->isEquiped($playerId)) {
+            $query = "UPDATE currentskin SET {$this->getParts()}=null WHERE playerid={$playerId}";
+        } else {
+            $query = "UPDATE currentskin SET {$this->getParts()}={$this->getSkinId()} WHERE playerid={$playerId}";
+        }
+        $dao->exec($query);
+    }
+    public function previewSkin(array $currentSkin) : array {
+        switch ($this->getParts()) {
+            case "hat":
+                $index = 0;
+                break;
+            case "hair":
+                $index = 1;
+                break;
+            case "teeshirt":
+                $index = 2;
+                break;
+            case "pants":
+                $index = 3;
+                break;
+            case "shoes":
+                $index = 4;
+                break;
+            default:
+                $index = null;
+        }
+        if($index != null) {
+            $currentSkin[$index] = $this;
+        }
+        return $currentSkin;
+    }
 
 }
-
+// Supprimer tous les currentskin: delete from currentskin ;
+// Attribuer un currentskin à toutes les persons : insert into currentskin select id, null, null, null, null, null, 000000 from person;
 ?>

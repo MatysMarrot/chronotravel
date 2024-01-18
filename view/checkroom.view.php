@@ -37,14 +37,17 @@
         <section>
             <form action="../controler/checkroom.ctrl.php" method="post">
                 <?php foreach ($possessedSkin as $skin) : ?>
-                <div>
+                <div class="unlockedSkin">
                     <input type="submit" style="background-image: url('../view/skin/<?=$skin->getLocation()?>');" name="skin" value="<?=$skin->getSkinId()?>">
                 </div>
                 <?php endforeach; ?>
                 <?php foreach ($unpossessedSkin as $skin) : ?>
-                    <div class="unlockedSkin">
+                    <div class="lockedSkin">
                         <input type="submit" style="background-image: url('../view/skin/<?=$skin->getLocation()?>');" name="skin" value="<?=$skin->getSkinId()?>">
-                        <span><?=$skin->getPrice()?></span>
+                        <div class="price">
+                            <span><?=$skin->getPrice()?></span>
+                            <img src="../view/img/chrono_coin.png" alt="Chronocoin">
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </form>

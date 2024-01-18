@@ -388,7 +388,7 @@ th[scope='col'] {
   flex-wrap: wrap;
 
 }
-.checkroom section:last-child div {
+.checkroom section:last-child .unlockedSkin, .checkroom section:last-child .lockedSkin{
   width: 150px;
   height: 150px;
   display: flex;
@@ -409,12 +409,12 @@ th[scope='col'] {
   background-size: cover;
   background-position: center;
 }
-.unlockedSkin {
+.lockedSkin {
   position: relative;
   background-color: #404040;
   z-index: 1;
 }
-.unlockedSkin::before {
+.lockedSkin::before {
   content: 'x';
   position: absolute;
   top: 28%;
@@ -427,19 +427,32 @@ th[scope='col'] {
   filter: grayscale(40%);
   pointer-events: none;
 }
-.unlockedSkin input {
+.lockedSkin input {
   z-index: 0;
   filter: grayscale(40%);
 }
-.unlockedSkin span {
-  font-weight: bold;
-  color: #ff6700;
-  font-size: 2em;
+.lockedSkin .price {
+  display: flex;
+  flex-direction: row;
   position: absolute;
+  pointer-events: none;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  z-index: 5;
+}
+.lockedSkin .price span {
+  font-weight: bold;
+  color: #ff0000;
+  font-size: 2em;
   bottom: 0;
   top: 50px;
   z-index: 2;
   pointer-events: none;
+}
+.lockedSkin .price img {
+  width: 25%;
+  height: 25%;
 }
 /* Affichage des skin */
 .div_skin{
