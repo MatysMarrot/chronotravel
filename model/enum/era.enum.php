@@ -1,10 +1,12 @@
 <?php
 
-enum Era : string {
-    case ANTIQUITE = "Antiquité";
-    case MOYENAGE = "Moyen Âge";
-    case MODERNE = "Époque moderne";
-    case CONTEMP = "Temps contemporains";
+enum Era : string{
+
+    case ANTIQUITY = "ANTIQUITE";
+    case MIDDLE_AGES = "MOYENAGE";
+    case MODERN_AGES = "MODERNE";
+    case CONTEMPORARY_TIMES = "CONTEMP";
+
 }
 
 ?>
