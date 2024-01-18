@@ -131,7 +131,7 @@ class Question
         $dao = DAO::get();
 
         //Avoid getting the size of the table by ordering by random and getting only one.
-        $query = "SELECT id, content, themeid FROM Questions WHERE ORDER BY RANDOM() LIMIT 1";
+        $query = "SELECT id, content, themeid FROM Questions ORDER BY RANDOM() LIMIT 1";
 
 
         $result = $dao->query($query);
