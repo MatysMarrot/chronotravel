@@ -5,7 +5,7 @@ include_once(__DIR__."/../model/Party.class.php");
 
 $view = new View();
 
-$era = Era::MOYENAGE;
+$era = Era::MODERNE;
 $theme = $era->value;
 
 //var_dump($theme);
@@ -20,6 +20,10 @@ switch ($era) {
     case Era::MOYENAGE:
         $moyenageDirectory = "../view/img/theme/2-moyenage/";
         $backgroundImages = glob($moyenageDirectory . '*.jpg');
+        break;
+    case Era::MODERNE:
+        $moderneDirectory = "../view/img/theme/3-moderne/";
+        $backgroundImages = glob($moderneDirectory . '*.jpg');
         break;
     default:
         break;
