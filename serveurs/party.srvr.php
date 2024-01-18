@@ -55,33 +55,9 @@ class PartyImpl implements MessageComponentInterface{
         $conn->close();
     }
 
-    function onMessage(ConnectionInterface $conn, $msg)
+    function onMessage(ConnectionInterface $from, $msg)
     {
-        //echo sprintf("New message from '%s': %s\n", $conn->resourceId, $msg);
-        /*
-        data:
-            cid : int
-            pid : int (party id hein)
-            action : string
-        */
-
-        $decoded = json_decode($msg, true);
-
-        if (!$decoded['action']) {
-            return;
-        }
-
-            if ($decoded['action'] == "JOIN") {
-                $this->clientIdConn[$decoded['cid']] = $conn;
-                $this->clientidLogin[$decoded['cid']] = $decoded['login'];
-
-                //Si la partie n'existe pas on la crée
-                if (!isset($this->rooms[$decoded['pid']])) {
-                    $this->rooms[$decoded['pid']] = new Party($decoded['pid'], $decoded['cid']);
-                    echo sprintf("Created new room with partyid: '%d' and owner: '%d'\n", $decoded['pid'], $decoded['cid']);
-                }
-
-        }
+        // TODO: Implement onMessage() method.
     }
 }
 
