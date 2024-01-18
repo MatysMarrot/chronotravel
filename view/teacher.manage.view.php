@@ -49,7 +49,9 @@
                             <tr>
                                 <td><?=$student->getFirstName()?> <?=$student->getLastName()?></td>                             
                                 <td><button class="button-teacher" name = "stats" value = '<?=$student->getId()?>' type="submit">STATS</button></td>
+                                <td><button class="button-teacher-neg" onclick="confirmMessage()">SUPPRIMER</button></td>
                                 <td><button class="button-teacher-neg" name = "delete" value = '<?=$student->getId()?>' type="submit">SUPPRIMER</button></td>
+                                <script src="../controler/confirm.message.ctrl.js"></script>
                             </tr>    
                         <?php endforeach;?>
                     </table>
