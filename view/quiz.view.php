@@ -17,9 +17,9 @@
     <header>
         <h1>Question à réponse unique</h1>
     </header>
-    <div>
-        <h1>Thème : <?php echo $theme; ?></h1>
-        <h4>Truc</h4>
+    <div id="question">
+        <h2><?php echo $theme; ?></h2>
+        <h3>Question</h3>
     </div>
     <table id="answerTable">
         <tr>
