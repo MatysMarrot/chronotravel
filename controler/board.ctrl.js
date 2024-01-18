@@ -111,5 +111,5 @@ window.addEventListener('resize', function () {
 });
 
 setTimeout(showCanvas, 2000);
-setTimeout(hideCanvas, 2000);
+//setTimeout(hideCanvas, 2000);
 

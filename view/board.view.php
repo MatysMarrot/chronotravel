@@ -39,6 +39,6 @@
     <div id="content">
         <!-- Votre contenu ici -->
     </div>
-        <script src="./board.ctrl.js"></script>
+        <script src="../controler/board.ctrl.js"></script>
     </body>
 </html>
