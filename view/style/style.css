@@ -421,11 +421,10 @@ th[scope='col'] {
   padding: 15px;
   border: 10px ridge #e49144;
 }
-.checkroom section:last-child form {
+.checkroom section:last-child .chooseSkin {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
 }
 .checkroom section:last-child .unlockedSkin, .checkroom section:last-child .lockedSkin{
   width: 150px;
