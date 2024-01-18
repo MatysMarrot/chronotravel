@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__ . '/../model/Question.class.php');
-require_once(__DIR__ . '/../model/enum/Era.enum.php');
+require_once(__DIR__ . '/../model/enum/era.enum.php');
 
 
 //Création d'une question aléatoire
