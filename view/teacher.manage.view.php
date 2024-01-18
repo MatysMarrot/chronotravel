@@ -16,11 +16,11 @@
 
             <!--Select permettant de filtrer le contenue du tableau ci-dessous -->
             <form action="../controler/teacher.manage.ctrl.php" method = "post">
-                <input name = "create" value = "Créer un nouveau groupe de classe" type="submit">
+                <input class="button2" name = "create" value = "Créer un nouveau groupe de classe" type="submit">
                 <h3><?=$className?></h3>
                 <div>
                     <input value = "<?=$className?>"name = "className"type="text">
-                    <button value="update" name = "updateName"type = "submit">Modifier nom</button>
+                    <button class="button-teacher" value="update" name = "updateName"type = "submit">Modifier nom</button>
                 </div>
 
                 <h3><?=$code?></h3>
@@ -38,7 +38,7 @@
                         <option value= '-1'>PAS DE CLASSE</option>
                     <?php endif; ?>
                 </select>
-                <input type="submit" value = "Choisir classe">
+                <input class="button-teacher" type="submit" value = "Choisir classe">
 
                 <!--Tableau contenant les élèves de la classe sélectionner dans le selecte ci-dessus -->
                 <?php if(count($students) == 0) :?>
@@ -48,8 +48,8 @@
                         <?php foreach($students as $student) :?>    
                             <tr>
                                 <td><?=$student->getFirstName()?> <?=$student->getLastName()?></td>                             
-                                <td><button name = "stats" value = '<?=$student->getId()?>' type="submit">STATS</button></td>
-                                <td><button name = "delete" value = '<?=$student->getId()?>' type="submit">SUPPRIMER</button></td>
+                                <td><button class="button-teacher" name = "stats" value = '<?=$student->getId()?>' type="submit">STATS</button></td>
+                                <td><button class="button-teacher-neg" name = "delete" value = '<?=$student->getId()?>' type="submit">SUPPRIMER</button></td>
                             </tr>    
                         <?php endforeach;?>
                     </table>
