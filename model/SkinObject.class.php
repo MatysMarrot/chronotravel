@@ -179,7 +179,8 @@ class SkinObject {
         }
         $dao->exec($query);
     }
-    public function previewSkin(array $currentSkin) : array {
+    public function previewSkin(array &$currentSkin) {
+        $index = -1;
         switch ($this->getParts()) {
             case "hat":
                 $index = 0;
@@ -195,11 +196,8 @@ class SkinObject {
                 break;
             case "shoes":
                 $index = 4;
-                break;
-            default:
-                $index = null;
         }
-        if($index != null) {
+        if($index != -1) {
             $currentSkin[$index] = $this;
         }
         return $currentSkin;
