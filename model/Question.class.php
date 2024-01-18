@@ -132,7 +132,7 @@ class Question
         $data = array();
         $data[] = $era->value;
         //Avoid getting the size of the table by ordering by random and getting only one.
-        $query = "SELECT QUESTIONS.id, QUESTIONS.content, themeid FROM QUESTIONS LEFT JOIN THEME ON QUESTIONS.themeid = THEME.ID WHERE THEME.content LIKE '?' ORDER BY RANDOM() LIMIT 1;";
+        $query = "SELECT QUESTIONS.id, QUESTIONS.content, themeid FROM QUESTIONS LEFT JOIN THEME ON QUESTIONS.themeid = THEME.ID WHERE THEME.content LIKE ? ORDER BY RANDOM() LIMIT 1;";
 
 
         $result = $dao->query($query,$data);
