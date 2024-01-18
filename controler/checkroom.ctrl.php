@@ -32,11 +32,7 @@ if(!isset($_SESSION["id"])) {
             $buyView = true; // Le joueur a cliquer sur un skin qu'il ne possède pas, il veut surement l'acheter
             // Récupère du skin du joueur
             $currentSkin = SkinObject::getCurrentSkinOfPlayer($playerId);
-            var_dump($playerId);
-            var_dump($currentSkin);
             $currentSkin = $selectedSkin->previewSkin($currentSkin);
-            var_dump($selectedSkin);
-            var_dump($currentSkin);
         }
     } else {
         // Récupère les cosmétiques possédés par le joueur et ceux non possédés
