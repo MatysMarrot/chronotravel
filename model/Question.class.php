@@ -177,7 +177,6 @@ class Question
         }
         //Result is null
         throw new Exception("La question numéro " . $id . " n'existe pas !");
-        return null;
 
     }
 
