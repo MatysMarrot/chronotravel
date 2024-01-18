@@ -25,12 +25,38 @@ class Party{
         $this->era = $era;
     }
 
+    public function create(){
+        $roomCode = generateRandomCode();
+        $query = "SELECT code FROM partycode WHERE code = ?";
+        $data = [$roomCode];
+        $dao = DAO::get();
+        $table = $dao->query($query,$data);
+
+        while(count($table) != 0){
+            $code = generateRandomCode();
+            $data = [$code];
+            $table = $dao->query($query,$data);
+        }
+
+        $data = [$this->owner->getId()];
+        $query = "INSERT INTO party (creatorid) VALUES (?)";
+        $dao = DAO::get();
+        $dao->query($query,$data);
+        $this->id = $dao->lastInsertId();
+        $data = [$this->id,$roomCode];
+        $query = "INSERT INTO partycode (partyid,code) VALUES (?,?)";
+        $dao->query($query,$data);
+
+        $_SESSION['roomCode'] = $roomCode;
+
+    }
+
     // fonction permettant d'initialisé le jeu
     public function init(){}
 
     // ajoute un élève à la partie
     public function addStudent(Student $student){
-        if(count($students) == 4){
+        if(count($this->students) == 4){
             throw new Exception ("Groupe plein");
         }
         else{

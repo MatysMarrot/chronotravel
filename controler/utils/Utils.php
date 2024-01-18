@@ -70,17 +70,20 @@
     }
 
     // Génere un code de taille 5 par défaut
-    function generateRandomCode($length = 5) {
-        // Calcule le nombre d'octets nécessaires pour obtenir la longueur souhaitée
-        $byteLength = (int) ceil($length / 2);
-        // Génère les octets aléatoires
-        $bytes = random_bytes($byteLength);
-        // Convertit les octets en une chaîne hexadécimale
-        $code = bin2hex($bytes);
-        // Tronque la chaîne pour obtenir la longueur souhaitée
-        $code = substr($code, 0, $length);
-        // Convertit en majuscules pour obtenir des lettres majuscules
-        return strtoupper($code);
+
+function generateRandomCode($length = 5) : string{
+    $res = "";
+    for ($i = 0; $i < $length; $i++){
+        $res .= chr(generateWorker());
+    }
+    return $res;
+}
+function generateWorker() : int{
+    $res = random_int(65, 90);
+    if ($res == 73 || $res == 79){
+        $res = generateWorker();
     }
 
+    return $res;
+}
 ?>

@@ -37,7 +37,7 @@ echo (isMailUniversitaire("mail@ac-paris.fr") ? "true" : "false") ."\n";
 echo (isMailUniversitaire("mail@ac-wallis-futuna.fr") ? "true" : "false") ."\n";
 */
 
-$randomCode = generateRandomCode(5);
-echo $randomCode;
+//$randomCode = generateRandomPartyCode(5);
+//echo $randomCode;
 
 ?>
