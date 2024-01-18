@@ -1,10 +1,8 @@
 <?php
 
-require_once(__DIR__ . "/enum/era.enum.php");
-require_once(__DIR__ . "/enum/PartyState.enum.php");
-require_once(__DIR__ . "/Question.class.php");
-require_once(__DIR__ . "/../serveurs/Player.class.php");
-require_once(__DIR__ . "/../serveurs/CreatePartyPacket.class.php");
+require_once(__DIR__."/enum/era.enum.php");
+require_once(__DIR__."/enum/PartyState.enum.php");
+
 
 require_once(__DIR__ . "/../serveurs/party.srvr.php");
 
@@ -15,17 +13,15 @@ require_once(__DIR__ . "/../serveurs/party.srvr.php");
     private array $subscribers; // liste des élèves
     private string $code; // code de la game
     private int $id; // laisser la BD gérer
-    private $era; // thème du plateau courant
-    private int $partyState = 0;
+    private Era $era; // thème du plateau courant
+    private PartyState $partyState;
     private array $questions;
-    private PartyImpl $partyRoom;
-    private $packets;
 
     public function __construct(int $partyid,int $ownerid){
         $this->id = $partyid;
         $this->subscribers = array();
-        $this->ownerId = $owner;
-        $this->owner = $owner;
+        $this->ownerid = $ownerid;
+        $this->partyState = PartyState::WAITING_FOR_ANSWER;
     }
 
     public function getEra(): Era
@@ -85,9 +81,10 @@ require_once(__DIR__ . "/../serveurs/party.srvr.php");
 
     public function fetchQuestions(int $size, Era $era)
     {
-        for ($i = 0; $i < 10; $i++) {
-            $this->questions[] = Question::getRandomQuestionByEra($this->getEra());
-        }
+        //TODO
+    }
+
+    
 
     }
 
