@@ -14,8 +14,13 @@
     </style>
 </head>
 <body id="qcm">
-    <h1>Question à réponse unique</h1>
-    <h1>Thème : <?php echo $theme; ?></h1>
+    <header>
+        <h1>Question à réponse unique</h1>
+    </header>
+    <div>
+        <h1>Thème : <?php echo $theme; ?></h1>
+        <h4>Truc</h4>
+    </div>
     <table id="answerTable">
         <tr>
             <td class="answer" id="answerA">
