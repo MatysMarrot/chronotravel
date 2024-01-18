@@ -1,8 +1,6 @@
 <?php require __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../model/DAO.class.php';
 require_once __DIR__ . '/../model/Waitingroom.class.php';
-require_once __DIR__ . '/../model/Student.class.php';
-require_once __DIR__ . '/../model/Party.class.php';
 
 /**
  * Serveur de salle d'attente:
@@ -24,7 +22,6 @@ use Ratchet\ConnectionInterface;
 
 class ServerImpl implements MessageComponentInterface
 {
-    static private $instance;
     protected $clients;
     private array $rooms;
 
@@ -39,10 +36,16 @@ class ServerImpl implements MessageComponentInterface
         $this->clientIdConn = array();
     }
 
-    private function broadCast(Party $party, string $data)
-    {
 
-        $players = $party->getPlayers();
+    private function broadCast(WaitingRoom $room, string $data)
+    {
+        if (!$room) {
+            return false;
+        }
+
+        foreach ($room->getSubscribers() as $sub) {
+            $this->clientIdConn[$sub]->send($data);
+        }
 
         foreach ($players as $player) {
             $this->clientIdConn[$player->getId()]->send($data);
@@ -67,50 +70,26 @@ class ServerImpl implements MessageComponentInterface
         */
 
         $decoded = json_decode($msg, true);
-        $dao = DAO::get();
-        $party = Party::getPartyFromId($decoded['pid']);
-        $player = Student::readStudent($decoded['cid']);
 
         if (!$decoded['action']) {
             return;
         }
 
         if ($decoded['action'] == "JOIN") {
-            echo sprintf("%d has joined party %d\n", $decoded['cid'], $decoded['pid']);
             $this->clientIdConn[$decoded['cid']] = $conn;
+            $this->clientidLogin[$decoded['cid']] = $decoded['login'];
 
-            $data = [$decoded['pid']];
-            $query = "SELECT count(*) FROM partystudent WHERE partyid = ? ";
-            $table = $dao->query($query, $data);
-
-
-            if ($table[0][0] == 4) {
-                //TODO : Envoyer un json_encode
-                $conn->send("PARTY IS FULL");
-                $conn->close();
-                return false;
+            //Si la room n'existe pas on la crée
+            if (!isset($this->rooms[$decoded['pid']])) {
+                $this->rooms[$decoded['pid']] = new WaitingRoom($decoded['pid'], $decoded['cid']);
+                echo sprintf("Created new room with partyid: '%d' and owner: '%d'\n", $decoded['pid'], $decoded['cid']);
             }
 
-            // Insertion de l'élève dans la party
+            //TODO : VERIFIER LA TAILLE DE LA SALLE POUR LIMTER A 4
 
-            $isOwnerPresent = false;
-
-            foreach ($party->getPlayers() as $player) {
-                if ($player->getId() == $decoded['cid']) {
-                    $isOwnerPresent = true;
-                    break;  // On a trouvé le propriétaire, pas besoin de continuer la boucle
-                }
-            }
-
-            if ($party->getOwnerId() == $decoded['cid']) {
-                // Si c'est le propriétaire et qu'il n'est pas présent, l'insérer
-                if (!$isOwnerPresent) {
-                    $party->insertPlayer($decoded['cid']);
-                }
-            } else {
-                // Si ce n'est pas le propriétaire, insérer le joueur
-                $party->insertPlayer($decoded['cid']);
-            }
+            //On ajoute le client a la room
+            $room = $this->rooms[$decoded['pid']];
+            $room->addSubscriber($decoded['cid']);
 
             //On trouve les autres joueurs de la room
             $players = $party->getPlayers();
@@ -152,63 +131,17 @@ class ServerImpl implements MessageComponentInterface
             $this->close($player, $party);
         }
 
-
+        if ($decoded['action'] == "LEAVE") {
+            //On leave
+            $this->rooms[$decoded['pid']]->removeSubscriber($decoded['cid']);
+        }
     }
 
     public function onClose(ConnectionInterface $conn)
     {
-
-
-        $key = array_search($conn, $this->clientIdConn);
-        echo sprintf("On close, key %s = ", $key);
-
-        if ($key !== false) {
-            // Il exsite un cid lié à cette connexion
-            $dao = DAO::get();
-            $data = [$key];
-            $query = "SELECT id FROM party p, partystudent s WHERE studentid = ? AND id = partyid AND partystate = 1";
-            $table = $dao->query($query, $data);
-            $party = Party::getPartyFromId($table[0][0]);
-            $student = Student::readStudent($key);
-
-            $this->close($student, $party);
-
-        }
-
-
         $this->clients->detach($conn);
         echo "Connection {$conn->resourceId} is gone.\n";
     }
-
-    public function close($player, $party)
-    {
-
-
-        if ($party->getOwnerId() == $player->getId()) {
-            // On envoie un packet à tout le monde pour delete la party
-            $party->removePlayer($player->getId());
-            $data = [
-                "action" => "ownerLeft",
-            ];
-            echo sprintf("Packet envoyé %s \n", $data['action']);
-
-        } else {
-            $party->removePlayer($player->getId());
-            $data = [
-                "action" => "playerLeave",
-                "name" => $player->getLogin(),
-            ];
-            echo sprintf("Packet envoyé %s par %s\n", $data['name'], $data['action']);
-        }
-        $this->broadCast($party, json_encode($data));
-        if (count($party->getPlayers()) == 0) {
-            $party->deleteParty();
-        }
-
-        $this->clientIdConn[$player->getId()]->close();
-        unset($this->clientIdConn[$player->getId()]);
-    }
-
 
     public function onError(ConnectionInterface $conn, \Exception $e)
     {
