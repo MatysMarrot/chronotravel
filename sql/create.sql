@@ -21,7 +21,7 @@ CREATE TABLE Person (
     email varchar(50),
     currency int,
     creationDate DATE DEFAULT CURRENT_DATE,
-    birthdate DATE,
+    birthdate DATE
 );
 
 /*Table Class:
