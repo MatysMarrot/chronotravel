@@ -39,8 +39,7 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
         $this->era = $era;
     }
 
-    public function create()
-    {
+    public function create(){
 
         $roomCode = generateRandomCode();
         $query = "SELECT code FROM partycode WHERE code = ?";
@@ -50,20 +49,16 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
 
         $data = [$this->ownerid];
         $query = "INSERT INTO party (creatorid,partystate) VALUES (?,1)";
-        $dao = DAO::get();
-        $dao->query($query,$data);
+        $dao->exec($query,$data);
+
         $this->id = $dao->lastInsertId();
         $data[] = $this->id;
         $query = "INSERT INTO partystudent (studentid,partyid) VALUES (?,?)";
-        $dao->exec($query, $data);
-        $studentOwner = Student::readStudent($this->ownerid);
-        $this->players[] = $studentOwner;
-        $this->playerPosition[$studentOwner->getId()] = new Position($studentOwner->getId());
+        $dao->exec($query,$data);
 
-
-        $data = [$this->id, $roomCode];
+        $data = [$this->id,$roomCode];
         $query = "INSERT INTO partycode (partyid,code) VALUES (?,?)";
-        $dao->exec($query, $data);
+        $dao->exec($query,$data);
 
         $_SESSION['roomCode'] = $roomCode;
         $_SESSION['partyId'] = $this->id;
@@ -129,6 +124,23 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
     public function getPartyRoom(): PartyImpl
     {
         return $this->partyRoom;
+    }
+
+    public function getPlayers(){
+        return $this->players;
+    }
+
+    public function getOwnerId(){
+        return $this->ownerid;
+    }
+
+    //ajoute un élève à une partie en BD et dans l'objet
+    public function insertPlayer($cid){
+        $dao = DAO::get();
+        $data = [$cid,$this->id];
+        $query = "INSERT INTO partystudent (studentid,partyid) VALUES(?,?)";
+        $dao->exec($query,$data);
+        $this->players[] = Student::readStudent($cid);
     }
 
     //return null si pas de party, un objet party sinon
