@@ -2,7 +2,9 @@
 
 require_once(__DIR__."/enum/era.enum.php");
 require_once(__DIR__."/enum/PartyState.enum.php");
-require_once(__DIR__."/");
+require_once(__DIR__."/Question.class.php");
+require_once(__DIR__."/../serveurs/party.srvr.php");
+
 
 
 
@@ -18,6 +20,8 @@ class Party{
     private Era $era; // thème du plateau courant
     private PartyState $partyState;
     private array $questions;
+    private PartyImpl $partyRoom;
+
 
     public function __construct(int $partyid,int $ownerid){
         $this->id = $partyid;
@@ -25,6 +29,7 @@ class Party{
         $this->ownerid = $ownerid;
         $this->partyState = PartyState::WAITING_FOR_ANSWER;
         $this->questions = array();
+        $this->partyRoom = new PartyImpl();
     }
 
     public function getEra(): Era {
@@ -50,9 +55,17 @@ class Party{
 
     public function fetchQuestions(int $size, Era $era)
     {
-        foreach ($i = 0; $i < 10; $i++) {
-            $this->questions[] = Question::
+        for ($i = 0; $i < 10; $i++) {
+            $this->questions[] = Question::getRandomQuestionByEra($this->getEra());
         }
+
+    }
+
+    public function broadcast(){
+        $data = json_encode($this->getQuestions());
+        $this->partyRoom->broadcast($this->subscribers,$data);
+
+
     }
 
     /**
@@ -62,7 +75,14 @@ class Party{
     {
         $this->partyState = $partyState;
     }
-    
+
+    /**
+     * @return array
+     */
+    public function getQuestions(): array
+    {
+        return $this->questions;
+    }
 
 
 
