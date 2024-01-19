@@ -52,10 +52,9 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
         $table = $dao->query($query, $data);
 
         $data = [$this->ownerid];
-        $query = "INSERT INTO party (creatorid,partystate) VALUES (?,1)";
-        $dao->exec($query, $data);
-        $this->partyState = 1;
-
+        $query = "INSERT INTO party (creatorid) VALUES (?)";
+        $dao = DAO::get();
+        $dao->query($query,$data);
         $this->id = $dao->lastInsertId();
         $data[] = $this->id;
         $query = "INSERT INTO partystudent (studentid,partyid) VALUES (?,?)";
