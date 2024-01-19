@@ -1,5 +1,9 @@
-#question, #answerTable, #selectedAnswerDisplay {
+#question, #answerTable, #selectedAnswerDisplay, #qcm header {
     display: none;
+}
+
+body {
+    margin: 0;
 }
 
 #qcm {
@@ -10,9 +14,19 @@
     height: 100vh;
     margin: 0;
     color: white;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(0, 0, 0, 0.8);
     background-blend-mode: overlay;
 }
+
+#qcm {
+    /* ... (le reste du code) */
+    opacity: 0;  /* Initialise l'opacité à 0 pour masquer l'image de fond */
+}
+
+#qcm.revealed {
+    opacity: 1;  /* Applique l'opacité à 1 lorsque la classe "revealed" est ajoutée */
+}
+
 
 #qcm header {
     position: sticky;
