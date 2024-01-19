@@ -308,6 +308,13 @@ label{
   margin: 5px;
 }
 
+
+.gestion section{
+  display: grid;
+  justify-items: center;
+  margin: 2em;
+}
+
 /** formulaire**/
 form .button2 {
   width: 100%;
@@ -518,5 +525,9 @@ aside#home_button ul li a {
   text-decoration: none;
   background-color: var(--main-background-color);
   border-radius: 10px;
+}
+
+#signal{
+  color: red;
 }
 

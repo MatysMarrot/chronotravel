@@ -32,35 +32,39 @@
                     </select>
                     <input class="button-teacher" type="submit" value = "Choisir classe">
                 </div>
-                <h3><?=$className?> (<?=$code?>)</h3>
-                <input class="button-teacher-neg" name = "deleteGroup" value = "Supprimer le groupe de classe" type="submit">
 
-                <?php if(count($classList) != 0) :?>
-                <div>
-                    <label>Modifier le nom de la classe:</label>
-                    <input value = "<?=$className?>"name = "className"type="text">
-                    <button class="button-teacher" value="update" name = "updateName"type = "submit">Modifier nom</button>
-                </div>
+                <section>
+                    <h3><?=$className?> (<?=$code?>)</h3>
+                    <input class="button-teacher-neg" name = "deleteGroup" value = "Supprimer le groupe de classe" type="submit">
 
-                        <?php else : ?>
+                    <?php if(count($classList) != 0) :?>
+                        <div>
+                            <label>Modifier le nom de la classe:</label>
+                            <input value = "<?=$className?>"name = "className"type="text">
+                            <button class="button-teacher" value="update" name = "updateName"type = "submit">Modifier nom</button>
+                        </div>
+
+                    <?php else : ?>
                         <p>PAS DE CLASSE</p>
                     <?php endif; ?>
 
 
-                <!--Tableau contenant les élèves de la classe sélectionner dans le selecte ci-dessus -->
-                <?php if(count($students) == 0) :?>
-                    <p>PAS D'ELEVES</p>
-                <?php else : ?>
-                    <table class="tableau">
-                        <?php foreach($students as $student) :?>    
-                            <tr>
-                                <td><?=$student->getFirstName()?> <?=$student->getLastName()?></td>                             
-                                <td><button class="button-teacher" name = "stats" value = '<?=$student->getId()?>' type="submit">STATS</button></td>
-                                <td><button class="button-teacher-neg" name = "delete" value = '<?=$student->getId()?>' type="submit">SUPPRIMER</button></td>
-                            </tr>    
-                        <?php endforeach;?>
-                    </table>
-                <?php endif; ?>
+                    <!--Tableau contenant les élèves de la classe sélectionner dans le selecte ci-dessus -->
+                    <?php if(count($students) == 0) :?>
+                        <p>PAS D'ELEVES</p>
+                    <?php else : ?>
+                        <table class="tableau">
+                            <?php foreach($students as $student) :?>
+                                <tr>
+                                    <td><?=$student->getFirstName()?> <?=$student->getLastName()?></td>
+                                    <td><button class="button-teacher" name = "stats" value = '<?=$student->getId()?>' type="submit">STATS</button></td>
+                                    <td><button class="button-teacher-neg" name = "delete" value = '<?=$student->getId()?>' type="submit">SUPPRIMER</button></td>
+                                </tr>
+                            <?php endforeach;?>
+                        </table>
+                    <?php endif; ?>
+                </section>
+
             </form>
           
         </main>
