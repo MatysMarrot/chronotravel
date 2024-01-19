@@ -2,6 +2,8 @@
 
 require_once(__DIR__."/enum/era.enum.php");
 require_once(__DIR__."/enum/PartyState.enum.php");
+require_once(__DIR__."/");
+
 
 
 
@@ -21,6 +23,7 @@ require_once(__DIR__."/enum/PartyState.enum.php");
         $this->subscribers = array();
         $this->ownerid = $ownerid;
         $this->partyState = PartyState::WAITING_FOR_ANSWER;
+        $this->questions = array();
     }
 
     public function getEra(): Era
@@ -80,9 +83,18 @@ require_once(__DIR__."/enum/PartyState.enum.php");
 
     public function fetchQuestions(int $size, Era $era)
     {
-        //TODO
+        foreach ($i = 0; $i < 10; $i++) {
+            $this->questions[] = Question::
+        }
     }
 
+    /**
+     * @param PartyState $partyState
+     */
+    public function setPartyState(PartyState $partyState): void
+    {
+        $this->partyState = $partyState;
+    }
     
 
     }
