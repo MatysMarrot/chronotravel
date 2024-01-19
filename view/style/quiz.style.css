@@ -12,7 +12,7 @@ body {
     color: white;
     background-color: rgba(0, 0, 0, 0.8);
     background-blend-mode: overlay;
-    display: none; /* INITIALISATION : opacité à 0 pour masquer l'image de fond */
+    display: none; /* INITIALISATION : masquer l'image de fond */
 }
 
 
