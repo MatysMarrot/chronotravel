@@ -94,5 +94,16 @@ class PartyImpl implements MessageComponentInterface{
     }
 }
 
+$server = IoServer::factory(
+    new HttpServer(
+        new WsServer(
+            new PartyImpl()
+        )
+    ),
+    APP_PORT
+);
+echo "Server created on port " . APP_PORT . "\n\n";
+$server->run();
+
 
 ?>
