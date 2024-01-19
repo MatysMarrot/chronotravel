@@ -21,7 +21,7 @@
               <input type="text" id="code" name="code" required minlength="5" maxlength="5" size="7" style="font-size: 18px"/>
               <span class="error"><?=$message ?? ""?></span>
               <div class="button-container">
-                <button class="button2" type="submit" >RETOUR</button>
+                  <button class="button2" type="button" onclick="window.location.href='../controler/landing.ctrl.php'">RETOUR</button>
                 <button class="button2" type="submit" >REJOINDRE</button>
               </div>
             </form>

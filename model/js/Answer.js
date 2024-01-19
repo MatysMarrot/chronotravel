@@ -5,11 +5,11 @@ class Answer{
     content;
     correct;
 
-    constructor(id,questionid,content,correct) {
-        this.id = id;
-        this.questionid = questionid;
-        this.content = content;
-        this.correct = correct;
+    constructor(json) {
+        this.id = json.id;
+        this.questionid = json.questionid;
+        this.content = json.content;
+        this.correct = json.correct;
     }
 
 
