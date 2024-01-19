@@ -22,7 +22,7 @@
               <span class="error"><?=$message ?? ""?></span>
               <div class="button-container">
                   <button class="button2" type="button" onclick="window.location.href='../controler/landing.ctrl.php'">RETOUR</button>
-                <button class="button2" type="submit" >REJOINDRE</button>
+                  <button class="button2" type="submit" >REJOINDRE</button>
               </div>
             </form>
         </main>

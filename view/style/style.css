@@ -197,13 +197,12 @@ text-align: justify;
   justify-content: space-around;
   margin-top: 10px;
 }
-.button-container a {
+.button-container button:nth-child(1) {
   background-color: var(--color-negativ);
   transition: all .7s;
   margin: 0px;
-  width: 30%;
 }
-.button-container a:hover {
+.button-container button:nth-child(1):hover {
   background-color: rgb(139, 16, 16);
   transition: all .7s;
 }
@@ -429,6 +428,7 @@ th[scope='col'] {
 
 /* Join party p&ge */
 .joinParty {
+  width: 400px;
   display: flex;
   flex-direction: column;
 }

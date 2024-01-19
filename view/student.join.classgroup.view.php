@@ -20,12 +20,13 @@
             <!-- Si le code ne correspond à aucune partie mettre un message d'erreur 
                 Sinon rejoindre la partie dans student.lobby.view.php-->
             <form action="../controler/student.join.classgroup.ctrl.php" method= "post" class="joinParty">
-              <input type="text" id="code" name="code" required minlength="5" maxlength="5" size="7" style="font-size: 18px"/>
-              <div class="button-container">
-                <a href="../controler/home.ctrl.php">RETOUR</a>
-                <button class="button2" type="submit" >REJOINDRE</button>
-              </div>
+              <input type="text" id="code"  name="code" required minlength="5" maxlength="5" size="7" style="font-size: 18px"/>
+
             </form>
+                <div class="button-container">
+                    <button class="button2" type="button" onclick="window.location.href='../controler/landing.ctrl.php'">RETOUR</button>
+                    <button class="button2" type="submit" >REJOINDRE</button>
+                </div>
             <div>
               <p><?=$message?></p>
             </div>
