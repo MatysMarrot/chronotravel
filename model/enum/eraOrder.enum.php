@@ -1,0 +1,6 @@
+<?php
+
+enum EraOrder : Era{
+
+}
+?>
