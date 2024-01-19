@@ -25,6 +25,10 @@ switch ($era) {
         $moderneDirectory = "../view/img/theme/3-moderne/";
         $backgroundImages = glob($moderneDirectory . '*.jpg');
         break;
+    case Era::CONTEMP:
+        $contempDirectory = "../view/img/theme/4-contemp/";
+        $backgroundImages = glob($contempDirectory . '*.jpg');
+        break;
     default:
         break;
 }

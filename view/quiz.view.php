@@ -48,6 +48,7 @@
     </div>
 
 
-    <script src="../controler/quiz.ctrl.js"></script>
+    <script type="module" src="../controler/quiz.ctrl.js"></script>
+
 </body>
 </html>
