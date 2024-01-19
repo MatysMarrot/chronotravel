@@ -48,13 +48,7 @@ class Party{
         $dao = DAO::get();
         $table = $dao->query($query,$data);
 
-        while(count($table) != 0){
-            $code = generateRandomCode();
-            $data = [$code];
-            $table = $dao->query($query,$data);
-        }
-
-        $data = [$this->owner->getId()];
+        $data = [$this->ownerid];
         $query = "INSERT INTO party (creatorid) VALUES (?)";
         $dao = DAO::get();
         $dao->query($query,$data);
