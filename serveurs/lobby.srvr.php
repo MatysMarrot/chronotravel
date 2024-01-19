@@ -82,10 +82,10 @@ class ServerImpl implements MessageComponentInterface
                 echo sprintf("Created new room with partyid: '%d' and owner: '%d'\n", $decoded['pid'], $decoded['cid']);
             }
 
-            //TODO : VERIFIER LA TAILLE DE LA SALLE POUR LIMTER A 4
-            //TODO : Envoyer un json_encode
+
             //On ajoute le client a la room
-            if ($this->rooms[$decoded['pid']].size() == 4){
+            if ($this->rooms[$decoded['pid']]->size() == 4){
+                //TODO : Envoyer un json_encode
                 $conn->send("PARTY IS FULL");
                 $conn->close();
                 return false;
