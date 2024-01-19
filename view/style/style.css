@@ -258,13 +258,30 @@ text-align: justify;
   border-radius: 15px;
   padding: 0.4em;
   transition: all 0.3s;
-  color: #000000;
+  color: #ffffff;
   font-weight: bold;
-
+  width: fit-content;
 }
 
 .button-teacher-neg:hover{
-  background-color: #fa4040;
+  background-color: #a62525;
+
+}
+
+.button-create{
+  background-color: #37b705;
+  border-radius: 15px;
+  border: 1px solid black;
+  font-weight: bold;
+  color: white;
+  padding: 0.5em;
+  transition: all 0.5s;
+  width: fit-content;
+}
+
+.button-create:hover{
+  transition: all 0.5s;
+  background-color: #178d1b;
 }
 
 label{
@@ -272,6 +289,25 @@ label{
   margin-top: 0.5em;
 }
 
+/** Gestion **/
+.gestion{
+  display: grid;
+  justify-items: center ;
+}
+
+.gestion input{
+  margin: 1em;
+}
+
+.gestion>h3{
+  height: fit-content;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.gestion>h4{
+  text-align: right;
+  margin: 5px;
+}
 
 /** formulaire**/
 form .button2 {

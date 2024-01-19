@@ -15,18 +15,12 @@
 
 
             <!--Select permettant de filtrer le contenue du tableau ci-dessous -->
-            <form action="../controler/teacher.manage.ctrl.php" method = "post">
-                <input class="button2" name = "create" value = "Créer un nouveau groupe de classe" type="submit">
-                <h3><?=$className?></h3>
-                <?php if(count($classList) != 0) :?>
-                <div>
-                    <input value = "<?=$className?>"name = "className"type="text">
-                    <button class="button-teacher" value="update" name = "updateName"type = "submit">Modifier nom</button>
-                </div>
+            <form class="gestion" action="../controler/teacher.manage.ctrl.php" method = "post">
+                <input class="button-create" name = "create" value = "Créer un nouveau groupe de classe" type="submit">
 
-                <h3><?=$code?></h3>
 
-                    <input class="button2" name = "deleteGroup" value = "Supprimer le groupe de classe" type="submit">
+
+               <div>
                     <select name="currentClass" id="classe-select">
                         <?php foreach($classList as $class) :?>
                             <?php if($class->getId() == $currentClass->getId()) : ?>
@@ -37,6 +31,17 @@
                         <?php endforeach;?>
                     </select>
                     <input class="button-teacher" type="submit" value = "Choisir classe">
+                </div>
+                <h3><?=$className?> (<?=$code?>)</h3>
+                <input class="button-teacher-neg" name = "deleteGroup" value = "Supprimer le groupe de classe" type="submit">
+
+                <?php if(count($classList) != 0) :?>
+                <div>
+                    <label>Modifier le nom de la classe:</label>
+                    <input value = "<?=$className?>"name = "className"type="text">
+                    <button class="button-teacher" value="update" name = "updateName"type = "submit">Modifier nom</button>
+                </div>
+
                         <?php else : ?>
                         <p>PAS DE CLASSE</p>
                     <?php endif; ?>
