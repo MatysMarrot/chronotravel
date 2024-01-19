@@ -78,7 +78,7 @@ class ClassGroup{
         $res = $dao->query($query,$data);
         $query = "DELETE FROM classteacher WHERE classid = ?";
         $res = $dao->query($query,$data);
-        $query = "DELETE FROM studentclass WHERE classid = ?";
+        $query = "DELETE FROM class WHERE id = ?";
         $res = $dao->query($query,$data);
     }
 
