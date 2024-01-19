@@ -37,6 +37,7 @@ class ServerImpl implements MessageComponentInterface
     }
 
 
+    /*
     private function broadCast(WaitingRoom $room, string $data)
     {
         if (!$room) {
@@ -47,6 +48,17 @@ class ServerImpl implements MessageComponentInterface
             $this->clientIdConn[$sub]->send($data);
         }
 
+        return true;
+    }
+    */
+
+    private function broadCast(Party $party,string $data){
+
+        $players = $party->getPlayers();
+
+        foreach($players as $player){
+            $this->clientIdConn[$player->getId()]->send($data);
+        }
         return true;
     }
 
@@ -67,6 +79,8 @@ class ServerImpl implements MessageComponentInterface
         */
 
         $decoded = json_decode($msg, true);
+        $dao = DAO::get();
+        $party = Party::getPartyFromId($decoded['pid']);
 
         if (!$decoded['action']) {
             return;
@@ -74,8 +88,72 @@ class ServerImpl implements MessageComponentInterface
 
         if ($decoded['action'] == "JOIN") {
 
+            $this->clientIdConn[$decoded['cid']] = $conn;
+
+            $data =  [$decoded['pid']];
+            $query = "SELECT count(*) FROM partystudent WHERE partyid = ? ";
+            $table = $dao->query($query,$data);
 
 
+            if ($table[0][0] == 4){
+                //TODO : Envoyer un json_encode
+                $conn->send("PARTY IS FULL");
+                $conn->close();
+                return false;
+            }
+
+            // Insertion de l'élève dans la party
+            $party->insertPlayer($decoded['cid']);
+
+            //On trouve les autres joueurs de la room
+            $players = $party->getPlayers();
+
+            foreach ($players as $player) {
+                $student = Student::readStudent($player->getId());
+                $logins[] = $student->getLogin();
+            }
+
+            $data = [
+                "action" => "playerJoin",
+                "names" => $logins,
+            ];
+
+            $this->broadCast($party, json_encode($data));
+        }
+        elseif($decoded['action'] == "START"){
+
+            if($party->getOwnerId() != $decoded['cid']){
+                return;
+            }
+
+            $data = [
+                "action" => "start",
+            ];
+
+            $this->broadCast($party, json_encode($data));
+
+            foreach ($party->getPlayers() as $player){
+                $this->clientIdConn[$player->getId()]->close();
+                $this->clients->detach($this->clientIdConn[$player->getId()]);
+                unset($this->clientIdConn[$player->getId()]);
+
+                // CHANGEMENT DU STATUS DE LA PARTY (FAIRE ATTENTION QUE C'EST BIEN DEFINI EN BD)
+                $data = [$decoded['pid']];
+                $query = "UPDATE party SET partystate = 2 WHERE id = ? ";
+                $dao->exec($query,$data);
+
+
+            }
+
+        }
+        elseif ($decoded['action'] == "LEAVE") {
+            //On leave
+            //TODO
+
+
+        }
+
+            /*
             $this->clientIdConn[$decoded['cid']] = $conn;
             $this->clientidLogin[$decoded['cid']] = $decoded['login'];
 
@@ -140,7 +218,10 @@ class ServerImpl implements MessageComponentInterface
                     unset($this->rooms[$decoded['pid']]);
                 } catch (Exception){};
             }
-        }
+            }
+            */
+
+
     }
 
     public function onClose(ConnectionInterface $conn)

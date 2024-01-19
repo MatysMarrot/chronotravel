@@ -35,7 +35,8 @@ class Student extends User {
 
     }
 
-    public static function readStudent($id) : Student{
+    // return null si pas trouvé, un objet student sinon
+    public static function readStudent($id) {
     
         $dao = DAO::get();
         $query = "SELECT * FROM Person WHERE id = ?";
@@ -43,7 +44,7 @@ class Student extends User {
         $table = $dao->query($query, $data);
 
         if (count($table) == 0) {
-            throw new Exception("Elève non trouvé id=$id");
+            return null;
         }
 
         $row = $table[0];
