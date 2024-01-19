@@ -144,6 +144,18 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
         $this->players[] = Student::readStudent($cid);
     }
 
+    public function removePlayer($cid){
+        $dao = DAO::get();
+        $data = [$cid];
+        $query = "DELETE FROM partystudent WHERE studentid = ?";
+        $dao->exec($query,$data);
+        foreach ($this->players as $key => $player){
+            if($player->getId() == $cid){
+                unset($this->players[$key]);
+            }
+        }
+    }
+
     //return null si pas de party, un objet party sinon
     public static function getPartyFromId($id){
         $dao = DAO::get();
