@@ -6,11 +6,12 @@
       <link rel="stylesheet" type="text/css" href="../view/style/style.css">    
     </head>
 
-    <body>  
-        <!--Header --> 
-        <?php include(__DIR__.'/header.student.viewpart.php'); ?>
+    <body>
+        <?php $currentPage = 'manage';
+        include(__DIR__.'/header.teacher.viewpart.php'); ?>
 
-        <main>
+
+    <main>
             <h2>Gestion des élèves</h2>
 
 
