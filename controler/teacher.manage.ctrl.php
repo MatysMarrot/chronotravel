@@ -33,6 +33,12 @@ elseif(!isset($_POST["stats"])){
 
     $classList = ClassGroup::getClassGroupsFromTeacher($teacher);
 
+    if(isset($_POST['deleteGroup'])){
+        $currentClass->delete();
+        $classList = ClassGroup::getClassGroupsFromTeacher($teacher);
+        $currentClass = null;
+    }
+
     if(count($classList) == 0){
         $students = [];
         $className = "Pas de classe pour le moment ! ";

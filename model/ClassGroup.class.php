@@ -71,6 +71,17 @@ class ClassGroup{
         $res = $dao->exec($query,$data);
     }
 
+    public function delete(){
+        $dao = DAO::get();
+        $data = [$this->id];
+        $query = "DELETE FROM studentclass WHERE classid = ?";
+        $res = $dao->exec($query,$data);
+        $query = "DELETE FROM classteacher WHERE classid = ?";
+        $res = $dao->exec($query,$data);
+        $query = "DELETE FROM class WHERE id = ?";
+        $res = $dao->exec($query,$data);
+    }
+
 
     // AJOUTE UN STUDENT DANS LA DB
     public function insertStudent(Student $student){

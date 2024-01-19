@@ -18,14 +18,16 @@
             <form action="../controler/teacher.manage.ctrl.php" method = "post">
                 <input class="button2" name = "create" value = "Créer un nouveau groupe de classe" type="submit">
                 <h3><?=$className?></h3>
+                <?php if(count($classList) != 0) :?>
                 <div>
                     <input value = "<?=$className?>"name = "className"type="text">
                     <button class="button-teacher" value="update" name = "updateName"type = "submit">Modifier nom</button>
                 </div>
 
                 <h3><?=$code?></h3>
-                <select name="currentClass" id="classe-select">
-                    <?php if(count($classList) != 0) :?>
+
+                    <input class="button2" name = "deleteGroup" value = "Supprimer le groupe de classe" type="submit">
+                    <select name="currentClass" id="classe-select">
                         <?php foreach($classList as $class) :?>
                             <?php if($class->getId() == $currentClass->getId()) : ?>
                                 <option value= '<?= $class->getId() ?>' selected><?= $class->getName() ?></option>
@@ -33,12 +35,12 @@
                                 <option value= '<?= $class->getId() ?>'><?= $class->getName() ?></option>
                             <?php endif;?>
                         <?php endforeach;?>
-
-                    <?php else : ?>
-                        <option value= '-1'>PAS DE CLASSE</option>
+                    </select>
+                    <input class="button-teacher" type="submit" value = "Choisir classe">
+                        <?php else : ?>
+                        <p>PAS DE CLASSE</p>
                     <?php endif; ?>
-                </select>
-                <input class="button-teacher" type="submit" value = "Choisir classe">
+
 
                 <!--Tableau contenant les élèves de la classe sélectionner dans le selecte ci-dessus -->
                 <?php if(count($students) == 0) :?>
