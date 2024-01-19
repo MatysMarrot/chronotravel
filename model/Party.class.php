@@ -13,13 +13,11 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
 
     private int $partyid;
     private int $ownerid;
-    private bool $ingame = FALSE; // bool permettant de savoir si le jeu est en cours
-    private array $studentPosition; //Sous la forme Student1 => Case1, Student2 => Case2 etc ...
     private array $players; // liste des élèves
     private string $code; // code de la game
     private int $id; // laisser la BD gérer
-    private Era $era; // thème du plateau courant
-    private PartyState $partyState;
+    private $era; // thème du plateau courant
+    private int $partyState;
     private array $questions;
     private PartyImpl $partyRoom;
 
@@ -27,7 +25,6 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
     public function __construct(int $ownerid){
         $this->players = array();
         $this->ownerid = $ownerid;
-        $this->partyState = PartyState::WAITING_FOR_ANSWER;
         $this->questions = array();
         $this->partyRoom = new PartyImpl();
     }
@@ -52,7 +49,7 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
         $table = $dao->query($query, $data);
 
         $data = [$this->ownerid];
-        $query = "INSERT INTO party (creatorid) VALUES (?)";
+        $query = "INSERT INTO party (creatorid,partystate) VALUES (?,1)";
         $dao = DAO::get();
         $dao->query($query,$data);
         $this->id = $dao->lastInsertId();
@@ -132,6 +129,33 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
     public function getPartyRoom(): PartyImpl
     {
         return $this->partyRoom;
+    }
+
+    //return null si pas de party, un objet party sinon
+    public static function getPartyFromId($id){
+        $dao = DAO::get();
+        $data = [$id];
+        $query = "SELECT id,partystate,theme,creatorid,code FROM party,partycode WHERE id = ? AND partyid = id";
+        $table = $dao->query($query,$data);
+
+        if(count($table) == 0){
+            return null;
+        }
+
+        $party = new Party($table[0]['creatorid']);
+        $party->id = $table[0]['id'];
+        $party->partyState = $table[0]['partystate'];
+        $party->code = $table[0]['code'];
+        $party->era = $table[0]['theme'];
+
+        $query = "SELECT studentid from partystudent WHERE partyid = ?";
+        $table = $dao->query($query,$data);
+
+        foreach($table as $row){
+            $party->players[] = Student::readStudent($row['studentid']);
+        }
+
+        return $party;
     }
 
 

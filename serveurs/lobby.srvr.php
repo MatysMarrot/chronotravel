@@ -76,6 +76,9 @@ class ServerImpl implements MessageComponentInterface
         }
 
         if ($decoded['action'] == "JOIN") {
+
+
+
             $this->clientIdConn[$decoded['cid']] = $conn;
             $this->clientidLogin[$decoded['cid']] = $decoded['login'];
 
