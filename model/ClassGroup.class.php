@@ -75,11 +75,11 @@ class ClassGroup{
         $dao = DAO::get();
         $data = [$this->id];
         $query = "DELETE FROM studentclass WHERE classid = ?";
-        $res = $dao->query($query,$data);
+        $res = $dao->exec($query,$data);
         $query = "DELETE FROM classteacher WHERE classid = ?";
-        $res = $dao->query($query,$data);
+        $res = $dao->exec($query,$data);
         $query = "DELETE FROM class WHERE id = ?";
-        $res = $dao->query($query,$data);
+        $res = $dao->exec($query,$data);
     }
 
 
