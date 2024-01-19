@@ -32,8 +32,14 @@
 
             <div class="button-container">
                 <button class="button2" onclick="leave()">QUITTER</button> <!-- Retourne à la page d'accueil et supprimer la partie créer -->
-                <button class="button2">LANCER</button>
-            </div>
+                <?php if($isOwner) : ?>
+                <button class="button2" onclick="start()">LANCER</button>
+                </div>
+                <?php else : ?>
+                    </div>
+                <p>En attente du créateur du groupe</p>
+                <?php endif;?>
+
         </main>
 
         <!--Footer -->

@@ -108,10 +108,35 @@ class ServerImpl implements MessageComponentInterface
 
             $this->broadCast($room, json_encode($data));
         }
-
-        if ($decoded['action'] == "LEAVE") {
+        else if ($decoded['action'] == "LEAVE") {
             //On leave
+            //TODO
             $this->rooms[$decoded['pid']]->removeSubscriber($decoded['cid']);
+        }
+
+        else if ($decoded['action'] == "START") {
+            //On leave
+            $room = $this->rooms[$decoded['pid']];
+            if ($room->getOwner() != $decoded['cid']){
+                return;
+            }
+
+            $data = [
+                "action" => "start",
+            ];
+
+            $this->broadCast($room, json_encode($data));
+            echo sprintf("Room %d was started by %d\n", $decoded['pid'], $decoded['cid']);
+            foreach ($room->getSubscribers() as $sub){
+                try {
+                    var_dump($this->clientIdConn.key());
+                    $this->clientIdConn[$sub]->close();
+                    $this->clients->detach($this->clientIdConn[$sub]);
+                    unset($this->clientidLogin[$sub]);
+                    unset($this->clientIdConn[$sub]);
+                    unset($this->rooms[$decoded['pid']]);
+                } catch (Exception){};
+            }
         }
     }
 
