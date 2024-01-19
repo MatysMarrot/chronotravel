@@ -90,7 +90,7 @@ class ServerImpl implements MessageComponentInterface
         }
 
         if ($decoded['action'] == "JOIN") {
-
+            echo sprintf("%d has joined party %d\n", $decoded['cid'],$decoded['pid']);
             $this->clientIdConn[$decoded['cid']] = $conn;
 
             $data =  [$decoded['pid']];
