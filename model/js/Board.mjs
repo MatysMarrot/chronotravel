@@ -14,8 +14,8 @@ export class Board {
 
     showCanvas() {
         this.canva.style.display = "block";
-        resizeCanvas();
-        drawCanvas();
+        this.resizeCanvas();
+        this.drawCanvas();
     }
 
     hideCanvas() {
@@ -44,21 +44,21 @@ export class Board {
 
         for (let i = 0; i < LINES; i++) {
             for (let j = 0; j < CELLS_PER_LINE; j++) {
-                drawCell(ctx, j, i, true);
+                this.drawCell(ctx, j, i, true);
             }
         }
 
         for (let i = 1; i < LINES; i += 2) {
-            drawCell(ctx, 0, i, true);
-            drawCell(ctx, 1, i, true);
+            this.drawCell(ctx, 0, i, true);
+            this.drawCell(ctx, 1, i, true);
         }
 
         for (let i = 2; i < CELLS_PER_LINE; i++) {
-            drawCell(ctx, i, 1, true);
+            this.drawCell(ctx, i, 1, true);
         }
 
         for (let i = 2; i < CELLS_PER_LINE - 1; i++) {
-            drawCell(ctx, i, 3, true);
+            this.drawCell(ctx, i, 3, true);
         }
     }
 

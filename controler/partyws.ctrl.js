@@ -1,5 +1,3 @@
-import * as boardControler from "./boardControler.mjs";
-import {hideCanvas} from "./boardControler.mjs";
 import {Party} from "../model/js/Party.mjs";
 
 // Créer une connexion WebSocket
@@ -42,8 +40,7 @@ socket.addEventListener("close", function (event) {
 
 socket.addEventListener("error", function (event) {
     console.log("Erreur: ", event.data);
-
-
+    partie.drawPlayerPosition();
     //hideCanvas()
 });
 
