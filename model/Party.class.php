@@ -24,8 +24,7 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
     private PartyImpl $partyRoom;
 
 
-    public function __construct(int $partyid,int $ownerid){
-        $this->id = $partyid;
+    public function __construct(int $ownerid){
         $this->players = array();
         $this->ownerid = $ownerid;
         $this->partyState = PartyState::WAITING_FOR_ANSWER;
