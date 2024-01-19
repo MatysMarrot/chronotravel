@@ -59,6 +59,15 @@ class PartyImpl implements MessageComponentInterface{
     {
         // TODO: Implement onMessage() method.
     }
+    public function broadcast(array $subscribers, string $data)
+    {
+
+        foreach ($subscribers as $subscriber){
+            $this->clientIdConn[$subscriber]->send($data);
+        }
+
+        return true;
+    }
 }
 
 
