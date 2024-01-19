@@ -7,7 +7,9 @@ const session_loc = fetch("../serveurs/retreiveSession.php", {
         "Content-type": "application/json; charset=UTF-8"
     }
 }).then(reponse => {return reponse.json()}).valueOf();
-const socket = new WebSocket("ws://192.168.14.112:1312"); // Créer une connexion WebSocket
+
+const socket = new WebSocket("ws://192.168.14.112:1313");// Créer une connexion WebSocket
+
 
 //Emplacements des pseudo pour changer le nom
 const pseudoEmplacements = [document.getElementById("player1"),
