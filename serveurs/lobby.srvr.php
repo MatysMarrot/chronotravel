@@ -1,6 +1,8 @@
 <?php require __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../model/DAO.class.php';
 require_once __DIR__ . '/../model/Waitingroom.class.php';
+require_once __DIR__ . '/../model/Student.class.php';
+require_once __DIR__ . '/../model/Party.class.php';
 
 /**
  * Serveur de salle d'attente:
@@ -106,7 +108,9 @@ class ServerImpl implements MessageComponentInterface
             }
 
             // Insertion de l'élève dans la party
-            $party->insertPlayer($decoded['cid']);
+            if($party->getOwnerId() != $decoded['cid'] ){
+                $party->insertPlayer($decoded['cid']);
+            }
 
             //On trouve les autres joueurs de la room
             $players = $party->getPlayers();
@@ -283,5 +287,16 @@ class ServerImpl implements MessageComponentInterface
         return self::$instance;
     }
 }
+
+$server = IoServer::factory(
+    new HttpServer(
+        new WsServer(
+            new ServerImpl()
+        )
+    ),
+    APP_PORT
+);
+echo "Server created on port " . APP_PORT . "\n\n";
+$server->run();
 
 ?>

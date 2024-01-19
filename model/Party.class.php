@@ -55,6 +55,8 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
         $data[] = $this->id;
         $query = "INSERT INTO partystudent (studentid,partyid) VALUES (?,?)";
         $dao->exec($query,$data);
+        $student = Student::readStudent($this->ownerid);
+        $this->players[] = $student;
 
         $data = [$this->id,$roomCode];
         $query = "INSERT INTO partycode (partyid,code) VALUES (?,?)";
@@ -62,7 +64,6 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
 
         $_SESSION['roomCode'] = $roomCode;
         $_SESSION['partyId'] = $this->id;
-
 
     }
 
