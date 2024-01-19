@@ -1,81 +1,23 @@
 import AbstractMinijeu from "../model/js/AbstractMinijeu.mjs";
+import "../model/js/Question.mjs";
+import {Question} from "../model/js/Question.mjs";
 
 class QuizController extends AbstractMinijeu {
     constructor() {
         super();
 
-        // récupère les labels et la question
-        const labels = document.querySelectorAll(".answer label");
-        const question = document.querySelector("#question h3").innerText;
-
-        // affiche la question dans la console
-        console.log(question);
-
-        //affiche chaque réponse dans la console (boucle qui parcours tous les label)
-        labels.forEach(function(label) {
-            console.log(label.innerText);
-        });
-
-
-
-
-
-
-
-
-
         document.addEventListener("DOMContentLoaded", function() {
-            // Récupère les labels et la question
+            // récupère les labels et la question
             const labels = document.querySelectorAll(".answer label");
             const question = document.querySelector("#question h3").innerText;
 
-            // Affiche la question dans la console
+            // affiche la question dans la console
             console.log(question);
 
-            // Affiche chaque réponse dans la console (boucle qui parcourt tous les labels)
+            //affiche chaque réponse dans la console (boucle qui parcours tous les label)
             labels.forEach(function(label) {
                 console.log(label.innerText);
             });
-
-
-
-
-
-
-            // Ajoute le bouton et le gestionnaire d'événements
-            var revealButton = document.getElementById("revealButton");
-            var qcmContainer = document.getElementById("qcm");
-
-            revealButton.addEventListener("click", function() {
-                var hiddenElements = document.querySelectorAll("#question, #answerTable, #selectedAnswerDisplay, header");
-                hiddenElements.forEach(function(element) {
-                    element.style.display = "block";
-                });
-
-                // Révèle le background-image en ajustant l'opacité
-                qcmContainer.style.opacity = 1;
-
-                revealButton.style.display = "none";
-            });
-
-            hideButton.addEventListener("click", function() {
-                var hiddenElements = document.querySelectorAll("#question, #answerTable, #selectedAnswerDisplay, header");
-                hiddenElements.forEach(function(element) {
-                    element.style.display = "none";
-                });
-
-                // réinitialise l'opacité et affiche le bouton "Révéler les éléments"
-                qcmContainer.classList.remove("revealed");
-                revealButton.style.display = "block";
-                qcmContainer.style.opacity = 0;
-            });
-
-
-
-
-
-
-
 
 
 
@@ -99,8 +41,40 @@ class QuizController extends AbstractMinijeu {
                     selectedAnswerText.innerText = selectedAnswer;
                 });
             });
-        });
 
+
+
+            var revealButton = document.getElementById("revealButton");
+            var hideButton = document.getElementById("hideButton");
+            var qcmContainer = document.getElementById("qcm");
+            var radioButtons = document.querySelectorAll('input[type="radio"]');
+            var selectedAnswersArray = [];
+
+            revealButton.addEventListener("click", function() {
+                // revèle le qcm
+                qcmContainer.style.display = "block";
+                revealButton.style.display = "none";
+            });
+
+            hideButton.addEventListener("click", function() {
+                // cache le qcm
+                qcmContainer.style.display = "none";
+                revealButton.style.display = "block";
+
+                // décoche le bouton radio qui est coché
+                radioButtons.forEach(function(radioButton) {
+                    if (radioButton.checked === true) {
+                        //console.log(radioButton);
+                        // TODO: à faire dans la classe Question.mjs pour la méthode isRightAnswer selectedAnswersArray.push(Question.isRightAnswer(selectedAnswerText));
+                        var cell = radioButton.closest('.answer'); // .closest c'est le plus proche père qui est de classe .answer
+                        cell.style.backgroundColor = "#0059FF";
+                        radioButton.checked = false;
+                    }
+                });
+                // réinitialise le texte de la réponse sélectionnée
+                selectedAnswerText.innerText = "";
+            });
+        });
     }
 }
 

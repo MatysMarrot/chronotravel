@@ -10,7 +10,6 @@
         #qcm {
             background-image: url('<?php echo $backgroundImage; ?>');
         }
-
     </style>
 </head>
 <body>
@@ -50,9 +49,10 @@
 
         <button id="hideButton">Cacher les éléments</button>
 
-        <script type="module" src="../controler/quiz.ctrl.js"></script>
     </div>
     <button id="revealButton">Révéler les éléments</button>
+
+    <script type="module" src="../controler/quiz.ctrl.js"></script>
 </body>
 
 </html>
