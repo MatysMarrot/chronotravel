@@ -54,12 +54,15 @@ class Party{
         $data[] = $this->id;
         $query = "INSERT INTO partystudent (studentid,partyid) VALUES (?,?)";
         $dao->exec($query,$data);
+        $student = Student::readStudent($this->ownerid);
+        $this->players[] = $student;
 
         $data = [$this->id,$roomCode];
         $query = "INSERT INTO partycode (partyid,code) VALUES (?,?)";
         $dao->exec($query,$data);
 
         $_SESSION['roomCode'] = $roomCode;
+        $_SESSION['partyId'] = $this->id;
 
     }
 
