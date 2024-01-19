@@ -1,0 +1,25 @@
+{
+  "partyid":  0,
+  "cid": 0,
+  "questions": [
+    {
+      "id": 1,
+      "content": "QUESTION 1",
+      "reponses": [
+        {
+          "id" : 1,
+          "quesitonId": 1,
+          "content": "LA REPONSES A",
+          "right": true
+        },
+        {
+          "id" : 2,
+          "quesitonId": 1,
+          "content": "LA REPONSES B",
+          "right": false
+        }
+
+      ]
+    }
+  ]
+}
