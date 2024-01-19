@@ -1,0 +1,44 @@
+<?php
+
+require_once(__DIR__ . '/Packet.abstract.php');
+
+
+
+class VictoryPacket extends Packet {
+
+    private array $players;
+    private $data;
+
+    public function __construct(int $pid, array $players)
+    {
+        parent::__construct(-1,$pid);
+        $this->players = $players;
+    }
+
+    public function handle()
+    {
+        // TODO: Implement handle() method.
+    }
+
+    public function stringify() : string
+    {
+        $this->data = [
+            "partyid" => self::getPartyid(),
+            "players" => [
+            ]
+
+        ];
+
+        foreach ($this->players as $p){
+            if ($p->getPosition() >= 31){
+                $this->data['players'][] = [
+                    "id" => $p->getId(),
+                    "winner" => true
+                ];
+            }
+        }
+
+        return json_encode($this->data);
+    }
+}
+?>
