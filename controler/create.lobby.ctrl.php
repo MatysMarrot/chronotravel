@@ -13,8 +13,7 @@ if(!isset($_SESSION['id']) || $_SESSION['roleid'] != 1){
 }
 
 else{
-    $dao = DAO::get();
-    $query = "SELECT id FROM PARTY where creatorId = ?";
+    $party = new Party($_SESSION['id']);
 
     $table = $dao->query($query, [$_SESSION['id']]);
 
