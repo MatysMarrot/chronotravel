@@ -8,6 +8,7 @@ session_start();
 if(!isset($_SESSION['id']) || $_SESSION['roleid'] != 1){
     include(__DIR__ . "/../controler/landing.ctrl.php");
 }
+
 else{
     $party = new Party($_SESSION['id']);
     $party->create();
