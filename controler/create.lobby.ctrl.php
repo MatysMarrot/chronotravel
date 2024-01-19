@@ -10,7 +10,6 @@ if(!isset($_SESSION['id']) || $_SESSION['roleid'] != 1){
 }
 else{
     $party = new Party($_SESSION['id']);
-
     $party->create();
     include(__DIR__ . "/../controler/student.lobby.ctrl.php");
 
