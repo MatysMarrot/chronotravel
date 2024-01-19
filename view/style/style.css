@@ -197,13 +197,13 @@ text-align: justify;
   justify-content: space-around;
   margin-top: 10px;
 }
-.button-container a {
+.button-container a, .button-container button {
   background-color: var(--color-negativ);
   transition: all .7s;
   margin: 0px;
   width: 30%;
 }
-.button-container a:hover {
+.button-container a:hover, .button-container button:hover {
   background-color: rgb(139, 16, 16);
   transition: all .7s;
 }
@@ -414,19 +414,59 @@ th[scope='col'] {
 .checkroom section:first-child {
   width: 50%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
-.checkroom section:last-child  {
+.checkroom .chooseSkin, .checkroom .buyView {
   width: 50%;
   padding: 15px;
   border: 10px ridge #e49144;
 }
-.checkroom section:last-child .chooseSkin {
+.buyView {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.buyView img {
+  height: 40%;
+  width: 40%;
+}
+.buyView div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+  margin: 10px;
+}
+.buyView div em{
+   color: #e5af44;
+  font-style: normal;
+ }
+.buyView div img{
+  height: 5%;
+  width: 5%;
+}
+.buyView form {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.buyView form button {
+  width: 30%;
+  font-size: 1.1em;
+  font-weight: bold;
+  border-radius: 10%;
+}
+.checkroom .chooseSkin form{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-.checkroom section:last-child .unlockedSkin, .checkroom section:last-child .lockedSkin{
+.checkroom .chooseSkin .unlockedSkin, .checkroom .chooseSkin .lockedSkin{
   width: 150px;
   height: 150px;
   display: flex;
@@ -436,7 +476,7 @@ th[scope='col'] {
   border-radius: 5%;
   margin: 10px;
 }
-.checkroom section:last-child input {
+.checkroom .chooseSkin button {
   width: 150px;
   height: 150px;
   border: none;
@@ -446,6 +486,10 @@ th[scope='col'] {
   cursor: pointer;
   background-size: cover;
   background-position: center;
+}
+.checkroom .chooseSkin img {
+  max-width: 100%;
+  max-height: 100%;
 }
 .lockedSkin {
   position: relative;
@@ -465,7 +509,7 @@ th[scope='col'] {
   filter: grayscale(40%);
   pointer-events: none;
 }
-.lockedSkin input {
+.lockedSkin button {
   z-index: 0;
   filter: grayscale(40%);
 }
@@ -493,32 +537,56 @@ th[scope='col'] {
   height: 25%;
 }
 /* Affichage des skin */
-.div_skin{
+.div_skin {
   position: relative;
   margin-top: 75px;
+  height: fit-content;
+  width: fit-content;
 }
+
+
+#skin {
+  width: 100%;
+  height: 100%;
+}
+
+
 #shoes, #border, #shirt, #top, #hair, #pants{
   position: absolute;
 }
+
 #shoes{
-  top: 412px;
-  left: 149px;
+  top: 82.4%;
+  left: 29.8%;
+  width: 40%;
+  height: 17.6%;
 }
 #shirt{
-  top: 188px;
-  left: 150px;
+  top: 37.6%;
+  left: 30%;
+  width: 40%;
+  height: 40%;
 }
+
 #top{
-  top: -131px;
-  left: 123px;
+  top: -26.2%;
+  left: 24.6%;
+  width: 50%;
+  height: 50%;
 }
+
 #hair{
   top: 0;
-  left: 101px;
+  left: 20%;
+  width: 60%;
+  height: 60%;
 }
+
 #pants{
-  top: 302px;
-  left: 149px;
+  top: 60.4%;
+  left: 29.8%;
+  width: 40%;
+  height: 40%;
 }
 
 /* Footer */

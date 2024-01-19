@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '/DAO.class.php');
+require_once(__DIR__ . '/Student.class.php');
 class SkinObject {
     private int $skinId;
     private string $name;
@@ -201,6 +202,15 @@ class SkinObject {
             $currentSkin[$index] = $this;
         }
         return $currentSkin;
+    }
+    public function isBuyBy(Student $student) {
+        $dao = DAO::get();
+        $query = "INSERT INTO playerskin VALUES (?,?)";
+        $data = [$student->getId(), $this->getSkinId()];
+        $dao->exec($query, $data);
+        $query = "UPDATE person SET currency=? WHERE id=?";
+        $data = [$student->getCurrency()-$this->getPrice(), $student->getId()];
+        $dao->exec($query, $data);
     }
 
 }

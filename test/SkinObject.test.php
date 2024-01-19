@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '/../model/SkinObject.class.php');
+require_once(__DIR__ . '/../model/Student.class.php');
 
 
 //var_dump(SkinObject::getAllSkinObjects());
@@ -24,8 +25,12 @@ $skin3 = new SkinObject(3, "Couronne", "1200", "crown.png", 1);
 //$currentSkin = [$skin3, null, null, $skin1, null];
 //$skin2->previewSkin($currentSkin);
 
-$currentSkin = [null, $skin2, null, $skin1, null];
+//$currentSkin = [null, $skin2, null, $skin1, null];
 $skin4 = new SkinObject(3, "Couronne", 1200, "crown.png", 1);
-$skin4->previewSkin($currentSkin);
-var_dump($currentSkin);
+//$skin4->previewSkin($currentSkin);
+//var_dump($currentSkin);
+
+$student = Student::readStudent(109);
+$skin4->isBuyBy($student);
+
 ?>

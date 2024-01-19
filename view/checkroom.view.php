@@ -14,6 +14,9 @@
     ?>
     <main class="checkroom"> 
         <section>
+            <?php if($buyView): ?>
+            <h3>Prévisualisation</h3>
+            <?php endif; ?>
             <div class="div_skin">
                 <img id="skin" src="<?=$emplacementSkin?>skintest.png" alt="personnage">
                 <?php if($currentSkin[2] != null):?>
@@ -34,40 +37,47 @@
                 <!--<h3 id="pseudo">PSEUDO</h3>-->
             </div>
         </section>
-        <section>
-            <?php if($buyView): ?>
-                <img src="<?=$emplacementSkin.$skin->getLocation()?>">
-                <p>Souhaitez-vous achetez ce cosmétique pour <?=$skin->getPrice()?> Chronocoins ?</p>
-                <p>Vous possédez XXX Chronocoins.</p>
-                <form>
-                    <div>
-                        <label>Quitter</label>
-                        <input type="submit" name="action" value="leave">
-                    </div>
-                    <div>
-                        <label>Acheter</label>
-                        <input type="submit" name="action" value="buy">
-                    </div>
-                </form>
-            <?php else: ?>
-                <form action="../controler/checkroom.ctrl.php" method="post" class="chooseSkin">
-                    <?php foreach ($possessedSkin as $skin) : ?>
-                        <div class="unlockedSkin">
-                            <input type="submit" style="background-image: url('../view/skin/<?=$skin->getLocation()?>');" name="skin" value="<?=$skin->getSkinId()?>">
-                        </div>
-                    <?php endforeach; ?>
-                    <?php foreach ($unpossessedSkin as $skin) : ?>
-                        <div class="lockedSkin">
-                            <input type="submit" style="background-image: url('../view/skin/<?=$skin->getLocation()?>');" name="skin" value="<?=$skin->getSkinId()?>">
-                            <div class="price">
-                                <span><?=$skin->getPrice()?></span>
-                                <img src="../view/img/chrono_coin.png" alt="Chronocoin">
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </form>
-            <?php endif; ?>
+        <?php if($buyView): ?>
+        <section class="buyView">
+            <h3><?=$selectedSkin->getFrenchSkinPart()?> : <?=$selectedSkin->getName()?></h3>
+            <img src="<?=$emplacementSkin.$selectedSkin->getLocation()?>">
+            <div>
+                <span>Souhaitez-vous acheter ce cosmétique pour <em><?=$selectedSkin->getPrice()?></em></span>
+                <img src="../view/img/chrono_coin.png" alt="Chronocoin">
+                <span> ?</span>
+            </div>
+            <div>
+                <span>Vous possédez <em><?=$student->getCurrency()?></em></span>
+                <img src="../view/img/chrono_coin.png" alt="Chronocoin">
+                <span>.</span>
+            </div>
+            <form action="../controler/checkroom.ctrl.php" method="post" class="button-container">
+                <button type="submit" name="leave" value="<?=$selectedSkin->getSkinId()?>">ANNULER</button>
+                <button type="submit" name="buy" value="<?=$selectedSkin->getSkinId()?>">ACHETER</button>
+            </form>
         </section>
+        <?php else: ?>
+        <section class="chooseSkin">
+            <form action="../controler/checkroom.ctrl.php" method="post">
+                <?php foreach ($possessedSkin as $skin) : ?>
+                    <div class="unlockedSkin">
+                        <button type="submit" name="skin" value="<?=$skin->getSkinId()?>""><img src="../view/skin/<?=$skin->getLocation()?>"></button>
+                        <!--<input type="submit" style="background-image: url('../view/skin/<?=$skin->getLocation()?>');" name="skin" value="<?=$skin->getSkinId()?>">-->
+                    </div>
+                <?php endforeach; ?>
+                <?php foreach ($unpossessedSkin as $skin) : ?>
+                    <div class="lockedSkin">
+                        <button type="submit" name="skin" value="<?=$skin->getSkinId()?>""><img src="../view/skin/<?=$skin->getLocation()?>"></button>
+                        <!--<input type="submit" style="background-image: url('../view/skin/<?=$skin->getLocation()?>');" name="skin" value="<?=$skin->getSkinId()?>">-->
+                        <div class="price">
+                            <span><?=$skin->getPrice()?></span>
+                            <img src="../view/img/chrono_coin.png" alt="Chronocoin">
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </form>
+        </section>
+        <?php endif; ?>
     </main>
     <?php include(__DIR__.'/footer.viewpart.html'); ?> 
     </body>

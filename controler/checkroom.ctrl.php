@@ -2,6 +2,7 @@
 
 include_once(__DIR__."/../framework/view.class.php");
 include_once(__DIR__ . "/../model/SkinObject.class.php");
+include_once(__DIR__ . "/../model/Student.class.php");
 
 $view = new View();
 $outgoing = "../view/checkroom.view.php";
@@ -16,6 +17,12 @@ if(!isset($_SESSION["id"])) {
     $buyView = false;
     // Récupère l'id du joueur
     $playerId = $_SESSION["id"];
+    $student = Student::readStudent($playerId);
+    if(isset($_POST["buy"])) {
+        $idSkinToBuy = $_POST["buy"];
+        $skinToBuy = SkinObject::getSkin($idSkinToBuy);
+        $skinToBuy->isBuyBy($student);
+    }
     // Récupère le cosmétique selectionné
     $selectedSkinId = $_POST["skin"] ?? 0;
     if($selectedSkinId != 0) { // cela vérifie que le joueur à bien cliquer sur un cosmétique
@@ -41,6 +48,7 @@ if(!isset($_SESSION["id"])) {
         // Récupère du skin du joueur
         $currentSkin = SkinObject::getCurrentSkinOfPlayer($playerId);
     }
+    $view->assign("student", $student);
     $view->assign("selectedSkin", $selectedSkin);
     $view->assign("buyView", $buyView);
     $view->assign("possessedSkin", $possessedSkin);
