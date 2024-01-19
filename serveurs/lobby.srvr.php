@@ -83,8 +83,15 @@ class ServerImpl implements MessageComponentInterface
             }
 
             //TODO : VERIFIER LA TAILLE DE LA SALLE POUR LIMTER A 4
-
+            //TODO : Envoyer un json_encode
             //On ajoute le client a la room
+            if ($this->rooms[$decoded['pid']].size() == 4){
+                $conn->send("PARTY IS FULL");
+                $conn->close();
+                return false;
+            }
+
+
             $room = $this->rooms[$decoded['pid']];
             $room->addSubscriber($decoded['cid']);
 
