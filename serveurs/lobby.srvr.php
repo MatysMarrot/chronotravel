@@ -153,6 +153,21 @@ class ServerImpl implements MessageComponentInterface
         elseif ($decoded['action'] == "LEAVE") {
             //On leave
             //TODO
+            echo sprintf("%d is leaving party %d\n", $decoded['cid'],$decoded['pid']);
+            $party->removePlayer($decoded['cid']);
+            /*
+            foreach ($party->getPlayers() as $player){
+                $logins[] = $player->getLogin();
+            }
+            */
+            $data = [
+                "action" => "playerLeave",
+                "name" => $decoded['login'],
+            ];
+
+            echo sprintf("Packet envoyé %s par %s\n",$data['name'],$data['action']);
+
+            $this->broadCast($party,json_encode($data));
 
 
         }
