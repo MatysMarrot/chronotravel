@@ -11,7 +11,12 @@ $dao = DAO::get();
 $data = [$_SESSION['roomCode']];
 $query = "SELECT creatorid FROM party p, partycode c WHERE code = ? AND partyid = id ";
 $table = $dao->query($query,$data);
-$isOwner =$table[0][0] == $_SESSION['id'] ?? false;
-$view->assign("isOwner", $isOwner);
+if($table[0][0] == $_SESSION['id']){
+    $isOwner = true;
+}
+else{
+    $isOwner = false;
+}
+$view->assign("isOwner",$isOwner);
 $view->display("../view/waitroom.view.php");
 

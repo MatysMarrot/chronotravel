@@ -19,29 +19,8 @@ const pseudoEmplacements = [document.getElementById("player1"),
 ];
 
 function leave(){
-    session_loc.then(function(session){
-        let clientId = session.id;
-        let partyId = session.partyId;
-        let login = session.login;
-
-        if (partyId == null || clientId == null){
-            socket.close(0, "Unable to find pid or cid !");
-            console.log("Unable to find pid or cid !");
-            window.location("./waitroom.ctrl.php");
-        }
-
-        data = {
-            cid: clientId,
-            pid: partyId,
-            login: login,
-            action: "LEAVE",
-        }
-
-        socket.send(JSON.stringify(data));
-
-        socket.close();
-        window.location.href = "./home.ctrl.php";
-    });
+    socket.close();
+    window.location.href = "./home.ctrl.php";
 }
 
 function start(){
@@ -128,21 +107,6 @@ socket.addEventListener("message", function (event) {
             break;
         case "start":
             window.location.href = "../controler/board.ctrl.php";
-            break;
-        case "playerLeave":
-            console.log(data);
-            const playerNameToRemove = data.name;
-
-            for(let i = 0; i < pseudoEmplacements.length;i++){
-                if(pseudoEmplacements[i].textContent === playerNameToRemove){
-                    pseudoEmplacements[i].textContent = "en attente j"+(i+1);
-                }
-            }
-            break;
-        case "ownerLeft" :
-            console.log(data);
-            window.location = "../controler/home.ctrl.php";
-            break;
     }
 });
 

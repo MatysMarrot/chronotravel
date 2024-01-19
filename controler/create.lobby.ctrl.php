@@ -14,8 +14,8 @@ if(!isset($_SESSION['id']) || $_SESSION['roleid'] != 1){
 
 else{
     $party = new Party($_SESSION['id']);
-
-    $table = $dao->query($query, [$_SESSION['id']]);
+    $party->create();
+    include(__DIR__ . "/../controler/student.lobby.ctrl.php");
 
     foreach ($table as $ligne){
         if (isset($ligne['id'])){
