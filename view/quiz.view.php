@@ -47,6 +47,8 @@
         Réponse sélectionnée : <span id="selectedAnswerText"></span>
     </div>
 
+    <button id="revealButton">Révéler les éléments</button>
+
 
     <script type="module" src="../controler/quiz.ctrl.js"></script>
 
