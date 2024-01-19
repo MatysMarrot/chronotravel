@@ -118,6 +118,24 @@ class PartyImpl implements MessageComponentInterface{
 
         }
     }
+
+    public static function get(){
+        if (self::$instance == null){
+            self::$instance = IoServer::factory(
+                new HttpServer(
+                    new WsServer(
+                        new PartyImpl()
+                    )
+                ),
+                APP_PORT
+            );
+            //TODO: Enelebver
+            echo "Server created on port " . APP_PORT . "\n\n";
+            //self::$instance->run();
+        }
+
+        return self::$instance;
+    }
     public function broadcast(array $subscribers, string $data)
     {
 
@@ -128,17 +146,6 @@ class PartyImpl implements MessageComponentInterface{
         return true;
     }
 }
-
-$server = IoServer::factory(
-    new HttpServer(
-        new WsServer(
-            new PartyImpl()
-        )
-    ),
-    APP_PORT
-);
-echo "Server created on port " . APP_PORT . "\n\n";
-$server->run();
 
 
 ?>
