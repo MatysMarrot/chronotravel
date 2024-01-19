@@ -1,3 +1,7 @@
+#question, #answerTable, #selectedAnswerDisplay {
+    display: none;
+}
+
 #qcm {
     text-align: center;
     background-size: cover;
