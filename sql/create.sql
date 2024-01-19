@@ -78,6 +78,11 @@ CREATE TABLE Party (
     date DATE DEFAULT CURRENT_DATE 
 );
 
+CREATE TABLE PartyStudent (
+    studentId INT PRIMARY KEY REFERENCES Person(id) NOT NULL,
+    partyId INT REFERENCES Party(id) NOT NULL
+);
+
 /*Table de lien etre un code de partie et une partie:
 Contrainte: Code unique contenant seulement des lettres et sans I ou O
 */

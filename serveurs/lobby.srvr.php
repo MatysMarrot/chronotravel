@@ -23,7 +23,7 @@ define('APP_PORT', 1312);
 class ServerImpl implements MessageComponentInterface
 {
     protected $clients;
-    private array $rooms = array();
+    private array $rooms;
 
     private array $clientidLogin;
     private array $clientIdConn;
@@ -73,6 +73,9 @@ class ServerImpl implements MessageComponentInterface
         }
 
         if ($decoded['action'] == "JOIN") {
+
+
+
             $this->clientIdConn[$decoded['cid']] = $conn;
             $this->clientidLogin[$decoded['cid']] = $decoded['login'];
 
