@@ -44,16 +44,30 @@ class QuizController extends AbstractMinijeu {
 
             // Ajoute le bouton et le gestionnaire d'événements
             var revealButton = document.getElementById("revealButton");
+            var qcmContainer = document.getElementById("qcm");
 
             revealButton.addEventListener("click", function() {
-                // Révèle tous les éléments cachés en modifiant leur style.display
-                var hiddenElements = document.querySelectorAll("#question, #answerTable, #selectedAnswerDisplay");
+                var hiddenElements = document.querySelectorAll("#question, #answerTable, #selectedAnswerDisplay, header");
                 hiddenElements.forEach(function(element) {
                     element.style.display = "block";
                 });
 
-                // Cache le bouton après avoir révélé les éléments
+                // Révèle le background-image en ajustant l'opacité
+                qcmContainer.style.opacity = 1;
+
                 revealButton.style.display = "none";
+            });
+
+            hideButton.addEventListener("click", function() {
+                var hiddenElements = document.querySelectorAll("#question, #answerTable, #selectedAnswerDisplay, header");
+                hiddenElements.forEach(function(element) {
+                    element.style.display = "none";
+                });
+
+                // réinitialise l'opacité et affiche le bouton "Révéler les éléments"
+                qcmContainer.classList.remove("revealed");
+                revealButton.style.display = "block";
+                qcmContainer.style.opacity = 0;
             });
 
 
