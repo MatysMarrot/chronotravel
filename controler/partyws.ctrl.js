@@ -4,9 +4,33 @@ import {retreiveSession, retrieveSessionFromDiv} from "../controler/utils/jsUtil
 
 
 // Créer une connexion WebSocket
-const socket = new WebSocket("ws://192.168.14.112:1414");
-const session = retrieveSessionFromDiv();
-let partie = null;
+const socket = new WebSocket("ws://192.168.14.112:1313");
+const json = ("{\n" +
+    "  \"partyId\": 1,\n" +
+    "  \"owner\": 0,\n" +
+    "  \"players\":[\n" +
+    "    {\n" +
+    "      \"id\": 0,\n" +
+    "      \"login\": \"J1\"\n" +
+    "    },\n" +
+    "    {\n" +
+    "      \"id\": 1,\n" +
+    "      \"login\": \"J2\"\n" +
+    "    },\n" +
+    "    {\n" +
+    "      \"id\": 2,\n" +
+    "      \"login\": \"J3\"\n" +
+    "    },\n" +
+    "    {\n" +
+    "      \"id\": 3,\n" +
+    "      \"login\": \"J4\"\n" +
+    "    }\n" +
+    "  ]\n" +
+    "}");
+
+const partie = new Party(document.getElementById("board"), JSON.parse(json), socket);
+console.log(partie);
+
 // La connexion est ouverte
 socket.addEventListener("open", function (event) {
     let packet = new PlayerJoinsPacket(session.id, session.partyId);
@@ -25,9 +49,11 @@ socket.addEventListener("close", function (event) {
 
 
 socket.addEventListener("error", function (event) {
-    if (window.confirm("Something went wrong...")) {
-        console.log("Erreur: ", event);
+    if (window.confirm("Something went wrong...")){
+        console.log("Erreur: ", event.data);
+
     }
+    partie.drawPlayerPosition();
     //hideCanvas()
 });
 
