@@ -1,0 +1,22 @@
+{
+  "partyId": 1,
+  "owner": 0,
+  "players":[
+    {
+      "id": 0,
+      "login": "J1"
+    },
+    {
+      "id": 1,
+      "login": "J2"
+    },
+    {
+      "id": 2,
+      "login": "J3"
+    },
+    {
+      "id": 3,
+      "login": "J4"
+    }
+  ]
+}

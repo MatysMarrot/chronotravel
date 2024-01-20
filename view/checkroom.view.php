@@ -1,4 +1,4 @@
-<?php $emplacementSkin = "../view/skin/"?>
+<?php $emplacementSkin = "/assets/skin/"?>
 <!DOCTYPE html>
   <html lang="fr">
     <head>
@@ -61,14 +61,12 @@
             <form action="../controler/checkroom.ctrl.php" method="post">
                 <?php foreach ($possessedSkin as $skin) : ?>
                     <div class="unlockedSkin">
-                        <button type="submit" name="skin" value="<?=$skin->getSkinId()?>""><img src="../view/skin/<?=$skin->getLocation()?>"></button>
-                        <!--<input type="submit" style="background-image: url('../view/skin/<?=$skin->getLocation()?>');" name="skin" value="<?=$skin->getSkinId()?>">-->
+                        <button type="submit" name="skin" value="<?=$skin->getSkinId()?>""><img src="<?=$emplacementSkin.$skin->getLocation()?>"></button>
                     </div>
                 <?php endforeach; ?>
                 <?php foreach ($unpossessedSkin as $skin) : ?>
                     <div class="lockedSkin">
-                        <button type="submit" name="skin" value="<?=$skin->getSkinId()?>""><img src="../view/skin/<?=$skin->getLocation()?>"></button>
-                        <!--<input type="submit" style="background-image: url('../view/skin/<?=$skin->getLocation()?>');" name="skin" value="<?=$skin->getSkinId()?>">-->
+                        <button type="submit" name="skin" value="<?=$skin->getSkinId()?>""><img src="<?=$emplacementSkin.$skin->getLocation()?>"></button>
                         <div class="price">
                             <span><?=$skin->getPrice()?></span>
                             <img src="../view/img/chrono_coin.png" alt="Chronocoin">

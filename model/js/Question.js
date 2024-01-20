@@ -5,11 +5,11 @@ class Question {
     themeid;
     answers;
 
-    constructor(id,content,themeid,answers) {
-        this.id = id;
-        this.content = content;
-        this.themeid = themeid;
-        this.answers = answers;
+    constructor(json) {
+        this.id = json.id;
+        this.content = json.content;
+        this.themeid = json.themeid;
+        this.answers = json.answers;
     }
 
 
