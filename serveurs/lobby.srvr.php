@@ -95,9 +95,32 @@ class ServerImpl implements MessageComponentInterface
             echo sprintf("%d has joined party %d\n", $decoded['cid'],$decoded['pid']);
             $this->clientIdConn[$decoded['cid']] = $conn;
 
+            $data =  [$decoded['cid'],$decoded['pid']];
+            $query = "SELECT studentid FROM partystudent WHERE studentid = ? AND partyid = ?";
+            $table = $dao->query($query,$data);
+
+            if(count($table) == 1){
+                // Il est déjà dans le groupe, on lui redonne tout les logins
+                $players = $party->getPlayers();
+                foreach ($players as $player) {
+                    $student = Student::readStudent($player->getId());
+                    $logins[] = $student->getLogin();
+                }
+                $data = [
+                    "action" => "playerJoin",
+                    "names" => $logins,
+                ];
+
+                $this->clientIdConn[$decoded['cid']]->send(json_encode($data));
+
+                return;
+
+            }
+
             $data =  [$decoded['pid']];
             $query = "SELECT count(*) FROM partystudent WHERE partyid = ? ";
             $table = $dao->query($query,$data);
+
 
 
             if ($table[0][0] == 4){
