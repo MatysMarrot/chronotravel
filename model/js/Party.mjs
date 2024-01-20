@@ -5,17 +5,12 @@ import {Tableau} from "./Tableau.mjs";
 import {Player} from "./Player.mjs";
 import {VictoryPacket} from "./packets/VictoryPacket.js";
 import {MovementPacket} from "./packets/MovementPacket.mjs";
-import {QuestionPacket} from "./packets/QuestionPacket.js";
-import {AnswerPacket} from "./packets/AnswerPacket.mjs";
-import {LeavePacket} from "./packets/LeavePacket.mjs";
-import {retrieveSessionFromDiv} from "../../controler/utils/jsUtils.mjs";
-
 export class Party{
     board;
     id;
     currentClient;
     players;
-    isOver = false;
+    over = false;
     inMiniJeux = false;
     socket;
 
@@ -38,18 +33,16 @@ export class Party{
         //console.log(json);
 
         this.board = new Tableau(board);
-        this.id = json.partyid;
-        this.currentClient = retrieveSessionFromDiv().id;
-        this.players = new Map();
-        for (let joueurs of json.players){
-            this.players.set(joueurs.id,new Player(joueurs.id,joueurs.login,0));
+        this.id = json.partyId;
+        this.owner = json.owner;
+
+        this.players = [];
+        for (const joueurs of json.players){
+            this.players[joueurs.id] = new Player(joueurs);
             //this.players.push();
         }
 
-
         this.socket = socket;
-
-        this.drawPlayerPosition();
     }
 
     get id() {
@@ -68,38 +61,72 @@ export class Party{
         return this.board;
     }
 
-    handlePacket(parsedData){
-        let packet = null;
+    handlePacket(stringedData){
+        try (let data){
+            data = JSON.parse(stringedData);
+        } catch (error){
+            throw new TypeError("Could not parse data !");
+        }
+
+        let packet;
         //On identifie le type de packet recu !
-        switch (parsedData.action) {
-            //ne doit jamais arriver
-            case "create": return;
+        switch (data.action) {
             case "victory":{
-                packet = new VictoryPacket(this, parsedData);
+                packet = new VictoryPacket(this, data);
             } break;
-
             case "movement":{
-                packet = new MovementPacket(this, parsedData);
+                packet = new MovementPacket(this, data);
             } break;
 
-            case "question":{
-                packet = new QuestionPacket(this,parsedData);
-                console.log(packet);
+            case "minigame":{
+
             } break;
-            case "leave":{
-                packet = new LeavePacket(this,parsedData);
-            }
 
         }
 
         //TODO : verifier la classe
-        if (!this.isOver && !this.inMiniJeux && packet != null) packet.handle(this);
+        if (!this.over && !this.inMiniJeux)
+        packet.handle(this);
     }
 
     updatePlayerPosition(playersMovement){
         for (let p of playersMovement){
             //On cherche le joueur associé
             let playerObject = this.players[p.key];
+
+            //Si on ne le trouve pas on passe au suivant
+            if (playerObject == null){
+                continue;
+            }
+
+            playerObject.move(p.value);
+        }
+    }
+
+    declareWinner(winners){
+        //TODO : PROPER VICTORY SCREEN AND MESSAGE
+        if (winners == null  || winners.length === 0){
+            alert("It's too bad, but no one won...");
+            return;
+        }
+
+        this.over = false;
+        switch (winners.length) {
+            case 1: {
+                alert("Le gagnant est " + winners.at(0));
+            } break;
+
+            default: {
+                let msg = 'Les gagants sont ';
+                for (let i = 0; i < winners.length-2; i++){
+                    msg += winners.at(i) + ", ";
+                }
+
+                msg += winners.at(winners.length -1) + " ! ";
+                alert(msg);
+            }
+        }
+    }
 
             //Si on ne le trouve pas on passe au suivant
             if (playerObject == null){
