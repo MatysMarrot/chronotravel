@@ -46,8 +46,8 @@ if(isset($_POST['code'])){
         
         $class->insertStudent($student);
         $name = $class->getName();
-        $message = "<p id='ok'>Vous avez rejoint la classe $name !";
-        $currentClass = "<p id='signal'>Attention, vous êtes déjà dans la classe ". $class->getName();
+        $message = "<p id='ok'>Vous avez rejoint la classe $name ! </p>";
+        $currentClass = "<p id='signal'>Attention, vous êtes déjà dans la classe ". $class->getName()."</p>";
     }
 }
 
