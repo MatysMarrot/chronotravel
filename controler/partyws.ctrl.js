@@ -25,8 +25,9 @@ const json = ("{\n" +
     "  ]\n" +
     "}");
 
-const partie = new Party(document.getElementById("board"), JSON.parse(json));
+const partie = new Party(document.getElementById("board"), JSON.parse(json), socket);
 console.log(partie);
+
 // La connexion est ouverte
 socket.addEventListener("open", function (event) {
     console.log(session_loc.id);
@@ -39,7 +40,10 @@ socket.addEventListener("close", function (event) {
 
 
 socket.addEventListener("error", function (event) {
-    console.log("Erreur: ", event.data);
+    if (window.confirm("Something went wrong...")){
+        console.log("Erreur: ", event.data);
+
+    }
     partie.drawPlayerPosition();
     //hideCanvas()
 });
