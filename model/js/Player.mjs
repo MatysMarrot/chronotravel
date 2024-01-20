@@ -1,5 +1,5 @@
-import "./Student.js";
-import {Student} from "./Student.js";
+import "./Student.mjs";
+import {Student} from "./Student.mjs";
 export class Player {
     student;
     position;
@@ -20,5 +20,9 @@ export class Player {
 
     get position() {
         return this.position;
+    }
+
+    move(nbrDeCases = 0){
+        this.position = (nbrDeCases + this.position > 31) ? 31 :  this.position + nbrDeCases;
     }
 }
