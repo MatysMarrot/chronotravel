@@ -104,7 +104,10 @@ socket.addEventListener("close", function (event) {
 
 
 socket.addEventListener("error", function (event) {
-    console.log("Erreur: ", event.data);
+    if (window.confirm("Une erreur est servenue !")){
+        console.log("Erreur: ", event);
+        window.location.href = "../controler/home.ctrl.php";
+    }
 });
 
 // Écouter les messages
