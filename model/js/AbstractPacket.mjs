@@ -9,13 +9,13 @@ export class AbstractPacket{
         this.partyId = partyId;
     }
 
-    get id(){
-        return this.id;
-    }
-
-    get partyid(){
-        return this.partyid;
-    }
+    // get id(){
+    //     return this.id;
+    // }
+    //
+    // get partyid(){
+    //     return this.partyid;
+    // }
 
     handle(partie);
 }
