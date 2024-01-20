@@ -156,6 +156,18 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
         }
     }
 
+    // DELETE LA PARTY
+    public function deleteParty(){
+        $dao = DAO::get();
+        $data = [$this->id];
+        $query = "DELETE FROM partystudent where partyid = ?";
+        $dao->exec($query,$data);
+        $query = "DELETE FROM partycode where partyid = ?";
+        $dao->exec($query,$data);
+        $query = "DELETE FROM party WHERE id = ?";
+        $dao->exec($query,$data);
+    }
+
     //return null si pas de party, un objet party sinon
     public static function getPartyFromId($id){
         $dao = DAO::get();

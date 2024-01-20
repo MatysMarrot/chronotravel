@@ -139,6 +139,10 @@ socket.addEventListener("message", function (event) {
                 }
             }
             break;
+        case "ownerLeft" :
+            console.log(data);
+            window.location = "../controler/home.ctrl.php";
+            break;
     }
 });
 
