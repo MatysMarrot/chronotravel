@@ -195,6 +195,10 @@ class ServerImpl implements MessageComponentInterface
 
             $this->broadCast($party,json_encode($data));
 
+            $this->clientIdConn[$decoded['cid']]->close();
+            $this->clients->detach($this->clientIdConn[$decoded['cid']]);
+            unset($this->clientIdConn[$decoded['cid']]);
+
 
         }
 
