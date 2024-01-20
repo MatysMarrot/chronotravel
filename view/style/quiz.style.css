@@ -15,8 +15,6 @@ body {
     display: none; /* INITIALISATION : masquer l'image de fond */
 }
 
-
-
 #qcm header {
     position: sticky;
     top: 0;

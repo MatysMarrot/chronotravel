@@ -47,19 +47,20 @@ class QuizController extends AbstractMinijeu {
             var revealButton = document.getElementById("revealButton");
             var hideButton = document.getElementById("hideButton");
             var qcmContainer = document.getElementById("qcm");
+            var jeuContainer = document.getElementById("jeu")
             var radioButtons = document.querySelectorAll('input[type="radio"]');
             var selectedAnswersArray = [];
 
             revealButton.addEventListener("click", function() {
                 // revèle le qcm
                 qcmContainer.style.display = "block";
-                revealButton.style.display = "none";
+                jeuContainer.style.display = "none";
             });
 
             hideButton.addEventListener("click", function() {
                 // cache le qcm
                 qcmContainer.style.display = "none";
-                revealButton.style.display = "block";
+                jeuContainer.style.display = "block";
 
                 // décoche le bouton radio qui est coché
                 radioButtons.forEach(function(radioButton) {
