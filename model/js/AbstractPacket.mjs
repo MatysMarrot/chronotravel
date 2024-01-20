@@ -17,5 +17,5 @@ export class AbstractPacket{
     //     return this.partyid;
     // }
 
-    handle(partie){};
+    handle(partie);
 }
