@@ -104,7 +104,7 @@ socket.addEventListener("close", function (event) {
 
 
 socket.addEventListener("error", function (event) {
-    if (window.confirm("Une erreur est survenue !")){
+    if (window.confirm("Une erreur est servenue !")){
         console.log("Erreur: ", event);
         window.location.href = "../controler/home.ctrl.php";
     }
