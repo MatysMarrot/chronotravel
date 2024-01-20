@@ -95,6 +95,7 @@ class ServerImpl implements MessageComponentInterface
             echo sprintf("%d has joined party %d\n", $decoded['cid'],$decoded['pid']);
             $this->clientIdConn[$decoded['cid']] = $conn;
 
+            /*
             $data =  [$decoded['cid'],$decoded['pid']];
             $query = "SELECT studentid FROM partystudent WHERE studentid = ? AND partyid = ?";
             $table = $dao->query($query,$data);
@@ -102,6 +103,7 @@ class ServerImpl implements MessageComponentInterface
             if(count($table) == 1){
                 // Il est déjà dans le groupe, on lui redonne tout les logins
                 $players = $party->getPlayers();
+                $logins = [];
                 foreach ($players as $player) {
                     $student = Student::readStudent($player->getId());
                     $logins[] = $student->getLogin();
@@ -116,6 +118,7 @@ class ServerImpl implements MessageComponentInterface
                 return;
 
             }
+            */
 
             $data =  [$decoded['pid']];
             $query = "SELECT count(*) FROM partystudent WHERE partyid = ? ";
@@ -131,13 +134,38 @@ class ServerImpl implements MessageComponentInterface
             }
 
             // Insertion de l'élève dans la party
+
+            $isOwnerPresent = false;
+
+            foreach ($party->getPlayers() as $player) {
+                if ($player->getId() == $decoded['cid']) {
+                    $isOwnerPresent = true;
+                    break;  // On a trouvé le propriétaire, pas besoin de continuer la boucle
+                }
+            }
+
+            if ($party->getOwnerId() == $decoded['cid']) {
+                // Si c'est le propriétaire et qu'il n'est pas présent, l'insérer
+                if (!$isOwnerPresent) {
+                    $party->insertPlayer($decoded['cid']);
+                }
+            } else {
+                // Si ce n'est pas le propriétaire, insérer le joueur
+                $party->insertPlayer($decoded['cid']);
+            }
+
+            /*
             if($party->getOwnerId() != $decoded['cid'] ){
                 $party->insertPlayer($decoded['cid']);
             }
+            */
+
+            //$party->insertPlayer($decoded['cid']);
 
             //On trouve les autres joueurs de la room
             $players = $party->getPlayers();
 
+            $logins = [];
             foreach ($players as $player) {
                 $student = Student::readStudent($player->getId());
                 $logins[] = $student->getLogin();
@@ -201,106 +229,37 @@ class ServerImpl implements MessageComponentInterface
 
 
         }
-
-            /*
-            $this->clientIdConn[$decoded['cid']] = $conn;
-            $this->clientidLogin[$decoded['cid']] = $decoded['login'];
-
-            //Si la room n'existe pas on la crée
-            if (!isset($this->rooms[$decoded['pid']])) {
-                $this->rooms[$decoded['pid']] = new WaitingRoom($decoded['pid'], $decoded['cid']);
-                echo sprintf("Created new room with partyid: '%d' and owner: '%d'\n", $decoded['pid'], $decoded['cid']);
-            }
-
-
-            //On ajoute le client a la room
-            if ($this->rooms[$decoded['pid']]->size() == 4){
-                //TODO : Envoyer un json_encode
-                $conn->send("PARTY IS FULL");
-                $conn->close();
-                return false;
-            }
-
-
-            $room = $this->rooms[$decoded['pid']];
-            $room->addSubscriber($decoded['cid']);
-
-            //On trouve les autres joueurs de la room
-            $players = $party->getPlayers();
-
-            $logins = [];
-            foreach ($players as $player) {
-                $student = Student::readStudent($player->getId());
-                $logins[] = $student->getLogin();
-            }
-
-            $data = [
-                "action" => "playerJoin",
-                "names" => $logins,
-            ];
-
-            $this->broadCast($party, json_encode($data));
-        } elseif ($decoded['action'] == "START") {
-
-            if ($party->getOwnerId() != $decoded['cid']) {
-                return;
-            }
-
-            $data = [
-                "action" => "start",
-            ];
-
-            $this->broadCast($party, json_encode($data));
-
-            foreach ($party->getPlayers() as $player) {
-                $this->clientIdConn[$player->getId()]->close();
-                $this->clients->detach($this->clientIdConn[$player->getId()]);
-                unset($this->clientIdConn[$player->getId()]);
-            }
-
-
-        } elseif ($decoded['action'] == "LEAVE") {
-            echo sprintf("%d is leaving party %d\n", $decoded['cid'], $decoded['pid']);
-
-            $this->close($player, $party);
-        }
-        else if ($decoded['action'] == "LEAVE") {
-            //On leave
-            //TODO
-            $this->rooms[$decoded['pid']]->removeSubscriber($decoded['cid']);
-        }
-
-        else if ($decoded['action'] == "START") {
-            //On leave
-            $room = $this->rooms[$decoded['pid']];
-            if ($room->getOwner() != $decoded['cid']){
-                return;
-            }
-
-            $data = [
-                "action" => "start",
-            ];
-
-            $this->broadCast($room, json_encode($data));
-            echo sprintf("Room %d was started by %d\n", $decoded['pid'], $decoded['cid']);
-            foreach ($room->getSubscribers() as $sub){
-                try {
-                    var_dump($this->clientIdConn.key());
-                    $this->clientIdConn[$sub]->close();
-                    $this->clients->detach($this->clientIdConn[$sub]);
-                    unset($this->clientidLogin[$sub]);
-                    unset($this->clientIdConn[$sub]);
-                    unset($this->rooms[$decoded['pid']]);
-                } catch (Exception){};
-            }
-            }
-            */
-
-
     }
 
     public function onClose(ConnectionInterface $conn)
     {
+
+
+        $key = array_search($conn, $this->clientIdConn);
+        echo sprintf("On close, key %s = ",$key);
+
+        if($key !== false){
+            // Il exsite un cid lié à cette connexion
+            $dao = DAO::get();
+            $data = [$key];
+            $query = "SELECT id FROM party p, partystudent s WHERE studentid = ? AND id = partyid AND partystate = 1";
+            $table = $dao->query($query,$data);
+            $party = Party::getPartyFromId($table[0][0]);
+            $party->removePlayer($key);
+            $student = Student::readStudent($key);
+
+            $data = [
+                "action" => "playerLeave",
+                "name" => $student->getLogin(),
+            ];
+
+            echo sprintf("Packet envoyé %s par %s\n",$data['name'],$data['action']);
+
+            $this->broadCast($party,json_encode($data));
+            $this->clientIdConn[$key]->close();
+            unset($this->clientIdConn[$key]);
+        }
+
         $this->clients->detach($conn);
         echo "Connection {$conn->resourceId} is gone.\n";
     }
