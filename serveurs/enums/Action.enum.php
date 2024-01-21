@@ -12,47 +12,22 @@ enum Action: string
     case VICTORY = "victory";
     case QUESTION = "question";
     case JOIN = "join";
+    case ANSWER = "answer";
 }
 
-function getPacketFromAction(Action $action, int $pid, array $players, $owner = null, $id = null)
+function getPacketFromAction(Action $action, int $pid, array $players)
 {
     switch ($action) {
         case Action::MOVEMENT:
-            try {
-                return new MovePacket($pid, $players);
-            } catch (Exception) {
-                throw new Exception("Error while building packet");
-            }
+            return new MovePacket($pid, $players);
         case Action::VICTORY:
-            try {
-                return new VictoryPacket($pid, $players);
-            } catch (Exception) {
-                throw new Exception("Error while building packet");
-            }
+            return new VictoryPacket($pid, $players);
         case Action::QUESTION:
-            try {
-                return new QuestionPacket($pid, $players);
-            } catch (Exception) {
-                throw new Exception("Error while building packet");
-            }
+            return new QuestionPacket($pid, $players);
         case Action::JOIN:
-            try {
-                return new JoinPacket($pid, $players);
-            } catch (Exception) {
-                throw new Exception("Error while building packet");
-            }
+            return new JoinPacket($pid, $players);
         case Action::ANSWER:
-            try {
-                return new AnswerPacket($pid, $players);
-            } catch (Exception) {
-                throw new Exception("Error while building packet");
-            }
-        case Action::CREATE:
-            try {
-                return new CreatePartyPacket($id, $pid, $owner, $players);
-            } catch (Exception) {
-                throw new Exception("Error while building packet");
-            }
+            return new AnswerPackcet($pid, $players);
     }
 }
 
