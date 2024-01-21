@@ -38,8 +38,8 @@ class QuestionPacket extends Packet
     {
         $this->data = [
             "action" => Action::QUESTION->value,
-            "partyId" => self::getPartyid(),
-            "id" => $this->player->getId(),
+            "partyid" => self::getPartyid(),
+            "cid" => $this->player->getId(),
             "questions" => [
             ]
 
