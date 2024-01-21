@@ -88,6 +88,20 @@ ___
 ```
 * **_players_**: Liste des joueurs et le nombre de cases duquel ils doivent avancer
 
+### AnswerPacket
+
+```json
+{
+  "action": "answer",
+  "id": 1,
+  "partyId": 1,
+  "nbrQuestions": 10,
+  "nbrRightAnswers": 5
+}
+```
+* **_nbrQuestions_**: Nombre de questions auquel l'utilisateur a répondu
+* **_nbrRightAnswers_**: Nombre bonnes réponses
+
 
 
 
