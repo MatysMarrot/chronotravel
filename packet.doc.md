@@ -88,6 +88,64 @@ ___
 ```
 * **_players_**: Liste des joueurs et le nombre de cases duquel ils doivent avancer
 
+### QuestionPacket
+
+```json
+{
+  "action": "question",
+  "id": 1,
+  "partyid":  1,
+  "questions": [
+    {
+      "type": 1,
+      "id": 1,
+      "content": "QUESTION 1",
+      "reponses": [
+        {
+          "id" : 1,
+          "quesitonId": 1,
+          "content": "LA REPONSES A",
+          "right": true
+        },
+        {
+          "id" : 2,
+          "quesitonId": 1,
+          "content": "LA REPONSES B",
+          "right": false
+        }
+
+      ]
+    },
+    {
+      "type": 2,
+      "id": 10,
+      "content": "QUESTION AVEC IMAGE",
+      "image": "IMAGE EN BASE 64",
+      "reponses": [
+        {
+          "id" : 10,
+          "quesitonId": 10,
+          "content": "LA REPONSES A",
+          "right": true
+        },
+        {
+          "id" : 11,
+          "quesitonId": 10,
+          "content": "LA REPONSES B",
+          "right": false
+        }
+      ]
+    }
+  ]
+}
+```
+* **_questions_**: Array de questions
+* **_reponses_**: reponses possibles à la question
+
+**ATTENTION /!\\:** Deux types de paquets questions:
+* **1**: QCM classique
+* **2**: QCM avec image
+
 ### AnswerPacket
 
 ```json
