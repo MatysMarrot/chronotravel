@@ -43,11 +43,11 @@ if(isset($_POST['code'])){
             $class->removeStudent($student);
         }
         $class = ClassGroup::getClassGroupFromId($idClass);
-        
+
         $class->insertStudent($student);
         $name = $class->getName();
-        $message = "Vous avez rejoins la classe $name !";
-        $currentClass = "Attention, vous êtes déjà dans la classe " . $class->getName();
+        $message = "<p id='ok'>Vous avez rejoint la classe $name ! </p>";
+        $currentClass = "<p id='signal'>Attention, vous êtes déjà dans la classe ". $class->getName()."</p>";
     }
 }
 
