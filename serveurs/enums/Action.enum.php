@@ -12,9 +12,6 @@ enum Action: string
     case VICTORY = "victory";
     case QUESTION = "question";
     case JOIN = "join";
-    case ANSWER = "answer";
-    case CREATE = "create";
-    case LEAVE = "leave";
 }
 
 function getPacketFromAction(Action $action, int $pid, array $players, $owner = null, $id = null)
