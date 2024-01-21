@@ -1,13 +1,10 @@
-body {
-    margin: 0;
-}
-
 #qcm {
     text-align: center;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     height: 100vh;
+    width: 100vw;
     margin: 0;
     color: white;
     background-color: rgba(0, 0, 0, 0.8);

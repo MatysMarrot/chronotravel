@@ -6,7 +6,7 @@
       <link rel="stylesheet" type="text/css" href="../view/style/board.style.css">
       <link rel="stylesheet" type="text/css" href="../view/style/quiz.style.css">
         <style>
-            #quiz {
+            #minijeu {
                 background-image: url('<?php echo $backgroundImage; ?>');
             }
 
@@ -35,6 +35,8 @@
 
     <body>
         <div id="jeu">
+            <button id="revealButton">Révéler les éléments</button>
+
             <div id="canvas-container">
                 <canvas id="myCanvas"></canvas>
             </div>
@@ -45,7 +47,8 @@
                 <!-- Votre contenu ici -->
             </div>
         </div>
-        <div id="quiz">
+
+        <div id="minijeu">
             <?php
             include('../controler/quiz.ctrl.php');
             ?>
