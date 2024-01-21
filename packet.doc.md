@@ -26,6 +26,17 @@ ___
   "partyId": 1
 }
 ```
+
+### PlayerJoinsPacket
+
+```json
+{
+  "action": "join",
+  "id": 1,
+  "partyId": 1
+}
+```
+
 * **_id_**: id de l'utilisateur envoyant le packet (-1 si le packet vient du serveur)
 * **_partyid_** : id de la partie à laquelle le packet appartient
 
