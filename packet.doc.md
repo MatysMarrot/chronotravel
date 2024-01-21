@@ -26,28 +26,9 @@ ___
   "partyId": 1
 }
 ```
-
-### PlayerJoinsPacket
-
-```json
-{
-  "action": "join",
-  "id": 1,
-  "partyId": 1
-}
-```
-
 * **_id_**: id de l'utilisateur envoyant le packet (-1 si le packet vient du serveur)
 * **_partyid_** : id de la partie à laquelle le packet appartient
 
-### PlayerLeavePacket
-```json
-{
-  "action": "leave",
-  "id": 1,
-  "partyId": 1
-}
-```
 
 
 ### PlayerJoinsPacket
@@ -135,8 +116,8 @@ ___
 ```
 * **_players_**: Liste des joueurs et le nombre de cases duquel ils doivent avancer
 
-### QuestionPacket
 
+### QuestionPacket
 ```json
 {
   "action": "question",
@@ -193,8 +174,9 @@ ___
 * **1**: QCM classique
 * **2**: QCM avec image
 
-### AnswerPacket
 
+
+### AnswerPacket
 ```json
 {
   "action": "answer",
