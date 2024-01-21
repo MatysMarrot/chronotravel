@@ -20,7 +20,7 @@ class JoinPacket extends Packet{
     {
         $this->data = [
             "action" => Action::JOIN->value,
-            "id" => $this->player->getId(),
+            "id" => $this->getCid(),
             "partyId" => self::getPartyid()
         ];
         return json_encode($this->data);
