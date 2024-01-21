@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__ . '/Packet.abstract.php');
+require_once(__DIR__ . '/enums/Action.enum.php');
 require_once(__DIR__ . '/../model/Question.class.php');
 require_once(__DIR__ . '/../model/enum/era.enum.php');
 
@@ -38,6 +39,7 @@ class QuestionPacket extends Packet
     public function stringify(): string
     {
         $this->data = [
+            "action" => Action::QUESTION->value,
             "partyid" => self::getPartyid(),
             "cid" => $this->player->getId(),
             "questions" => [
