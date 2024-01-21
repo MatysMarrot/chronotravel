@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__ . '/Packet.abstract.php');
+require_once(__DIR__ . '/enums/Action.enum.php');
 
 
 
@@ -23,8 +24,9 @@ class VictoryPacket extends Packet {
     public function stringify() : string
     {
         $this->data = [
+            "action" => Action::VICTORY->value,
             "partyid" => self::getPartyid(),
-            "players" => [
+            "winners" => [
             ]
 
         ];
