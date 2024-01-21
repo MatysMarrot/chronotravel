@@ -6,11 +6,12 @@
       <link rel="stylesheet" type="text/css" href="../view/style/style.css">    
     </head>
 
-    <body>  
-        <!--Header --> 
-        <?php include(__DIR__.'/header.student.viewpart.php'); ?>
+    <body>
+        <?php $currentPage = 'manage';
+        include(__DIR__.'/header.teacher.viewpart.php'); ?>
 
-        <main>
+
+    <main>
             <h1>Statistiques</h1>
             <h2><?=$student->getFirstname() . " ".$student->getLastname()?> (<?=$student->getLogin()?>)</h2>
             <table class="data">     

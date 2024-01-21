@@ -8,7 +8,8 @@
 </head>
 <body id="">
     
-    <?php include(__DIR__.'/header.unknown.viewpart.php'); ?>
+    <?php $currentPage = 'rules';
+    include(__DIR__.'/../controler/header.ctrl.php'); ?>
 
     <main class="rulespage">
         <h2>Contexte :</h2>

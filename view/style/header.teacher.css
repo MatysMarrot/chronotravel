@@ -4,24 +4,23 @@ html{
 }
 
 /*Header Teacher */
-.actif{
+.active{
     color: #FF8C00;
     text-decoration: underline;
   }
   
   
 header{
-    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-    padding: 0.8em; 
+    padding: 0.8em;
     margin-bottom: 3em;
     z-index: 1;
-    top: 0px;
+    top: 0;
     position: sticky;
-    height: 2.5vh;
+    height: 25px;
     width: 50%;
     background-color: var(--header-background-color);
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-radius: 0 0 25px 25px;
+    box-shadow: 2px 2px 2px black;
     border-top: none;
    }
   
