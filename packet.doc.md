@@ -26,9 +26,12 @@ ___
   "partyId": 1
 }
 ```
+* **_id_**: id de l'utilisateur envoyant le packet (-1 si le packet vient du serveur)
+* **_partyid_** : id de la partie à laquelle le packet appartient
+
+
 
 ### PlayerJoinsPacket
-
 ```json
 {
   "action": "join",
@@ -37,11 +40,36 @@ ___
 }
 ```
 
-* **_id_**: id de l'utilisateur envoyant le packet (-1 si le packet vient du serveur)
-* **_partyid_** : id de la partie à laquelle le packet appartient
+
+### CreatePartyPacket
+```json
+{
+  "action": "create",
+  "id": -1,
+  "partyId": 1,
+  "owner": 0,
+  "players":[
+    {
+      "id": 0,
+      "login": "J1"
+    },
+    {
+      "id": 1,
+      "login": "J2"
+    },
+    {
+      "id": 2,
+      "login": "J3"
+    },
+    {
+      "id": 3,
+      "login": "J4"
+    }
+  ]
+}
+```
 
 ### VictoryPacket
-
 ```json
 {
   "action": "victory",
@@ -59,8 +87,8 @@ ___
 ```
 * _**winners**_: Liste des id des joueurs sur la case finale
 
-### MovementPacket
 
+### MovementPacket
 ```json
 {
   "action": "movement",
@@ -88,8 +116,8 @@ ___
 ```
 * **_players_**: Liste des joueurs et le nombre de cases duquel ils doivent avancer
 
-### QuestionPacket
 
+### QuestionPacket
 ```json
 {
   "action": "question",
@@ -146,8 +174,9 @@ ___
 * **1**: QCM classique
 * **2**: QCM avec image
 
-### AnswerPacket
 
+
+### AnswerPacket
 ```json
 {
   "action": "answer",
