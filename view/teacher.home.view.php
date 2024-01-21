@@ -15,9 +15,9 @@ include(__DIR__.'/header.student.viewpart.php');
 ?>
 
 <main id="home_button">
-    <p>Observez les statistiques de vos élèves</p>
+    <p>Suivez de près les statistiques des parties de jeu de vos élèves!</p>
     <ul>
-        <li id="join_class_button"><a href="../controler/teacher.manage.ctrl.php">Gestion de vos classes</a></li>
+        <li id="home_button"><a href="../controler/teacher.manage.ctrl.php">Gestion de vos classes</a></li>
     </ul>
 </main>
 
