@@ -37,7 +37,6 @@ if (isset($_SESSION['id'])) {
             if (count($resultClassName) > 0) {
                 $className = $resultClassName[0]['name'];
 
-                // Nouvelle requête pour récupérer le nom du professeur
                 $profQuery = "SELECT Person.name FROM Person
                               JOIN ClassTeacher ON Person.id = ClassTeacher.teacherId
                               WHERE ClassTeacher.classId = ?";
@@ -49,7 +48,6 @@ if (isset($_SESSION['id'])) {
                 } else {
                     $error = "Nom du professeur non trouvé pour la classe";
                 }
-
                 $view->assign("className", $className);
             } else {
                 $error = "Nom de la classe non trouvé pour l'étudiant";
@@ -65,6 +63,7 @@ if (isset($_SESSION['id'])) {
     exit();
 }
 
+
 function getCurrentSkinOfPlayer(int $playerId) : array {
     $dao = DAO::get();
     $query = "SELECT hat, hair, teeshirt, pants, shoes FROM currentskin WHERE playerid=?";
@@ -77,10 +76,10 @@ function getCurrentSkinOfPlayer(int $playerId) : array {
         $row = $table[0];
         for($i=0; $i < 5; $i++) {
             if($row[$i] != null) {
-                $query = "SELECT * FROM skinobject WHERE skinid=?";
+                $query = "SELECT skinid, skinobject.name as name, price, location, skinpart.name as partname FROM skinobject JOIN skinpart ON skinobject.parts=skinpart.skinpartid WHERE skinid=?";
                 $table = $dao->query($query, [$row[$i]]);
                 $rowSkinObject = $table[0];
-                $newSkin = new SkinObject($rowSkinObject["skinid"], $rowSkinObject["name"], $rowSkinObject["price"], $rowSkinObject["location"], $rowSkinObject["parts"]);
+                $newSkin = new SkinObject($rowSkinObject["skinid"], $rowSkinObject["name"], $rowSkinObject["price"], $rowSkinObject["location"], $rowSkinObject["partname"]);
                 $currentSkin[] = $newSkin;
             } else {
                 $currentSkin[] = null;
@@ -89,6 +88,7 @@ function getCurrentSkinOfPlayer(int $playerId) : array {
     }
     return $currentSkin;
 }
+
 
 $currentSkin = getCurrentSkinOfPlayer($userId);
 $view->assign("currentSkin", $currentSkin);

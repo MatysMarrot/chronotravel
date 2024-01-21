@@ -1,4 +1,5 @@
-<?php $emplacementSkin = "../view/skin/"?>
+<?php $emplacementSkin = "/assets/skin/"?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
