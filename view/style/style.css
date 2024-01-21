@@ -24,11 +24,20 @@ html {
   font-family: sans-serif;
 }
 
+a{
+  color: var(--main-color);
+}
+
+p{
+  text-align: center;
+}
+
 select{
   margin-bottom: 1em;
 }
 
 ul{
+  padding: 0;
   margin: 0;
   list-style: none;
 }
@@ -332,10 +341,10 @@ label{
   margin: 1em;
 }
 
-.gestion>h3{
+.gestion>section>h3{
   height: fit-content;
   text-align: center;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 .gestion>h4{
   text-align: right;

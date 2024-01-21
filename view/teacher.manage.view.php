@@ -11,17 +11,13 @@
         <?php include(__DIR__.'/header.student.viewpart.php'); ?>
 
         <main>
-            <h2>Gestion des élèves</h2>
-
-
-            <!--Select permettant de filtrer le contenue du tableau ci-dessous -->
-            <form class="gestion" action="../controler/teacher.manage.ctrl.php" method = "post">
+                <h2>Gestion des élèves</h2>
                 <input class="button-create" name = "create" value = "Créer un nouveau groupe de classe" type="submit">
 
-
-
+            <form class="gestion" action="../controler/teacher.manage.ctrl.php" method = "post">
                <div>
-                    <select name="currentClass" id="classe-select">
+                   <!--Select permettant de filtrer le contenue du tableau ci-dessous -->
+                   <select name="currentClass" id="classe-select">
                         <?php foreach($classList as $class) :?>
                             <?php if($class->getId() == $currentClass->getId()) : ?>
                                 <option value= '<?= $class->getId() ?>' selected><?= $class->getName() ?></option>
