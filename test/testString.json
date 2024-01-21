@@ -1,4 +1,6 @@
 {
+  "action": "create",
+  "id": -1,
   "partyId": 1,
   "owner": 0,
   "players":[
