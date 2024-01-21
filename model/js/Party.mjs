@@ -10,7 +10,7 @@ export class Party{
     id;
     owner;
     players;
-    over = false;
+    isOver = false;
     inMiniJeux = false;
     socket;
 
@@ -43,6 +43,8 @@ export class Party{
         }
 
         this.socket = socket;
+
+        this.drawPlayerPosition();
     }
 
     get id() {
@@ -61,32 +63,28 @@ export class Party{
         return this.board;
     }
 
-    handlePacket(stringedData){
-        try (let data){
-            data = JSON.parse(stringedData);
-        } catch (error){
-            throw new TypeError("Could not parse data !");
-        }
-
-        let packet;
+    handlePacket(parsedData){
+        let packet = null;
         //On identifie le type de packet recu !
-        switch (data.action) {
+        switch (parsedData.action) {
+            //ne doit jamais arriver
+            case "create": return;
             case "victory":{
-                packet = new VictoryPacket(this, data);
-            } break;
-            case "movement":{
-                packet = new MovementPacket(this, data);
+                packet = new VictoryPacket(this, parsedData);
             } break;
 
-            case "minigame":{
+            case "movement":{
+                packet = new MovementPacket(this, parsedData);
+            } break;
+
+            case "question":{
 
             } break;
 
         }
 
         //TODO : verifier la classe
-        if (!this.over && !this.inMiniJeux)
-        packet.handle(this);
+        if (!this.isOver && !this.inMiniJeux && packet != null) packet.handle(this);
     }
 
     updatePlayerPosition(playersMovement){
@@ -110,7 +108,7 @@ export class Party{
             return;
         }
 
-        this.over = false;
+        this.isOver = false;
         switch (winners.length) {
             case 1: {
                 alert("Le gagnant est " + winners.at(0));

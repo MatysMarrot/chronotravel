@@ -2,14 +2,18 @@ import {AbstractPacket} from "../AbstractPacket.mjs";
 
 export class PlayerJoinsPacket extends AbstractPacket {
 
-    constructor(Partie, id, partyid, login) {
-        super(id, partyId);
+    constructor(id, partyid) {
+        super(id, partyid);
     }
 
-    handle(partie){
-        let data = JSON.parse(this);
-        console.log(data);
-        partie.send(data);
+    handle(socket){
+        let data = {
+            "action": "join",
+            "id": super.id,
+            "partyid": super.partyId
+        }
+
+        socket.send(JSON.stringify(data));
     }
 
 }
