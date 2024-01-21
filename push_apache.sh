@@ -29,6 +29,7 @@ fi
 # Utiliser rsync pour copier le référentiel vers le dossier de la branche
 ssh -p $port $user@$host "mkdir -p $repo_distante"
 rsync -avz "$repo_local/" "$user@$host:$repo_distante/"
+rsync --chmod=a+r -avz "$repo_distante/"
 
 # Vérifier si la commande rsync s'est bien exécutée
 if [ $? -eq 0 ]; then
