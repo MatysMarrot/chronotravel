@@ -13,10 +13,6 @@ export class QuestionPacket extends AbstractPacket {
 
     }
 
-    get winners(){
-        return this.winners;
-    }
-
     handle(partie){
         partie.declareWinner(this.winners);
     }
