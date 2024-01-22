@@ -104,7 +104,7 @@ class PartyImpl implements MessageComponentInterface{
             $packet = new JoinPacket($decoded['id'],$decoded['partyId']);
             $this->clientIdConn[$decoded['id']] = $conn;
 
-            if(!$this->parties[$decoded['partyId']]){
+            if(!isset($this->parties[$decoded['partyId']])){
                 $this->parties[$decoded['partyId']] = Party::getPartyFromId($decoded['partyId']);
             }
             $this->parties[$decoded['partyId']]->addPackets($packet);
@@ -118,15 +118,7 @@ class PartyImpl implements MessageComponentInterface{
 
     public static function get(){
         if (self::$instance == null){
-            self::$instance = IoServer::factory(
-                new HttpServer(
-                    new WsServer(
-                        new PartyImpl()
-                    )
-                ),
-                APP_PORT
-            );
-            //TODO: Enelebver
+            self::$instance = new PartyImpl();
             echo "Server created on port " . APP_PORT . "\n\n";
             //self::$instance->run();
         }
