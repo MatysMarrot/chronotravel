@@ -160,12 +160,7 @@ padding: 20px;
 border-radius: 5%;
 border: rgb(30, 30, 30) 5px double;
 }
-.rulespage h2 {
-margin: 5px;
-font-weight: bold;
-font-size: 1.5em;
-color: #ff7b00;
-}
+
 .rulespage p, .rulespage ul, .rulespage li {
 margin: 5px;
 text-align: justify;
@@ -180,8 +175,6 @@ text-align: justify;
   width: 85%;
   padding: 15px;
 }
-.lobby>ul{
-  justify-;
 
 /** bouton **/
 .button-container {
@@ -470,10 +463,6 @@ main {
   justify-content: flex-start; /* Aligner les éléments à gauche */
 }
 
-#skin {
-  width: 100%;
-  height: 100%;
-}
 
 
 #shoes, #border, #shirt, #top, #hair, #pants{
@@ -569,5 +558,5 @@ main {
   position: absolute;
   width: 100%; /* Remplit la largeur du conteneur */
   height: 100%; /* Remplit la hauteur du conteneur */
-  object-fit: cover; /* Ajuste la taille de l'image sans déformer */
+  object-fit: cover; 
 }
