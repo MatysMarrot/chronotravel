@@ -13,7 +13,7 @@
 
 <body>
     <?php
-    require_once(__DIR__ . '/../controler/profile.php');
+    require_once(__DIR__ . '/../controler/profile.ctrl.php');
     $currentPage = 'profile';
     include(__DIR__ . '/header.student.viewpart.php');
     ?>
