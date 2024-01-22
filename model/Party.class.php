@@ -20,6 +20,7 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
     private int $partyState;
     private array $questions;
     private PartyImpl $partyRoom;
+    private $packets;
 
 
     public function __construct(int $ownerid){
@@ -66,6 +67,7 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
         $_SESSION['partyId'] = $this->id;
 
     }
+
 
 
     // ajoute un élève à la partie
@@ -154,6 +156,14 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
                 unset($this->players[$key]);
             }
         }
+    }
+
+    public function addPackets($packet){
+        $this->packets[] = $packet;
+    }
+
+    public function getPackets(){
+        return $this->packets;
     }
 
     // DELETE LA PARTY
