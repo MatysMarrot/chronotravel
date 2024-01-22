@@ -60,7 +60,9 @@ socket.addEventListener("message", function (event) {
         return;
     }
 
-    partie.handlePacket(data);
+    console.log(info);
+    partie.handlePacket(info);
+
 
 });
 

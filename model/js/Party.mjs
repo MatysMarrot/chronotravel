@@ -5,6 +5,7 @@ import {Tableau} from "./Tableau.mjs";
 import {Player} from "./Player.mjs";
 import {VictoryPacket} from "./packets/VictoryPacket.js";
 import {MovementPacket} from "./packets/MovementPacket.mjs";
+import {QuestionPacket} from "./packets/QuestionPacket.js";
 export class Party{
     board;
     id;
@@ -79,7 +80,8 @@ export class Party{
             } break;
 
             case "question":{
-
+                packet = new QuestionPacket(this,parsedData);
+                console.log(packet);
             } break;
 
         }
