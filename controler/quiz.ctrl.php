@@ -47,4 +47,5 @@ $view->assign("theme", $theme);
 $view->assign("backgroundImage", $randomImage);
 $view->display("../view/quiz.view.php");
 
+
 ?>
