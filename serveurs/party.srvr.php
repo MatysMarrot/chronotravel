@@ -1,6 +1,8 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../model/DAO.class.php';
+require_once __DIR__ . '/../model/Party.class.php';
+require_once __DIR__ . '/../model/Student.class.php';
 //require_once __DIR__ . '/../model/Waitingroom.class.php'; May require another room
 
 /**
@@ -56,9 +58,24 @@ class PartyImpl implements MessageComponentInterface{
         $conn->close();
     }
 
-    function onMessage(ConnectionInterface $from, $msg)
+    function onMessage(ConnectionInterface $conn, $msg)
     {
-        // TODO: Implement onMessage() method.
+        //echo sprintf("New message from '%s': %s\n", $conn->resourceId, $msg);
+
+        $decoded = json_decode($msg, true);
+
+        if (!$decoded['action']) {
+            return;
+        }
+        if ($decoded['action'] == Action::JOIN->value) {
+
+            $this->clientIdConn[$decoded['id']] = $conn;
+            $packet = new JoinPacket($decoded['id'],$decoded['partyId']);
+
+            if(!$this->parties[$decoded['partyId']]){
+                $this->parties[$decoded['partyId']] = Party::getPartyFromId($decoded['partyId']);
+            }
+        }
     }
 
     public static function get(){
