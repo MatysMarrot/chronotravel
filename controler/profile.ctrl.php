@@ -94,5 +94,5 @@ $currentSkin = getCurrentSkinOfPlayer($userId);
 $view->assign("currentSkin", $currentSkin);
 
 $view->assign("error", $error);
-$view->display("profile.ctrl.php");
+$view->display("profile.php");
 ?>
