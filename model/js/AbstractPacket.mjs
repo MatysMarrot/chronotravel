@@ -3,10 +3,10 @@ export class AbstractPacket{
     id;
     partyId;
 
-    constructor(id, partyId) {
+    constructor(id, partyid) {
         //throw new TypeError("Class \"AbstractPacket\" is abstract and cannot be instanciated !");
         this.id = id;
-        this.partyId = partyId;
+        this.partyId = partyid;
     }
 
     // get id(){

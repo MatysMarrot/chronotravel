@@ -9,8 +9,7 @@ let partie = null;
 // La connexion est ouverte
 socket.addEventListener("open", function (event) {
     retreiveSession().then(function (result){
-        let packet = new PlayerJoinsPacket(result.id, result.partyid);
-        console.log(packet);
+        let packet = new PlayerJoinsPacket(result.id, result.partyId);
         packet.handle(socket);
     });
 });
