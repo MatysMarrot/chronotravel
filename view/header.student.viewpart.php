@@ -1,5 +1,5 @@
 <?php
-    session_start();
+/*    session_start();
 
     if (isset($_SESSION['id'])) {
         $userId = $_SESSION['id'];
@@ -25,14 +25,14 @@
         header("Location: login.view.php");
         exit();
     }
-?>
+*/?>
 
 
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" type="text/css" href="../view/style/header.student.css">
 </head>
-<header>
+<header class="mode">
     <nav>
         <ul>
             <li <?= ($currentPage == 'home') ? 'class="active"' : ''; ?>>
@@ -63,6 +63,13 @@
     </nav>
     <div id="number_chronocoin">
         <img src="../view/img/chrono_coin.png" alt="ChronoCoins">
-        <span><?php echo $currencyAmount; ?></span>
+        <span><?php /*echo $currencyAmount; */?></span>
     </div>
+
+    <div id="dyslexie-div">
+        <button id="fontToggleBtn">Toggle Font</button>
+        <p id="dysText">Dys</p>
+    </div>
+
+    <script src="dyslexieFont.js"></script>
 </header>
