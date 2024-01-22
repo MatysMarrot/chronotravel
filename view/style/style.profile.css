@@ -502,10 +502,10 @@ main {
 }
 
 #hair {
-  top: 36.6%;
-  left: 28%;
-  width: 103px; 
-  height: auto; 
+  top: 0;
+  left: 19%;
+  width: 101px;
+  height: auto;
   margin: 5px;
 }
 
