@@ -9,12 +9,3 @@ export async function retreiveSession(){
         return reponse.json();
     }).catch(error => console.log(error));
 }
-
-export function retrieveSessionFromDiv(){
-    try{
-        let div = document.getElementById("session");
-        return JSON.parse(div.textContent);
-    }catch (error){
-        return null;
-    }
-}
