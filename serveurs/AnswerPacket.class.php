@@ -13,12 +13,12 @@ class AnswerPacket extends Packet
     private int $nbrRightAnswers;
     public function __construct($data)
     {
-        $this->id = $data["cid"];
+        $this->id = $data["id"];
         $this->pid = $data["partyId"];
         $this->nbrQuestions = $data['nbrQuestions'];
         $this->nbrRightAnswers = $data['nbrRightAnswers'];
 
-        parent::__construct($data["cid"],$data["partyId"]);
+        parent::__construct($data["id"],$data["partyId"]);
 
 
     }
