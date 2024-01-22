@@ -249,9 +249,9 @@ $server = IoServer::factory(
             new ServerImpl()
         )
     ),
-    APP_PORT
+    1313
 );
-echo "Server created on port " . APP_PORT . "\n\n";
+echo "Server created on port " . 1313 . "\n\n";
 $server->run();
 
 ?>
