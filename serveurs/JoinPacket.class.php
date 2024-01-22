@@ -5,9 +5,9 @@ require_once(__DIR__ . '/enums/Action.enum.php');
 class JoinPacket extends Packet{
 
 
-    public function __construct(int $cid, int $pid)
+    public function __construct($data)
     {
-        parent::__construct($cid, $pid);
+        parent::__construct($data['cid'], $data['partyId']);
     }
 
     public function handle()
@@ -18,12 +18,12 @@ class JoinPacket extends Packet{
 
     public function stringify() : string
     {
-        $this->data = [
+        $encode = [
             "action" => Action::JOIN->value,
             "id" => $this->getCid(),
-            "partyId" => self::getPartyid()
+            "partyId" => $this->getPartyid()
         ];
-        return json_encode($this->data);
+        return json_encode($encode);
     }
 
 
