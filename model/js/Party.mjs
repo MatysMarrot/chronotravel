@@ -143,7 +143,7 @@ export class Party{
 
 
         let answer = new AnswerPacket(this.currentClient,this.id,[true,true,false,false,true]);
-        answer.handle(socket);
+        answer.handle(this.socket);
     }
 
 
