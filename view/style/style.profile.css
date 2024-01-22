@@ -160,12 +160,7 @@ padding: 20px;
 border-radius: 5%;
 border: rgb(30, 30, 30) 5px double;
 }
-.rulespage h2 {
-margin: 5px;
-font-weight: bold;
-font-size: 1.5em;
-color: #ff7b00;
-}
+
 .rulespage p, .rulespage ul, .rulespage li {
 margin: 5px;
 text-align: justify;
@@ -179,14 +174,6 @@ text-align: justify;
 .lobby{
   width: 85%;
   padding: 15px;
-}
-.lobby>ul{
-  justify-content: space-around;
-  width: 100%;
-}
-
-.bold{
-  font-weight: bolder;
 }
 
 /** bouton **/
@@ -453,7 +440,7 @@ main {
 }
 
 .user-info img {
-  width: 32%; /* Largeur de l'image à 100% de la largeur de la carte */
+  width: 106%; /* Largeur de l'image à 100% de la largeur de la carte */
   height: auto; /* Hauteur automatique pour maintenir les proportions */
 }
 
@@ -464,4 +451,112 @@ main {
 
 .user-info:hover {
   background-color: #555; /* Nouvelle couleur au survol */
+}
+
+
+.div_skin {
+  position: relative;
+  margin-top: 75px;
+  height: fit-content;
+  width: fit-content;
+  display: flex; /* Utiliser le modèle de boîte flexible */
+  justify-content: flex-start; /* Aligner les éléments à gauche */
+}
+
+
+
+#shoes, #border, #shirt, #top, #hair, #pants{
+  position: absolute;
+}
+
+#shoes{
+  top: 73.4%;
+  left: 27.8%;
+  width: 40%;
+  height: 17.6%;top: 76.4%;
+  left: 25.8%;
+}
+#shirt{
+  top: 36.6%;
+  left: 27%;
+  width: 40%;
+  height: 40%;
+}
+
+#top{
+  top: -17.2%;
+  left: 27.6%;
+  width: 50%;
+  height: 50%;
+}
+
+#hair {
+  top: 0;
+  left: 19%;
+  width: 101px;
+  height: auto;
+  margin: 5px;
+}
+
+
+#pants{
+  top: 52.4%;
+  left: 27.8%;
+  width: 50%;
+  height: 50%;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: space-between; /* Ajustez cette propriété selon vos besoins */
+  align-items: center;
+}
+
+.user-info, .statistics {
+  text-align: center;
+  margin: 10px; /* Ajustez la marge selon vos besoins */
+}
+
+/* Ajoutez une classe clearfix pour résoudre les problèmes de hauteur automatique avec flexbox */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.user-info {
+  text-align: center;
+}
+
+.div_skin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.div_skin img:not(#hair) {
+  width: 147px; /* Ajustez la taille selon vos besoins */
+  height: auto;
+  margin: 10px;
+}
+
+.div_skin img:not(#skin):not(#hair) {
+  width: 69px; /* Ajustez la taille selon vos besoins */
+  height: auto;
+  margin: 5px;
+}
+
+.skin-container {
+  position: relative;
+  width: 100px; /* Ajustez la largeur souhaitée */
+  height: 100px; /* Ajustez la hauteur souhaitée */
+  overflow: hidden;
+}
+
+.skin {
+  position: absolute;
+  width: 100%; /* Remplit la largeur du conteneur */
+  height: 100%; /* Remplit la hauteur du conteneur */
+  object-fit: cover; 
 }
