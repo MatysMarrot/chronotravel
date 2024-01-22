@@ -194,10 +194,6 @@ class ServerImpl implements MessageComponentInterface
                 "action" => "ownerLeft",
             ];
             echo sprintf("Packet envoyé %s \n",$data['action']);
-            $this->broadCast($party,json_encode($data));
-            if(count($party->getPlayers()) == 0){
-                $party->deleteParty();
-            }
 
         }
         else{
@@ -207,10 +203,10 @@ class ServerImpl implements MessageComponentInterface
                 "name" => $player->getLogin(),
             ];
             echo sprintf("Packet envoyé %s par %s\n",$data['name'],$data['action']);
-            $this->broadCast($party,json_encode($data));
-            if(count($party->getPlayers()) == 0){
-                $party->deleteParty();
-            }
+        }
+        $this->broadCast($party,json_encode($data));
+        if(count($party->getPlayers()) == 0){
+            $party->deleteParty();
         }
 
         $this->clientIdConn[$player->getId()]->close();
