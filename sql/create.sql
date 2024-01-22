@@ -148,3 +148,18 @@ CREATE TABLE PlayerSkin (
     skinId INT REFERENCES SkinObject(skinId),
     PRIMARY KEY (playerId, skinId)
 );
+
+CREATE TABLE Stat (
+    playerId INT REFERENCES Person(id),
+    NumGames INT DEFAULT 0,
+    NumGamesWon INT DEFAULT 0,
+    AncientHistoryScore INT DEFAULT 0,
+    MiddleAgesScore INT DEFAULT 0,
+    ModernHistoryScore INT DEFAULT 0,
+    ContemporaryScore INT DEFAULT 0,
+    AncientHistoryCorrectAnswers INT DEFAULT 0,
+    MiddleAgesCorrectAnswers INT DEFAULT 0,
+    ModernHistoryCorrectAnswers INT DEFAULT 0,
+    ContemporaryCorrectAnswers INT DEFAULT 0,
+    PRIMARY KEY (playerId)
+);
