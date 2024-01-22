@@ -9,9 +9,11 @@ export class PlayerJoinsPacket extends AbstractPacket {
     handle(socket){
         let data = {
             "action": "join",
-            "id": super.id,
-            "partyid": super.partyId
+            "id": this.id,
+            "partyId": this.partyId,
         }
+
+        //console.log("Join data: " + JSON.stringify(data));
 
         socket.send(JSON.stringify(data));
     }
