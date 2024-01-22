@@ -127,6 +127,7 @@ ___
     {
       "type": 1,
       "id": 1,
+      "themeId": 1,
       "content": "QUESTION 1",
       "reponses": [
         {
@@ -147,6 +148,7 @@ ___
     {
       "type": 2,
       "id": 10,
+      "themeId": 1,
       "content": "QUESTION AVEC IMAGE",
       "image": "IMAGE EN BASE 64",
       "reponses": [
