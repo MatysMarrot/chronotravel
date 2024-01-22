@@ -639,6 +639,18 @@ th[scope='col'] {
 .profil .active {
   background-color: #ff7b00;
 }
+.profil .class-info table {
+  border: 1px solid white;
+  padding: 8px;
+  text-align: center;
+}
+.profil .class-info td, .profil .class-info th {
+  border: 1px solid white;
+  padding: 8px;
+  text-align: center;
+  border-collapse: collapse;
+}
+
 /* Footer */
 footer {
   background-color: var(--header-background-color);

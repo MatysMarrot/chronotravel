@@ -53,10 +53,10 @@
             <div class="class-info" style="display: none">
                 <?php if ($classAndTeacher != null): ?>
                     <table>
-                        <tr>
+                        <t>
                             <th>Classe</th>
                             <th>Professeur</th>
-                        </tr>
+                        </t>
                         <tr>
                             <td><?= $classAndTeacher["className"] ?></td>
                             <td><?= $classAndTeacher["teacherName"] ?></td>
