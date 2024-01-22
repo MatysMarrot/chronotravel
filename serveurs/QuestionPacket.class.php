@@ -21,10 +21,10 @@ class QuestionPacket extends Packet
         // TODO: Implement handle() method.
     }
 
-    public function __construct(int $partyId, array $students,array $position)
+    public function __construct(int $partyId, array $players)
     {
         parent::__construct(-1, $partyId);
-        $this->students =$students;
+        $this->players = $players;
         $this->questions = array();
         foreach ($students as $student){
             for ($i = 0; $i < 10; $i++) {
