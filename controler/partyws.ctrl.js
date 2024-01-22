@@ -4,8 +4,8 @@ import {retreiveSession} from "../controler/utils/jsUtils.mjs";
 
 // Créer une connexion WebSocket
 const socket = new WebSocket("ws://192.168.14.112:1414");
-let partie = null;
 
+let partie = null;
 // La connexion est ouverte
 socket.addEventListener("open", function (event) {
     retreiveSession().then(function (result){
@@ -13,6 +13,7 @@ socket.addEventListener("open", function (event) {
         packet.handle(socket);
     });
 });
+
 
 // Écouter les messages
 socket.addEventListener("close", function (event) {
@@ -33,9 +34,9 @@ socket.addEventListener("error", function (event) {
 // Écouter les messages
 socket.addEventListener("message", function (event) {
     console.log("event");
-    let data;
+    let info;
     try {
-        data = JSON.parse(event.data);
+        info = JSON.parse(event.data);
     } catch (error){
         console.log("Could not parse " + event);
         return;
@@ -43,13 +44,17 @@ socket.addEventListener("message", function (event) {
 
     //Si pas d'action dans la data
     //Ne doit pas arriver mais on est prudent ici
-    if (data.action == null){
+    console.log("Valeur de action : " + info.action);
+    if (info.action == null){
+        console.log("data.action EST NULL");
         return;
     }
-
+    console.log("ON A RECU UN MESSAGE");
     //Si c'est un packet create
-    if (data.action === "create" && partie == null){
-        partie = new Party(document.getElementById("board"), data, socket);
+    if (info.action === "create" && partie == null){
+        partie = new Party(document.getElementById("board"), info, socket);
+        console.log(info.action);
+        console.log(info.partyid);
         return;
     }
 

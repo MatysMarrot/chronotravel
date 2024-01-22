@@ -4,9 +4,9 @@ export class Student {
     login;
 
 
-    constructor(parsedJson) {
-        this.id = parsedJson.id;
-        this.login = parsedJson.login;
+    constructor(id,login) {
+        this.id = id;
+        this.login = login;
     }
 
 
