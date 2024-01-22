@@ -2,30 +2,19 @@
 
 require_once(__DIR__ . '/Packet.abstract.php');
 require_once(__DIR__ . '/enums/Action.enum.php');
-require_once(__DIR__ . '/../model/Student.class.php');
 
-
-class CreatePartyPacket extends Packet
-{
+class CreatePartyPacket extends Packet{
 
     private Action $action;
     private int $id;
     private int $partyId;
     private int $owner;
-    private array $players;
-
-    public function __construct(int $id = -1, int $partyId, int $owner, array $players)
+    public function __construct($data)
     {
-        $this->action = Action::CREATE;
-        $this->id = $id;
-        $this->partyId = $partyId;
-        $this->owner = $owner;
-        $this->players = $players;
-        parent::__construct($this->id, $this->partyId);
+        parent::__construct($data['cid'],$data['partyId']);
 
 
     }
-
     public function handle()
     {
         // TODO: Implement handle() method.
@@ -52,5 +41,4 @@ class CreatePartyPacket extends Packet
         }
     }
 }
-
 ?>
