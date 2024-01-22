@@ -20,7 +20,7 @@ use Ratchet\WebSocket\WsServer;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 
-define('APP_PORT', 1312);
+//define('APP_PORT', 1313);
 
 class ServerImpl implements MessageComponentInterface
 {
@@ -231,9 +231,9 @@ $server = IoServer::factory(
             new ServerImpl()
         )
     ),
-    APP_PORT
+    1313
 );
-echo "Server created on port " . APP_PORT . "\n\n";
+echo "Server created on port " . 1313 . "\n\n";
 $server->run();
 
 ?>
