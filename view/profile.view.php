@@ -35,16 +35,10 @@
       </div>
 
       <div class="statistics">
-        <table>
-          <tr>
-            <th>Parties Jouées</th>
-            <th>Parties Gagnées</th>
-          </tr>
-          <tr>
-            <td>50</td>
-            <td>30</td>
-          </tr>
-        </table>
+        <div>
+            <h3>Parties jouées : </h3>
+            <h3>Parties gagnées : </h3>
+        </div>
       </div>
 
       <div class="class-info">

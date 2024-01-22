@@ -133,7 +133,7 @@ CREATE TABLE SkinObject (
 
 /* Table currentSkin */
 CREATE TABLE currentSkin (
-    playerId INT REFERENCES Person(id),
+    playerId INT REFERENCES Person(id) PRIMARY KEY,
     hat INT REFERENCES SkinObject(skinId),
     hair INT REFERENCES SkinObject(skinId),
     teeshirt INT REFERENCES SkinObject(skinId),
@@ -147,4 +147,20 @@ CREATE TABLE PlayerSkin (
     playerId INT REFERENCES Person(id),
     skinId INT REFERENCES SkinObject(skinId),
     PRIMARY KEY (playerId, skinId)
+);
+
+/* Table pour les statistiques */
+CREATE TABLE Stat (
+    playerId INT REFERENCES Person(id),
+    gamePlayed INT DEFAULT 0,
+    gameWon INT DEFAULT 0,
+    antiquityAnswer INT DEFAULT 0,
+    middleAgeAnswer INT DEFAULT 0,
+    contemporaryAnswer INT DEFAULT 0,
+    modernAnswer INT DEFAULT 0,
+    antiquityCorrectAnswer INT DEFAULT 0,
+    middleAgeCorrectAnswer INT DEFAULT 0,
+    contemporaryCorrectAnswer INT DEFAULT 0,
+    modernCorrectAnswer INT DEFAULT 0,
+    PRIMARY KEY (playerId, gamePlayed)
 );
