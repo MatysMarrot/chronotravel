@@ -11,6 +11,8 @@ require_once(__DIR__ . "/../serveurs/party.srvr.php");
 
 class Party
 {
+
+    private array $playerPosition = [];
     private int $ownerid;
     private array $players; // liste des élèves
     private string $code; // code de la game
@@ -57,8 +59,10 @@ class Party
         $data[] = $this->id;
         $query = "INSERT INTO partystudent (studentid,partyid) VALUES (?,?)";
         $dao->exec($query, $data);
-        $student = Student::readStudent($this->ownerid);
-        $this->players[] = $student;
+        $studentOwner = Student::readStudent($this->ownerid);
+        $this->players[] = $studentOwner;
+        $this->playerPosition[$studentOwner->getId()] = new Position($studentOwner->getId());
+
 
         $data = [$this->id, $roomCode];
         $query = "INSERT INTO partycode (partyid,code) VALUES (?,?)";
@@ -66,6 +70,7 @@ class Party
 
         $_SESSION['roomCode'] = $roomCode;
         $_SESSION['partyId'] = $this->id;
+
 
     }
 
@@ -77,6 +82,7 @@ class Party
             //throw new Exception ("Groupe plein");
         } else {
             $this->players[$cid] = new Player($cid, $this->partyid);
+
         }
     }
 
@@ -149,6 +155,7 @@ class Party
         $query = "INSERT INTO partystudent (studentid,partyid) VALUES(?,?)";
         $dao->exec($query, $data);
         $this->players[] = Student::readStudent($cid);
+        $this->playerPosition[$cid] = new Position($cid);
     }
 
     public function removePlayer($cid)
