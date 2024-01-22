@@ -46,6 +46,10 @@ ul{
   padding: 0;
 }
 /******************** Body *****************************/
+
+
+
+
 body {
   background-image: url(../assets/background.png);
   color: rgb(255, 255, 255);
@@ -56,6 +60,15 @@ body {
   min-height: 100%;
   font-size: larger;
 }
+/*logo*/
+#logo{
+  width: 200px;
+  position: fixed;
+  top: -31px;
+  left: 62px;
+}
+
+
 
 /* Main */
 main {
@@ -293,14 +306,14 @@ main {
 }
 /**  home **/
 #home{
-  max-width: 65%;
+  width: fit-content;
   padding: 1em;
 }
 #home section{
   display: flex ;
 }
 #home p{
-  max-width: 75%;
+  max-width: 79%;
 }
 
 .button-home{
@@ -329,6 +342,11 @@ main {
 label{
   margin-bottom: 0.5em;
   margin-top: 0.5em;
+}
+
+#gameplay{
+  width: 800px;
+  height: auto;
 }
 
 /** Gestion **/

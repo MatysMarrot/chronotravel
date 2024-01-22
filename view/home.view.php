@@ -19,6 +19,7 @@ include(__DIR__.'/header.student.viewpart.php');
     <p>Embarquez pour un voyage dans le temps avec notre jeu de plateau multijoueur. Relevez des défis éducatifs
         et explorez les époques. Prêt à devenir le maître de l'histoire?</p>
     <section>
+        <img id="gameplay" src="../view/img/gameplay.jpg" alt="Gameplay">
         <ul class="menu-home">
             <li ><a class="button-home" href="../controler/create.lobby.ctrl.php">Créer une partie</a></li>
             <li ><a class="button-home" href="../controler/student.join.ctrl.php">Rejoindre une partie</a></li>
