@@ -181,13 +181,7 @@ text-align: justify;
   padding: 15px;
 }
 .lobby>ul{
-  justify-content: space-around;
-  width: 100%;
-}
-
-.bold{
-  font-weight: bolder;
-}
+  justify-;
 
 /** bouton **/
 .button-container {
@@ -453,7 +447,7 @@ main {
 }
 
 .user-info img {
-  width: 32%; /* Largeur de l'image à 100% de la largeur de la carte */
+  width: 106%; /* Largeur de l'image à 100% de la largeur de la carte */
   height: auto; /* Hauteur automatique pour maintenir les proportions */
 }
 
@@ -487,10 +481,11 @@ main {
 }
 
 #shoes{
-  top: 76.4%;
-  left: 25.8%;
+  top: 73.4%;
+  left: 27.8%;
   width: 40%;
-  height: 17.6%;
+  height: 17.6%;top: 76.4%;
+  left: 25.8%;
 }
 #shirt{
   top: 36.6%;
@@ -501,14 +496,14 @@ main {
 
 #top{
   top: -17.2%;
-  left: 26.6%;
+  left: 27.6%;
   width: 50%;
   height: 50%;
 }
 
 #hair {
-  top: 0;
-  left: 17%;
+  top: 36.6%;
+  left: 28%;
   width: 103px; 
   height: auto; 
   margin: 5px;
@@ -516,8 +511,8 @@ main {
 
 
 #pants{
-  top: 57.4%;
-  left: 26.8%;
+  top: 52.4%;
+  left: 27.8%;
   width: 50%;
   height: 50%;
 }
@@ -552,7 +547,7 @@ main {
 }
 
 .div_skin img:not(#hair) {
-  width: 100px; /* Ajustez la taille selon vos besoins */
+  width: 147px; /* Ajustez la taille selon vos besoins */
   height: auto;
   margin: 10px;
 }
