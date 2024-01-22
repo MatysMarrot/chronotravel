@@ -1,3 +1,4 @@
+import {Answer} from "./Answer.mjs";
 export class Question {
 
     id;
