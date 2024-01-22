@@ -71,5 +71,6 @@
         <p id="dysText">Dys</p>
     </div>
 
-    <script src="dyslexieFont.js"></script>
 </header>
+
+<script src="dyslexieFont.js"></script>
