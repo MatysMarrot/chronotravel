@@ -12,7 +12,7 @@ include(__DIR__.'/header.teacher.viewpart.php'); ?>
 
 <main>
     <div class="container-titre">
-        <a href="../controler/teacher.manage.ctrl.php"><i class="material-symbols-outlined">arrow_back</i></a>
+        <a href="../controler/teacher.home.ctrl.php"><i class="material-symbols-outlined">arrow_back</i></a>
         <h2>Créer un groupe de classe</h2>
     </div>
 

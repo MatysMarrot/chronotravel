@@ -360,11 +360,6 @@ label{
   width: 80%;
 }
 
-.gestion>.button-create{
-  position: absolute;
-  top: 14px;
-  left: 11px;
-}
 
 .gestion input{
   margin: 1em;
@@ -384,8 +379,11 @@ label{
 .gestion section{
   display: grid;
   justify-items: center;
-  margin-top: 2em;
   width: 90%;
+}
+
+.gestion div {
+  margin-top: 0.5em;
 }
 
 /** formulaire**/
