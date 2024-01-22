@@ -1,8 +1,8 @@
 <?php
-class StatPerGame {
+class StatPerGame implements JsonSerializable {
     private int $gamePlayed;
     private int $gameWin;
-    private int $antiquityAnswe;
+    private int $antiquityAnswer;
     private int $middleAgeAnswer;
     private int $contemporaryAnswer;
     private int $modernAnswer;
@@ -14,7 +14,7 @@ class StatPerGame {
     /**
      * @param int $gamePlayed
      * @param int $gameWin
-     * @param int $antiquityAnswe
+     * @param int $antiquityAnswer
      * @param int $middleAgeAnswer
      * @param int $contemporaryAnswer
      * @param int $modernAnswer
@@ -23,10 +23,10 @@ class StatPerGame {
      * @param int $contemporaryCorrectAnswer
      * @param int $modernCorrectAnswer
      */
-    public function __construct(int $gamePlayed, int $gameWin, int $antiquityAnswe, int $middleAgeAnswer, int $contemporaryAnswer, int $modernAnswer, int $antiquityCorrectAnswer, int $middleAgeCorrectAnswer, int $contemporaryCorrectAnswer, int $modernCorrectAnswer) {
+    public function __construct(int $gamePlayed, int $gameWin, int $antiquityAnswer, int $middleAgeAnswer, int $contemporaryAnswer, int $modernAnswer, int $antiquityCorrectAnswer, int $middleAgeCorrectAnswer, int $contemporaryCorrectAnswer, int $modernCorrectAnswer) {
         $this->gamePlayed = $gamePlayed;
         $this->gameWin = $gameWin;
-        $this->antiquityAnswe = $antiquityAnswe;
+        $this->antiquityAnswer = $antiquityAnswer;
         $this->middleAgeAnswer = $middleAgeAnswer;
         $this->contemporaryAnswer = $contemporaryAnswer;
         $this->modernAnswer = $modernAnswer;
@@ -55,9 +55,9 @@ class StatPerGame {
     /**
      * @return int
      */
-    public function getAntiquityAnswe(): int
+    public function getAntiquityAnswer(): int
     {
-        return $this->antiquityAnswe;
+        return $this->antiquityAnswer;
     }
 
     /**
@@ -117,6 +117,19 @@ class StatPerGame {
     }
 
 
-
+    public function jsonSerialize(): mixed {
+        return [
+            'gamePlayed' => $this->getGamePlayed(),
+            'gameWin' => $this->getGameWin(),
+            'antiquityAnswer' => $this->getAntiquityAnswer(),
+            'middleAgeAnswer' => $this->getMiddleAgeAnswer(),
+            'contemporaryAnswer' => $this->getContemporaryAnswer(),
+            'modernAnswer' => $this->getModernAnswer(),
+            'antiquityCorrectAnswer' => $this->getAntiquityCorrectAnswer(),
+            'middleAgeCorrectAnswer' => $this->getMiddleAgeCorrectAnswer(),
+            'contemporaryCorrectAnswer' => $this->getContemporaryCorrectAnswer(),
+            'modernCorrectAnswer' => $this->getModernCorrectAnswer()
+        ];
+    }
 }
 ?>

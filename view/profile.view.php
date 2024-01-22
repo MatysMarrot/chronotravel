@@ -12,7 +12,7 @@
 <body>
 
   <?php
-  require_once(__DIR__ . '/../controler/profile.php');
+  require_once(__DIR__ . '/../controler/profile.ctrl.php');
   $currentPage = 'profile';
   include(__DIR__ . '/header.student.viewpart.php');
   ?>
@@ -29,16 +29,18 @@
       <div class="user-info">
         <!-- Insérez l'image de profil -->
         <img src="../view/img/1467684-mob1-article_m-1.png" alt="Image de Profil">
-        <p>Pseudo: <?php echo $pseudo; ?></p>
+        <p>Pseudo: <?php echo $student->getLogin(); ?></p>
         <!-- Remplacez $pseudo par la variable appropriée -->
         <p>Email: utilisateur@example.com</p>
       </div>
 
       <div class="statistics">
-        <div>
-            <h3>Parties jouées : </h3>
-            <h3>Parties gagnées : </h3>
-        </div>
+          <div>
+              <h3>Parties jouées : <?= $allState->getGamePlayed() ?></h3>
+              <h3>Parties gagnées : <?= $allState->getGameWin() ?></h3>
+          </div>
+          <div id="chartDiv">
+          </div>
       </div>
 
       <div class="class-info">
@@ -74,6 +76,10 @@
       }
     </script>
   </main>
+    <section>
+        <?=$allStateJSON?>
+    </section>
 </body>
-
+<script src="https://code.jscharting.com/2.9.0/jscharting.js"></script>
+<script src="../view/js/chart.js"></script>
 </html>

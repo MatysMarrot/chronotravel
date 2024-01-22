@@ -1,5 +1,7 @@
 <?php
-class Stat {
+require_once(__DIR__ . '/DAO.class.php');
+require_once(__DIR__ . '/Student.class.php');
+class Stat implements JsonSerializable {
     private Student $student;
     private Array $statPerGame;
 
@@ -11,11 +13,15 @@ class Stat {
         $this->student = $student;
         $this->statPerGame = $statPerGame;
     }
-
+    public function jsonSerialize() {
+        return array(
+            'statPerGame' => $this->statPerGame
+        );
+    }
 
     public static function getStatOf(int $playerId) : Stat {
         $dao = DAO::get();
-        $query = "SELECT * from stat WHERE playerid=?";
+        $query = "SELECT * from stat WHERE playerid=? ORDER BY gamePlayed";
         $statTable = $dao->query($query, [$playerId]);
         if(count($statTable) == 0) {
             throw new Exception("Stat pour l'élève {$playerId} inexistant");
@@ -23,11 +29,20 @@ class Stat {
             $student = Student::readStudent($playerId);
             $stat = [];
             foreach ($statTable as $row) {
-                $statPerGame = new StatPerGame($row["gamePlayed"], $row["gameWon"], $row["antiquityAnswer"], $row["middleAgeAnswer"], $row["contemporaryAnswer"], $row["modernAnswer"], $row["antiquityCorrectAnswer"], $row["middleAgeCorrectAnswer"], $row["contemporaryCorrectAnswer"], $row["modernCorrectAnswer"]);
+                $statPerGame = new StatPerGame($row["gameplayed"], $row["gamewon"], $row["antiquityanswer"], $row["middleageanswer"], $row["contemporaryanswer"], $row["modernanswer"], $row["antiquitycorrectanswer"], $row["middleagecorrectanswer"], $row["contemporarycorrectanswer"], $row["moderncorrectanswer"]);
                 $stat[] = $statPerGame;
             }
             return new Stat($student, $stat);
         }
+    }
+
+    public function getGamePlayed() : int {
+        $lastGameStat = end($this->statPerGame);
+        return $lastGameStat->getGamePlayed();
+    }
+    public function getGameWin() : int {
+        $lastGameStat = end($this->statPerGame);
+        return $lastGameStat->getGameWin();
     }
 
 
