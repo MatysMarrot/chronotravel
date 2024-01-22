@@ -1,4 +1,4 @@
-class Answer{
+export class Answer{
 
     id;
     questionid;
