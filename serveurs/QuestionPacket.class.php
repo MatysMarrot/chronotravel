@@ -38,8 +38,8 @@ class QuestionPacket extends Packet
     {
         $this->data = [
             "action" => Action::QUESTION->value,
-            "partyid" => self::getPartyid(),
-            "cid" => $this->player->getId(),
+            "partyId" => self::getPartyid(),
+            "id" => $this->player->getId(),
             "questions" => [
             ]
 
@@ -77,9 +77,8 @@ class QuestionPacket extends Packet
 
         foreach ($this->students as $student) {
             $playerData = [
-                "action" => Action::QUESTION->value,
                 "partyId" => self::getPartyid(),
-                "id" => $student->getId(),
+                "id" => $player->getId(),
                 "questions" => [],
             ];
 
@@ -87,7 +86,7 @@ class QuestionPacket extends Packet
                 $questionData = [
                     "id" => $question->getId(),
                     "content" => $question->getContent(),
-                    "themeid" => $question->getThemeid(),
+                    "themeId" => $question->getThemeid(),
                     "reponses" => [],
                 ];
 
