@@ -34,8 +34,12 @@
       </div>
       <div class="statistics">
           <div>
+              <?php if($allState != null):?>
               <h3>Parties jouées : <?= $allState->getGamePlayed() ?></h3>
               <h3>Parties gagnées : <?= $allState->getGameWin() ?></h3>
+              <?php else: ?>
+              <h3>Aucune statistique existante pour ce joueur</h3>
+              <?php endif; ?>
           </div>
           <div id="chartDiv">
           </div>
@@ -70,10 +74,14 @@
       }
     </script>
   </main>
+  <?php if($allState != null):?>
     <div class="json" style="display: none">
-        <?=$allStateJSON?>
+        <?= $allStateJSON ?>
     </div>
+  <?php endif; ?>
 </body>
+<?php if($allState != null):?>
 <script src="https://code.jscharting.com/2.9.0/jscharting.js"></script>
 <script src="../view/js/chart.js"></script>
+<?php endif; ?>
 </html>

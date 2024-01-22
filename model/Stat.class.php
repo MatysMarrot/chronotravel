@@ -19,12 +19,12 @@ class Stat implements JsonSerializable {
         );
     }
 
-    public static function getStatOf(int $playerId) : Stat {
+    public static function getStatOf(int $playerId) : ?Stat {
         $dao = DAO::get();
         $query = "SELECT * from stat WHERE playerid=? ORDER BY gamePlayed";
         $statTable = $dao->query($query, [$playerId]);
         if(count($statTable) == 0) {
-            throw new Exception("Stat pour l'élève {$playerId} inexistant");
+            return null;
         } else {
             $student = Student::readStudent($playerId);
             $stat = [];

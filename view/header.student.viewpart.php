@@ -10,7 +10,7 @@
                 <span class="tooltip_text">ACCUEIL</span>
             </li>
             <li <?= ($currentPage == 'profile') ? 'class="active"' : ''; ?>>
-                <a href="profile.view.php"><i class="material-symbols-outlined">Person</i></a>
+                <a href="../controler/profile.ctrl.php"><i class="material-symbols-outlined">Person</i></a>
                 <span class="tooltip_text">MON PROFIL</span>
             </li>
             <li <?= ($currentPage == 'checkroom') ? 'class="active"' : ''; ?>>

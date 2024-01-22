@@ -36,5 +36,5 @@ JSC.Chart('chartDiv', {
     height: 300,
     yAxis_scale_minimum: 0,  // L'axe des ordonnées commence à 0
     yAxis_scale_maximum: 1,  // L'axe des ordonnées ne peut dépasser 1
-    series: data,
+    series: data
 });

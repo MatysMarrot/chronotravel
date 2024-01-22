@@ -17,8 +17,10 @@ if (isset($_SESSION['id'])) {
     // Récupère les informations de l'utilisateur depuis la base de données
     $student = Student::readStudent($userId);
     $allStat = Stat::getStatOf($userId);
-    $allStatJSON = json_encode($allStat);
-    $view->assign("allStateJSON", $allStatJSON);
+    if ($allStat !=null){
+        $allStatJSON = json_encode($allStat);
+        $view->assign("allStateJSON", $allStatJSON);
+    }
     $view->assign("allState", $allStat);
     $view->assign("student", $student);
 } else {
