@@ -6,10 +6,13 @@ import {Player} from "./Player.mjs";
 import {VictoryPacket} from "./packets/VictoryPacket.js";
 import {MovementPacket} from "./packets/MovementPacket.mjs";
 import {QuestionPacket} from "./packets/QuestionPacket.js";
+import {AnswerPacket} from "./packets/AnswerPacket.mjs";
+import {retrieveSessionFromDiv} from "../../controler/utils/jsUtils.mjs";
+
 export class Party{
     board;
     id;
-    owner;
+    currentClient;
     players;
     isOver = false;
     inMiniJeux = false;
@@ -20,7 +23,7 @@ export class Party{
          * FORME DU JSON:
          * {
          *     partyId: int
-         *     owner: int
+         *     currentClient: int
          *     players{
          *         student{
          *             id: int
@@ -35,8 +38,7 @@ export class Party{
 
         this.board = new Tableau(board);
         this.id = json.partyid;
-        this.owner = json.owner;
-
+        this.currentClient = retrieveSessionFromDiv().id;
         this.players = new Map();
         for (let joueurs of json.players){
             this.players.set(joueurs.id,new Player(joueurs.id,joueurs.login,0));
@@ -140,7 +142,8 @@ export class Party{
         //TODO: Jolan's implementation
 
 
-        let answer = new Answ
+        let answer = new AnswerPacket(this.currentClient,this.id,[true,true,false,false,true]);
+        answer.handle(socket);
     }
 
 
