@@ -10,9 +10,9 @@ class VictoryPacket extends Packet {
     private array $players;
     private $data;
 
-    public function __construct(int $pid, array $players)
+    public function __construct(int $partyId, array $players)
     {
-        parent::__construct(-1,$pid);
+        parent::__construct(-1,$partyId);
         $this->players = $players;
     }
 
