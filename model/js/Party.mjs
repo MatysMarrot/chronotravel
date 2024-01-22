@@ -37,10 +37,12 @@ export class Party{
         this.owner = json.owner;
 
         this.players = [];
-        for (const joueurs of json.players){
-            this.players[joueurs.id] = new Player(joueurs);
-            //this.players.push();
-        }
+        Object.values(json.players).forEach(joueurs => {
+            //console.log("JOEURS DANS LA CLASSE PARTY : "+ joueurs.id + joueurs.login);
+            this.players[joueurs.id] = new Player(joueurs.id,joueurs.login);
+            console.log(new Player(joueurs.id,joueurs.login,0));
+        });
+
 
         this.socket = socket;
 

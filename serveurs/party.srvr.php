@@ -101,7 +101,7 @@ class PartyImpl implements MessageComponentInterface{
         if ($decoded['action'] == Action::JOIN->value) {
             echo sprintf("Received '%s' from %s\n",$decoded['action'], $conn->resourceId);
 
-            $packet = new JoinPacket($decoded['id'],$decoded['partyId']);
+            $packet = new JoinPacket($decoded);
             $this->clientIdConn[$decoded['id']] = $conn;
 
             if(!isset($this->parties[$decoded['partyId']])){
@@ -119,10 +119,6 @@ class PartyImpl implements MessageComponentInterface{
         }
     }
 
-    function startMinigame($pid){
-
-    }
-
     public static function get(){
         if (self::$instance == null){
             self::$instance = new PartyImpl();
@@ -134,7 +130,6 @@ class PartyImpl implements MessageComponentInterface{
     }
     public function broadcast(array $subscribers, string $data)
     {
-
         foreach ($subscribers as $subscriber){
             $this->clientIdConn[$subscriber]->send($data);
         }
