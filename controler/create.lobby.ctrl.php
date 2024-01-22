@@ -13,17 +13,9 @@ if(!isset($_SESSION['id']) || $_SESSION['roleid'] != 1){
 }
 
 else{
-    $dao = DAO::get();
-    $data = [$_SESSION['id']];
-    $query = "SELECT creatorid FROM party WHERE creatorid = ? AND partystate = 1";
-    $table = $dao->query($query,$data);
-
-    if(count($table) == 0){
-        $party = new Party($_SESSION['id']);
-        $party->create();
-    }
+    $party = new Party($_SESSION['id']);
+    $party->create();
     $view->display("../controler/student.lobby.ctrl.php");
-
 }
 
 
