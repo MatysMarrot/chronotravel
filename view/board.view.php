@@ -6,10 +6,6 @@
       <link rel="stylesheet" type="text/css" href="../view/style/board.style.css">
       <link rel="stylesheet" type="text/css" href="../view/style/quiz.style.css">
         <style>
-            #minijeu {
-                background-image: url('<?php echo $backgroundImage; ?>');
-            }
-
             #canvas-container {
                 position: absolute;
                 top: 0;
@@ -35,9 +31,9 @@
 
     <body>
         <div id="jeu">
-            <button id="revealButton">Révéler les éléments</button>
 
             <div id="canvas-container">
+                <button id="revealButton">Révéler les éléments</button>
                 <canvas id="myCanvas"></canvas>
             </div>
 
@@ -56,8 +52,6 @@
 
 
     </body>
-
-
 
     <script type="module" src="../controler/partyws.ctrl.js" ></script>
     <script type="module" src="../controler/quiz.ctrl.js"></script>
