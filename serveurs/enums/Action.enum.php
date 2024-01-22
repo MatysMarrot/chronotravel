@@ -20,17 +20,41 @@ function getPacketFromAction(Action $action, int $pid, array $players, $owner = 
 {
     switch ($action) {
         case Action::MOVEMENT:
-            return new MovePacket($pid, $players);
+            try {
+                return new MovePacket($pid, $players);
+            } catch (Exception) {
+                throw new Exception("Error while building packet");
+            }
         case Action::VICTORY:
-            return new VictoryPacket($pid, $players);
+            try {
+                return new VictoryPacket($pid, $players);
+            } catch (Exception) {
+                throw new Exception("Error while building packet");
+            }
         case Action::QUESTION:
-            return new QuestionPacket($pid, $players);
+            try {
+                return new QuestionPacket($pid, $players);
+            } catch (Exception) {
+                throw new Exception("Error while building packet");
+            }
         case Action::JOIN:
-            return new JoinPacket($pid, $players);
+            try {
+                return new JoinPacket($pid, $players);
+            } catch (Exception) {
+                throw new Exception("Error while building packet");
+            }
         case Action::ANSWER:
-            return new AnswerPacket($pid, $players);
+            try {
+                return new AnswerPacket($pid, $players);
+            } catch (Exception) {
+                throw new Exception("Error while building packet");
+            }
         case Action::CREATE:
-            return new CreatePartyPacket($id,$pid,$owner,$players);
+            try {
+                return new CreatePartyPacket($id, $pid, $owner, $players);
+            } catch (Exception) {
+                throw new Exception("Error while building packet");
+            }
     }
 }
 
