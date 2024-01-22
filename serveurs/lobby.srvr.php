@@ -145,9 +145,9 @@ class ServerImpl implements MessageComponentInterface
                 unset($this->clientIdConn[$player->getId()]);
             }
             // CHANGEMENT DU STATUS DE LA PARTY (FAIRE ATTENTION QUE C'EST BIEN DEFINI EN BD)
-            $data = [$decoded['pid']];
-            $query = "UPDATE party SET partystate = 2 WHERE id = ? ";
-            $dao->exec($query,$data);
+            //$data = [$decoded['pid']];
+            //$query = "UPDATE party SET partystate = 2 WHERE id = ? ";
+            //$dao->exec($query,$data);
 
         }
         elseif ($decoded['action'] == "LEAVE") {
@@ -194,10 +194,6 @@ class ServerImpl implements MessageComponentInterface
                 "action" => "ownerLeft",
             ];
             echo sprintf("Packet envoyé %s \n",$data['action']);
-            $this->broadCast($party,json_encode($data));
-            if(count($party->getPlayers()) == 0){
-                $party->deleteParty();
-            }
 
         }
         else{
@@ -207,10 +203,10 @@ class ServerImpl implements MessageComponentInterface
                 "name" => $player->getLogin(),
             ];
             echo sprintf("Packet envoyé %s par %s\n",$data['name'],$data['action']);
-            $this->broadCast($party,json_encode($data));
-            if(count($party->getPlayers()) == 0){
-                $party->deleteParty();
-            }
+        }
+        $this->broadCast($party,json_encode($data));
+        if(count($party->getPlayers()) == 0){
+            $party->deleteParty();
         }
 
         $this->clientIdConn[$player->getId()]->close();

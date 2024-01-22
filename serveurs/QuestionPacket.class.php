@@ -30,9 +30,6 @@ class QuestionPacket extends Packet
                 $this->questions[$player->getId()][] = Question::getRandomQuestionByEra(Era::MODERN_AGES/**EnumUtils::$ENUM_ORDER[$player->getPosition() / (31 / 4)]**/);
             }
         }
-
-
-
     }
 
 
