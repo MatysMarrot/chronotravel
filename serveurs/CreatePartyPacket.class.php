@@ -11,20 +11,33 @@ class CreatePartyPacket extends Packet
     private Action $action;
     private int $id;
     private int $partyId;
-    private int $owner;
     private array $players;
-
-    public function __construct(int $id = -1, int $partyId, int $owner, array $players)
+    private $data;
+    private int $owner;
+    public function __construct(array $players,$pid)
     {
-        $this->action = Action::CREATE;
-        $this->id = $id;
-        $this->partyId = $partyId;
-        $this->owner = $owner;
+        parent::__construct(-1, $pid);
         $this->players = $players;
-        parent::__construct($this->id, $this->partyId);
-
 
     }
+
+    public function stringify() : string{
+
+        $this->data = [
+            "action" => "create",
+            "id" => -1,
+            "partyId" => $this->pid,
+            "owner" => -1,
+            "players" => []
+        ];
+
+        foreach($this->players as $player){
+            $this->data;
+        }
+
+        return $this->data;
+    }
+
 
     public function handle()
     {
