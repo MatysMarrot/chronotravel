@@ -23,7 +23,6 @@
       <button class="switch-button statistics-button active" onclick="showStatistics()">Statistiques</button>
       <button class="switch-button class-button" onclick="showClassInfo()">Classe</button>
     </div>
-
     <!-- Ajout du tableau de bord -->
     <div class="dashboard">
       <div class="user-info">
@@ -33,7 +32,6 @@
         <!-- Remplacez $pseudo par la variable appropriée -->
         <p>Email: utilisateur@example.com</p>
       </div>
-
       <div class="statistics">
           <div>
               <h3>Parties jouées : <?= $allState->getGamePlayed() ?></h3>
@@ -56,10 +54,6 @@
         </table>
       </div>
     </div>
-
-    <!-- Reste du contenu de la page -->
-    <!-- ... -->
-
     <script>
       function showStatistics() {
         document.querySelector('.statistics').style.display = 'flex';
@@ -76,9 +70,9 @@
       }
     </script>
   </main>
-    <section>
+    <div class="json" style="display: none">
         <?=$allStateJSON?>
-    </section>
+    </div>
 </body>
 <script src="https://code.jscharting.com/2.9.0/jscharting.js"></script>
 <script src="../view/js/chart.js"></script>
