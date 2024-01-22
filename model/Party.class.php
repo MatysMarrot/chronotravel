@@ -223,7 +223,20 @@ class Party
 
     public function startMinigame()
     {
+        echo "Sending questions";
+        $packet = new QuestionPacket($this->id,$this->getPlayers());
+        // TODO : mettre pour chaque player
+        $subscribers = [];
+        foreach ($this->getPlayers() as $students) {
+            $subscribers[] = $students->getId();
+        }
+        $this->partyRoom->broadcast($subscribers,$packet->stringifyPlayers()[0]);
+        var_dump($packet);
 
+
+    }
+
+    public function initGame(){
 
         /*
         $data = [
@@ -238,51 +251,19 @@ class Party
         ];
         */
 
-        /* array("action" => "create","id" => -1, "partyId" => 1, "owner" => 0,
-         "players" => array(
-             ""
-         )
-     )*/
-/*
-        $data = '{
-  "action": "create",
-  "id": -1,
-  "partyId": 1,
-  "owner": 0,
-  "players":[
-    {
-      "id": 0,
-      "login": "J1"
-    },
-    {
-      "id": 1,
-      "login": "J2"
-    },
-    {
-      "id": 2,
-      "login": "J3"
-    },
-    {
-      "id": 3,
-      "login": "J4"
-    }
-  ]
-}
-';
-*/
-
         $packet = new CreatePartyPacket($this);
         $packet = $packet->stringify();
-        var_dump($packet);
         $subscribers = [];
         foreach ($this->getPlayers() as $students) {
             $subscribers[] = $students->getId();
         }
-        //var_dump($data);
-        //$jsonencoded = json_encode($data);
-        //var_dump($jsonencoded);
 
+        echo "Broadcasting";
         $this->partyRoom->broadcast($subscribers, json_encode($packet));
+
+
+        $this->startMinigame();
+
     }
 
 
