@@ -49,10 +49,12 @@ socket.addEventListener("message", function (event) {
         console.log("data.action EST NULL");
         return;
     }
-    console.log("ON A RECU UN MESSAGE");
+
     //Si c'est un packet create
     if (info.action === "create" && partie == null){
+        console.log("CREATION OBJET PARTIE");
         partie = new Party(document.getElementById("board"), info, socket);
+        console.log(partie);
         console.log(info.action);
         console.log(info.partyid);
         return;
