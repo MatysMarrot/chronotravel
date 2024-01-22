@@ -24,6 +24,7 @@ use Ratchet\ConnectionInterface;
 
 class ServerImpl implements MessageComponentInterface
 {
+    static private $instance;
     protected $clients;
     private array $rooms;
 
@@ -38,11 +39,12 @@ class ServerImpl implements MessageComponentInterface
         $this->clientIdConn = array();
     }
 
-    private function broadCast(Party $party,string $data){
+    private function broadCast(Party $party, string $data)
+    {
 
         $players = $party->getPlayers();
 
-        foreach($players as $player){
+        foreach ($players as $player) {
             $this->clientIdConn[$player->getId()]->send($data);
         }
         return true;
@@ -74,16 +76,15 @@ class ServerImpl implements MessageComponentInterface
         }
 
         if ($decoded['action'] == "JOIN") {
-            echo sprintf("%d has joined party %d\n", $decoded['cid'],$decoded['pid']);
+            echo sprintf("%d has joined party %d\n", $decoded['cid'], $decoded['pid']);
             $this->clientIdConn[$decoded['cid']] = $conn;
 
-            $data =  [$decoded['pid']];
+            $data = [$decoded['pid']];
             $query = "SELECT count(*) FROM partystudent WHERE partyid = ? ";
-            $table = $dao->query($query,$data);
+            $table = $dao->query($query, $data);
 
 
-
-            if ($table[0][0] == 4){
+            if ($table[0][0] == 4) {
                 //TODO : Envoyer un json_encode
                 $conn->send("PARTY IS FULL");
                 $conn->close();
@@ -126,10 +127,9 @@ class ServerImpl implements MessageComponentInterface
             ];
 
             $this->broadCast($party, json_encode($data));
-        }
-        elseif($decoded['action'] == "START"){
+        } elseif ($decoded['action'] == "START") {
 
-            if($party->getOwnerId() != $decoded['cid']){
+            if ($party->getOwnerId() != $decoded['cid']) {
                 return;
             }
 
@@ -139,7 +139,7 @@ class ServerImpl implements MessageComponentInterface
 
             $this->broadCast($party, json_encode($data));
 
-            foreach ($party->getPlayers() as $player){
+            foreach ($party->getPlayers() as $player) {
                 $this->clientIdConn[$player->getId()]->close();
                 $this->clients->detach($this->clientIdConn[$player->getId()]);
                 unset($this->clientIdConn[$player->getId()]);
@@ -149,12 +149,11 @@ class ServerImpl implements MessageComponentInterface
             //$query = "UPDATE party SET partystate = 2 WHERE id = ? ";
             //$dao->exec($query,$data);
 
-        }
-        elseif ($decoded['action'] == "LEAVE") {
-            echo sprintf("%d is leaving party %d\n", $decoded['cid'],$decoded['pid']);
+        } elseif ($decoded['action'] == "LEAVE") {
+            echo sprintf("%d is leaving party %d\n", $decoded['cid'], $decoded['pid']);
 
-            $this->close($player,$party);
-            }
+            $this->close($player, $party);
+        }
 
 
     }
@@ -164,18 +163,18 @@ class ServerImpl implements MessageComponentInterface
 
 
         $key = array_search($conn, $this->clientIdConn);
-        echo sprintf("On close, key %s = ",$key);
+        echo sprintf("On close, key %s = ", $key);
 
-        if($key !== false){
+        if ($key !== false) {
             // Il exsite un cid lié à cette connexion
             $dao = DAO::get();
             $data = [$key];
             $query = "SELECT id FROM party p, partystudent s WHERE studentid = ? AND id = partyid AND partystate = 1";
-            $table = $dao->query($query,$data);
+            $table = $dao->query($query, $data);
             $party = Party::getPartyFromId($table[0][0]);
             $student = Student::readStudent($key);
 
-            $this->close($student,$party);
+            $this->close($student, $party);
 
         }
 
@@ -184,28 +183,28 @@ class ServerImpl implements MessageComponentInterface
         echo "Connection {$conn->resourceId} is gone.\n";
     }
 
-    public function close($player,$party){
+    public function close($player, $party)
+    {
 
 
-        if($party->getOwnerId() == $player->getId()){
+        if ($party->getOwnerId() == $player->getId()) {
             // On envoie un packet à tout le monde pour delete la party
             $party->removePlayer($player->getId());
             $data = [
                 "action" => "ownerLeft",
             ];
-            echo sprintf("Packet envoyé %s \n",$data['action']);
+            echo sprintf("Packet envoyé %s \n", $data['action']);
 
-        }
-        else{
+        } else {
             $party->removePlayer($player->getId());
             $data = [
                 "action" => "playerLeave",
                 "name" => $player->getLogin(),
             ];
-            echo sprintf("Packet envoyé %s par %s\n",$data['name'],$data['action']);
+            echo sprintf("Packet envoyé %s par %s\n", $data['name'], $data['action']);
         }
-        $this->broadCast($party,json_encode($data));
-        if(count($party->getPlayers()) == 0){
+        $this->broadCast($party, json_encode($data));
+        if (count($party->getPlayers()) == 0) {
             $party->deleteParty();
         }
 
@@ -238,16 +237,5 @@ class ServerImpl implements MessageComponentInterface
         return self::$instance;
     }
 }
-
-$server = IoServer::factory(
-    new HttpServer(
-        new WsServer(
-            new ServerImpl()
-        )
-    ),
-    1313
-);
-echo "Server created on port " . 1313 . "\n\n";
-$server->run();
 
 ?>
