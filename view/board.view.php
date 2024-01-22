@@ -4,7 +4,12 @@
       <meta charset="UTF-8">
       <title>Chrono Travel- Gestion des élèves</title>
       <link rel="stylesheet" type="text/css" href="../view/style/board.style.css">
+      <link rel="stylesheet" type="text/css" href="../view/style/quiz.style.css">
         <style>
+            #minijeu {
+                background-image: url('<?php echo $backgroundImage; ?>');
+            }
+
             #canvas-container {
                 position: absolute;
                 top: 0;
@@ -28,19 +33,32 @@
         </style>
     </head>
 
-
-
-
     <body>
-    <div id="canvas-container">
-        <canvas id="myCanvas"></canvas>
-    </div>
+        <div id="jeu">
+            <button id="revealButton">Révéler les éléments</button>
 
-    <table id="board"></table>
+            <div id="canvas-container">
+                <canvas id="myCanvas"></canvas>
+            </div>
 
-    <div id="content">
-        <!-- Votre contenu ici -->
-    </div>
-    <script type="module" src="../controler/partyws.ctrl.js" ></script>
+            <table id="board"></table>
+
+            <div id="content">
+                <!-- Votre contenu ici -->
+            </div>
+        </div>
+
+        <div id="minijeu">
+            <?php
+            include('../controler/quiz.ctrl.php');
+            ?>
+        </div>
+
+
     </body>
+
+
+
+    <script type="module" src="../controler/partyws.ctrl.js" ></script>
+    <script type="module" src="../controler/quiz.ctrl.js"></script>
 </html>

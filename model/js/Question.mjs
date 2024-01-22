@@ -1,4 +1,4 @@
-class Question {
+export class Question {
 
     id;
     content;
@@ -27,5 +27,13 @@ class Question {
 
     get answers() {
         return this.answers;
+    }
+
+    getRightAnswer(){
+        //TODO ;
+    }
+
+    isRightAnswer(reponse){
+        //TODO :
     }
 }
