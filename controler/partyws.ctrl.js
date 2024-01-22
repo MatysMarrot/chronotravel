@@ -10,6 +10,7 @@ let partie = null;
 socket.addEventListener("open", function (event) {
     retreiveSession().then(function (result){
         let packet = new PlayerJoinsPacket(result.id, result.partyid);
+        console.log(packet);
         packet.handle(socket);
     });
 });
@@ -32,10 +33,14 @@ socket.addEventListener("error", function (event) {
 
 // Écouter les messages
 socket.addEventListener("message", function (event) {
+    console.log("event");
     let data;
     try {
         data = JSON.parse(event.data);
-    } catch (error){console.log("Could not parse " + event)}
+    } catch (error){
+        console.log("Could not parse " + event);
+        return;
+    }
 
     //Si pas d'action dans la data
     //Ne doit pas arriver mais on est prudent ici

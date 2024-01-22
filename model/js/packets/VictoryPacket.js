@@ -1,5 +1,5 @@
 import {AbstractPacket} from "../AbstractPacket.mjs";
-import "../Party.mjs";
+//import {Party} from "../model/js/Party.mjs";
 export class VictoryPacket extends AbstractPacket{
 
     winners = [];
