@@ -1,4 +1,4 @@
-import "../Party.mjs";
+//import {Party} from "../model/js/Party.mjs";
 export class AbstractPacket{
     id;
     partyId;
@@ -17,5 +17,5 @@ export class AbstractPacket{
     //     return this.partyid;
     // }
 
-    handle(partie);
+    handle(partie){};
 }
