@@ -1,6 +1,8 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../model/DAO.class.php';
+require_once __DIR__ . '/../model/Party.class.php';
+require_once __DIR__ . '/../model/Student.class.php';
 //require_once __DIR__ . '/../model/Waitingroom.class.php'; May require another room
 
 /**
@@ -59,29 +61,20 @@ class PartyImpl implements MessageComponentInterface{
     function onMessage(ConnectionInterface $conn, $msg)
     {
         //echo sprintf("New message from '%s': %s\n", $conn->resourceId, $msg);
-        /*
-        data:
-            cid : int
-            pid : int (party id hein)
-            action : string
-        */
 
         $decoded = json_decode($msg, true);
 
         if (!$decoded['action']) {
             return;
         }
+        if ($decoded['action'] == Action::JOIN->value) {
 
-            if ($decoded['action'] == "JOIN") {
-                $this->clientIdConn[$decoded['cid']] = $conn;
-                $this->clientidLogin[$decoded['cid']] = $decoded['login'];
+            $this->clientIdConn[$decoded['id']] = $conn;
+            $packet = new JoinPacket($decoded['id'],$decoded['partyId']);
 
-                //Si la partie n'existe pas on la crée
-                if (!isset($this->rooms[$decoded['pid']])) {
-                    $this->rooms[$decoded['pid']] = new Party($decoded['pid'], $decoded['cid']);
-                    echo sprintf("Created new room with partyid: '%d' and owner: '%d'\n", $decoded['pid'], $decoded['cid']);
-                }
-
+            if(!$this->parties[$decoded['partyId']]){
+                $this->parties[$decoded['partyId']] = Party::getPartyFromId($decoded['partyId']);
+            }
         }
     }
 
