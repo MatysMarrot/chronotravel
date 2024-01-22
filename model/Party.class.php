@@ -159,6 +159,7 @@ class Party{
 
     public function addPackets($packet){
         $this->packets[] = $packet;
+
     }
 
     public function getPackets(){
@@ -206,6 +207,38 @@ class Party{
 
     public function startMinigame(){
 
+        $data = '{
+  "action": "create",
+  "id": -1,
+  "partyId": 1,
+  "owner": 0,
+  "players":[
+    {
+      "id": 0,
+      "login": "J1"
+    },
+    {
+      "id": 1,
+      "login": "J2"
+    },
+    {
+      "id": 2,
+      "login": "J3"
+    },
+    {
+      "id": 3,
+      "login": "J4"
+    }
+  ]
+}
+';
+        $packet = new CreatePartyPacket($data);
+        $subscribers = [];
+        foreach ($this->getPlayers() as $students){
+            $students[] = $students->getId();
+        }
+
+        $this->partyRoom->broadcast($subscribers, json_encode($data));
     }
 
 
