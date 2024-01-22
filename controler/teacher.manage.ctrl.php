@@ -62,7 +62,7 @@ elseif(!isset($_POST["stats"])){
 
         $students = $currentClass->getStudents();
         $className = $currentClass->getName();
-        $code = "Le code de la classe : " . $currentClass->getCode();
+        $code = "Code : " . $currentClass->getCode();
 
         
     }
