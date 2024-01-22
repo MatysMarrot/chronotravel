@@ -205,6 +205,10 @@ require_once(__DIR__."/../serveurs/party.srvr.php");
         return $party;
     }
 
+    public function startMinigame(){
+
+    }
+
 
 
 
