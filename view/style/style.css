@@ -787,7 +787,29 @@ aside#home_button ul li a {
 /** div container*/
 .container{
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
   width: 100%;
+}
+
+.container>*{
+  margin: 1em;
+}
+
+
+
+/** Bouton retour**/
+.material-symbols-outlined{
+  font-size: 40px;
+  color: white;
+  background-color: #0059FF;
+  padding: 5px 15px 5px 15px;
+  border-radius: 10px;
+  border: 2px solid white;
+  transition: transform 0.5s ease;
+  box-shadow: 2px 2px 2px black;
+}
+
+i.material-symbols-outlined:hover {
+  transform: scale(1.05);
 }

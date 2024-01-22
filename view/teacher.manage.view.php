@@ -11,15 +11,14 @@
         include(__DIR__.'/header.teacher.viewpart.php'); ?>
 
         <main>
-                <h2>Gestion des élèves</h2>
-
             <form class="gestion" action="../controler/teacher.manage.ctrl.php" method = "post">
                 <?php if(count($classList) == 0) :?>
-                    <input class="button-create" name = "create" value = "Créer un nouveau groupe de classe" type="submit">
+                    <h2>Gestion de la classe</h2>
+                    <input class="button-create" name = "createPage" value = "Créer un nouveau groupe de classe" type="submit">
                     <p>PAS DE CLASSE</p>
                 <?php else : ?>
-                    <!--<input class="button-create" name = "create" value = "Créer un nouveau groupe de classe" type="submit"> -->
                     <div >
+                        <input class="button-create" name = "createPage" value = "Créer un nouveau groupe de classe" type="submit">
                         <!--Select permettant de filtrer le contenue du tableau ci-dessous -->
                         <select name="currentClass" id="classe-select">
                             <?php foreach($classList as $class) :?>
@@ -32,12 +31,14 @@
                         </select>
                         <input class="button-teacher" type="submit" value = "Choisir classe">
                     </div>
+                    <!--<input class="button-create" name = "create" value = "Créer un nouveau groupe de classe" type="submit"> -->
+
 
                     <section>
                         <div class="container">
-                            <h3><?=$className?> (<?=$code?>)       </h3>
+                            <h2><?=$className?> (<?=$code?>)       </h2>
 
-                            <button class="button-teacher" value="modif" name = "updateName"type = "submit">Modifier</button>
+                            <button class="button-teacher" value="Modifier" name = "modif"type = "submit">Modifier</button>
                             <input class="button-teacher-neg" name = "deleteGroup" value = "Supprimer" type="submit">
                         </div>
 

@@ -25,15 +25,15 @@ elseif(!isset($_POST["stats"])){
 
     $currentClass = ClassGroup::getClassGroupFromId($currentClassId);
     $teacher = Teacher::readTeacher($_SESSION['id']);
+    $_SESSION['teacher'] = $teacher;
     if(isset($_POST["modif"])){
-        $view->assign("class",$currentClass);
-        $view->assign("teacher", $teacher);
-        $view->display("teacher.modif.ctrl.php");
+        $_SESSION['teacher'] = $teacher;
+        $_SESSION['currentClass'] = $currentClass;
+        include(__DIR__."/../controler/teacher.modif.ctrl.php");
+
+    }elseif(isset($_POST['createPage'])){
+            include(__DIR__."/../controler/teacher.create.ctrl.php");
     }else{
-        if(isset($_POST['create'])){
-            $newClass = new ClassGroup($teacher);
-            $newClass->create();
-        }
 
         $classList = ClassGroup::getClassGroupsFromTeacher($teacher);
 
@@ -60,14 +60,10 @@ elseif(!isset($_POST["stats"])){
                 $currentClass->removeStudent($studentToDel);
             }
 
-            if(isset($_POST['updateName'])){
-                $currentClass->setName($_POST['className']);
-                $classList = ClassGroup::getClassGroupsFromTeacher($teacher);
-            }
 
             $students = $currentClass->getStudents();
             $className = $currentClass->getName();
-            $code = "Le code de la classe : " . $currentClass->getCode();
+            $code = "Code : " . $currentClass->getCode();
 
 
         }
