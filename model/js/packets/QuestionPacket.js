@@ -1,5 +1,4 @@
 import {AbstractPacket} from "../AbstractPacket.mjs";
-import {Question} from "../Question.mjs";
 
 export class QuestionPacket extends AbstractPacket {
 
@@ -13,8 +12,12 @@ export class QuestionPacket extends AbstractPacket {
 
     }
 
+    get winners(){
+        return this.winners;
+    }
+
     handle(partie){
-        partie.startMinigame(this);
+        partie.declareWinner(this.winners);
     }
 
 }
