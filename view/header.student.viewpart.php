@@ -44,7 +44,7 @@
                 <span class="tooltip_text">MON PROFIL</span>
             </li>
             <li <?= ($currentPage == 'outfit') ? 'class="active"' : ''; ?>>
-                <a href="outfit.php"> <i class="material-symbols-outlined">Checkroom</i></a>
+                <a href="checkroom.ctrl.php"> <i class="material-symbols-outlined">Checkroom</i></a>
                 <span class="tooltip_text">MES TENUES</span>
             </li>
             <li <?= ($currentPage == 'rules') ? 'class="active"' : ''; ?>>
