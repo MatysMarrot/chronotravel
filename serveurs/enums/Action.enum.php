@@ -13,9 +13,10 @@ enum Action: string
     case QUESTION = "question";
     case JOIN = "join";
     case ANSWER = "answer";
+    case CREATE = "create";
 }
 
-function getPacketFromAction(Action $action, int $pid, array $players)
+function getPacketFromAction(Action $action, int $pid, array $players, $owner = null, $id = null)
 {
     switch ($action) {
         case Action::MOVEMENT:
@@ -27,7 +28,9 @@ function getPacketFromAction(Action $action, int $pid, array $players)
         case Action::JOIN:
             return new JoinPacket($pid, $players);
         case Action::ANSWER:
-            return new AnswerPackcet($pid, $players);
+            return new AnswerPacket($pid, $players);
+        case Action::CREATE:
+            return new CreatePartyPacket($id,$pid,$owner,$players);
     }
 }
 
