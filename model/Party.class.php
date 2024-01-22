@@ -21,6 +21,7 @@ class Party{
     private int $partyState;
     private array $questions;
     private PartyImpl $partyRoom;
+    private $packets;
 
 
     public function __construct(int $ownerid){
@@ -66,8 +67,7 @@ class Party{
 
     }
 
-    // fonction permettant d'initialisé le jeu
-    public function init(){}
+
 
     // ajoute un élève à la partie
     public function addPlayer(int $cid){
@@ -155,6 +155,14 @@ class Party{
                 unset($this->players[$key]);
             }
         }
+    }
+
+    public function addPackets($packet){
+        $this->packets[] = $packet;
+    }
+
+    public function getPackets(){
+        return $this->packets;
     }
 
     // DELETE LA PARTY
