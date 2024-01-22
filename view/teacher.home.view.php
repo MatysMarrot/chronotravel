@@ -18,6 +18,7 @@ include(__DIR__.'/header.teacher.viewpart.php');
     <p>Suivez de près les statistiques des parties de jeu de vos élèves!</p>
     <ul>
         <li ><a class="button-home" href="../controler/teacher.manage.ctrl.php">Gestion de vos classes</a></li>
+        <li ><a class="button-home" href="../controler/teacher.create.ctrl.php">Créer une classe</a></li>
     </ul>
 </main>
 

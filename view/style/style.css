@@ -353,6 +353,7 @@ label{
 .gestion{
   display: grid;
   justify-items: center ;
+  width: 80%;
 }
 
 .gestion input{
@@ -374,6 +375,7 @@ label{
   display: grid;
   justify-items: center;
   margin: 2em;
+  width: 90%;
 }
 
 /** formulaire**/
@@ -780,4 +782,12 @@ aside#home_button ul li a {
 }
 #ok{
   color: #45a049;
+}
+
+/** div container*/
+.container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
