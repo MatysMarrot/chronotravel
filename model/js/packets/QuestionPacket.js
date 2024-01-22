@@ -14,7 +14,7 @@ export class QuestionPacket extends AbstractPacket {
     }
 
     handle(partie){
-        partie.declareWinner(this.winners);
+        partie.startMinigame(this);
     }
 
 }
