@@ -3,15 +3,15 @@
 
     class Player{
 
-        private int $id;
+        private Student $student;
         private int $pid; //Party ID
         private int $position; //Position sur le board
         private string $lastpacket;
         private int $currentMovement;
 
-        public function __construct(int $id, int $pid, $position = 0, $lastpacket = "")
+        public function __construct(Student $student,int $pid, $position = 0, $lastpacket = "")
         {
-            $this->id = $id;
+            $this->student = $student;
             $this->pid = $pid;
             $this->position = $position;
             $this->lastpacket = $lastpacket;
@@ -19,11 +19,27 @@
         }
 
         /**
+         * @return string
+         */
+        public function getLogin(): string
+        {
+            return $this->student->getLogin();
+        }
+
+        /**
+         * @return Student
+         */
+        public function getStudent(): Student
+        {
+            return $this->student;
+        }
+
+        /**
          * @return int
          */
         public function getId(): int
         {
-            return $this->id;
+            return $this->student->getId();
         }
 
         /**
