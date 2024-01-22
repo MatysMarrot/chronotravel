@@ -31,7 +31,8 @@ function handle()
 public
 function stringify(): string
 {
-    $this->data = [
+
+    $encode = [
         "action" => Action::ANSWER->value,
         "id" => $this->id,
         "partyId" => $this->pid,
@@ -40,7 +41,7 @@ function stringify(): string
     ];
 
 
-    return json_encode($this->data);
+    return json_encode($encode);
 }
 }
 ?>
