@@ -12,9 +12,10 @@ export class Player {
      * @param position = position sur le plateau
      */
     constructor(id,login, position = 0) {
-        console.log(id,login);
         this.student = new Student(id,login);
         this.position = position;
+        this.id = id;
+        this.login = login;
     }
 
     get student() {

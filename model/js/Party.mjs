@@ -33,15 +33,14 @@ export class Party{
         //console.log(json);
 
         this.board = new Tableau(board);
-        this.id = json.partyId;
+        this.id = json.partyid;
         this.owner = json.owner;
 
-        this.players = [];
-        Object.values(json.players).forEach(joueurs => {
-            //console.log("JOEURS DANS LA CLASSE PARTY : "+ joueurs.id + joueurs.login);
-            this.players[joueurs.id] = new Player(joueurs.id,joueurs.login);
-            console.log(new Player(joueurs.id,joueurs.login,0));
-        });
+        this.players = new Map();
+        for (let joueurs of json.players){
+            this.players.set(joueurs.id,new Player(joueurs.id,joueurs.login,0));
+            //this.players.push();
+        }
 
 
         this.socket = socket;
@@ -128,10 +127,12 @@ export class Party{
         }
     }
 
-    drawPlayerPosition(){
+    drawPlayerPosition() {
         this.board.clear();
-        for (let players of this.players){
-            this.board.listeCellules.at(players.position).textContent += " " + players.student.login +" ";
-        }
+        this.players.forEach((value, key, map) => {
+            this.board.listeCellules.at(value.position).textContent += " " + value.student.login + " ";
+        });
     }
+
+
 }
