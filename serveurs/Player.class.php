@@ -8,9 +8,10 @@
         private string $lastpacket;
         private int $currentMovement;
 
-        public function __construct(int $id, $position = 0, $lastpacket = "")
+        public function __construct(int $id, int $pid, $position = 0, $lastpacket = "")
         {
             $this->id = $id;
+            $this->pid = $pid;
             $this->position = $position;
             $this->lastpacket = $lastpacket;
             $this->currentMovement = 0;

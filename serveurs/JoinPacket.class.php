@@ -7,7 +7,7 @@ class JoinPacket extends Packet{
 
     public function __construct($data)
     {
-        parent::__construct($data['cid'], $data['partyId']);
+        parent::__construct($data['id'], $data['partyId']);
     }
 
     public function handle()
@@ -20,7 +20,7 @@ class JoinPacket extends Packet{
     {
         $encode = [
             "action" => Action::JOIN->value,
-            "id" => $this->getCid(),
+            "id" => $this->getId(),
             "partyId" => $this->getPartyid()
         ];
         return json_encode($encode);
