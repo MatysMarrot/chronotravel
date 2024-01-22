@@ -21,10 +21,10 @@ class QuestionPacket extends Packet
         // TODO: Implement handle() method.
     }
 
-    public function __construct(int $partyId, array $players)
+    public function __construct(int $partyId, array $students,array $position)
     {
         parent::__construct(-1, $partyId);
-        $this->players = $players;
+        $this->students =$students;
         $this->questions = array();
         foreach ($students as $student){
             for ($i = 0; $i < 10; $i++) {
@@ -77,8 +77,9 @@ class QuestionPacket extends Packet
 
         foreach ($this->students as $student) {
             $playerData = [
+                "action" => Action::QUESTION->value,
                 "partyId" => self::getPartyid(),
-                "id" => $player->getId(),
+                "id" => $student->getId(),
                 "questions" => [],
             ];
 

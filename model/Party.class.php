@@ -231,7 +231,7 @@ class Party
     public function startMinigame()
     {
         echo "Sending questions";
-        $packet = new QuestionPacket($this->id,$this->getPlayers());
+        $packet = new QuestionPacket($this->id,$this->getPlayers(),$this->playerPosition);
         // TODO : mettre pour chaque player
         $subscribers = [];
         foreach ($this->getPlayers() as $students) {
