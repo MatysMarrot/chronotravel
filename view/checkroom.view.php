@@ -40,20 +40,12 @@
         <?php if($buyView): ?>
         <section class="buyView">
             <h3><?=$selectedSkin->getFrenchSkinPart()?> : <?=$selectedSkin->getName()?></h3>
-            <img src="<?=$emplacementSkin.$selectedSkin->getLocation()?>">
-            <div>
-                <span>Souhaitez-vous acheter ce cosmétique pour <em><?=$selectedSkin->getPrice()?></em></span>
-                <img src="../view/img/chrono_coin.png" alt="Chronocoin">
-                <span> ?</span>
-            </div>
-            <div>
-                <span>Vous possédez <em><?=$student->getCurrency()?></em></span>
-                <img src="../view/img/chrono_coin.png" alt="Chronocoin">
-                <span>.</span>
-            </div>
+            <img src="<?=$emplacementSkin.$selectedSkin->getLocation()?>" class="preview">
+            <span>Souhaitez-vous acheter ce cosmétique pour <em><?=$selectedSkin->getPrice()?></em> <img src="../view/img/chrono_coin.png" alt="Chronocoin">?</span>
+            <span>Vous possédez <em><?=$student->getCurrency()?></em><img src="../view/img/chrono_coin.png" alt="Chronocoin">.</span>
             <form action="../controler/checkroom.ctrl.php" method="post" class="button-container">
                 <button type="submit" name="leave" value="<?=$selectedSkin->getSkinId()?>">ANNULER</button>
-                <button type="submit" name="buy" value="<?=$selectedSkin->getSkinId()?>">ACHETER</button>
+                <button type="submit" name="buy" value="<?=$selectedSkin->getSkinId()?>" <?= $student->getCurrency()<$selectedSkin->getPrice() ? "disabled" : "" ?>>ACHETER</button>
             </form>
         </section>
         <?php else: ?>

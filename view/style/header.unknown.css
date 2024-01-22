@@ -14,8 +14,9 @@ html{
   justify-content: space-around;
   align-items: baseline;
   padding: 10px;
-  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-  top: 0px;
+  border-radius: 0 0 25px 25px;
+  box-shadow: 2px 2px 2px black;
+  top: 0;
   position: sticky;
   width: 50%;
   z-index: 1;

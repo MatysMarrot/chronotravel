@@ -429,24 +429,18 @@ th[scope='col'] {
   justify-content: center;
   align-items: center;
 }
-.buyView img {
+.buyView .preview {
   height: 40%;
   width: 40%;
 }
-.buyView div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: 1em;
-  margin: 10px;
+.buyView span {
+  text-align: center;
 }
-.buyView div em{
+.buyView span em{
    color: #e5af44;
-  font-style: normal;
- }
-.buyView div img{
-  height: 5%;
+   font-style: normal;
+}
+.buyView span img{
   width: 5%;
 }
 .buyView form {
@@ -460,7 +454,11 @@ th[scope='col'] {
   font-size: 1.1em;
   font-weight: bold;
   border-radius: 10%;
+  cursor: pointer;
 }
+.buyView form button[disabled] {
+  cursor: not-allowed;
+ }
 .checkroom .chooseSkin form{
   display: flex;
   flex-direction: row;

@@ -12,6 +12,7 @@ $outgoing = "login.view.php";
 
 if(count($_POST)){
     $login = $_POST['login'] ?? "";
+    $login = strtolower($login);
     $password = $_POST['password'] ?? "";
 
     if (!$login || !$password){

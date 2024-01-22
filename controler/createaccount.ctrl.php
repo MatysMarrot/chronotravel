@@ -21,7 +21,7 @@ if(count($_POST) == 0){
     // Recherche du mail et login dans la BD
 
     $dao = DAO::get();
-    $data = [$login];
+    $data = [strtolower($login)];
     $query = "SELECT login FROM Person WHERE login = ?";
     $table1 = $dao->query($query,$data);
 
@@ -37,9 +37,9 @@ if(count($_POST) == 0){
         // Il n'ya pas le mail et le login dans la BD, on peut enregistrer le compte
         $newAccount = null;
         if (isMailUniversitaire($mail)){
-            $newAccount = new Teacher($_POST['lastname'],$_POST['firstName'],$login,password_hash($_POST['password'], PASSWORD_BCRYPT));
+            $newAccount = new Teacher($_POST['lastname'],$_POST['firstName'],strtolower($login),password_hash($_POST['password'], PASSWORD_BCRYPT));
         } else {
-            $newAccount = new Student($_POST['lastname'],$_POST['firstName'],$login,password_hash($_POST['password'], PASSWORD_BCRYPT));
+            $newAccount = new Student($_POST['lastname'],$_POST['firstName'],strtolower($login),password_hash($_POST['password'], PASSWORD_BCRYPT));
         }
         
         
