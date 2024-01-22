@@ -1,4 +1,5 @@
 import {AbstractPacket} from "../AbstractPacket.mjs";
+import {Question} from "../Question.mjs";
 
 export class QuestionPacket extends AbstractPacket {
 
