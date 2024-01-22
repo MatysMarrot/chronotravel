@@ -19,7 +19,7 @@ use Ratchet\WebSocket\WsServer;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 
-define('APP_PORT', 1313);
+define('APP_PORT', 1414);
 
 class PartyImpl implements MessageComponentInterface{
 

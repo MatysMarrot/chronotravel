@@ -3,7 +3,7 @@ import {PlayerJoinsPacket} from "../model/js/packets/PlayerJoinsPacket.mjs";
 import {retreiveSession} from "../controler/utils/jsUtils.mjs";
 
 // Créer une connexion WebSocket
-const socket = new WebSocket("ws://192.168.14.112:1313");
+const socket = new WebSocket("ws://192.168.14.112:1414");
 let partie = null;
 
 // La connexion est ouverte

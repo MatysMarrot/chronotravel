@@ -104,7 +104,7 @@ socket.addEventListener("close", function (event) {
 
 
 socket.addEventListener("error", function (event) {
-    if (window.confirm("Une erreur est servenue !")){
+    if (window.confirm("Une erreur est survenue !")){
         console.log("Erreur: ", event);
         window.location.href = "../controler/home.ctrl.php";
     }
@@ -134,7 +134,7 @@ socket.addEventListener("message", function (event) {
             const playerNameToRemove = data.name;
 
             for(let i = 0; i < pseudoEmplacements.length;i++){
-                if(pseudoEmplacements[i].textContent == playerNameToRemove){
+                if(pseudoEmplacements[i].textContent === playerNameToRemove){
                     pseudoEmplacements[i].textContent = "en attente j"+(i+1);
                 }
             }
