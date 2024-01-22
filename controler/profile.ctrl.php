@@ -25,7 +25,7 @@ if (isset($_SESSION['id'])) {
         $classAndTeacher = $student->getClassAndTeacherName();
         $view->assign("classAndTeacher", $classAndTeacher);
     } catch (Exception $e) {
-        $view->assign("classError", $e->getMessage());
+        $view->assign("classError", "Vous n'avez pas rejoint de classe");
     }
     $view->assign("currentSkin", $currentSkin);
     $view->assign("allState", $allStat);
