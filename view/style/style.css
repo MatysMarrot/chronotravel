@@ -47,7 +47,10 @@ ul{
 }
 /******************** Body *****************************/
 
-
+/*header */
+header , #logo{
+  z-index: 1;
+}
 
 
 body {
@@ -329,6 +332,7 @@ main {
   text-decoration: none;
   text-align: center;
   width: 80%;
+  margin: 1em;
 }
 
 .button-home:hover{
@@ -356,6 +360,12 @@ label{
   width: 80%;
 }
 
+.gestion>.button-create{
+  position: absolute;
+  top: 14px;
+  left: 11px;
+}
+
 .gestion input{
   margin: 1em;
 }
@@ -374,7 +384,7 @@ label{
 .gestion section{
   display: grid;
   justify-items: center;
-  margin: 2em;
+  margin-top: 2em;
   width: 90%;
 }
 
@@ -778,12 +788,17 @@ aside#home_button ul li a {
 }
 
 #signal{
+  font-weight: bold;
   color: red;
 }
 #ok{
-  color: #45a049;
+  font-weight: bold;
+  color: #00d20b;
 }
-
+/*action page*/
+.action-page{
+  position: relative;
+}
 /** div container*/
 .container{
   display: flex;
@@ -796,7 +811,26 @@ aside#home_button ul li a {
   margin: 1em;
 }
 
+.container-titre{
+  max-width: 800px;
+  text-align: center;
+}
 
+main {
+  position: relative;
+}
+
+.container-titre a{
+  position: absolute;
+  top: 40px;
+  left: 23px;
+}
+
+.container-titre h2{
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /** Bouton retour**/
 .material-symbols-outlined{
@@ -813,3 +847,4 @@ aside#home_button ul li a {
 i.material-symbols-outlined:hover {
   transform: scale(1.05);
 }
+

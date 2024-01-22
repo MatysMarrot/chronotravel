@@ -18,18 +18,22 @@ else {
     $currentClass = $_SESSION['currentClass'];
     $view->assign("currentClass", $currentClass);
     $titre = "Modifier \"".$currentClass->getName()."\"";
-    $view->assign("titre" ,$titre);
-    $view->display("teacher.modif.view.php");
+
 
     if (isset($_SESSION['currentClass'])) {
 
         $teacher = $_SESSION['teacher'];
 
         if (isset($_POST['updateName'])) {
-            $currentClass->setName($_POST['className']);
+            $newName=$_POST['className'];
+            $currentClass->setName($newName);
             $classList = ClassGroup::getClassGroupsFromTeacher($teacher);
-            header("Location: ".$_SERVER['PHP_SELF']);
+            $message = "<p id='ok'>Nom de groupe modifié avec succès</p>";
+            $view->assign("message",$message);
+            $titre = "Modifier \"".$newName."\"";
         }
     }
+    $view->assign("titre" ,$titre);
+    $view->display("teacher.modif.view.php");
 }
 ?>

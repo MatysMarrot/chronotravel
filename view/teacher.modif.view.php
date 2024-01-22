@@ -10,8 +10,8 @@
 <?php $currentPage = 'manage';
 include(__DIR__.'/header.teacher.viewpart.php'); ?>
 
-<main>
-    <div class="container">
+<main class="action-page">
+    <div class="container-titre">
         <a href="../controler/teacher.manage.ctrl.php"><i class="material-symbols-outlined">arrow_back</i></a>
         <h2><?=$titre?></h2>
     </div>
@@ -19,9 +19,10 @@ include(__DIR__.'/header.teacher.viewpart.php'); ?>
     <form class="gestion" action="../controler/teacher.modif.ctrl.php" method = "post">
                 <div>
                     <label>Modifier le nom de la classe:</label>
-                    <input value = "<?=$className?>"name = "className"type="text">
-                    <button class="button-teacher" value="update" name = "updateName"type = "submit">Modifier nom</button>
+                    <input value = "<?=$className?>" name = "className"type="text">
+                    <button class="button-teacher" value="update" name = "updateName" type = "submit">Modifier nom</button>
                 </div>
+        <?=$message?>
     </form>
 
 </main>

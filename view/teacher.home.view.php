@@ -15,11 +15,12 @@ include(__DIR__.'/header.teacher.viewpart.php');
 ?>
 
 <main id="home_button">
-    <p>Suivez de près les statistiques des parties de jeu de vos élèves!</p>
+    <p>Suivez de près les statistiques de jeu de vos élèves!</p>
     <ul>
         <li ><a class="button-home" href="../controler/teacher.manage.ctrl.php">Gestion de vos classes</a></li>
         <li ><a class="button-home" href="../controler/teacher.create.ctrl.php">Créer une classe</a></li>
     </ul>
+    <p>Pour plus d'informations <a href="../controler/rules.ctrl.php">Cliquez ici !</a></p>
 </main>
 
 </body>

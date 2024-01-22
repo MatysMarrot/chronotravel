@@ -8,26 +8,25 @@ include_once(__DIR__."/../framework/view.class.php");
 session_start();
 $view = new View();
 
-
 if(!isset($_SESSION['id']) || $_SESSION['roleid'] != 2){
     include(__DIR__ . "/../controler/landing.ctrl.php");
 }
 else {
     $view = new View();
-    $view->display("teacher.create.view.php");
+
     $teacher = $_SESSION['teacher'];
 
-    if(isset($_POST['createClass'])){
-        if (isset($_POST['className'])){
+    if (isset($_POST['createClass'])) {
+        if (isset($_POST['newClassName']) && $_POST['newClassName'] != null) {
             $newClass = new ClassGroup($teacher);
-            $newClass->create();
-            include(__DIR__ . "/../controler/teacher.manage.ctrl.php");
-            $newClass->setName($_POST['className']);
-
+            $newClass->create($_POST['newClassName']);
+            $message = "<p id='ok'>Groupe de classe créé avec succès</p>";
+            $view->assign("message",$message);
         }else{
-            $message = "Veuillez saisir un nom";
+            $message = "<p id='signal'>Veuillez saisir un nom</p>";
             $view->assign("message",$message);
         }
     }
+    $view->display("teacher.create.view.php");
 }
 ?>

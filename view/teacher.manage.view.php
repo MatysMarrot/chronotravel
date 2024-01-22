@@ -17,8 +17,8 @@
                     <input class="button-create" name = "createPage" value = "Créer un nouveau groupe de classe" type="submit">
                     <p>PAS DE CLASSE</p>
                 <?php else : ?>
+                    <input class="button-create" name = "createPage" value = "Créer un nouveau groupe de classe" type="submit">
                     <div >
-                        <input class="button-create" name = "createPage" value = "Créer un nouveau groupe de classe" type="submit">
                         <!--Select permettant de filtrer le contenue du tableau ci-dessous -->
                         <select name="currentClass" id="classe-select">
                             <?php foreach($classList as $class) :?>

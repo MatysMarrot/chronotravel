@@ -11,7 +11,7 @@
 include(__DIR__.'/header.teacher.viewpart.php'); ?>
 
 <main>
-    <div class="container">
+    <div class="container-titre">
         <a href="../controler/teacher.manage.ctrl.php"><i class="material-symbols-outlined">arrow_back</i></a>
         <h2>Créer un groupe de classe</h2>
     </div>
@@ -19,9 +19,10 @@ include(__DIR__.'/header.teacher.viewpart.php'); ?>
     <form class="gestion" action="../controler/teacher.create.ctrl.php" method = "post">
         <div>
             <label>Saisir le nom de la classe:</label>
-            <input name = "className" type="text">
+            <input value="<?=$className?>" name = "newClassName" type="text">
             <button class="button-create" name = "createClass" value = "Créer un nouveau groupe de classe" type = "submit">Créer</button>
         </div>
+        <?=$message?>
     </form>
 
 </main>
