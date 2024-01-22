@@ -204,6 +204,10 @@ class Party{
         return $party;
     }
 
+    public function startMinigame(){
+
+    }
+
 
 
 
