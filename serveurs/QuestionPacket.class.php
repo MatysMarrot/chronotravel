@@ -9,9 +9,10 @@ require_once(__DIR__ . '/../model/enum/era.enum.php');
 
 class QuestionPacket extends Packet
 {
-    private array $players;
+
     private $data;
-    private Player $player;
+    private array $students;
+    private array $position;
 
     // casté en INT Position/31/4
 
@@ -20,14 +21,14 @@ class QuestionPacket extends Packet
         // TODO: Implement handle() method.
     }
 
-    public function __construct(int $partyId, array $players)
+    public function __construct(int $partyId, array $students,array $position)
     {
         parent::__construct(-1, $partyId);
-        $this->players = $players;
+        $this->students =$students;
         $this->questions = array();
-        foreach ($players as $player){
+        foreach ($students as $student){
             for ($i = 0; $i < 10; $i++) {
-                $this->questions[$player->getId()][] = Question::getRandomQuestionByEra(Era::MODERN_AGES/**EnumUtils::$ENUM_ORDER[$player->getPosition() / (31 / 4)]**/);
+                $this->questions[$student->getId()][] = Question::getRandomQuestionByEra(Era::MODERN_AGES/**EnumUtils::$ENUM_ORDER[$player->getPosition() / (31 / 4)]**/);
             }
         }
     }
@@ -74,14 +75,15 @@ class QuestionPacket extends Packet
     {
         $playersData = [];
 
-        foreach ($this->players as $player) {
+        foreach ($this->students as $student) {
             $playerData = [
+                "action" => Action::QUESTION->value,
                 "partyId" => self::getPartyid(),
-                "id" => $player->getId(),
+                "id" => $student->getId(),
                 "questions" => [],
             ];
 
-            foreach ($this->questions[$player->getId()] as $question) {
+            foreach ($this->questions[$student->getId()] as $question) {
                 $questionData = [
                     "id" => $question->getId(),
                     "content" => $question->getContent(),
