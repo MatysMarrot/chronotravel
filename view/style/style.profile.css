@@ -470,22 +470,19 @@ main {
 }
 
 #shoes{
-  top: 73.4%;
-  left: 27.8%;
-  width: 40%;
-  height: 17.6%;top: 76.4%;
-  left: 25.8%;
+  top: 75.4%;
+  left: 28.8%;
 }
 #shirt{
   top: 36.6%;
-  left: 27%;
+  left: 29%;
   width: 40%;
   height: 40%;
 }
 
 #top{
-  top: -17.2%;
-  left: 27.6%;
+  top: -19.2%;
+  left: 28.6%;
   width: 50%;
   height: 50%;
 }
@@ -500,8 +497,8 @@ main {
 
 
 #pants{
-  top: 52.4%;
-  left: 27.8%;
+  top: 54.4%;
+  left: 28.8%;
   width: 50%;
   height: 50%;
 }
@@ -542,7 +539,7 @@ main {
 }
 
 .div_skin img:not(#skin):not(#hair) {
-  width: 69px; /* Ajustez la taille selon vos besoins */
+  width: 61px; /* Ajustez la taille selon vos besoins */
   height: auto;
   margin: 5px;
 }
