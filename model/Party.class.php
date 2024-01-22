@@ -1,18 +1,16 @@
 <?php
 
-require_once(__DIR__."/enum/era.enum.php");
-require_once(__DIR__."/enum/PartyState.enum.php");
-require_once(__DIR__."/Question.class.php");
-require_once(__DIR__."/../serveurs/Player.class.php");
+require_once(__DIR__ . "/enum/era.enum.php");
+require_once(__DIR__ . "/enum/PartyState.enum.php");
+require_once(__DIR__ . "/Question.class.php");
+require_once(__DIR__ . "/../serveurs/Player.class.php");
+require_once(__DIR__ . "/../serveurs/CreatePartyPacket.class.php");
 
-require_once(__DIR__."/../serveurs/party.srvr.php");
+require_once(__DIR__ . "/../serveurs/party.srvr.php");
 
 
-
-
-class Party{
-
-    private int $partyid;
+class Party
+{
     private int $ownerid;
     private array $players; // liste des élèves
     private string $code; // code de la game
@@ -24,43 +22,47 @@ class Party{
     private $packets;
 
 
-    public function __construct(int $ownerid){
+    public function __construct(int $ownerid)
+    {
         $this->players = array();
         $this->ownerid = $ownerid;
         $this->questions = array();
         $this->partyRoom = PartyImpl::get();
     }
 
-    public function getEra(): Era {
+    public function getEra(): Era
+    {
         return $this->era;
     }
 
-    public function setEra(Era $era): void {
+    public function setEra(Era $era): void
+    {
         $this->era = $era;
     }
 
-    public function create(){
+    public function create()
+    {
 
         $roomCode = generateRandomCode();
         $query = "SELECT code FROM partycode WHERE code = ?";
         $data = [$roomCode];
         $dao = DAO::get();
-        $table = $dao->query($query,$data);
+        $table = $dao->query($query, $data);
 
         $data = [$this->ownerid];
         $query = "INSERT INTO party (creatorid,partystate) VALUES (?,1)";
-        $dao->exec($query,$data);
+        $dao->exec($query, $data);
 
         $this->id = $dao->lastInsertId();
         $data[] = $this->id;
         $query = "INSERT INTO partystudent (studentid,partyid) VALUES (?,?)";
-        $dao->exec($query,$data);
+        $dao->exec($query, $data);
         $student = Student::readStudent($this->ownerid);
         $this->players[] = $student;
 
-        $data = [$this->id,$roomCode];
+        $data = [$this->id, $roomCode];
         $query = "INSERT INTO partycode (partyid,code) VALUES (?,?)";
-        $dao->exec($query,$data);
+        $dao->exec($query, $data);
 
         $_SESSION['roomCode'] = $roomCode;
         $_SESSION['partyId'] = $this->id;
@@ -68,13 +70,12 @@ class Party{
     }
 
 
-
     // ajoute un élève à la partie
-    public function addPlayer(int $cid){
-        if(count($this->players) >= 4){
+    public function addPlayer(int $cid)
+    {
+        if (count($this->players) >= 4) {
             //throw new Exception ("Groupe plein");
-        }
-        else{
+        } else {
             $this->players[$cid] = new Player($cid, $this->partyid);
         }
     }
@@ -87,19 +88,21 @@ class Party{
 
     }
 
-    public function broadcastQuestions(){
+    public function broadcastQuestions()
+    {
         $data = json_encode($this->getQuestions());
-        $this->partyRoom->broadcast($this->players,$data);
+        $this->partyRoom->broadcast($this->players, $data);
 
 
     }
 
-    public function move(){
+    public function move()
+    {
         $packets = array();
-            //TODO: Make the move size gettable
-            $packet = new MovePacket($this->partyid,$this->players);
-            $encode = $packet->stringify();
-            $this->getPartyRoom()->broadcast($this->players, $encode);
+        //TODO: Make the move size gettable
+        $packet = new MovePacket($this->partyid, $this->players);
+        $encode = $packet->stringify();
+        $this->getPartyRoom()->broadcast($this->players, $encode);
 
 
     }
@@ -128,64 +131,77 @@ class Party{
         return $this->partyRoom;
     }
 
-    public function getPlayers(){
+    public function getPlayers()
+    {
         return $this->players;
     }
 
-    public function getOwnerId(){
+    public function getOwnerId()
+    {
         return $this->ownerid;
     }
 
     //ajoute un élève à une partie en BD et dans l'objet
-    public function insertPlayer($cid){
+    public function insertPlayer($cid)
+    {
         $dao = DAO::get();
-        $data = [$cid,$this->id];
+        $data = [$cid, $this->id];
         $query = "INSERT INTO partystudent (studentid,partyid) VALUES(?,?)";
-        $dao->exec($query,$data);
+        $dao->exec($query, $data);
         $this->players[] = Student::readStudent($cid);
     }
 
-    public function removePlayer($cid){
+    public function removePlayer($cid)
+    {
         $dao = DAO::get();
         $data = [$cid];
         $query = "DELETE FROM partystudent WHERE studentid = ?";
-        $dao->exec($query,$data);
-        foreach ($this->players as $key => $player){
-            if($player->getId() == $cid){
+        $dao->exec($query, $data);
+        foreach ($this->players as $key => $player) {
+            if ($player->getId() == $cid) {
                 unset($this->players[$key]);
             }
         }
     }
 
-    public function addPackets($packet){
+    public function addPackets($packet)
+    {
         $this->packets[] = $packet;
 
     }
 
-    public function getPackets(){
+    public function getPackets()
+    {
         return $this->packets;
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     // DELETE LA PARTY
-    public function deleteParty(){
+    public function deleteParty()
+    {
         $dao = DAO::get();
         $data = [$this->id];
         $query = "DELETE FROM partystudent where partyid = ?";
-        $dao->exec($query,$data);
+        $dao->exec($query, $data);
         $query = "DELETE FROM partycode where partyid = ?";
-        $dao->exec($query,$data);
+        $dao->exec($query, $data);
         $query = "DELETE FROM party WHERE id = ?";
-        $dao->exec($query,$data);
+        $dao->exec($query, $data);
     }
 
     //return null si pas de party, un objet party sinon
-    public static function getPartyFromId($id){
+    public static function getPartyFromId($id)
+    {
         $dao = DAO::get();
         $data = [$id];
         $query = "SELECT id,partystate,theme,creatorid,code FROM party,partycode WHERE id = ? AND partyid = id";
-        $table = $dao->query($query,$data);
+        $table = $dao->query($query, $data);
 
-        if(count($table) == 0){
+        if (count($table) == 0) {
             return null;
         }
 
@@ -196,17 +212,38 @@ class Party{
         $party->era = $table[0]['theme'];
 
         $query = "SELECT studentid from partystudent WHERE partyid = ?";
-        $table = $dao->query($query,$data);
+        $table = $dao->query($query, $data);
 
-        foreach($table as $row){
+        foreach ($table as $row) {
             $party->players[] = Student::readStudent($row['studentid']);
         }
 
         return $party;
     }
 
-    public function startMinigame(){
+    public function startMinigame()
+    {
 
+
+        /*
+        $data = [
+            "action" => "create",
+            "id" => -1,
+            "partyId" => 1,
+            "owner" => 0,
+            "players" => [
+                ["id" => 0, "login" => "J1"],
+                ["id" => 1, "login" => "J2"]
+            ]
+        ];
+        */
+
+        /* array("action" => "create","id" => -1, "partyId" => 1, "owner" => 0,
+         "players" => array(
+             ""
+         )
+     )*/
+/*
         $data = '{
   "action": "create",
   "id": -1,
@@ -232,16 +269,21 @@ class Party{
   ]
 }
 ';
-        $packet = new CreatePartyPacket($data);
+*/
+
+        $packet = new CreatePartyPacket($this);
+        $packet = $packet->stringify();
+        var_dump($packet);
         $subscribers = [];
-        foreach ($this->getPlayers() as $students){
-            $students[] = $students->getId();
+        foreach ($this->getPlayers() as $students) {
+            $subscribers[] = $students->getId();
         }
+        //var_dump($data);
+        //$jsonencoded = json_encode($data);
+        //var_dump($jsonencoded);
 
-        $this->partyRoom->broadcast($subscribers, json_encode($data));
+        $this->partyRoom->broadcast($subscribers, json_encode($packet));
     }
-
-
 
 
 }

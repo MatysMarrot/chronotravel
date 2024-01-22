@@ -13,7 +13,7 @@ export class PlayerJoinsPacket extends AbstractPacket {
             "partyId": this.partyId,
         }
 
-        //console.log("Join data: " + JSON.stringify(data));
+        console.log("Join data: " + JSON.stringify(data));
 
         socket.send(JSON.stringify(data));
     }

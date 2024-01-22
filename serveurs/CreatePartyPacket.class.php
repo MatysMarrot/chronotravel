@@ -2,17 +2,18 @@
 
 require_once(__DIR__ . '/Packet.abstract.php');
 require_once(__DIR__ . '/enums/Action.enum.php');
+require_once(__DIR__ . '/../model/Party.class.php');
 
 class CreatePartyPacket extends Packet{
 
     private Action $action;
-    private int $id;
     private int $partyId;
     private int $owner;
-    private array $data;
-    public function __construct($data)
+    private Party $party;
+    public function __construct(Party $party)
     {
-        parent::__construct($data['id'],$data['partyId']);
+        parent::__construct(-1,$party->getId());
+        $this->party = $party;
 
 
     }
@@ -23,23 +24,25 @@ class CreatePartyPacket extends Packet{
 
     public function stringify()
     {
-        $this->data = [
-            "action" => $this->action->value,
-            "id" => $this->id,
-            "partyid" => self::getPartyid(),
-            "owner" => $this->owner,
+        $infos = [
+            "action" => "create",
+            "id" => -1,
+            "partyid" => $this->getPartyid(),
+            "owner" => -1,
             "players" => [
             ]
 
         ];
 
-        foreach ($this->players as $p) {
-            $this->data['players'][] = [
+        foreach ($this->party->getPlayers() as $p) {
+            $infos['players'][] = [
                 "id" => $p->getId(),
                 "login" => Student::readStudent($p->getId())->getLogin()
             ];
 
         }
+
+        return $infos;
     }
 }
 ?>
