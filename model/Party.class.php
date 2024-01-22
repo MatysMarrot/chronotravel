@@ -28,7 +28,7 @@ class Party{
         $this->players = array();
         $this->ownerid = $ownerid;
         $this->questions = array();
-        $this->partyRoom = new PartyImpl();
+        $this->partyRoom = PartyImpl::get();
     }
 
     public function getEra(): Era {
