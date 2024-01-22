@@ -112,7 +112,7 @@ class PartyImpl implements MessageComponentInterface{
 
             //Si on a suffisament de joueurs
             if (count($party->getPackets()) == count($party->getPlayers())){
-                $party->startMinigame();
+                $party->initGame();
             }
 
 
