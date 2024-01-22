@@ -2,12 +2,12 @@
 
 abstract class Packet {
 
-    private int $cid;
+    private int $id;
     private int $partyid;
 
-    public function __construct(int $cid, int $pid)
+    public function __construct(int $id, int $pid)
     {
-        $this->cid = $cid;
+        $this->id = $id;
         $this->partyid = $pid;
     }
 
@@ -16,9 +16,9 @@ abstract class Packet {
     /**
      * @return int
      */
-    public function getCid(): int
+    public function getId(): int
     {
-        return $this->cid;
+        return $this->id;
     }
 
     /**
