@@ -99,13 +99,19 @@ class PartyImpl implements MessageComponentInterface{
         }
         if ($decoded['action'] == Action::JOIN->value) {
 
-            $this->clientIdConn[$decoded['id']] = $conn;
             $packet = new JoinPacket($decoded['id'],$decoded['partyId']);
+            $this->clientIdConn[$decoded['id']] = $conn;
 
             if(!$this->parties[$decoded['partyId']]){
                 $this->parties[$decoded['partyId']] = Party::getPartyFromId($decoded['partyId']);
             }
+            $this->parties[$decoded['partyId']]->addPackets($packet);
+
         }
+    }
+
+    function startMinigame($pid){
+
     }
 
     public static function get(){
