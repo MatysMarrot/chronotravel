@@ -11,7 +11,7 @@ class CreatePartyPacket extends Packet{
     private int $owner;
     public function __construct($data)
     {
-        parent::__construct($data['cid'],$data['partyId']);
+        parent::__construct($data['id'],$data['partyId']);
 
 
     }
