@@ -136,5 +136,12 @@ export class Party{
         });
     }
 
+    startMinigame(questionPacket){
+        //TODO: Jolan's implementation
+
+
+        let answer = new Answ
+    }
+
 
 }
