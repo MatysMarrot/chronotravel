@@ -14,9 +14,17 @@
                 <a href="profile.php"><i class="material-symbols-outlined">Person</i></a>
                 <span class="tooltip_text">MON PROFIL</span>
             </li>
-            <li <?= ($currentPage == 'outfit') ? 'class="active"' : ''; ?>>
-                <a href="outfit.php"> <i class="material-symbols-outlined">Checkroom</i></a>
+            <li <?= ($currentPage == 'checkroom') ? 'class="active"' : ''; ?>>
+                <a href="../controler/checkroom.ctrl.php"> <i class="material-symbols-outlined">Checkroom</i></a>
                 <span class="tooltip_text">MES TENUES</span>
+            </li>
+            <li <?= ($currentPage == 'rules') ? 'class="active"' : ''; ?>>
+                <a href="../controler/rules.ctrl.php"> <i class="material-symbols-outlined">Description</i></a>
+                <span class="tooltip_text">RÈGLES</span>
+            </li>
+            <li <?= ($currentPage == 'contact') ? 'class="active"' : ''; ?>>
+                <a href="../controler/contact.ctrl.php"> <i class="material-symbols-outlined">Mail</i></a>
+                <span class="tooltip_text">CONTACT</span>
             </li>
             <li <?= ($currentPage == 'logout') ? 'class="active"' : ''; ?>>
                 <a href="../logout.php"> <i class="material-symbols-outlined">Logout</i></a>
