@@ -85,7 +85,7 @@ class QuestionPacket extends Packet
                 $questionData = [
                     "id" => $question->getId(),
                     "content" => $question->getContent(),
-                    "themeId" => $question->getThemeid(),
+                    "themeid" => $question->getThemeid(),
                     "reponses" => [],
                 ];
 
