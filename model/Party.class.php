@@ -18,7 +18,7 @@ class Party
     private string $code; // code de la game
     private int $id; // laisser la BD gérer
     private $era; // thème du plateau courant
-    private int $partyState;
+    private int $partyState = 0;
     private array $questions;
     private PartyImpl $partyRoom;
     private $packets;
@@ -54,6 +54,7 @@ class Party
         $data = [$this->ownerid];
         $query = "INSERT INTO party (creatorid,partystate) VALUES (?,1)";
         $dao->exec($query, $data);
+        $this->partyState = 1;
 
         $this->id = $dao->lastInsertId();
         $data[] = $this->id;
@@ -182,6 +183,10 @@ class Party
         return $this->packets;
     }
 
+    public function getPartyState(){
+        return $this->partyState;
+    }
+
     public function getId()
     {
         return $this->id;
@@ -257,6 +262,10 @@ class Party
             ]
         ];
         */
+        $this->partyState = 2;
+        $dao = DAO::get();
+        $query = "UPDATE party SET partystate = 2 WHERE id = ?";
+        $dao->exec($query,[$this->id]);
 
         $packet = new CreatePartyPacket($this);
         $packet = $packet->stringify();
@@ -267,7 +276,7 @@ class Party
 
         echo "Broadcasting";
         $this->partyRoom->broadcast($subscribers, json_encode($packet));
-
+        $this->packets = [];
 
         $this->startMinigame();
 
