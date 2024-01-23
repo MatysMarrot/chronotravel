@@ -21,7 +21,9 @@ if(!isset($_SESSION["id"])) {
     if(isset($_POST["buy"])) {
         $idSkinToBuy = $_POST["buy"];
         $skinToBuy = SkinObject::getSkin($idSkinToBuy);
-        $skinToBuy->isBuyBy($student);
+        if($student->getCurrency()>=$skinToBuy->getPrice()) {
+            $skinToBuy->isBuyBy($student);
+        }
     }
     // Récupère le cosmétique selectionné
     $selectedSkinId = $_POST["skin"] ?? 0;

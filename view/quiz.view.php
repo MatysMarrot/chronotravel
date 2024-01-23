@@ -1,13 +1,12 @@
 <head>
-
-</head>
-
-<div id="qcm">
     <style>
         #qcm {
             background-image: url('<?php echo $backgroundImage; ?>');
         }
     </style>
+</head>
+
+<div id="qcm">
     <header>
         <h1>Question à réponse unique</h1>
     </header>
