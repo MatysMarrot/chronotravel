@@ -848,6 +848,7 @@ aside#home_button ul li a {
   border-radius: 10px;
 }
 
+
 #signal{
   font-weight: bold;
   color: red;
@@ -909,3 +910,26 @@ i.material-symbols-outlined:hover {
   transform: scale(1.05);
 }
 
+
+
+/*Gain*/
+#gain{
+  vertical-align: middle;
+  width: 35px;
+  margin-left: 0.5em;
+}
+
+#score{
+  background-color: black;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 2px solid white;
+  border-radius: 15px;
+  border-spacing: 41px;
+  border-collapse: initial;
+}
+#score thead th {
+  border-bottom: 1px solid white;
+}

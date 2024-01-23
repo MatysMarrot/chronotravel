@@ -6,4 +6,4 @@
     </thead>
     <tbody>
     <?=$tableau?>
-
+    </tbody>
