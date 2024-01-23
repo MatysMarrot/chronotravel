@@ -30,7 +30,6 @@
 
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" type="text/css" href="../view/style/header.student.css">
 </head>
 <a href="../controler/landing.ctrl.php"><img id="logo" src="../view/img/logo.png" alt="ChronoTravel_logo"></a>
 <header id="student_header">
