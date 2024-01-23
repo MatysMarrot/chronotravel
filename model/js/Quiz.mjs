@@ -51,7 +51,6 @@ export class QuizController extends AbstractMinijeu {
         // décoche le bouton radio qui est coché
         this.radioButtons.forEach(function(radioButton) {
             if (radioButton.checked === true) {
-                //console.log(radioButton);
                 // TODO: à faire dans la classe Question.mjs pour la méthode isRightAnswer selectedAnswersArray.push(Question.isRightAnswer(selectedAnswerText));
                 var cell = radioButton.closest('.answer'); // .closest c'est le plus proche père qui est de classe .answer
                 cell.style.backgroundColor = "#0059FF";
@@ -74,14 +73,11 @@ export class QuizController extends AbstractMinijeu {
         //On vérifie le type
 
         this.questionLabel.innerText = question.content;
-        console.log(this.radioButtons);
 
         let i = 0;
         for (const btn of this.radioButtons){
-            console.log(btn);
             if (i >= question.answers.length){
                 btn.display = "none";
-                console.log("Button " + i + "is now hidden");
                 continue;
             }
 
@@ -97,11 +93,9 @@ export class QuizController extends AbstractMinijeu {
         let isRightAnswer = Boolean(this.mapReponsesbutton.get(button).correct);
 
         this.answers.push(isRightAnswer);
-        console.log(this.questions.at(this.questionActuelle)+ " -> " + isRightAnswer);
         this.questionActuelle++;
 
         if (this.questionActuelle === this.questions.length){
-            console.log("Reached the end !");
             this.hide();
             this.end();
             return;
