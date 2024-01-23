@@ -7,9 +7,9 @@ html {
   /* Couleur principale du thÃ¨me */
   --main-color: #ff7b00;
   /* Couleur principale du fond */
-  --main-background-color: rgba(56, 62, 66, 0.8); 
+  --main-background-color: rgba(56, 62, 66, 0.8);
   /* Couleur header*/
-  --header-background-color: #303030; 
+  --header-background-color: #303030;
   /* Couleur du fond en cas de message */
   --message-background-color: #8f8f8f;
   /*Couleur bouton négatif*/
@@ -21,19 +21,35 @@ html {
 
 /* Général*/
 
+a{
+  color: var(--main-color);
+}
+
+p{
+  text-align: center;
+}
+
 select{
   margin-bottom: 1em;
 }
 
 ul{
+  padding: 0;
   margin: 0;
   list-style: none;
- }
+}
 .ul_horizontal{
   display: flex;
   padding: 0;
 }
 /******************** Body *****************************/
+
+/*header */
+header , #logo{
+  z-index: 1;
+}
+
+
 body {
   background-image: url(../assets/background.png);
   color: rgb(255, 255, 255);
@@ -44,6 +60,15 @@ body {
   min-height: 100%;
   font-size: larger;
 }
+/*logo*/
+#logo{
+  width: 200px;
+  position: fixed;
+  top: -31px;
+  left: 62px;
+}
+
+
 
 /* Main */
 main {
@@ -54,7 +79,7 @@ main {
   width: 50%;
   border: solid 3px rgb(255, 255, 255);
   border-radius: 15px;
-  background-color: var(--main-background-color); 
+  background-color: var(--main-background-color);
   padding: 15px;
   padding-bottom: 50px ;
 }
@@ -98,75 +123,75 @@ main {
 
 /* Landing Page */
 .landingpage {
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .landingpage h2 {
-font-size: 2.5em;
-background: #F5A925FF;
-background-clip: text;
-color: transparent;
-text-align: center;
-width: 70%;
+  font-size: 2.5em;
+  background: #F5A925FF;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+  width: 70%;
 }
 .landingpage .button {
-border: 0;
-background: transparent;
-color: white;
-font-weight: bold;
-position: relative;
-overflow: hidden;
-padding: 10px 20px;
-border-radius: 30px;
-cursor: pointer;
-font-size: 1.5em;
-box-shadow: 0px -0px 0px 0px rgba(248, 64, 64, 0.5), 0px 0px 0px 0px rgba(255, 143, 39, 0.5);
-transition: all .2s;
-margin-bottom: 20px;
-text-decoration: none;
-z-index: 1;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.5em;
+  box-shadow: 0px -0px 0px 0px rgba(248, 64, 64, 0.5), 0px 0px 0px 0px rgba(255, 143, 39, 0.5);
+  transition: all .2s;
+  margin-bottom: 20px;
+  text-decoration: none;
+  z-index: 1;
 }
 .landingpage .button::after {
-content: "";
-width: 700px;
-height: 700px;
-background: linear-gradient(225deg, #f52528 0%, #f57525 50%, #f5a925 100%);
-position: absolute;
-top: -100px;
-left: -125px;
-transition: all .5s;
-z-index: -1;
+  content: "";
+  width: 700px;
+  height: 700px;
+  background: linear-gradient(225deg, #f52528 0%, #f57525 50%, #f5a925 100%);
+  position: absolute;
+  top: -100px;
+  left: -125px;
+  transition: all .5s;
+  z-index: -1;
 }
 .landingpage .button:hover::after {
-transform: rotate(150deg);
+  transform: rotate(150deg);
 }
 .landingpage .button:hover {
-transition: translate(0, -6px);
-box-shadow: 20px -20px 25px 0 rgba(248, 64, 64, .25), -20px 20px 25px 0 rgba(255, 143, 39, .25);
-transform: scale(1.09);
+  transition: translate(0, -6px);
+  box-shadow: 20px -20px 25px 0 rgba(248, 64, 64, .25), -20px 20px 25px 0 rgba(255, 143, 39, .25);
+  transform: scale(1.09);
 }
 
 /* Rules page */
 .rulespage {
-width: 70%;
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-color: white;
-background-color: rgba(100, 100, 100, .9);
-padding: 20px;
-border-radius: 5%;
-border: rgb(30, 30, 30) 5px double;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: white;
+  background-color: rgba(100, 100, 100, .9);
+  padding: 20px;
+  border-radius: 5%;
+  border: rgb(30, 30, 30) 5px double;
 }
 .rulespage h2 {
-margin: 5px;
-font-weight: bold;
-font-size: 1.5em;
-color: #ff7b00;
+  margin: 5px;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #ff7b00;
 }
 .rulespage p, .rulespage ul, .rulespage li {
-margin: 5px;
-text-align: justify;
+  margin: 5px;
+  text-align: justify;
 }
 
 
@@ -194,13 +219,12 @@ text-align: justify;
   justify-content: space-around;
   margin-top: 10px;
 }
-.button-container a, .button-container button {
+.button-container button:nth-child(1) {
   background-color: var(--color-negativ);
   transition: all .7s;
   margin: 0px;
-  width: 30%;
 }
-.button-container a:hover, .button-container button:hover {
+.button-container button:nth-child(1):hover {
   background-color: rgb(139, 16, 16);
   transition: all .7s;
 }
@@ -255,20 +279,109 @@ text-align: justify;
   border-radius: 15px;
   padding: 0.4em;
   transition: all 0.3s;
-  color: #000000;
+  color: #ffffff;
   font-weight: bold;
-
+  width: fit-content;
 }
 
 .button-teacher-neg:hover{
-  background-color: #fa4040;
+  background-color: #a62525;
+
 }
 
+.button-create{
+  background-color: #37b705;
+  border-radius: 15px;
+  border: 1px solid black;
+  font-weight: bold;
+  color: white;
+  padding: 0.5em;
+  transition: all 0.5s;
+  width: fit-content;
+}
+
+.button-create:hover{
+  transition: all 0.5s;
+  background-color: #178d1b;
+}
+/**  home **/
+#home{
+  width: fit-content;
+  padding: 1em;
+}
+#home section{
+  display: flex ;
+}
+#home p{
+  max-width: 79%;
+}
+
+.button-home{
+  display: inline-block;
+  background-color: var(--main-color);
+  color: white;
+  font-weight: bolder;
+  border-radius: 15px;
+  transition: all 0.6s;
+  padding: 2em;
+  cursor: pointer;
+  border: 1.5px solid white;
+  text-decoration: none;
+  text-align: center;
+  width: 80%;
+  margin: 1em;
+}
+
+.button-home:hover{
+  transition: all 0.6s;
+  box-shadow: 0px 0px 29px 7px var(--main-color);
+}
+
+.menu-home li {
+  margin: 3em;
+}
 label{
   margin-bottom: 0.5em;
   margin-top: 0.5em;
 }
 
+#gameplay{
+  width: 800px;
+  height: auto;
+}
+
+/** Gestion **/
+.gestion{
+  display: grid;
+  justify-items: center ;
+  width: 80%;
+}
+
+
+.gestion input{
+  margin: 1em;
+}
+
+.gestion>section>h3{
+  height: fit-content;
+  text-align: center;
+  margin-bottom: 0px;
+}
+.gestion>h4{
+  text-align: right;
+  margin: 5px;
+}
+
+
+.gestion section{
+  display: grid;
+  justify-items: center;
+  width: 90%;
+}
+
+.gestion div {
+  margin-top: 0.5em;
+}
 
 /** formulaire**/
 form .button2 {
@@ -390,6 +503,7 @@ th[scope='col'] {
 
 /* Join party p&ge */
 .joinParty {
+  width: 400px;
   display: flex;
   flex-direction: column;
 }
@@ -663,7 +777,7 @@ footer {
   width: 90%;
   margin: auto;
   clip-path: polygon(8% 0, 92% 0, 100% 100%, 0% 100%);
-  bottom: 0;  
+  bottom: 0;
   margin-top: 2em;
   position: relative;
 }
@@ -732,5 +846,66 @@ aside#home_button ul li a {
   text-decoration: none;
   background-color: var(--main-background-color);
   border-radius: 10px;
+}
+
+#signal{
+  font-weight: bold;
+  color: red;
+}
+#ok{
+  font-weight: bold;
+  color: #00d20b;
+}
+/*action page*/
+.action-page{
+  position: relative;
+}
+/** div container*/
+.container{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+}
+
+.container>*{
+  margin: 1em;
+}
+
+.container-titre{
+  max-width: 800px;
+  text-align: center;
+}
+
+main {
+  position: relative;
+}
+
+.container-titre a{
+  position: absolute;
+  top: 40px;
+  left: 23px;
+}
+
+.container-titre h2{
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/** Bouton retour**/
+.material-symbols-outlined{
+  font-size: 40px;
+  color: white;
+  background-color: #0059FF;
+  padding: 5px 15px 5px 15px;
+  border-radius: 10px;
+  border: 2px solid white;
+  transition: transform 0.5s ease;
+  box-shadow: 2px 2px 2px black;
+}
+
+i.material-symbols-outlined:hover {
+  transform: scale(1.05);
 }
 

@@ -45,7 +45,7 @@ class ClassGroup{
     }
 
 
-    public function create(){
+    public function create($name){
         $dao = DAO::get();
         $code  = generateRandomCode();
 
@@ -61,9 +61,9 @@ class ClassGroup{
         }
 
         $this->code = $code;
-        $this->name = "Nouveau groupe";
+        $this->name = $name;
 
-        $query = "INSERT INTO class (name,code) VALUES ('Nouveau groupe',?)";
+        $query = "INSERT INTO class (name,code) VALUES ('$name',?)";
         $res = $dao->exec($query,$data);
 
         $data = [$dao->lastInsertId(),$this->owner->getId()];

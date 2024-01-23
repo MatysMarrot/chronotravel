@@ -14,11 +14,14 @@ $currentPage = 'home';
 include(__DIR__.'/header.teacher.viewpart.php');
 ?>
 
-<aside id="home_button">
+<main id="home_button">
+    <p>Suivez de près les statistiques de jeu de vos élèves!</p>
     <ul>
-        <li id="join_class_button"><a href="../controler/teacher.manage.ctrl.php">Gestion de vos classes</a></li>
+        <li ><a class="button-home" href="../controler/teacher.manage.ctrl.php">Gestion de vos classes</a></li>
+        <li ><a class="button-home" href="../controler/teacher.create.ctrl.php">Créer une classe</a></li>
     </ul>
-</aside>
+    <p>Pour plus d'informations <a href="../controler/rules.ctrl.php">Cliquez ici !</a></p>
+</main>
 
 </body>
 </html>

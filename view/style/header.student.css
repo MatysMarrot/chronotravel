@@ -64,7 +64,7 @@ header#student_header nav ul li {
 header#student_header nav ul li span.tooltip_text {
   position: absolute;
   visibility: hidden;
-  width: 135px;
+  width: 150px;
   background-color: var(--header-background-color);
   color: white;
   text-align: center;

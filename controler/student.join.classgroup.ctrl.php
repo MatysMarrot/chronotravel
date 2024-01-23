@@ -23,7 +23,7 @@ if(count($table) != 0){
 
 if($ingroup){
     $class = ClassGroup::getClassGroupFromId($table[0][0]);
-    $currentClass = "Attention, vous êtes déjà dans la classe " . $class->getName();
+    $currentClass = "<p id='signal'>Attention, vous êtes déjà dans la classe " . $class->getName()."</p>";
 }
 
 if(isset($_POST['code'])){
@@ -33,7 +33,7 @@ if(isset($_POST['code'])){
     $table = $dao->query($query,$data);
 
     if(count($table) == 0){
-        $message = "Impossible de rejoindre la classe avec le code $code ";
+        $message = "<p id='signal'>Impossible de rejoindre la classe avec le code $code</p>";
     }
     else{
         $idClass = $table[0][0];
@@ -46,8 +46,8 @@ if(isset($_POST['code'])){
         
         $class->insertStudent($student);
         $name = $class->getName();
-        $message = "Vous avez rejoins la classe $name !";
-        $currentClass = "Attention, vous êtes déjà dans la classe " . $class->getName();
+        $message = "<p id='ok'>Vous avez rejoint la classe $name ! </p>";
+        $currentClass = "<p id='signal'>Attention, vous êtes déjà dans la classe ". $class->getName()."</p>";
     }
 }
 

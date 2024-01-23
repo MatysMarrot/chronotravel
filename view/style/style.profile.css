@@ -453,6 +453,14 @@ main {
   background-color: #555; /* Nouvelle couleur au survol */
 }
 
+/*logo*/
+#logo{
+  width: 200px;
+  position: fixed;
+  top: -31px;
+  left: 62px;
+}
+
 
 .div_skin {
   position: relative;
