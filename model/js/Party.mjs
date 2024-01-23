@@ -83,8 +83,6 @@ export class Party{
 
             case "movement":{
                 packet = new MovementPacket(this, parsedData);
-                console.log("Le packet : " + packet);
-                console.log(packet.playersMovement,packet.partyId);
             } break;
 
             case "question":{
@@ -98,18 +96,14 @@ export class Party{
         }
 
         //TODO : verifier la classe
-        console.log(!this.isOver,!this.inMiniJeux,packet != null);
         if (!this.isOver && !this.inMiniJeux && packet != null){
-
             packet.handle(this);
-            console.log('apres handle');
         }
     }
 
     updatePlayerPosition(playersMovement){
-        console.log("movement : " + playersMovement);
+
         for (let [playerId, movement] of playersMovement) {
-            console.log("playerId: " + playerId + ", movement: " + movement);
 
             // On cherche le joueur associé
             let playerObject = this.players.get(playerId);
