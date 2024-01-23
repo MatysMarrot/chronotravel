@@ -654,7 +654,11 @@ th[scope='col'] {
   text-align: center;
   border-collapse: collapse;
 }
-
+/* Stat for teacher */
+.teacherStat .game {
+  display: flex;
+  flex-direction: row;
+}
 /* Footer */
 footer {
   background-color: var(--header-background-color);
