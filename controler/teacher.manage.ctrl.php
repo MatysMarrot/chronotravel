@@ -79,7 +79,7 @@ elseif(!isset($_POST["stats"])){
 else{ //Gestion stats élève
     $student = Student::readStudent($_POST["stats"]);
     $view->assign("student",$student);
-    $view->display("teacher.statStudent.view.php");
+    $view->display("../controler/teacher.studentstat.ctrl.php");
 }
 
 ?>
