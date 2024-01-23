@@ -125,6 +125,7 @@ class PartyImpl implements MessageComponentInterface{
 
             $party = $this->parties[$decoded['partyId']];
             $party->addPackets($packet);
+            var_dump($packet);
 
             if(count($party->getPackets()) == count($party->getPlayers())){
                 $party->manageAnwser();

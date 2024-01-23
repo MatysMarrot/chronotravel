@@ -21,7 +21,8 @@ class MovePacket extends Packet{
     {
         $this->data = [
             "action" => Action::MOVEMENT->value,
-            "partyid" => self::getPartyid(),
+            "id" => -1,
+            "partyId" => self::getPartyid(),
             "players" => [
             ]
 

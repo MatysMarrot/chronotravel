@@ -111,7 +111,7 @@ class Party
         foreach ($this->getPlayers() as $students) {
             $subscribers[] = $students->getId();
         }
-        $packet = new MovePacket($this->partyid, $this->playerPosition);
+        $packet = new MovePacket($this->id, $this->playerPosition);
         $encode = $packet->stringify();
         $this->partyRoom->broadcast($subscribers, $encode);
 
@@ -232,6 +232,7 @@ class Party
 
         foreach ($table as $row) {
             $party->players[] = Student::readStudent($row['studentid']);
+            $party->playerPosition[$row['studentid']] = new Position($row['studentid']);
         }
 
         return $party;
