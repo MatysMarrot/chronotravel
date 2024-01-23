@@ -140,6 +140,11 @@ header#student_header div#number_chronocoin span {
   cursor: pointer;
   width: 140px;
   padding: 12.5px;
+  transition: transform 0.5s ease;
+}
+
+#fontToggleBtn:hover {
+  transform: scale(1.05);
 }
 
 #dyslexie-div {
