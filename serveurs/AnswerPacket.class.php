@@ -23,25 +23,42 @@ class AnswerPacket extends Packet
 
     }
 
-function handle()
-{
-    // TODO: Implement handle() method.
-}
+    function handle()
+    {
+        // TODO: Implement handle() method.
+    }
 
 public
-function stringify(): string
-{
+    function stringify(): string
+    {
 
-    $encode = [
-        "action" => Action::ANSWER->value,
-        "id" => $this->id,
-        "partyId" => $this->pid,
-        "nbrQuestions" => $this->nbrQuestions,
-        "nbrRightAnswers" => $this->nbrRightAnswers
-    ];
+        $encode = [
+            "action" => Action::ANSWER->value,
+            "id" => $this->id,
+            "partyId" => $this->pid,
+            "nbrQuestions" => $this->nbrQuestions,
+            "nbrRightAnswers" => $this->nbrRightAnswers
+        ];
 
 
-    return json_encode($encode);
-}
+        return json_encode($encode);
+    }
+
+    /**
+     * @return int
+     */
+    public function getNbrRightAnswers(): int
+    {
+        return $this->nbrRightAnswers;
+    }
+
+
+    /**
+     * @return int
+     */
+    public function getNbrQuestions(): int
+    {
+        return $this->nbrQuestions;
+    }
 }
 ?>
