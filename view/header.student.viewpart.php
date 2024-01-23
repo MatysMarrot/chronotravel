@@ -1,5 +1,5 @@
 <?php
-/*    session_start();
+    session_start();
 
     if (isset($_SESSION['id'])) {
         $userId = $_SESSION['id'];
@@ -25,7 +25,7 @@
         header("Location: login.view.php");
         exit();
     }
-*/?>
+?>
 
 
 <head>
@@ -63,7 +63,7 @@
     </nav>
     <div id="number_chronocoin">
         <img src="../view/img/chrono_coin.png" alt="ChronoCoins">
-        <span><?php /*echo $currencyAmount; */?>12345</span>
+        <span><?php echo $currencyAmount; ?></span>
     </div>
 
     <div id="dyslexie-div">
