@@ -1159,3 +1159,20 @@ i.material-symbols-outlined:hover {
 #score thead th {
   border-bottom: 1px solid white;
 }
+#positionClassement{
+  width: 75px;
+  vertical-align: middle;
+}
+#scoreBody ul{
+  align-items: center;
+  justify-content: center;
+}
+#scoreBody ul h3{
+  font-size: xx-large;
+}
+
+#scoreBody main{
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+}

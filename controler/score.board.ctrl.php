@@ -9,6 +9,7 @@
     //Démarrer la session
     session_start();
     $view = new View();
+    $emplacementSkin = "/assets/skin/";
     //Récupérer la party
     $party = $_SESSION['party'];
     //$studentsPosition = $party->getStudentPosition(); //Student1 => Case1, Student2 => Case2 etc ...
@@ -58,13 +59,43 @@
 
 
     $gainCalculator->calculateGainsByClassement($studentsPosition);
-    // Affichage des résultats
+    // Affichage des résultats + Skin
     foreach ($studentsPosition as $id => $student) {
-        $tableau .= "<tr>
-                            <th>{$student['classement']}</th>
-                            <th>{$id}</th>
-                            <th>{$student['gain']}<img id=\"gain\" src=\"../view/img/chrono_coin.png\" alt='coin'></th>
-                         </tr>";
+        $currentStudent = Student::readStudent($id);
+        $currentSkin = SkinObject::getCurrentSkinOfPlayer($id);
+
+        $tableau .= "
+         <section>
+        <ul class=\"ul_horizontal\">
+                    <li><img id=\"positionClassement\" src=\"position".$student['classement'].".png\" alt=\"position\"></li>
+                    <li><h3>".$currentStudent->getLogin()."</h3></li>
+        </ul>
+            
+        <div class=\"div_skin\">
+                     <img id=\"skin\" src=$emplacementSkin.\"skintest.png\" alt=\"personnage\">";
+
+        if ($currentSkin[2] != null) {
+            $tableau .= "<img id=\"shirt\" src=\"<?=$emplacementSkin.$currentSkin[2]->getLocation()?>\" alt=\"Tee-shirt\">";
+        }
+        if ($currentSkin[1] != null) {
+            $tableau .= "<img id=\"hair\" src=\"$emplacementSkin.$currentSkin[1]->getLocation()\" alt=\"Cheveux\">";
+        }
+        if ($currentSkin[0] != null) {
+            $tableau .= "< img id=\"top\" src=\"$emplacementSkin.$currentSkin[0]->getLocation()\" alt=\"Chapeau\">";
+                     }
+        if ($currentSkin[3] != null) {
+            $tableau .= "<img id=\"pants\" src=\"$emplacementSkin.$currentSkin[3]->getLocation()\" alt=\"Pantalon\">";
+        }
+        if($currentSkin[4] != null) {
+            $tableau .= "<img id=\"shoes\" src=\"$emplacementSkin.$currentSkin[4]->getLocation()\" alt=\"Chaussures\">
+        </div>
+        
+        <ul class=\"ul_horizontal\">
+                <li>  <h3>".$student['gain']."</h3>  </li>
+                <li><img id=\"gain\" src=\"chrono_coin.png\" alt=\"coin\"></li>
+            </ul>
+     </section>";
+        }
     }
 
     $view->assign("tableau", $tableau);
