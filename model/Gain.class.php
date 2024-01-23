@@ -6,7 +6,6 @@ class Gain{
         "3" => 50,
         "4" => 35,
     ];
-
     public function calculateGainsByClassement(array &$studentsPosition): void
     {
         //Grouper les étudiants par classement
