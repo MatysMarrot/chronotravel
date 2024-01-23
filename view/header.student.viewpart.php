@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../view/style/header.student.css">
 </head>
 <a href="../controler/landing.ctrl.php"><img id="logo" src="../view/img/logo.png" alt="ChronoTravel_logo"></a>
-<header>
+<header id="student_header">
     <nav>
         <ul>
             <li <?= ($currentPage == 'home') ? 'class="active"' : ''; ?>>
