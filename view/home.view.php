@@ -7,7 +7,7 @@
       <link rel="stylesheet" href="../view/style/style.css">
     </head>
 
-    <body class="mode">
+    <body>
 
     <?php
       $currentPage = 'home';
