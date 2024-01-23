@@ -111,8 +111,10 @@ class PartyImpl implements MessageComponentInterface{
             $party = $this->parties[$decoded['partyId']];
             $party->addPackets($packet);
 
+            var_dump($party->getPartyState());
             //Si on a suffisament de joueurs
-            if (count($party->getPackets()) == count($party->getPlayers())){
+            if ($party->getPartyState() == 1 && count($party->getPackets()) == count($party->getPlayers())){
+                var_dump("INIT GAME");
                 $party->initGame();
             }
 
