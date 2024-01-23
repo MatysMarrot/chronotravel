@@ -113,6 +113,7 @@ class Party
         }
         $packet = new MovePacket($this->id, $this->playerPosition);
         $encode = $packet->stringify();
+        var_dump($encode);
         $this->partyRoom->broadcast($subscribers, $encode);
 
 
