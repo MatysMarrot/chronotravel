@@ -72,4 +72,4 @@
 
 </header>
 
-<script src="dyslexieFont.js"></script>
+<script src="../view/js/dyslexieFont.js"></script>
