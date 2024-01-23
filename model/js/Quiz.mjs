@@ -3,6 +3,8 @@ import "./Question.mjs";
 import {Question} from "./Question.mjs";
 
 export class QuizController extends AbstractMinijeu {
+
+    party;
     qcmContainer;
     jeuContainer;
 
@@ -18,8 +20,9 @@ export class QuizController extends AbstractMinijeu {
 
     questions = [];
     answers = [];
-    constructor() {
+    constructor(party) {
         super();
+        this.party = party;
 
         // récupère les labels et la question
         this.questionLabel = document.querySelector("#question h3");
@@ -100,9 +103,14 @@ export class QuizController extends AbstractMinijeu {
         if (this.questionActuelle === this.questions.length){
             console.log("Reached the end !");
             this.hide();
+            this.end();
             return;
         }
 
         this.setQuestion(this.questionActuelle);
+    }
+
+    end(){
+        this.party.endMinigame(this.answers);
     }
 }
