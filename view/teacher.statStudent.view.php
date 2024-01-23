@@ -9,6 +9,7 @@
         <?php $currentPage = 'manage';
         include(__DIR__.'/header.teacher.viewpart.php'); ?>
         <main class="teacherStat">
+            <a href="../controler/teacher.manage.ctrl.php" class="retour">Retour</a>
             <h1>Statistiques</h1>
             <h2><?=$student->getFirstname(). " ".$student->getLastname()?> (<?=$student->getLogin()?>)</h2>
             <div class="game">
@@ -16,7 +17,7 @@
                     <h3>Parties jouées : <?= $allStat->getGamePlayed() ?></h3>
                     <h3>Parties gagnées : <?= $allStat->getGameWin() ?></h3>
                 <?php else: ?>
-                    <h3>Aucune statistique existante pour ce joueur</h3>
+                    <h3>Aucune statistique existante pour ce joueur. Le joueur n'a jamais joué</h3>
                 <?php endif; ?>
             </div>
             <div id="chartDiv"></div>

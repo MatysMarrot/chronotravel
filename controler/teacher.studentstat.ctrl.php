@@ -16,6 +16,7 @@ if ($allStat !=null) {
     $allStatJSON = json_encode($allStat);
     $view->assign("allStatJSON", $allStatJSON);
 }
+$view->assign("allStat", $allStat);
 $view->display("../view/".$outgoing);
 
 ?>
