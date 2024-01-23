@@ -12,7 +12,7 @@ include(__DIR__.'/header.teacher.viewpart.php'); ?>
 
 <main class="action-page">
     <div class="container-titre">
-        <a href="../controler/teacher.manage.ctrl.php"><i class="material-symbols-outlined">arrow_back</i></a>
+        <a id="button-return" href="../controler/teacher.manage.ctrl.php"><i class="material-symbols-outlined">arrow_back</i></a>
         <h2><?=$titre?></h2>
     </div>
 
