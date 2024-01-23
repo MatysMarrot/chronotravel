@@ -101,8 +101,9 @@ export class Party{
 
     updatePlayerPosition(playersMovement){
         for (let p of playersMovement){
+            console.log(playersMovement);
             //On cherche le joueur associé
-            let playerObject = this.players[p.key];
+            let playerObject = this.players.get(playersMovement.key);
 
             //Si on ne le trouve pas on passe au suivant
             if (playerObject == null){
@@ -111,6 +112,8 @@ export class Party{
 
             playerObject.move(p.value);
         }
+
+        this.drawPlayerPosition();
     }
 
     declareWinner(winners){

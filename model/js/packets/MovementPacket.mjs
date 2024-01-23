@@ -4,17 +4,23 @@ import {AbstractPacket} from "../AbstractPacket.mjs";
 export class MovementPacket extends AbstractPacket {
 
     playersMovement;
-    constructor(Partie, data) {
-        super(data.id, data.partyId);
-        this.playersMovement = [];
+    constructor(partie, data) {
+        super(-1, data.partyId);
+        console.log("went here !");
+
+        this.playersMovement = new Map();
 
         for (let players of data.players){
-            this.playersMovement[players.id] = players.movement;
+            this.playersMovement.set(players.id, players.movement);
         }
+
+        console.log("got out of here !");
+
 
     }
 
     handle(partie){
+        console.log("went there !");
         partie.updatePlayerPosition(this.playersMovement);
     }
 }
