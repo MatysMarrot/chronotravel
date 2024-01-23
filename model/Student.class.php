@@ -62,7 +62,21 @@ class Student extends User {
     public function getCurrency() : int{
         return $this->currency;
     }
-
+    public function getClassAndTeacherName() : array {
+        $dao = DAO::get();
+        $query = "SELECT c.name AS class_name, p.name AS teacher_name FROM studentclass sc JOIN class c ON sc.classid = c.id JOIN classteacher ct ON c.id = ct.classid JOIN person p ON ct.teacherid = p.id WHERE sc.studentid = ?";
+        $table = $dao->query($query, [$this->getId()]);
+        if(count($table) == 0) {
+            throw new Exception("Aucune classe trouvée pour l'étudiant n°{$this->getId()}");
+        } else if(count($table) > 1) {
+            throw new Exception("Plusieurs classes trouvées pour l'étudiant n°{$this->getId()}");
+        } else {
+            $row = $table[0];
+            $result["className"] = $row["class_name"];
+            $result["teacherName"] = $row["teacher_name"];
+            return $result;
+        }
+    }
 }
 
 ?>

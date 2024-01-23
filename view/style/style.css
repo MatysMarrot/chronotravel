@@ -586,6 +586,74 @@ th[scope='col'] {
   width: 40%;
   height: 40%;
 }
+/* Profile page */
+.profil {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.profil>div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.profil .dashboard {
+  border: 10px ridge #e49144;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+}
+.profil .statistics {
+  flex: 1;
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+.profil .switch-buttons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 20px;
+  width: 40%;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.profil .statistics-button, .profil .class-button {
+  padding: 10px;
+  width: 30%;
+  font-size: 1.4em;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 3px solid white;
+  background-color: #0059FF;
+  transition: background-color 0.3s ease, transform 0.5s ease;
+  min-width: 135px;
+}
+.profil .statistics-button:hover, .profil .class-button:hover {
+  transform: scale(1.05);
+}
+.profil .active {
+  background-color: #ff7b00;
+}
+.profil .class-info table {
+  border: 1px solid white;
+  padding: 8px;
+  text-align: center;
+}
+.profil .class-info td, .profil .class-info th {
+  border: 1px solid white;
+  padding: 8px;
+  text-align: center;
+  border-collapse: collapse;
+}
 
 /* Footer */
 footer {

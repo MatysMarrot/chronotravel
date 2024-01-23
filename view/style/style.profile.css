@@ -6,9 +6,9 @@ html {
   /* Couleur principale du thÃ¨me */
   --main-color: #ff7b00;
   /* Couleur principale du fond */
-  --main-background-color: rgba(56, 62, 66, 0.8); 
+  --main-background-color: rgba(56, 62, 66, 0.8);
   /* Couleur header*/
-  --header-background-color: #303030; 
+  --header-background-color: #303030;
   /* Couleur du fond en cas de message */
   --message-background-color: #8f8f8f;
   /*Couleur bouton négatif*/
@@ -56,7 +56,7 @@ main {
   width: 50%;
   border: solid 3px rgb(255, 255, 255);
   border-radius: 15px;
-  background-color: var(--main-background-color); 
+  background-color: var(--main-background-color);
   padding: 15px;
   padding-bottom: 50px ;
 }
@@ -236,7 +236,7 @@ dashboard {
     text-align: center;
   }
 
- 
+
   .user-info p {
     margin: 10px 0;
   }
@@ -286,7 +286,7 @@ dashboard {
 
   .user-info img {
     width: 124px;
- 
+
     object-fit: cover;
     margin-bottom: 10px;
   }
@@ -555,5 +555,5 @@ main {
   position: absolute;
   width: 100%; /* Remplit la largeur du conteneur */
   height: 100%; /* Remplit la hauteur du conteneur */
-  object-fit: cover; 
+  object-fit: cover;
 }
