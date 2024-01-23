@@ -4,6 +4,7 @@ require_once __DIR__ . '/../model/DAO.class.php';
 require_once __DIR__ . '/../model/Party.class.php';
 require_once __DIR__ . '/../model/Student.class.php';
 require_once(__DIR__ . '/enums/Action.enum.php');
+require_once(__DIR__ . '/LeavePacket.class.php');
 //require_once __DIR__ . '/../model/Waitingroom.class.php'; May require another room
 
 /**

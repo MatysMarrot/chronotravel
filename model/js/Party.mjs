@@ -7,6 +7,7 @@ import {VictoryPacket} from "./packets/VictoryPacket.js";
 import {MovementPacket} from "./packets/MovementPacket.mjs";
 import {QuestionPacket} from "./packets/QuestionPacket.js";
 import {AnswerPacket} from "./packets/AnswerPacket.mjs";
+import {LeavePacket} from "./packets/LeavePacket.mjs";
 import {retrieveSessionFromDiv} from "../../controler/utils/jsUtils.mjs";
 
 export class Party{
@@ -85,6 +86,9 @@ export class Party{
                 packet = new QuestionPacket(this,parsedData);
                 console.log(packet);
             } break;
+            case "leave":{
+                packet = new LeavePacket(this,parsedData);
+            }
 
         }
 
