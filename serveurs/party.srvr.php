@@ -4,6 +4,7 @@ require_once __DIR__ . '/../model/DAO.class.php';
 require_once __DIR__ . '/../model/Party.class.php';
 require_once __DIR__ . '/../model/Student.class.php';
 require_once(__DIR__ . '/enums/Action.enum.php');
+require_once(__DIR__ . '/LeavePacket.class.php');
 //require_once __DIR__ . '/../model/Waitingroom.class.php'; May require another room
 
 /**
@@ -49,6 +50,36 @@ class PartyImpl implements MessageComponentInterface{
 
     function onClose(ConnectionInterface $conn)
     {
+
+        $key = array_search($conn, $this->clientIdConn);
+        echo sprintf("On close, key %s = ", $key);
+
+        if ($key !== false) {
+            // Il exsite un cid lié à cette connexion
+            $dao = DAO::get();
+            $data = [$key];
+            $query = "SELECT id FROM party p, partystudent s WHERE studentid = ? AND id = partyid AND partystate = 2";
+            $table = $dao->query($query, $data);
+            $party = $this->parties[$table[0][0]];
+            $party->removePlayer($key);
+            $packet = new LeavePacket($key,$party->getId());
+
+            $subscribers = [];
+            foreach ($party->getPlayers() as $students) {
+                $subscribers[] = $students->getId();
+            }
+            var_dump($packet);
+            $this->broadcast($subscribers,$packet->stringify());
+
+            $this->clientIdConn[$key]->close();
+            unset($this->clientIdConn[$key]);
+
+        }
+
+
+        $this->clients->detach($conn);
+        echo "Connection {$conn->resourceId} is gone.\n";
+
         $this->clients->detach($conn);
         echo "Une connexion a été retirée. ID: {$conn->resourceId}\n";
     }

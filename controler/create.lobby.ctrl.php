@@ -17,7 +17,6 @@ else{
     $query = "SELECT id FROM PARTY where creatorId = ?";
 
     $table = $dao->query($query, [$_SESSION['id']]);
-    var_dump($table);
 
     foreach ($table as $ligne){
         if (isset($ligne['id'])){
