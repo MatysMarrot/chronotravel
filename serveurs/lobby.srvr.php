@@ -144,10 +144,7 @@ class ServerImpl implements MessageComponentInterface
                 $this->clients->detach($this->clientIdConn[$player->getId()]);
                 unset($this->clientIdConn[$player->getId()]);
             }
-            // CHANGEMENT DU STATUS DE LA PARTY (FAIRE ATTENTION QUE C'EST BIEN DEFINI EN BD)
-            $data = [$decoded['pid']];
-            $query = "UPDATE party SET partystate = 2 WHERE id = ? ";
-            $dao->exec($query,$data);
+
 
         } elseif ($decoded['action'] == "LEAVE") {
             echo sprintf("%d is leaving party %d\n", $decoded['cid'], $decoded['pid']);
