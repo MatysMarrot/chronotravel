@@ -146,13 +146,22 @@ export class Party{
     }
 
     startMinigame(questionPacket) {
-        //TODO: Jolan's implementation
-        this.quiz = new QuizController();
+        if (this.inMiniJeux){
+            console.log("Tried to start a second minigame ?");
+            return;
+        }
+
+        this.inMiniJeux = true;
+        this.quiz = new QuizController(this);
         this.quiz.show();
         this.quiz.start(questionPacket.questions);
-        let answer = new AnswerPacket(this.currentClient, this.id, [true, true, false, false, true]);
-        answer.handle(this.socket);
     }
+
+    endMinigame(arrayofAnswers){
+        this.quiz.hide();
+        let answer = new AnswerPacket(this.currentClient, this.id, arrayofAnswers);
+        answer.handle(this.socket);
+    };
 
 
 }
