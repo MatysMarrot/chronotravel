@@ -20,7 +20,9 @@ socket.addEventListener("close", function (event) {
     if (partie != null && partie.isOver) {
         alert("La partie est terminée !");
     }
+
     console.log("Connexion avec le serveur fermée: ", event.data);
+    window.location.href = "../controler/home.ctrl.php";
 });
 
 

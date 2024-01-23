@@ -117,8 +117,18 @@ class PartyImpl implements MessageComponentInterface{
                 var_dump("INIT GAME");
                 $party->initGame();
             }
+        }
 
+        if($decoded['action'] == Action::ANSWER->value){
+            echo sprintf("Received '%s' from %s\n",$decoded['action'], $conn->resourceId);
+            $packet = new AnswerPacket($decoded);
 
+            $party = $this->parties[$decoded['partyId']];
+            $party->addPackets($packet);
+
+            if(count($party->getPackets()) == count($party->getPlayers())){
+                $party->manageAnwser();
+            }
         }
     }
 

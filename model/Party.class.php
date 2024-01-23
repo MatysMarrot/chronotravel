@@ -107,9 +107,13 @@ class Party
     {
         $packets = array();
         //TODO: Make the move size gettable
-        $packet = new MovePacket($this->partyid, $this->players);
+        $subscribers =[];
+        foreach ($this->getPlayers() as $students) {
+            $subscribers[] = $students->getId();
+        }
+        $packet = new MovePacket($this->partyid, $this->playerPosition);
         $encode = $packet->stringify();
-        $this->getPartyRoom()->broadcast($this->players, $encode);
+        $this->partyRoom->broadcast($subscribers, $encode);
 
 
     }
@@ -246,6 +250,30 @@ class Party
         var_dump($packet);
 
 
+    }
+
+    public function manageAnwser(){
+        $mapPlayernbrAnswer = [];
+
+        foreach($this->packets as $packet){
+            if (!$packet instanceof AnswerPacket){
+                echo "man faut passer un answer packet ici !\n";
+                return;
+            }
+
+            $mapPlayernbrAnswer[$packet->getId()] = $packet->getNbrRightAnswers();
+        }
+
+        arsort($mapPlayernbrAnswer);
+
+        $i = 5;
+        foreach($mapPlayernbrAnswer as $id => $nbrAnswers){
+            $this->playerPosition[$id]->setCurrentMovement($i);
+            $i--;
+        }
+
+        $this->move();
+        //$this->startMinigame();
     }
 
     public function initGame(){
