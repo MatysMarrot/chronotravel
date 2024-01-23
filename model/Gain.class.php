@@ -10,10 +10,10 @@ class Gain{
         "4" => 35,
     ];
 
-    private function getGainRank(array $array): int {
+    public function getGainRank(array $array): int {
 		$res=0;
 		foreach($array as $gain){
-				$res +=$gain;
+				$res +=$this->sum[$gain]; //res
         }
         return (count($array) > 0) ? $res /count($array) : 0;
 		}
