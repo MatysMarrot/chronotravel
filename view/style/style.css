@@ -14,10 +14,20 @@ html {
   --message-background-color: #8f8f8f;
   /*Couleur bouton négatif*/
   --color-negativ: rgb(216, 13, 13);
+  --color-blue-button: #0059FF;
   /* Choix de la font */
   font-family: sans-serif;
 }
-
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('../assets/OpenDyslexic/opendyslexic-regular-webfont.eot');
+  src: url('../assets/OpenDyslexic/opendyslexic-regular-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../assets/OpenDyslexic/opendyslexic-regular-webfont.woff') format('woff'),
+  url('../assets/OpenDyslexic/opendyslexic-regular-webfont.ttf') format('truetype'),
+  url('../assets/OpenDyslexic/opendyslexic-regular-webfont.svg#opendyslexicregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
 /* Général*/
 
@@ -77,15 +87,195 @@ main {
   flex-direction: column;
   align-items: center;
   width: 50%;
-  border: solid 3px rgb(255, 255, 255);
+  border: solid 2px white;
   border-radius: 15px;
   background-color: var(--main-background-color);
   padding: 15px;
   padding-bottom: 50px ;
 }
 
-/* Connection page */
+/*Header Teacher */
+.header_teacher .active{
+  color: #FF8C00;
+}
+.header_teacher {
+  padding: 0.8em;
+  margin-bottom: 3em;
+  z-index: 1;
+  top: 0;
+  position: sticky;
+  height: 25px;
+  width: 50%;
+  background-color: var(--header-background-color);
+  border-radius: 0 0 25px 25px;
+  box-shadow: 2px 2px 2px black;
+  border-top: none;
+}
+.header_teacher li{
+  text-align: center;
+  flex-basis: 25%;
+}
+.header_teacher a{
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+.header_teacher a:hover{
+  transition: color 0.5s ease;
+  color: var(--color-blue-button);
+}
 
+/* Header student */
+.dyslexic-font {
+  font-family: 'OpenDyslexic', sans-serif;
+}
+header#student_header {
+  top: 0px;
+  position: sticky;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+header#student_header nav {
+  position: absolute;
+  top: 0;
+  background-color: var(--header-background-color);
+  width: 775px;
+  height: 80px;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 0 0 25px 25px;
+  box-shadow: 2px 2px 2px black;
+}
+header#student_header nav ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  padding-top: 13px;
+}
+header#student_header nav ul li {
+  margin: 0 20px 0 20px;
+  text-align: center;
+  position: relative;
+}
+header#student_header nav ul li span.tooltip_text {
+  position: absolute;
+  visibility: hidden;
+  width: 150px;
+  background-color: var(--header-background-color);
+  color: white;
+  text-align: center;
+  border-radius: 0 0 10px 10px;
+  padding: 5px 0;
+  top: 67px;
+  left: 50%;
+  transform: translate(-50%);
+  box-shadow: 2px 2px 2px black;
+}
+header#student_header nav ul li:hover span.tooltip_text {
+  visibility: visible;
+  font-weight: bold;
+}
+header#student_header nav ul li a i.material-symbols-outlined {
+  font-size: 40px;
+  color: white;
+  background-color: #0059FF;
+  padding: 5px 15px 5px 15px;
+  border-radius: 10px;
+  border: 2px solid white;
+  transition: transform 0.5s ease;
+  box-shadow: 2px 2px 2px black;
+}
+header#student_header nav ul li a i.material-symbols-outlined:hover {
+  transform: scale(1.05);
+}
+header#student_header nav ul li.active a i.material-symbols-outlined {
+  background-color: #FF8C00;
+}
+header#student_header div#number_chronocoin, #dyslexie-div {
+  position: relative;
+  top: 15px;
+  left: 240%;
+  display: flex;
+  align-items: center;
+}
+header#student_header div#number_chronocoin img {
+  width: 60px;
+  position: absolute;
+  left: -20px;
+}
+header#student_header div#number_chronocoin span, #fontToggleBtn {
+  color: white;
+  background-color: var(--header-background-color);
+  border-radius: 10px;
+  border: 2px solid white;
+  width: 75px;
+  font-weight: bold;
+  font-size: 18px;
+}
+header#student_header div#number_chronocoin span {
+  padding: 12px 25px 12px 55px;
+}
+#dyslexie-div {
+  position: relative;
+  left: 240%;
+  width: 50px;
+  top: 15px;
+  margin-left: 25px;
+}
+#fontToggleBtn {
+  position: absolute;
+  cursor: pointer;
+  width: 140px;
+  padding: 12.5px;
+  transition: transform 0.5s ease;
+}
+#fontToggleBtn:hover {
+  transform: scale(1.05);
+}
+.dyslexic-font #fontToggleBtn {
+  background-color: #FF8C00;
+}
+
+/* Header unknow */
+.connectionpage h1 {
+  font-size: 1.5em;
+  margin: 0;
+}
+.connectionpage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: baseline;
+  padding: 10px;
+  border-radius: 0 0 25px 25px;
+  box-shadow: 2px 2px 2px black;
+  top: 0;
+  position: sticky;
+  width: 50%;
+  z-index: 1;
+  background-color: var(--header-background-color);
+  margin-bottom: 20px;
+}
+.connectionpage a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.connectionpage .active {
+  text-decoration: underline;
+  color: #FF8C00;
+}
+.connectionpage a:hover {
+  text-decoration: underline;
+}
+
+/* Connection page */
 .connection form {
   display: flex;
   flex-direction: column;
@@ -103,7 +293,7 @@ main {
 .connection #togglePassword {
   position: absolute;
   right: 0;
-  top: 5px;
+  top: 13px;
   border: none;
   background-color: transparent;
 }
@@ -178,10 +368,10 @@ main {
   flex-direction: column;
   align-items: flex-start;
   color: white;
-  background-color: rgba(100, 100, 100, .9);
+  background-color: var(--main-background-color);
   padding: 20px;
-  border-radius: 5%;
-  border: rgb(30, 30, 30) 5px double;
+  border-radius: 15px;
+  border: white 2px solid;
 }
 .rulespage h2 {
   margin: 5px;
@@ -354,14 +544,11 @@ label{
 .gestion{
   display: grid;
   justify-items: center ;
-  width: 80%;
+  width: 100%;
 }
-
-
 .gestion input{
   margin: 1em;
 }
-
 .gestion>section>h3{
   height: fit-content;
   text-align: center;
@@ -371,8 +558,6 @@ label{
   text-align: right;
   margin: 5px;
 }
-
-
 .gestion section{
   display: grid;
   justify-items: center;
@@ -584,6 +769,7 @@ th[scope='col'] {
   border: #303030 double 5px;
   border-radius: 5%;
   margin: 10px;
+  z-index: 0;
 }
 .checkroom .chooseSkin button {
   width: 150px;
@@ -742,8 +928,8 @@ th[scope='col'] {
   font-size: 1.4em;
   color: white;
   font-weight: bold;
-  border-radius: 5px;
-  border: 3px solid white;
+  border-radius: 10px;
+  border: 2px solid white;
   background-color: #0059FF;
   transition: background-color 0.3s ease, transform 0.5s ease;
   min-width: 135px;
@@ -753,6 +939,7 @@ th[scope='col'] {
 }
 .profil .active {
   background-color: #ff7b00;
+  text-decoration: none;
 }
 .profil .class-info table {
   border: 1px solid white;
@@ -903,7 +1090,7 @@ main {
 }
 
 /** Bouton retour**/
-.material-symbols-outlined{
+#student_header .material-symbols-outlined{
   font-size: 40px;
   color: white;
   background-color: #0059FF;
