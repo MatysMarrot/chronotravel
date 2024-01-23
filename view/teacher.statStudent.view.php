@@ -10,8 +10,10 @@
         <?php $currentPage = 'manage';
         include(__DIR__.'/header.teacher.viewpart.php'); ?>
         <main class="teacherStat">
-            <a href="../controler/teacher.manage.ctrl.php"><i class="material-symbols-outlined">arrow_back</i></a>
-            <h1>Statistiques</h1>
+            <div class="container-titre">
+                <a href="../controler/teacher.manage.ctrl.php"><i class="material-symbols-outlined">arrow_back</i></a>
+                <h2>Statistiques</h2>
+            </div>
             <h2><?=$student->getFirstname(). " ".$student->getLastname()?> (<?=$student->getLogin()?>)</h2>
             <div class="game">
                 <?php if ($allStat != null): ?>
