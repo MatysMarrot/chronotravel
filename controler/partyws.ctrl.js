@@ -26,7 +26,7 @@ socket.addEventListener("close", function (event) {
 
 socket.addEventListener("error", function (event) {
     if (window.confirm("Something went wrong...")) {
-        console.log("Erreur: ", event);
+        window.location.href = "../controler/home.ctrl.php";
     }
     //hideCanvas()
 });
