@@ -6,15 +6,15 @@ export class MovementPacket extends AbstractPacket {
     playersMovement;
     constructor(partie, data) {
         super(-1, data.partyId);
-        console.log("went here !");
+        //console.log("went here !");
 
         this.playersMovement = new Map();
 
         for (let players of data.players){
+            console.log(players.id,players.movement);
             this.playersMovement.set(players.id, players.movement);
         }
-
-        console.log("got out of here !");
+        //console.log("got out of here !");
 
 
     }

@@ -83,11 +83,13 @@ export class Party{
 
             case "movement":{
                 packet = new MovementPacket(this, parsedData);
+                console.log("Le packet : " + packet);
+                console.log(packet.playersMovement,packet.partyId);
             } break;
 
             case "question":{
                 packet = new QuestionPacket(this,parsedData);
-                console.log(packet);
+
             } break;
             case "leave":{
                 packet = new LeavePacket(this,parsedData);
@@ -96,21 +98,28 @@ export class Party{
         }
 
         //TODO : verifier la classe
-        if (!this.isOver && !this.inMiniJeux && packet != null) packet.handle(this);
+        console.log(!this.isOver,!this.inMiniJeux,packet != null);
+        if (!this.isOver && !this.inMiniJeux && packet != null){
+
+            packet.handle(this);
+            console.log('apres handle');
+        }
     }
 
     updatePlayerPosition(playersMovement){
-        for (let p of playersMovement){
-            console.log(playersMovement);
-            //On cherche le joueur associé
-            let playerObject = this.players.get(playersMovement.key);
+        console.log("movement : " + playersMovement);
+        for (let [playerId, movement] of playersMovement) {
+            console.log("playerId: " + playerId + ", movement: " + movement);
 
-            //Si on ne le trouve pas on passe au suivant
-            if (playerObject == null){
+            // On cherche le joueur associé
+            let playerObject = this.players.get(playerId);
+
+            // Si on ne le trouve pas, on passe au suivant
+            if (playerObject == null) {
                 continue;
             }
 
-            playerObject.move(p.value);
+            playerObject.move(movement);
         }
 
         this.drawPlayerPosition();
@@ -162,6 +171,7 @@ export class Party{
 
     endMinigame(arrayofAnswers){
         this.quiz.hide();
+        this.inMiniJeux = false;
         let answer = new AnswerPacket(this.currentClient, this.id, arrayofAnswers);
         answer.handle(this.socket);
     };
