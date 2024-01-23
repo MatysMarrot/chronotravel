@@ -54,5 +54,4 @@
     </body>
 
     <script type="module" src="../controler/partyws.ctrl.js" ></script>
-    <script type="module" src="../controler/quiz.ctrl.js"></script>
 </html>

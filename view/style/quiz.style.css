@@ -84,3 +84,8 @@
     cursor: pointer;
     margin: 0;
 }
+
+#answerTable input[type="radio"]:checked + td {
+    background-color: #FF8C00;
+    /* Ajoutez d'autres styles si nécessaire pour l'état sélectionné */
+}

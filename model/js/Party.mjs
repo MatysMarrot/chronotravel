@@ -9,6 +9,7 @@ import {QuestionPacket} from "./packets/QuestionPacket.js";
 import {AnswerPacket} from "./packets/AnswerPacket.mjs";
 import {LeavePacket} from "./packets/LeavePacket.mjs";
 import {retrieveSessionFromDiv} from "../../controler/utils/jsUtils.mjs";
+import {QuizController} from "./Quiz.mjs";
 
 export class Party{
     board;
@@ -18,6 +19,7 @@ export class Party{
     isOver = false;
     inMiniJeux = false;
     socket;
+    quiz;
 
     constructor(board, json, socket) {
         /**
@@ -50,6 +52,7 @@ export class Party{
         this.socket = socket;
 
         this.drawPlayerPosition();
+
     }
 
     get id() {
@@ -142,11 +145,12 @@ export class Party{
         });
     }
 
-    startMinigame(questionPacket){
+    startMinigame(questionPacket) {
         //TODO: Jolan's implementation
-
-
-        let answer = new AnswerPacket(this.currentClient,this.id,[true,true,false,false,true]);
+        this.quiz = new QuizController();
+        this.quiz.show();
+        this.quiz.start(questionPacket.questions);
+        let answer = new AnswerPacket(this.currentClient, this.id, [true, true, false, false, true]);
         answer.handle(this.socket);
     }
 
