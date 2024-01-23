@@ -590,11 +590,12 @@ th[scope='col'] {
 .profil {
   display: flex;
   flex-direction: column;
+  width: 80%;
 }
 .profil>div {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
 }
 .profil .dashboard {
@@ -604,6 +605,7 @@ th[scope='col'] {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 25%;
 }
 .profil .statistics {
   flex: 1;
@@ -615,6 +617,7 @@ th[scope='col'] {
 .profil .switch-buttons {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   margin: 20px;
   width: 40%;
   border: none;
@@ -632,6 +635,7 @@ th[scope='col'] {
   border: 3px solid white;
   background-color: #0059FF;
   transition: background-color 0.3s ease, transform 0.5s ease;
+  min-width: 135px;
 }
 .profil .statistics-button:hover, .profil .class-button:hover {
   transform: scale(1.05);
