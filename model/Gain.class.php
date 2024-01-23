@@ -1,8 +1,5 @@
 <?php
-
 class Gain{
-
-
     private array $sum = [
         "1" => 100,
         "2" => 75,
@@ -10,21 +7,26 @@ class Gain{
         "4" => 35,
     ];
 
-    public function getGainRank(array $array): int {
-		$res=0;
-		foreach($array as $gain){
-				$res +=$this->sum[$gain]; //res
+    public function calculateGainsByClassement(array &$studentsPosition): void
+    {
+        //Grouper les étudiants par classement
+        $groupedStudents = [];
+        foreach ($studentsPosition as $id => $student) {
+            $classement = $student['classement'];
+            $groupedStudents[$classement][] = $id;
         }
-        return (count($array) > 0) ? $res /count($array) : 0;
-		}
 
-
-
-
-
-
-
-    };
-
-
+        //Calculer les gains pour chaque classement
+        foreach ($groupedStudents as $classement => $ids) {
+            $totalGain = 0;
+            foreach ($ids as $id) {
+                $totalGain += $this->sum[$studentsPosition[$id]['gain']];
+            }
+            $averageGain = (count($ids) > 0) ? $totalGain / count($ids) : 0;
+            foreach ($ids as $id) {
+                $studentsPosition[$id]['gain'] = $averageGain;
+            }
+        }
+    }
+};
 ?>
