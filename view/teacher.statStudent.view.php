@@ -3,13 +3,14 @@
     <head>
       <meta charset="UTF-8">
       <title>Chrono Travel- Gestion des élèves</title>
-      <link rel="stylesheet" type="text/css" href="../view/style/style.css">    
+      <link rel="stylesheet" type="text/css" href="../view/style/style.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /></head>
     </head>
     <body>
         <?php $currentPage = 'manage';
         include(__DIR__.'/header.teacher.viewpart.php'); ?>
         <main class="teacherStat">
-            <a href="../controler/teacher.manage.ctrl.php" class="retour">Retour</a>
+            <a href="../controler/teacher.manage.ctrl.php"><i class="material-symbols-outlined">arrow_back</i></a>
             <h1>Statistiques</h1>
             <h2><?=$student->getFirstname(). " ".$student->getLastname()?> (<?=$student->getLogin()?>)</h2>
             <div class="game">
