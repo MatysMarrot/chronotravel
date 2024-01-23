@@ -24,13 +24,19 @@ else {
 
         $teacher = $_SESSION['teacher'];
 
-        if (isset($_POST['updateName'])) {
-            $newName=$_POST['className'];
-            $currentClass->setName($newName);
-            $classList = ClassGroup::getClassGroupsFromTeacher($teacher);
-            $message = "<p id='ok'>Nom de groupe modifié avec succès</p>";
-            $view->assign("message",$message);
-            $titre = "Modifier \"".$newName."\"";
+        if (isset($_POST['updateName']) && $_POST['updateName']!= null) {
+            if ($_POST['className']!= null){
+                $newName=$_POST['className'];
+                $currentClass->setName($newName);
+                $classList = ClassGroup::getClassGroupsFromTeacher($teacher);
+                $message = "<p id='ok'>Nom de groupe modifié avec succès</p>";
+                $view->assign("message",$message);
+                $titre = "Modifier \"".$newName."\"";
+            } else{
+                $message = "<p id='signal'>Le nom d'un groupe ne peut pas être vide</p>";
+                $view->assign("message",$message);
+            }
+
         }
     }
     $view->assign("titre" ,$titre);

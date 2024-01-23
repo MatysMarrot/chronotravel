@@ -28,7 +28,7 @@
             </form>
 
             <div>
-              <p><?=$message?></p>
+              <?=$message?>
             </div>
         </main>
 
