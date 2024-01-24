@@ -1,30 +1,25 @@
 <?php
-    session_start();
 
-    if (isset($_SESSION['id'])) {
-        $userId = $_SESSION['id'];
+require_once(__DIR__."/../model/Student.class.php");
 
-       
-        require_once(__DIR__."/../model/DAO.class.php");
+session_start();
 
-        $dao = DAO::get();
-        $data = [$userId];
-        $query = "SELECT currency FROM Person WHERE id = ?";
-        $result = $dao->query($query, $data);
-
-   
-        if ($result !== false && count($result) > 0) {
-            $currencyAmount = $result[0]['currency'];
-            
-        } else {
-           
-            echo "Erreur lors de la récupération du montant de la monnaie.";
-        }
+if (isset($_SESSION['id'])) {
+    $userId = $_SESSION['id'];
+    $student = Student::readStudent($userId);
+    $currencyAmount = $student->getCurrency();
+    if(isset($_POST['isDys'])) {
+        $isDys = $_POST['isDys'] ?? 0;
+        $_SESSION["isDys"] = $isDys;
     } else {
-    
-        header("Location: login.view.php");
-        exit();
+        $isDys = $_SESSION["isDys"] ?? 0;
     }
+    //var_dump($isDys);
+} else {
+    header("Location: login.view.php");
+    exit();
+}
+
 ?>
 
 
@@ -44,7 +39,7 @@
                 <span class="tooltip_text">MON PROFIL</span>
             </li>
             <li <?= ($currentPage == 'checkroom') ? 'class="active"' : ''; ?>>
-                <a href="checkroom.ctrl.php"> <i class="material-symbols-outlined">Checkroom</i></a>
+                <a href="../controler/checkroom.ctrl.php"> <i class="material-symbols-outlined">Checkroom</i></a>
                 <span class="tooltip_text">MES TENUES</span>
             </li>
             <li <?= ($currentPage == 'rules') ? 'class="active"' : ''; ?>>
@@ -66,9 +61,11 @@
         <span><?php echo $currencyAmount; ?></span>
     </div>
 
-    <div id="dyslexie-div">
-        <button id="fontToggleBtn">Dys. mode</button>
-    </div>
+    <form id="dyslexie-div" action="../controler/<?= $currentPage ?>.ctrl.php" method="post">
+        <input type="hidden" name="isDys" value="<?= $isDys==0 ? 1 : 0 ?>">
+        <button id="fontToggleBtn" type="submit">Mode dys.</button>
+        <div class="dys" style="display: none;"><?= $isDys ?></div>
+    </form>
 
 </header>
 
