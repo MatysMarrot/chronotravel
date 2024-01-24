@@ -87,10 +87,14 @@ export class Party{
 
             case "question":{
                 packet = new QuestionPacket(this,parsedData);
+                console.log("QUESTION PACKET : "+ packet);
 
             } break;
             case "leave":{
                 packet = new LeavePacket(this,parsedData);
+            }break;
+            case "victory":{
+                packet = new VictoryPacket(this,parsedData);
             }
 
         }
@@ -167,6 +171,7 @@ export class Party{
         this.quiz.hide();
         this.inMiniJeux = false;
         let answer = new AnswerPacket(this.currentClient, this.id, arrayofAnswers);
+        console.log("sending :"+anwer);
         answer.handle(this.socket);
     };
 
