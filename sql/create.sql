@@ -166,5 +166,6 @@ CREATE TABLE Stat (
     MiddleAgesCorrectAnswers INT DEFAULT 0,
     ModernHistoryCorrectAnswers INT DEFAULT 0,
     ContemporaryCorrectAnswers INT DEFAULT 0,
+    partyid INT REFERENCES Party(id),
     PRIMARY KEY (playerId)
 );
