@@ -32,11 +32,9 @@ class VictoryPacket extends Packet {
         ];
 
         foreach ($this->players as $p){
-            if ($p->getPosition() >= 31){
-                $this->data['players'][] = [
-                    "id" => $p->getId()
-                ];
-            }
+            $this->data['winners'][] = [
+                "id" => $p->getId()
+            ];
         }
 
         return json_encode($this->data);

@@ -86,9 +86,10 @@ export class Party{
             } break;
 
             case "question":{
+                console.log("QUESTION PACKET ");
                 packet = new QuestionPacket(this,parsedData);
                 console.log("QUESTION PACKET : "+ packet);
-
+                //Hey, this is a test
             } break;
             case "leave":{
                 packet = new LeavePacket(this,parsedData);
@@ -169,10 +170,15 @@ export class Party{
 
     endMinigame(arrayofAnswers){
         this.quiz.hide();
+
+
         this.inMiniJeux = false;
         let answer = new AnswerPacket(this.currentClient, this.id, arrayofAnswers);
-        console.log("sending :"+anwer);
+        console.log("sending :");
+        console.log(answer);
         answer.handle(this.socket);
+
+        this.quiz = null;
     };
 
 

@@ -9,6 +9,10 @@ const session = retrieveSessionFromDiv();
 let partie = null;
 // La connexion est ouverte
 socket.addEventListener("open", function (event) {
+    //Si le joueur n'est pas connecté
+    if (session == null || session.id == null || session.partyId == null){
+        window.location.href = "../controler/login.ctrl.php";
+    }
     let packet = new PlayerJoinsPacket(session.id, session.partyId);
     packet.handle(socket);
 

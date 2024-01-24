@@ -61,6 +61,7 @@ export class QuizController extends AbstractMinijeu {
 
 
     start(arrayDeQuestions){
+        console.log(arrayDeQuestions);
         //on set les questions
         this.questions = arrayDeQuestions;
         this.questionActuelle = 0;
@@ -69,8 +70,11 @@ export class QuizController extends AbstractMinijeu {
     }
 
     setQuestion(){
+        //Si y'a pas de question
+        if (this.questionActuelle >= this.questions.length){
+            return;
+        }
         let question = this.questions.at(this.questionActuelle);
-        //On vérifie le type
 
         this.questionLabel.innerText = question.content;
 
@@ -95,6 +99,7 @@ export class QuizController extends AbstractMinijeu {
         this.answers.push(isRightAnswer);
         this.questionActuelle++;
 
+        //Si on est a la dernière question
         if (this.questionActuelle === this.questions.length){
             this.hide();
             this.end();
