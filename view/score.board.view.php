@@ -10,5 +10,10 @@
 
 <body id="scoreBody">
 <a id="button-return" href="../controler/home.ctrl.php"><i class="material-symbols-outlined">arrow_back</i></a>
-        <?=$tableau?>
+<main>
+
+
+    <?=$tableau?>
+</main>
+
 </body>
