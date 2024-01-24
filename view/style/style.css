@@ -384,6 +384,31 @@ header#student_header div#number_chronocoin span {
   text-align: justify;
 }
 
+/* Confidentiality page */
+.confidpage {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: white;
+  background-color: var(--main-background-color);
+  padding: 20px;
+  border-radius: 15px;
+  border: white 2px solid;
+}
+.confidpage h2 {
+  margin: 5px;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #ff7b00;
+}
+.confidpage p, .confidpage ul, .confidpage li {
+  margin: 5px;
+  text-align: justify;
+  list-style-type: circle;
+}
+
+
 
 .skin{
   height: 250px;
