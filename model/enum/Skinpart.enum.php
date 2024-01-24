@@ -6,7 +6,7 @@ enum Skinpart : string
     case TeeShirt = "teeshirt";
     case Pantalon = "pants";
     case Chaussures = "shoes";
-    case Peau = "skin";
+    case Peau = "skincolor";
 
     public static function getPosition(self $value): int {
         switch ($value) {
