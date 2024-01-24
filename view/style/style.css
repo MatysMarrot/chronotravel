@@ -1200,3 +1200,10 @@ i.material-symbols-outlined:hover {
   height: 35px;
   background-color: #b76e2c;
 }
+
+#skinChoose{
+  width: 50px;
+  height: 35px;
+  background-color: #a4a4a4;
+  border: 3px solid #a4a4a4;
+}

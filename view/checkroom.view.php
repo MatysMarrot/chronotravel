@@ -18,7 +18,7 @@
             <h3>Prévisualisation</h3>
             <?php endif; ?>
             <div class="div_skin">
-                <img id="skin" src="<?=$emplacementSkin.$currentSkin[5]->getLocation()?>" alt="personnage">
+                <img id="skincolor" src="<?=$emplacementSkin.$currentSkin[5]->getLocation()?>" alt="personnage">
                 <?php if($currentSkin[2] != null):?>
                 <img id="shirt" src="<?=$emplacementSkin.$currentSkin[2]->getLocation()?>" alt="Tee-shirt">
                 <?php endif; ?>
@@ -39,7 +39,7 @@
             <div> <form action="../controler/checkroom.ctrl.php" method="post">
                     <?php foreach ($colorSkin as $color) : ?>
                         <div class="skinColor">
-                            <button id="skinChoose" type="submit" name="skin" value="<?=$color->getSkinId()?>"></button>
+                            <button id="skinChoose" type="submit" name="skinColor" value="<?=$color->getSkinId()?>"></button>
                         </div>
                     <?php endforeach; ?>
                 </form>

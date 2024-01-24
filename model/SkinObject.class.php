@@ -81,8 +81,8 @@ class SkinObject {
 
     public static function getColorSkin() : array {
         $dao = DAO::get();
-        $query = "SELECT skinid, skinobject.name as name, location, skinpart.name as partname FROM skinobject JOIN skinpart ON skinobject.parts=skinpart.skinpartid WHERE 
-                  skinobject.parts=0";
+
+        $query = "SELECT so.skinid, so.name as name, price, location, sp.name as partname FROM skinobject so JOIN skinpart sp ON so.parts=sp.skinpartid WHERE so.parts=0";
         $table = $dao->query($query);
         $skins = [];
         foreach ($table as $skin) {
@@ -158,16 +158,19 @@ class SkinObject {
     public function isEquiped(int $playerId) : bool {
         $dao = DAO::get();
         $query = "SELECT {$this->getParts()->value} FROM currentskin WHERE playerid={$playerId}";
+        var_dump($query);
         $table = $dao->query($query);
         return $table[0][$this->getParts()->value]!=null;
     }
     public function toggleSkin(int $playerId) : void {
         $dao = DAO::get();
         if($this->isEquiped($playerId)) {
+            var_dump($dao);
             $query = "UPDATE currentskin SET {$this->getParts()->value}=null WHERE playerid={$playerId}";
         } else {
             $query = "UPDATE currentskin SET {$this->getParts()->value}={$this->getSkinId()} WHERE playerid={$playerId}";
         }
+        var_dump($query);
         $dao->exec($query);
     }
     public function previewSkin(array &$currentSkin) {
