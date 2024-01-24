@@ -10,6 +10,7 @@
     session_start();
     $view = new View();
     $emplacementSkin = "/assets/skin/";
+    $emplacementPosition = "/assets/position/";
     //Récupérer la party
     $party = $_SESSION['party'];
 
@@ -67,7 +68,7 @@
         $tableau .= "
             <section>
                 <ul class=\"ul_horizontal\">
-                    <li><img id=\"positionClassement\" src=\"position{$student['classement']}.png\" alt=\"position\"></li>
+                    <li><img id=\"positionClassement\" src=\"{$emplacementPosition}pos{$student['classement']}.png\" alt=\"position\"></li>
                     <li><h3 class=\"pseudo\">{$currentStudent->getLogin()}</h3></li>
                 </ul>
         
