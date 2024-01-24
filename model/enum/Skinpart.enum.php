@@ -6,6 +6,7 @@ enum Skinpart : string
     case TeeShirt = "teeshirt";
     case Pantalon = "pants";
     case Chaussures = "shoes";
+    case Peau = "skin";
 
     public static function getPosition(self $value): int {
         switch ($value) {
@@ -14,6 +15,7 @@ enum Skinpart : string
             case self::TeeShirt: return 2;
             case self::Pantalon: return 3;
             case self::Chaussures: return 4;
+            case self::Peau: return 5;
         }
         return -1;
     }
