@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Chrono Travel- Modifier une classe</title>
+    <title>ChronoTravel - Modifier une classe</title>
     <link rel="stylesheet" type="text/css" href="../view/style/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /></head>
 

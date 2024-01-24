@@ -2,7 +2,7 @@
   <html lang="fr">
     <head>
       <meta charset="UTF-8">
-      <title>Chrono Travel- Messagerie</title>
+      <title>ChronoTravel - Messagerie</title>
       <link rel="stylesheet" type="text/css" href="../view/style/style.css">
     </head>
 
