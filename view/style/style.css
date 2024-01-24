@@ -1194,11 +1194,20 @@ i.material-symbols-outlined:hover {
   margin: 0;
 }
 
+.skinColor-form{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
 .skinColor>div{
   width: 50px;
   height: 35px;
   background-color: #b76e2c;
+}
+
+.skinColor-form>div> *{
+  margin: 0.5em;
 }
 
 #skinChoose{
@@ -1207,3 +1216,4 @@ i.material-symbols-outlined:hover {
   background-color: #a4a4a4;
   border: 3px solid #a4a4a4;
 }
+

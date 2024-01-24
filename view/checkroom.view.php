@@ -36,12 +36,12 @@
                 <?php endif; ?>
                 <!--<h3 id="pseudo">PSEUDO</h3>-->
             </div>
-            <div> <form action="../controler/checkroom.ctrl.php" method="post">
+             <form class="skinColor-form" action="../controler/checkroom.ctrl.php" method="post">
+                 <div class="skinColor">
                     <?php foreach ($colorSkin as $color) : ?>
-                        <div class="skinColor">
                             <button id="skinChoose" type="submit" name="skinColor" value="<?=$color->getSkinId()?>"></button>
-                        </div>
                     <?php endforeach; ?>
+                 </div>
                 </form>
         </section>
         <?php if($buyView): ?>
