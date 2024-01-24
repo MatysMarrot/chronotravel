@@ -16,16 +16,37 @@ for (var i = 0; i < LINES; i++) {
 }
 
 // Ajoute la classe "board_avalaible" aux cellules d'une ligne sur 2
-for (var lign = 0; lign < table.rows.length; lign += 2) {
-    var row = table.rows[lign];
-
-    for (var coll = 0; coll < row.cells.length; coll++) {
-        row.cells[coll].classList.add('board_available');
-        toutesLesCelulles.push(row.cells[coll]);
+var id = 0;
+for (var ligne = 0; ligne < table.rows.length; ligne++) {
+    var row = table.rows[ligne];
+    if(ligne%4===2) {
+        for (var coll = row.cells.length; coll > 0; coll--) {
+            row.cells[coll].classList.add('board_available');
+            row.cells[coll].id = id;
+            id++;
+            toutesLesCelulles.push(row.cells[coll]);
+        }
+    } else if(ligne%2===0 && ligne%4!==2){
+        for (var coll = 0; coll < row.cells.length; coll++) {
+            row.cells[coll].classList.add('board_available');
+            row.cells[coll].id = id;
+            id++;
+            toutesLesCelulles.push(row.cells[coll]);
+        }
+    } else if(ligne%4===3) {
+        row.cells[0].classList.add('board_available');
+        row.cells[0].id = id;
+        id++;
+        toutesLesCelulles.push(row.cells[0]);
+    } else if(ligne%2===1 && ligne%4!==3) {
+        row.cells[row.length-1].classList.add('board_available');
+        row.cells[row.length-1].id = id;
+        id++;
+        toutesLesCelulles.push(row.cells[row.length-1]);
     }
 }
 
-// Ajoute les cellules "descendantes" du chemin
+/*// Ajoute les cellules "descendantes" du chemin
 var dg = false;
 var position = 0;
 for (var i = 1; i < table.rows.length; i += 2) {
@@ -41,12 +62,11 @@ for (var i = 1; i < table.rows.length; i += 2) {
 
 // Attribue des identifiants uniques à chaque cellule
 var id = 0;
-
 for (const cellule of toutesLesCelulles) {
     cellule.id = "cell_" + id;
     cellule.textContent = id;
     id++;
-}
+}*/
 
 
 export function showCanvas(){
@@ -56,7 +76,6 @@ export function showCanvas(){
 export function hideCanvas(){
     table.style.display = "none";
 }
-
 
 /*export function showCanvas() {
     const canvas = document.getElementById("myCanvas");
