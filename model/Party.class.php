@@ -116,6 +116,27 @@ class Party
         var_dump($encode);
         $this->partyRoom->broadcast($subscribers, $encode);
 
+        // Gestion de la victoire
+        $winners = [];
+        foreach ($this->playerPosition as $player){
+            var_dump($player->getPosition());
+            if($player->getPosition() >= 31){
+                $winners[] = $player;
+                var_dump($player);
+                var_dump($winners);
+            }
+        }
+
+        if($winners){
+            $packet = new VictoryPacket($this->id,$winners);
+            $encode = $packet->stringify();
+            var_dump($encode);
+            $this->partyRoom->broadcast($subscribers,$encode);
+        }
+        else{
+            $this->startMinigame();
+        }
+
 
     }
 
@@ -242,6 +263,7 @@ class Party
     public function startMinigame()
     {
         echo "Sending questions";
+        $this->packets = [];
         $packet = new QuestionPacket($this->id,$this->getPlayers(),$this->playerPosition);
         // TODO : mettre pour chaque player
         $subscribers = [];
@@ -249,13 +271,13 @@ class Party
             $subscribers[] = $students->getId();
         }
         $this->partyRoom->broadcast($subscribers,$packet->stringifyPlayers()[0]);
-        var_dump($packet);
 
 
     }
 
     public function manageAnwser(){
         $mapPlayernbrAnswer = [];
+        $dao = DAO::get();
 
         foreach($this->packets as $packet){
             if (!$packet instanceof AnswerPacket){
@@ -271,11 +293,13 @@ class Party
         $i = 5;
         foreach($mapPlayernbrAnswer as $id => $nbrAnswers){
             $this->playerPosition[$id]->setCurrentMovement($i);
+            $this->playerPosition[$id]->addPosition($i);
             $i--;
         }
 
+        $this->packets = [];
         $this->move();
-        //$this->startMinigame();
+
     }
 
     public function initGame(){
@@ -302,6 +326,9 @@ class Party
         $subscribers = [];
         foreach ($this->getPlayers() as $students) {
             $subscribers[] = $students->getId();
+
+            $query = "INSERT INTO stat (playerid,partyid) VALUES (?,?)";
+            $dao->exec($query,[$students->getId(),$this->id]);
         }
 
         echo "Broadcasting";
