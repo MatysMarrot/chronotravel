@@ -1,15 +1,15 @@
-class Answer{
+export class Answer{
 
     id;
     questionid;
     content;
     correct;
 
-    constructor(json) {
-        this.id = json.id;
-        this.questionid = json.questionid;
-        this.content = json.content;
-        this.correct = json.correct;
+    constructor(data) {
+        this.id = data.id;
+        this.questionid = data.questionId;
+        this.content = data.content;
+        this.correct = data.right;
     }
 
 

@@ -1,15 +1,20 @@
+import {Answer} from "./Answer.mjs";
 export class Question {
 
     id;
     content;
     themeid;
-    answers;
+    answers = [];
+    type = 1;
 
-    constructor(json) {
-        this.id = json.id;
-        this.content = json.content;
-        this.themeid = json.themeid;
-        this.answers = json.answers;
+    constructor(data) {
+        this.type = data.type;
+        this.id = data.id;
+        this.themeid = data.themeid;
+        this.content = data.content;
+        for (let r of data.reponses){
+            this.answers.push(new Answer(r));
+        }
     }
 
 
