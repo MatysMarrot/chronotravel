@@ -330,8 +330,8 @@ class Party
         foreach ($this->getPlayers() as $students) {
             $subscribers[] = $students->getId();
 
-            $query = "INSERT INTO stat (playerid,partyid) VALUES (?,?)";
-            $dao->exec($query,[$students->getId(),$this->id]);
+            //$query = "INSERT INTO stat (playerid,partyid) VALUES (?,?)";
+            //$dao->exec($query,[$students->getId(),$this->id]);
         }
 
         echo "Broadcasting";
