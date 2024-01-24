@@ -63,7 +63,7 @@ if (isset($_SESSION['id'])) {
 
     <form id="dyslexie-div" action="../controler/<?= $currentPage ?>.ctrl.php" method="post">
         <input type="hidden" name="isDys" value="<?= $isDys==0 ? 1 : 0 ?>">
-        <button id="fontToggleBtn" type="submit">Dys. mode</button>
+        <button id="fontToggleBtn" type="submit">Mode dys.</button>
         <div class="dys" style="display: none;"><?= $isDys ?></div>
     </form>
 
