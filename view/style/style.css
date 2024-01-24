@@ -64,8 +64,10 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
   height: 100vh;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
   color: rgb(255, 255, 255);
   margin: 0;
   display: flex;
@@ -1057,6 +1059,7 @@ aside#home_button ul li a {
   border-radius: 10px;
 }
 
+
 #signal{
   font-weight: bold;
   color: red;
@@ -1096,6 +1099,23 @@ main {
   left: 23px;
 }
 
+#button-return{
+  position: absolute;
+  top: 40px;
+  left: 23px;
+}
+
+#button-return i{
+  font-size: xxx-large;
+  color: white;
+  background-color: #0059FF;
+  padding: 5px 15px 5px 15px;
+  border-radius: 10px;
+  border: 2px solid white;
+  transition: transform 0.5s ease;
+  box-shadow: 2px 2px 2px black;
+}
+
 .container-titre h2{
   display: inline-block;
   margin-left: auto;
@@ -1118,3 +1138,54 @@ i.material-symbols-outlined:hover {
   transform: scale(1.05);
 }
 
+
+
+/*Gain*/
+#gain{
+  vertical-align: middle;
+  width: 35px;
+  margin-left: 0.5em;
+}
+
+#score{
+  background-color: black;
+  color: white;
+  position: absolute;
+  border: 2px solid white;
+  border-radius: 15px;
+  border-spacing: 41px;
+  border-collapse: initial;
+  box-shadow: 0px 0px 19px 15px rgb(255, 255, 255);
+  margin-left: auto;
+  margin-right: auto;
+}
+#score thead th {
+  border-bottom: 1px solid white;
+}
+#positionClassement{
+  width: 75px;
+  vertical-align: middle;
+}
+#scoreBody ul{
+  align-items: center;
+  justify-content: center;
+}
+#scoreBody ul h3{
+  font-size: xx-large;
+}
+
+#scoreBody main{
+  margin: 6em;
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+}
+
+#scoreBody .div_skin{
+  margin-top: 40px ;
+  width: 300px;
+}
+
+.pseudo{
+  margin: 0;
+}

@@ -21,6 +21,10 @@ class Party{
         return $this->era;
     }
 
+    public  function  getStudentPosition(): array{
+        return $this->studentPosition;
+    }
+
     public function setEra(Era $era): void {
         $this->era = $era;
     }
