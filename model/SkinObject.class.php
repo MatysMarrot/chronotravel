@@ -65,7 +65,24 @@ class SkinObject {
     }
     public static function getAllSkinObjects() : array {
         $dao = DAO::get();
-        $query = "SELECT skinid, skinobject.name as name, price, location, skinpart.name as partname FROM skinobject JOIN skinpart ON skinobject.parts=skinpart.skinpartid ORDER BY parts";
+        $query = "SELECT skinid, skinobject.name as name, price, location, skinpart.name as partname 
+          FROM skinobject 
+          JOIN skinpart ON skinobject.parts = skinpart.skinpartid 
+          WHERE skinobject.part != 0 
+          ORDER BY parts";
+        $table = $dao->query($query);
+        $skins = [];
+        foreach ($table as $skin) {
+            $newSkin = new SkinObject($skin["skinid"], $skin["name"], $skin["price"], $skin["location"], $skin["partname"]);
+            $skins[] = $newSkin;
+        }
+        return $skins;
+    }
+
+    public static function getColorSkin() : array {
+        $dao = DAO::get();
+        $query = "SELECT skinid, skinobject.name as name, location, skinpart.name as partname FROM skinobject JOIN skinpart ON skinobject.parts=skinpart.skinpartid WHERE 
+                  skinobject.parts=0";
         $table = $dao->query($query);
         $skins = [];
         foreach ($table as $skin) {

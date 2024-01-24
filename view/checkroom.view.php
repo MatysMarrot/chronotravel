@@ -18,7 +18,9 @@
             <h3>Prévisualisation</h3>
             <?php endif; ?>
             <div class="div_skin">
-                <img id="skin" src="<?=$emplacementSkin?>skintest.png" alt="personnage">
+                <?php if($currentSkin[6] != null):?>
+                <img id="skin" src="<?=$emplacementSkin.$currentSkin[6]?>.png" alt="personnage">
+                <?php endif; ?>
                 <?php if($currentSkin[2] != null):?>
                 <img id="shirt" src="<?=$emplacementSkin.$currentSkin[2]->getLocation()?>" alt="Tee-shirt">
                 <?php endif; ?>
@@ -36,6 +38,13 @@
                 <?php endif; ?>
                 <!--<h3 id="pseudo">PSEUDO</h3>-->
             </div>
+            <div> <form action="../controler/checkroom.ctrl.php" method="post">
+                    <?php foreach ($colorSkin as $color) : ?>
+                        <div class="skinColor">
+                            <button id="" type="submit" name="skin" value="<?=$color->getSkinId()?>"></button>
+                        </div>
+                    <?php endforeach; ?>
+                </form>
         </section>
         <?php if($buyView): ?>
         <section class="buyView">

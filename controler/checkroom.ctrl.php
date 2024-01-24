@@ -10,6 +10,7 @@ session_start();
 if(!isset($_SESSION["id"])) {
     $outgoing = "../controler/landing.ctrl.php";
 } else {
+    $colorSkin= [];
     $possessedSkin = [];
     $unpossessedSkin = [];
     $selectedSkin = null;
@@ -35,6 +36,7 @@ if(!isset($_SESSION["id"])) {
             // Récupère les cosmétiques possédés par le joueur et ceux non possédés
             $possessedSkin = SkinObject::getAllPossessedSkin($playerId);
             $unpossessedSkin = SkinObject::getAllunpossessedSkin($playerId);
+            $colorSkin = SkinObject::getColorSkin();
             // Récupère le skin du joueur
             $currentSkin = SkinObject::getCurrentSkinOfPlayer($playerId);
         } else { // Le joueur ne possède pas le skin
@@ -53,6 +55,7 @@ if(!isset($_SESSION["id"])) {
     $view->assign("student", $student);
     $view->assign("selectedSkin", $selectedSkin);
     $view->assign("buyView", $buyView);
+    $view->assign("colorSkin", $colorSkin);
     $view->assign("possessedSkin", $possessedSkin);
     $view->assign("unpossessedSkin", $unpossessedSkin);
     $view->assign("currentSkin",$currentSkin);
