@@ -14,7 +14,7 @@ export class QuestionPacket extends AbstractPacket {
     }
 
     handle(partie){
-        partie.startMinigame(this);
+        setTimeout(() => partie.startMinigame(this), 5000);
     }
 
 }
