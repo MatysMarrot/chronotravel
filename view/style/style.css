@@ -1197,23 +1197,25 @@ i.material-symbols-outlined:hover {
 .skinColor-form{
   width: 100%;
   display: flex;
-  justify-content: center;
-}
-
-.skinColor>div{
-  width: 50px;
-  height: 35px;
-  background-color: #b76e2c;
-}
-
-.skinColor-form>div> *{
-  margin: 0.5em;
+  justify-content: space-between;
 }
 
 #skinChoose{
   width: 50px;
   height: 35px;
-  background-color: #a4a4a4;
   border: 3px solid #a4a4a4;
 }
+#skinChoose:nth-child(1){
+  background-color: #492300;
+}
+#skinChoose:nth-child(2){
+  background-color:#9c510f ;
+}
+#skinChoose:nth-child(3){
+  background-color: #f1a74d;
+}
+#skinChoose:nth-child(4){
+  background-color: #f9c977;
+}
+
 

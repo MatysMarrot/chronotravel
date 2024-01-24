@@ -37,12 +37,11 @@
                 <!--<h3 id="pseudo">PSEUDO</h3>-->
             </div>
              <form class="skinColor-form" action="../controler/checkroom.ctrl.php" method="post">
-                 <div class="skinColor">
+
                     <?php foreach ($colorSkin as $color) : ?>
                             <button id="skinChoose" type="submit" name="skinColor" value="<?=$color->getSkinId()?>"></button>
                     <?php endforeach; ?>
-                 </div>
-                </form>
+             </form>
         </section>
         <?php if($buyView): ?>
         <section class="buyView">
