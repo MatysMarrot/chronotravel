@@ -8,7 +8,7 @@
 </head>
 <body id="">
     
-    <?php $currentPage = 'confidentialite';
+    <?php $currentPage = 'rules';
     include(__DIR__.'/../controler/header.ctrl.php'); ?>
 
     <main class="rulespage">
