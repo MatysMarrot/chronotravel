@@ -135,8 +135,6 @@ class ServerImpl implements MessageComponentInterface
                 return;
             }
 
-            /*
-             * TODO : Décommenter !!!!!
             if(count($party->getPlayers()) == 1){
                 var_dump($party->getId());
                 var_dump($party->getPlayers());
@@ -147,7 +145,6 @@ class ServerImpl implements MessageComponentInterface
                 $this->broadCast($party,json_encode($data));
                 return;
             }
-            */
 
             $data = [
                 "action" => "start",
