@@ -86,4 +86,19 @@ function generateWorker() : int{
 
     return $res;
 }
+
+    function getEraFromInt(int $era) : string|false{
+        switch ($era){
+            case 0: return "ancienthistory";
+            case 1: return "middleages";
+            case 2: return "modernhistory";
+            //3 et 4 pareils
+            case 3:
+            case 4:
+                return "contemporary";
+        }
+
+        return false;
+    }
+
 ?>

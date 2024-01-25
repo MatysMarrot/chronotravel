@@ -119,14 +119,22 @@ class PartyImpl implements MessageComponentInterface{
             }
         }
 
-        if($decoded['action'] == Action::ANSWER->value){
+        else if($decoded['action'] == Action::ANSWER->value){
             echo sprintf("Received '%s' from %s\n",$decoded['action'], $conn->resourceId);
             $packet = new AnswerPacket($decoded);
 
+            //On trouve la partie
             $party = $this->parties[$decoded['partyId']];
-            $party->addPackets($packet);
-            var_dump($packet);
 
+            //Si elle n'existe pas
+            if ($party == null){
+                return;
+            }
+
+            //On ajoute le packet a liste des packets recu recemment
+            $party->addPackets($packet);
+
+            //Con
             if(count($party->getPackets()) == count($party->getPlayers())){
                 $party->manageAnwser();
             }

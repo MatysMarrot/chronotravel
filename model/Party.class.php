@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__ . "/enum/era.enum.php");
+require_once(__DIR__ . "/../controler/utils/Utils.php");
 require_once(__DIR__ . "/enum/PartyState.enum.php");
 require_once(__DIR__ . "/Question.class.php");
 require_once(__DIR__ . "/../serveurs/Player.class.php");
@@ -289,6 +290,23 @@ class Party
             }
 
             $mapPlayernbrAnswer[$packet->getId()] = $packet->getNbrRightAnswers();
+
+            //On prend la position des joueurs pour connaitre l'ere dans laquelle ils sont
+            $pos = $this->playerPosition[$packet->getId()];
+
+            //Function from utils.php
+            $strEra = getEraFromInt((int) ($pos->getPosition() / 8));
+            if ($strEra === false){
+                continue;
+            }
+
+            $erascore = $strEra."score";
+            $eraCorrect = $strEra."correctanswers";
+
+            $dao = DAO::get();
+
+            $query = "UPDATE STAT SET $erascore = $erascore + ?, $eraCorrect = $eraCorrect + ? WHERE playerid = ? AND partyid = ?";
+            $dao->query($query, array($packet->getNbrQuestions(), $packet->getNbrRightAnswers(), $packet->getId(), $packet->getPartyid()));
         }
 
         arsort($mapPlayernbrAnswer);
