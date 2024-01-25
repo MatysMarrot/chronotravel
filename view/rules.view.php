@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="author" content="Scooby Gang" />
     <link rel="stylesheet" type="text/css" href="../view/style/style.css">
-    <title>Chrono Travel- Règles du jeu</title>
+    <title>ChronoTravel - Règles</title>
 </head>
 <body id="">
     
