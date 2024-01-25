@@ -1,5 +1,7 @@
 INSERT INTO ROLE(content) VALUES ('ADMIN'), ('TEACH'), ('STUDT'), ('BLIST');
 INSERT INTO THEME(content) VALUES ('ANTIQUITE'), ('MOYENAGE'), ('MODERNE'), ('CONTEMP');
+INSERT INTO PARTYSTATE(content) VALUES ('CREAT'),('IN');
+INSERT INTO ROLE(id,content) VALUES (1,'STUDT'),(2,'PROF'),(3,'ADMIN'), (4,'BLIST');
 INSERT INTO skinpart (skinpartid, name)
 VALUES
     (1, 'hat'),
