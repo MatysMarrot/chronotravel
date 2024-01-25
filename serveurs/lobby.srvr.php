@@ -45,7 +45,9 @@ class ServerImpl implements MessageComponentInterface
         $players = $party->getPlayers();
 
         foreach ($players as $player) {
-            $this->clientIdConn[$player->getId()]->send($data);
+            try {
+                $this->clientIdConn[$player->getId()]->send($data);
+            } catch (Exception){echo sprintf("Something went wrong while sending packet to %d", $player->getId());};
         }
         return true;
     }
