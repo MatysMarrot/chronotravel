@@ -6,7 +6,10 @@ DROP TABLE IF EXISTS public.history CASCADE;
 DROP TABLE IF EXISTS public.partycode CASCADE;
 DROP TABLE IF EXISTS public.party CASCADE;
 DROP TABLE IF EXISTS public.stat CASCADE;
-
+DROP TABLE IF EXISTS public.currentskin CASCADE;
+DROP TABLE IF EXISTS public.partystudent CASCADE;
+DROP TABLE IF EXISTS public.skinobject CASCADE;
+DROP TABLE IF EXISTS public.skinpart CASCADE;
 
 -- Drop les tables
 DROP TABLE IF EXISTS public.theme CASCADE;
