@@ -2,7 +2,7 @@
   <html lang="fr">
     <head>
       <meta charset="UTF-8">
-      <title>ChronoTravel - Gérer mes classes</title>
+      <title>Chrono Travel- Gestion des élèves</title>
       <link rel="stylesheet" type="text/css" href="../view/style/style.css">    
     </head>
 

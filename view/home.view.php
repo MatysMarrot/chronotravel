@@ -15,7 +15,7 @@ include(__DIR__.'/header.student.viewpart.php');
 ?>
 
 <main id="home">
-    <h1>ChronoTravel</h1>
+    <h1>Chronotravel</h1>
     <p>Embarquez pour un voyage dans le temps avec notre jeu de plateau multijoueur. Relevez des défis éducatifs
         et explorez les époques. Prêt à devenir le maître de l'histoire?</p>
     <section>

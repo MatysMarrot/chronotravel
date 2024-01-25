@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="author" content="Scooby Gang" />
     <link rel="stylesheet" type="text/css" href="../view/style/style.css">
-    <title>ChronoTravel</title>
+    <title>Chrono Travel- Accueil</title>
 </head>
 <body id="">
     <?php include(__DIR__.'/header.unknown.viewpart.php'); ?>

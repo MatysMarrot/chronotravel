@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChronoTravel - Mon profil</title>
+    <title>ChronoTravel - Mon Profil</title>
     <link rel="stylesheet" href="../view/style/style.css">
 </head>
 <body>
