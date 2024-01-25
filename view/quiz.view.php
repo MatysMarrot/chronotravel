@@ -32,7 +32,4 @@
             </td>
         </tr>
     </table>
-    <div id="selectedAnswerDisplay">
-        Réponse sélectionnée : <span id="selectedAnswerText"></span>
-    </div>
 </div>

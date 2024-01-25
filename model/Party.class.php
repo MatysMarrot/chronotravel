@@ -46,6 +46,10 @@ class Party
         $this->era = $era;
     }
 
+    /**
+     * @return void
+     * Insère dans la base de donnée une partie par rapport à l'objet
+     */
     public function create()
     {
 
@@ -107,10 +111,13 @@ class Party
 
     }
 
+    /**
+     * @return void
+     * Déplace les élèves de la party et gère la victoire si des élèves gagnent
+     */
     public function move()
     {
         $packets = array();
-        //TODO: Make the move size gettable
         $subscribers =[];
         foreach ($this->getPlayers() as $students) {
             $subscribers[] = $students->getId();
@@ -179,6 +186,12 @@ class Party
     }
 
     //ajoute un élève à une partie en BD et dans l'objet
+
+    /**
+     * @param $cid
+     * @return void
+     * Insère un élève dans la base de donnée et dans l'objet à partir de l'id de l'élève
+     */
     public function insertPlayer($cid)
     {
         $dao = DAO::get();
@@ -189,6 +202,11 @@ class Party
         $this->playerPosition[$cid] = new Position($cid);
     }
 
+    /**
+     * @param $cid
+     * @return void
+     * Supprime un élève appartenant à la party de la base de donnée et dans l'objet à partir de l'id d'un élève
+     */
     public function removePlayer($cid)
     {
         $dao = DAO::get();
@@ -222,7 +240,11 @@ class Party
         return $this->id;
     }
 
-    // DELETE LA PARTY
+
+    /**
+     * @return void
+     * Supprime la party de la base de donnée
+     */
     public function deleteParty()
     {
         $dao = DAO::get();
@@ -235,7 +257,13 @@ class Party
         $dao->exec($query, $data);
     }
 
-    //return null si pas de party, un objet party sinon
+
+
+    /**
+     * @param $id
+     * @return Party|null
+     * Récupère un objet Party à partir d'un id, renvoie null si la party n'est pas trouvé
+     */
     public static function getPartyFromId($id)
     {
         $dao = DAO::get();
@@ -264,6 +292,10 @@ class Party
         return $party;
     }
 
+    /**
+     * @return void
+     * Démarre un minijeu
+     */
     public function startMinigame()
     {
         echo "Sending questions";
@@ -279,6 +311,10 @@ class Party
 
     }
 
+    /**
+     * @return void
+     * Gère la récéption des packets answers
+     */
     public function manageAnwser(){
         $mapPlayernbrAnswer = [];
         $dao = DAO::get();
@@ -323,6 +359,10 @@ class Party
 
     }
 
+    /**
+     * @return void
+     * Initialise une partie
+     */
     public function initGame(){
 
         /*

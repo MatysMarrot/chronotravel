@@ -45,6 +45,11 @@ class ClassGroup{
     }
 
 
+    /**
+     * @param $name
+     * @return void
+     * Crée une classe dans la base de donnée à partir de l'objet
+     */
     public function create($name){
         $dao = DAO::get();
         $code  = generateRandomCode();
@@ -71,6 +76,10 @@ class ClassGroup{
         $res = $dao->exec($query,$data);
     }
 
+    /**
+     * @return void
+     * Supprime la classe associé dans la base de donnée
+     */
     public function delete(){
         $dao = DAO::get();
         $data = [$this->id];
@@ -84,6 +93,13 @@ class ClassGroup{
 
 
     // AJOUTE UN STUDENT DANS LA DB
+
+    /**
+     * @param Student $student
+     * @return void
+     * @throws Exception
+     * Ajoute un étudiant à la classe dans la base de donnée
+     */
     public function insertStudent(Student $student){
 
         // Ajout dans la BD
@@ -102,11 +118,21 @@ class ClassGroup{
     }
 
     //AJOUTE LE STUDENT DANS L'ATRIBUT DE L'OBJECT COURANT DANS STUDENTS
+
+    /**
+     * @param Student $student
+     * @return void
+     * Ajoute un élève dans un attribut array de l'objet
+     */
     public function addStudent(Student $student){
         $this->students[] = $student; 
     }
 
-    //Retourne la liste des groupes de classe d'un professeur ou une liste vide si rien trouvé
+    /**
+     * @param Teacher $teacher
+     * @return array
+     * Retourne la liste des groupes de classes ClassGroup d'un professeur si il y'en a, retourne une liste vide si rien n'est trouvé
+     */
     public static function getClassGroupsFromTeacher(Teacher $teacher) : array {
 
         $dao = DAO::get();
@@ -147,9 +173,12 @@ class ClassGroup{
 
     }
 
-    // Renvoie un objet ClassGroup ou null si pas trouvé
-
-    //TODO : Revoir cette fonction (query fausse)
+    /**
+     * @param Student $student
+     * @return ClassGroup|null
+     * @throws Exception
+     * Renvoie le groupe de classe ClassGroup de l'élève, renvoie null si il y en a pas
+     */
     public static function getClassGroupFromStudent(Student $student){
 
         $dao = DAO::get();
@@ -189,6 +218,13 @@ class ClassGroup{
     }
 
     //Renvoie un objet ClassGroup ou null si pas trouvé
+
+    /**
+     * @param $id
+     * @return ClassGroup|null
+     * @throws Exception
+     * Renvoie un objet ClassGroup correspondant à l'id donné, renvoie null sinon
+     */
     public static function getClassGroupFromId($id){
         
         $dao = DAO::get();
