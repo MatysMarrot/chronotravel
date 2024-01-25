@@ -1,5 +1,5 @@
-const CELPERLINE = 7;
-const LINES = 8;
+const CELPERLINE = 10;
+const LINES = 6;
 const CELL_SIZE = 10;
 
 export class Tableau {
