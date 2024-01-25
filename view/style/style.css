@@ -580,8 +580,8 @@ header#student_header div#number_chronocoin span {
 }
 /**  home **/
 #home{
-  width: fit-content;
-  padding: 1em;
+  padding: 0 50px 0 50px;
+  width: min-content;
 }
 #home section{
   display: flex ;
