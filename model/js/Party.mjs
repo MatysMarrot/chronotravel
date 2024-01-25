@@ -149,6 +149,7 @@ export class Party{
                 alert(msg);
             }
         }
+        window.location.href = "../../controler/home.ctrl.php";
     }
 
     drawPlayerPosition() {
