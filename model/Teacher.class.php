@@ -6,6 +6,11 @@ class Teacher extends User {
 
     const ROLE_ID = 2; // type de l'utilisateur dans la bd
 
+    /**
+     * @return void
+     * @throws Exception
+     * Crée un prof dans la base de donnée à partir de l'objet
+     */
     public function create() : void{
 
         if ($this->id !== -1) {
@@ -34,6 +39,12 @@ class Teacher extends User {
 
     }
 
+    /**
+     * @param $id
+     * @return Teacher
+     * @throws Exception
+     * Renvoie un prof à partir de son id
+     */
     public static function readTeacher($id) : Teacher{
     
         $dao = DAO::get();

@@ -6,6 +6,12 @@ class Student extends User {
 
     const ROLE_ID = 1; // type de l'utilisateur dans la bd
     private int $currency;
+
+    /**
+     * @return void
+     * @throws Exception
+     * Crée l'élève dans la base de donnée à partir de l'objet
+     */
     public function create() : void{
 
         if ($this->id !== -1) {
@@ -21,7 +27,6 @@ class Student extends User {
         $data[] = Student::ROLE_ID;
         
 
-        // A MODIFIER QUAND LA BD SERA FAITE
         $query = "INSERT INTO Person (lastname,name,login,password, currency, roleid) VALUES (?,?,?,?,?,?)";
 
         $dao = DAO::get();
@@ -37,7 +42,12 @@ class Student extends User {
         $dao->exec($query, $data);
     }
 
-    // return null si pas trouvé, un objet student sinon
+
+    /**
+     * @param $id
+     * @return Student|null
+     * Recherche un élève à partir de son id, renvoie l'élève si trouvé, renvoie null sinon
+     */
     public static function readStudent($id) {
     
         $dao = DAO::get();
