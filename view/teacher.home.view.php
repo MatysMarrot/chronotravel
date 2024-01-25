@@ -11,7 +11,7 @@
 
 <?php
 $currentPage = 'home';
-include(__DIR__.'/header.teacher.viewpart.php');
+include(__DIR__.'/../controler/header.ctrl.php');
 ?>
 
 <main id="home_button">

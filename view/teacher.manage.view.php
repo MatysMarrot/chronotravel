@@ -8,7 +8,7 @@
 
     <body>
         <?php $currentPage = 'manage';
-        include(__DIR__.'/header.teacher.viewpart.php'); ?>
+        include(__DIR__.'/../controler/header.ctrl.php'); ?>
 
         <main>
             <form class="gestion" action="../controler/teacher.manage.ctrl.php" method = "post">

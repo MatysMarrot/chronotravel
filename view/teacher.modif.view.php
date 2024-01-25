@@ -8,7 +8,7 @@
 
 <body>
 <?php $currentPage = 'manage';
-include(__DIR__.'/header.teacher.viewpart.php'); ?>
+include(__DIR__.'/../controler/header.ctrl.php'); ?>
 
 <main class="action-page">
     <div class="container-titre">
