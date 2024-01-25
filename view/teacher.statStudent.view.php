@@ -25,14 +25,16 @@
             </div>
             <div id="chartDiv"></div>
         </main>
-        <?php include(__DIR__.'/footer.viewpart.html'); ?>
+        <?php include(__DIR__ . '/footer.viewpart.html'); ?>
         <?php if ($allStat != null): ?>
             <div class="json" style="display: none">
                 <?= $allStatJSON ?>
             </div>
         <?php endif; ?>
     </body>
-    <?php if ($allStat != null): ?>
+    <?php
+        include(__DIR__ . '/footer.viewpart.html');
+        if ($allStat != null): ?>
         <script src="https://code.jscharting.com/2.9.0/jscharting.js"></script>
         <script src="../view/js/chart.js"></script>
     <?php endif; ?>

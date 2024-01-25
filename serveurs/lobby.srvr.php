@@ -45,7 +45,9 @@ class ServerImpl implements MessageComponentInterface
         $players = $party->getPlayers();
 
         foreach ($players as $player) {
-            $this->clientIdConn[$player->getId()]->send($data);
+            try {
+                $this->clientIdConn[$player->getId()]->send($data);
+            } catch (Exception){echo sprintf("Something went wrong while sending packet to %d", $player->getId());};
         }
         return true;
     }
@@ -132,6 +134,20 @@ class ServerImpl implements MessageComponentInterface
             if ($party->getOwnerId() != $decoded['cid']) {
                 return;
             }
+
+            /*
+             * TODO : Décommenter !!!!!
+            if(count($party->getPlayers()) == 1){
+                var_dump($party->getId());
+                var_dump($party->getPlayers());
+                $data = [
+                    "action" => "solo",
+                ];
+
+                $this->broadCast($party,json_encode($data));
+                return;
+            }
+            */
 
             $data = [
                 "action" => "start",

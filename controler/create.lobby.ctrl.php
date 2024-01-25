@@ -31,7 +31,6 @@ else{
             $query = "DELETE FROM Party WHERE id = ?";
             $dao->exec($query, [$partyid]);
 
-            var_dump($partyid);
         }
     }
 

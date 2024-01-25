@@ -28,6 +28,6 @@ include(__DIR__.'/header.teacher.viewpart.php'); ?>
 </main>
 
 <!--Footer -->
-<?php include(__DIR__.'/footer.viewpart.html'); ?>
+<?php include(__DIR__ . '/footer.viewpart.html'); ?>
 </body>
 </html>

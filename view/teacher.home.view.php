@@ -22,6 +22,6 @@ include(__DIR__.'/header.teacher.viewpart.php');
     </ul>
     <p>Pour plus d'informations <a href="../controler/rules.ctrl.php">Cliquez ici !</a></p>
 </main>
-
+<?php include(__DIR__ . '/footer.viewpart.html'); ?>
 </body>
 </html>

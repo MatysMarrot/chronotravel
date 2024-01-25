@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__ . "/enum/era.enum.php");
+require_once(__DIR__ . "/../controler/utils/Utils.php");
 require_once(__DIR__ . "/enum/PartyState.enum.php");
 require_once(__DIR__ . "/Question.class.php");
 require_once(__DIR__ . "/../serveurs/Player.class.php");
@@ -289,6 +290,23 @@ class Party
             }
 
             $mapPlayernbrAnswer[$packet->getId()] = $packet->getNbrRightAnswers();
+
+            //On prend la position des joueurs pour connaitre l'ere dans laquelle ils sont
+            $pos = $this->playerPosition[$packet->getId()];
+
+            //Function from utils.php
+            $strEra = getEraFromInt((int) ($pos->getPosition() / 8));
+            if ($strEra === false){
+                continue;
+            }
+
+            $erascore = $strEra."score";
+            $eraCorrect = $strEra."correctanswers";
+
+            $dao = DAO::get();
+
+            $query = "UPDATE STAT SET ". $erascore ." = ". $erascore . " + ?, ". $eraCorrect ." = ". $eraCorrect ."+ ? WHERE playerid = ? AND partyid = ?";
+            $dao->query($query, array($packet->getNbrQuestions(), $packet->getNbrRightAnswers(), $packet->getId(), $packet->getPartyid()));
         }
 
         arsort($mapPlayernbrAnswer);
@@ -330,8 +348,21 @@ class Party
         foreach ($this->getPlayers() as $students) {
             $subscribers[] = $students->getId();
 
-            //$query = "INSERT INTO stat (playerid,partyid) VALUES (?,?)";
-            //$dao->exec($query,[$students->getId(),$this->id]);
+            //On choppe les stats d'avant
+            $query = "SELECT * FROM stat WHERE playerid = ? ORDER BY partyid DESC LIMIT 1";
+            $reponse = $dao->query($query, array($students->getId()));
+
+            $query = "INSERT INTO stat VALUES (?, false, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            if (!isset($reponse) || !isset($reponse[0]) || count($reponse[0]) != 11){
+                //Insert de stats vides dans la bdd
+                $dao->exec($query, array($students->getId(), 0, 0, 0, 0, 0, 0, 0, 0, $this->id));
+            } else {
+                //Insert de nouvelles
+                //ld for last data
+                $ld = $reponse[0];
+                $dao->query($query, array($students->getId(), $ld[2], $ld[3], $ld[4], $ld[5], $ld[6], $ld[7], $ld[8], $ld[9], $this->id));
+                $students->getId(). " -> " .$this->id;
+            }
         }
 
         echo "Broadcasting";

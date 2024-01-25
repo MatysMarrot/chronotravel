@@ -4,6 +4,7 @@ import {Question} from "./Question.mjs";
 
 export class QuizController extends AbstractMinijeu {
 
+    alive = false;
     party;
     qcmContainer;
     jeuContainer;
@@ -38,6 +39,16 @@ export class QuizController extends AbstractMinijeu {
 
     }
 
+    endIfOutOfTime(){
+        if(!this.alive){
+            return;
+        }
+        while(this.answers.length < this.questions.length){
+            this.answers.push(false);
+        }
+        this.end();
+    }
+
     show(){
         // revèle le qcm
         this.qcmContainer.style.display = "block";
@@ -61,12 +72,15 @@ export class QuizController extends AbstractMinijeu {
 
 
     start(arrayDeQuestions){
+        this.alive = true;
         console.log(arrayDeQuestions);
         //on set les questions
         this.questions = arrayDeQuestions;
         this.questionActuelle = 0;
         this.setQuestion();
         this.show();
+
+        setTimeout(() =>this.endIfOutOfTime(),10000);
     }
 
     setQuestion(){
@@ -81,13 +95,17 @@ export class QuizController extends AbstractMinijeu {
         let i = 0;
         for (const btn of this.radioButtons){
             if (i >= question.answers.length){
-                btn.display = "none";
+                console.log("hid button " + i);
+                this.buttons.item(i).style.display = "none";
+                i++;
                 continue;
             }
 
             this.mapReponsesbutton.set(btn, question.answers.at(i));
-            btn.display = "block";
+            this.buttonsLabels.item(i).innerText = question.answers.at(i).content;
+            this.buttons.item(i).style.display = "";
             i++;
+            if (i >= 4){break;}
         }
 
     }
@@ -95,13 +113,11 @@ export class QuizController extends AbstractMinijeu {
     //Function apellé quand on clique sur un bouton
     next(button){
         let isRightAnswer = Boolean(this.mapReponsesbutton.get(button).correct);
-
         this.answers.push(isRightAnswer);
         this.questionActuelle++;
 
         //Si on est a la dernière question
         if (this.questionActuelle === this.questions.length){
-            this.hide();
             this.end();
             return;
         }
@@ -110,6 +126,8 @@ export class QuizController extends AbstractMinijeu {
     }
 
     end(){
+        this.hide();
+        this.alive = false;
         this.party.endMinigame(this.answers);
     }
 }

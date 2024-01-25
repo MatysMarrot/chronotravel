@@ -8,8 +8,10 @@
 </head>
 <body id="">
     
-    <?php $currentPage = 'confidentialite';
-    include(__DIR__.'/../controler/header.ctrl.php'); ?>
+    <?php
+      $currentPage = 'rules';
+      include(__DIR__.'/../controler/header.ctrl.php');
+    ?>
 
     <main class="rulespage">
         <h2>Contexte :</h2>
@@ -55,6 +57,6 @@
             Les ChronoCoins sont une monnaie fictive du jeu, à la fin d’une partie vous gagnerez des pièces en fonction de votre classement. Grâce à ses pièces, vous pourrez acheter des cosmétiques en tout genre (comme des tenues, chapeaux, lunettes, accessoires…) pour personnaliser votre personnage en jeu.
         </p>
     </main>
-    <?php include(__DIR__.'/footer.viewpart.html')?>
+    <?php include(__DIR__ . '/footer.viewpart.html')?>
 </body>
 </html>

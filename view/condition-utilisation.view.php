@@ -8,8 +8,8 @@
 </head>
 <body id="">
 
-<?php $currentPage = 'conditions_utilisation';
-include(__DIR__ . '/../controler/header.ctrl.php'); ?>
+<?php $currentPage = 'conditions-utilisation';
+include(__DIR__.'/../controler/header.ctrl.php'); ?>
 
 <main class="conditionspage">
 
