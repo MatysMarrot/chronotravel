@@ -348,8 +348,21 @@ class Party
         foreach ($this->getPlayers() as $students) {
             $subscribers[] = $students->getId();
 
-            $query = "INSERT INTO stat (playerid,partyid) VALUES (?,?)";
-            var_dump($dao->query($query,[$students->getId(),$this->id]));
+            //On choppe les stats d'avant
+            $query = "SELECT * FROM stat WHERE playerid = ? ORDER BY partyid DESC LIMIT 1";
+            $reponse = $dao->query($query, array($students->getId()));
+
+            $query = "INSERT INTO stat VALUES (?, false, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            if (!isset($reponse) || !isset($reponse[0]) || count($reponse[0]) != 11){
+                //Insert de stats vides dans la bdd
+                $dao->exec($query, array($students->getId(), 0, 0, 0, 0, 0, 0, 0, 0, $this->id));
+            } else {
+                //Insert de nouvelles
+                //ld for last data
+                $ld = $reponse[0];
+                $dao->query($query, array($students->getId(), $ld[2], $ld[3], $ld[4], $ld[5], $ld[6], $ld[7], $ld[8], $ld[9], $this->id));
+                $students->getId(). " -> " .$this->id;
+            }
         }
 
         echo "Broadcasting";
