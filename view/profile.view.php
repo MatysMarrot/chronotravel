@@ -20,7 +20,7 @@
         <div>
             <div class="dashboard">
                 <div class="div_skin">
-                    <img id="skin" src="<?=$emplacementSkin?>skintest.png" alt="personnage">
+                    <img id="skincolor" src="<?=$emplacementSkin.$currentSkin[5]->getLocation()?>" alt="personnage">
                     <?php if($currentSkin[2] != null):?>
                         <img id="shirt" src="<?=$emplacementSkin.$currentSkin[2]->getLocation()?>" alt="Tee-shirt">
                     <?php endif; ?>
