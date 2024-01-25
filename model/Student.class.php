@@ -32,10 +32,9 @@ class Student extends User {
         }
 
         $this->id = $dao->lastInsertId();
-        $query = "INSERT INTO currentskin VALUES (?, null, null, null, null, null, ?)";
-        $data = [$this->id, "24"];
+        $query = "INSERT INTO currentskin VALUES (?, null, null, null, null, null, 24)";
+        $data = [$this->id];
         $dao->exec($query, $data);
-
     }
 
     // return null si pas trouvé, un objet student sinon
