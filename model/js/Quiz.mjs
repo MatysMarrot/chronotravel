@@ -95,14 +95,17 @@ export class QuizController extends AbstractMinijeu {
         let i = 0;
         for (const btn of this.radioButtons){
             if (i >= question.answers.length){
-                btn.display = "none";
+                console.log("hid button " + i);
+                this.buttons.item(i).style.display = "none";
+                i++;
                 continue;
             }
 
             this.mapReponsesbutton.set(btn, question.answers.at(i));
             this.buttonsLabels.item(i).innerText = question.answers.at(i).content;
-            btn.display = "block";
+            this.buttons.item(i).style.display = "";
             i++;
+            if (i >= 4){break;}
         }
 
     }
