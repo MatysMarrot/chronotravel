@@ -169,7 +169,9 @@ export class Party{
     }
 
     endMinigame(arrayofAnswers){
+        if(this.quiz == null) return;
         this.quiz.hide();
+
 
 
         this.inMiniJeux = false;

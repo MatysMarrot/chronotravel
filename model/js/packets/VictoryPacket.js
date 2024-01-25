@@ -7,9 +7,9 @@ export class VictoryPacket extends AbstractPacket{
     constructor(Party, data) {
         super(-1, Party.id);
 
-        for (let player of data.players){
-            if (Party.players[player.id]){
-                this.winners.push(Party.players[player.id].login);
+        for (let winner of data.winners){
+            if (Party.players[winner.id]){
+                this.winners.push(Party.players[winner.id].login);
             }
         }
     }
