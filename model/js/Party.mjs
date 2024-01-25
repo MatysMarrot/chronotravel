@@ -93,6 +93,7 @@ export class Party{
             } break;
             case "leave":{
                 packet = new LeavePacket(this,parsedData);
+                packet.handle();
             }break;
             case "victory":{
                 console.log(parsedData);

@@ -9,15 +9,8 @@ export class LeavePacket extends AbstractPacket {
         this.party = Party
     }
 
-    handle(party){
-
-        for (let joueurs of party.players){
-            party.players.delete(this.id);
-        }
-
-        console.log("DELETE PLAYER: " + this.id);
-        party.drawPlayerPosition();
-
+    handle(){
+        window.location.href = "../../../controler/home.ctrl.php";
     }
 
 }
