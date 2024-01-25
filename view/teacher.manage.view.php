@@ -48,6 +48,11 @@
                             <p>PAS D'ELEVES</p>
                         <?php else : ?>
                             <table class="tableau">
+                                <tr>
+                                    <th>Élèves</th>
+                                    <th>Statistiques</th>
+                                    <th>Supprimer de la classe</th>
+                                </tr>
                                 <?php foreach($students as $student) :?>
                                     <tr>
                                         <td><?=$student->getFirstName()?> <?=$student->getLastName()?></td>
