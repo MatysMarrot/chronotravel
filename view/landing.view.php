@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="../view/style/style.css">
     <title>ChronoTravel</title>
 </head>
-<body id="">
+<body>
     <?php include(__DIR__.'/header.unknown.viewpart.php'); ?>
 
     <main class="landingpage">
@@ -15,6 +15,6 @@
         </h2>
         <a href="../controler/landing.ctrl.php" class="button">Essayez ChronoTravel !</a>
     </main>
-    <?php include(__DIR__.'/footer.viewpart.html')?>
+    <?php include(__DIR__ . '/footer.viewpart.html')?>
 </body>
 </html>

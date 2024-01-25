@@ -159,7 +159,7 @@ header#student_header nav {
   position: absolute;
   top: 0;
   background-color: var(--header-background-color);
-  width: 775px;
+  width: 650px;
   height: 80px;
   left: 50%;
   transform: translate(-50%);
@@ -217,7 +217,7 @@ header#student_header nav ul li.active a i.material-symbols-outlined {
 header#student_header div#number_chronocoin, #dyslexie-div {
   position: relative;
   top: 15px;
-  left: 240%;
+  left: 210%;
   display: flex;
   align-items: center;
 }
@@ -237,11 +237,11 @@ header#student_header div#number_chronocoin span, #fontToggleBtn {
   font-size: 18px;
 }
 header#student_header div#number_chronocoin span {
-  padding: 12px 25px 12px 45px;
+  padding: 12px 25px 12px 55px;
 }
 #dyslexie-div {
   position: relative;
-  left: 240%;
+  left: 210%;
   width: 50px;
   top: 15px;
   margin-left: 25px;

@@ -1,28 +1,3 @@
-<?php
-
-require_once(__DIR__."/../model/Student.class.php");
-
-session_start();
-
-if (isset($_SESSION['id'])) {
-    $userId = $_SESSION['id'];
-    $student = Student::readStudent($userId);
-    $currencyAmount = $student->getCurrency();
-    if(isset($_POST['isDys'])) {
-        $isDys = $_POST['isDys'] ?? 0;
-        $_SESSION["isDys"] = $isDys;
-    } else {
-        $isDys = $_SESSION["isDys"] ?? 0;
-    }
-    //var_dump($isDys);
-} else {
-    header("Location: login.view.php");
-    exit();
-}
-
-?>
-
-
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
@@ -45,10 +20,6 @@ if (isset($_SESSION['id'])) {
             <li <?= ($currentPage == 'rules') ? 'class="active"' : ''; ?>>
                 <a href="../controler/rules.ctrl.php"> <i class="material-symbols-outlined">Description</i></a>
                 <span class="tooltip_text">RÈGLES</span>
-            </li>
-            <li <?= ($currentPage == 'contact') ? 'class="active"' : ''; ?>>
-                <a href="../controler/contact.ctrl.php"> <i class="material-symbols-outlined">Mail</i></a>
-                <span class="tooltip_text">CONTACT</span>
             </li>
             <li <?= ($currentPage == 'logout') ? 'class="active"' : ''; ?>>
                 <a href="../logout.php"> <i class="material-symbols-outlined">Logout</i></a>

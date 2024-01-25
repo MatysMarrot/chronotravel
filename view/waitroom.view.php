@@ -43,7 +43,7 @@
         </main>
 
         <!--Footer -->
-        <?php include(__DIR__.'/footer.viewpart.html'); ?>
+        <?php include(__DIR__ . '/footer.viewpart.html'); ?>
         <script src="../controler/lobby.ctrl.js"></script>
     </body>
 </html>
