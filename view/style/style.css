@@ -89,6 +89,7 @@ body::before {
   z-index: -1;
 }
 /*logo*/
+
 #logo{
   width: 200px;
   position: fixed;
@@ -109,7 +110,7 @@ main {
   padding-bottom: 50px;
 }
 
-/*Header Teacher */
+/*Header Teacher et Unknown*/
 .header_teacher .active{
   color: #FF8C00;
 }
@@ -257,6 +258,19 @@ header#student_header div#number_chronocoin span {
   background-color: #FF8C00;
 }
 
+.connectionpage #header_unknown_logo {
+  width: 100px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: -10px;
+  transition: width 0.5s ease;
+}
+
+.connectionpage #header_unknown_logo:hover {
+  width: 105px;
+}
+
 /* Header unknow */
 .connectionpage h1 {
   font-size: 1.5em;
@@ -267,7 +281,6 @@ header#student_header div#number_chronocoin span {
   flex-direction: row;
   justify-content: space-around;
   align-items: baseline;
-  padding: 10px;
   border-radius: 0 0 25px 25px;
   box-shadow: 2px 2px 2px black;
   top: 0;
@@ -276,19 +289,23 @@ header#student_header div#number_chronocoin span {
   z-index: 1;
   background-color: var(--header-background-color);
   margin-bottom: 20px;
+  height: 80px;
 }
 .connectionpage a {
   text-decoration: none;
   color: white;
   font-weight: bold;
   font-size: 1.2em;
+  height: 53px;
+  transition: color 0.5s ease;
 }
-.connectionpage .active {
-  text-decoration: underline;
-  color: #FF8C00;
-}
+
 .connectionpage a:hover {
-  text-decoration: underline;
+   color: var(--color-blue-button);
+}
+
+.connectionpage .active {
+  color: #FF8C00;
 }
 
 /* Connection page */
@@ -981,35 +998,17 @@ th[scope='col'] {
 footer {
   background-color: var(--header-background-color);
   color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 90%;
-  margin: auto;
-  clip-path: polygon(8% 0, 92% 0, 100% 100%, 0% 100%);
+  width: 100vw;
   bottom: 0;
-  margin-top: 2em;
-  position: relative;
+  margin-top: 32px;
 }
 footer a {
   color: white;
-  text-decoration: none;
   font-style: italic;
+  text-decoration: none;
 }
 footer a:hover {
   text-decoration: underline;
-}
-footer nav {
-  width: 60%;
-}
-footer nav ul {
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-}
-footer p, footer ul {
-  margin: 8px 0px 8px 0px;
 }
 
 /* HOME */
