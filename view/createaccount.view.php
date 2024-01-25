@@ -74,7 +74,7 @@
     </script>
 </head>
 <body>
-    <?php include(__DIR__.'/header.unknown.viewpart.php'); ?>
+    <?php include(__DIR__.'/../controler/header.ctrl.php'); ?>
 
     <main class="connection">
         <form onsubmit="return validateForm()" action="../controler/createaccount.ctrl.php" method="post">

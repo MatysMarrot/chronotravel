@@ -7,15 +7,15 @@
       </head>
 
     <body>
-        <!--Header --> 
-        <?php include(__DIR__.'/header.student.viewpart.php'); ?>
+        <!--Header -->
+        <?php include(__DIR__.'/../controler/header.ctrl.php'); ?>
 
         <main>
             <h1>Rejoindre une classe</h1>
                 
             <img class="skin" src="../../skin.png" alt="">
                 
-                <?=$currentClass?></p>
+                <p><?=$currentClass?></p>
             <label for="code">Entrez le code fourni par votre professeur pour rejoindre votre classe ! :</label>
             <!-- Si le code ne correspond à aucune partie mettre un message d'erreur 
                 Sinon rejoindre la partie dans student.lobby.view.php-->

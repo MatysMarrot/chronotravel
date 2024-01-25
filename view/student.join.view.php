@@ -7,8 +7,8 @@
       </head>
 
     <body>
-        <!--Header --> 
-        <?php include(__DIR__.'/header.student.viewpart.php'); ?>
+        <!--Header -->
+        <?php include(__DIR__.'/../controler/header.ctrl.php'); ?>
 
         <main>
             <h1>Rejoindre une partie</h1>
