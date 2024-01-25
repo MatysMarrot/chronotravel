@@ -10,7 +10,7 @@
     <body>
     <?php
       $currentPage = 'checkroom';
-      include(__DIR__.'/header.student.viewpart.php');
+      include(__DIR__.'/../controler/header.ctrl.php');
     ?>
     <main class="checkroom"> 
         <section>
@@ -74,6 +74,6 @@
         </section>
         <?php endif; ?>
     </main>
-    <?php include(__DIR__.'/footer.viewpart.html'); ?> 
+    <?php include(__DIR__ . '/footer.viewpart.html'); ?>
     </body>
   </html>

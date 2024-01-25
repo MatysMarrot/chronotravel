@@ -33,6 +33,6 @@
         </main>
 
         <!--Footer --> 
-        <?php include(__DIR__.'/footer.viewpart.html'); ?>   
+        <?php include(__DIR__ . '/footer.viewpart.html'); ?>
     </body>
 </html>

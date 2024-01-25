@@ -38,6 +38,6 @@
         </form>
         <p>Vous n'avez pas de compte ? <a href="../controler/createaccount.ctrl.php">Créez en vous un !</a></p>
     </main>
-    <?php include(__DIR__.'/footer.viewpart.html')?>
+    <?php include(__DIR__ . '/footer.viewpart.html')?>
 </body>
 </html>

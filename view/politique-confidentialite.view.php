@@ -8,8 +8,8 @@
 </head>
 <body id="">
 
-<?php $currentPage = 'confidentialite';
-include(__DIR__ . '/../controler/header.ctrl.php'); ?>
+<?php $currentPage = 'politique-confidentialite';
+include(__DIR__.'/../controler/header.ctrl.php'); ?>
 
 <main class="confidpage">
 

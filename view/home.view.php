@@ -11,7 +11,7 @@
 
 <?php
 $currentPage = 'home';
-include(__DIR__.'/header.student.viewpart.php');
+include(__DIR__.'/../controler/header.ctrl.php');
 ?>
 
 <main id="home">
@@ -29,6 +29,7 @@ include(__DIR__.'/header.student.viewpart.php');
     <p>Vous ne savez pas comment jouer ? <a href="../controler/rules.ctrl.php">Cliquez ici !</a></p>
 
 </main>
+<?php include(__DIR__ . '/footer.viewpart.html'); ?>
 
 </body>
 </html>

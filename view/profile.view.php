@@ -10,7 +10,7 @@
 <body>
     <?php
     $currentPage = 'profile';
-    include(__DIR__ . '/header.student.viewpart.php');
+    include(__DIR__.'/../controler/header.ctrl.php');
     ?>
     <main class="profil">
         <div class="switch-buttons">
@@ -88,8 +88,10 @@
     </div>
     <?php endif; ?>
 </body>
-<?php if ($allState != null): ?>
-    <script src="https://code.jscharting.com/2.9.0/jscharting.js"></script>
-    <script src="../view/js/chart.js"></script>
+<?php
+    include(__DIR__ . '/footer.viewpart.html');
+    if ($allState != null): ?>
+        <script src="https://code.jscharting.com/2.9.0/jscharting.js"></script>
+        <script src="../view/js/chart.js"></script>
 <?php endif; ?>
 </html>

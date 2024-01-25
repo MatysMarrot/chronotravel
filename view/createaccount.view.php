@@ -119,6 +119,6 @@
         </form>
         <p>Vous avez déjà un compte ? <a href="../controler/login.ctrl.php">Connectez vous !</a></p>
     </main>
-    <?php include(__DIR__.'/footer.viewpart.html')?>
+    <?php include(__DIR__ . '/footer.viewpart.html')?>
 </body>
 </html>
