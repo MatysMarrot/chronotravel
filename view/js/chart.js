@@ -26,7 +26,7 @@ for (var i=0; i < statPerGame.length; i++) {
     data[2].points.push({x:statPerGame[i].gamePlayed, y: Math.round((statPerGame[i].contemporaryCorrectAnswer/statPerGame[i].contemporaryAnswer) * 100)/100});
     data[3].points.push({x:statPerGame[i].gamePlayed, y: Math.round((statPerGame[i].modernCorrectAnswer/statPerGame[i].modernAnswer) * 100)/100});
 }
-console.log(data);
+//console.log(data);
 // Création du graphique avec JSCharting
 JSC.Chart('chartDiv', {
     title_label_text: 'Évolution du ratio de bonnes réponses par époque',

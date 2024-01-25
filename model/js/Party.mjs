@@ -86,9 +86,9 @@ export class Party{
             } break;
 
             case "question":{
-                console.log("QUESTION PACKET ");
+            //("QUESTION PACKET ");
                 packet = new QuestionPacket(this,parsedData);
-                console.log("QUESTION PACKET : "+ packet);
+            //    console.log("QUESTION PACKET : "+ packet);
                 //Hey, this is a test
             } break;
             case "leave":{
@@ -96,9 +96,9 @@ export class Party{
                 packet.handle();
             }break;
             case "victory":{
-                console.log(parsedData);
+                //  console.log(parsedData);
                 packet = new VictoryPacket(this,parsedData);
-                console.log(packet);
+                //     console.log(packet);
             }
 
         }
@@ -171,7 +171,7 @@ export class Party{
         this.quiz.show();
         let theme = document.getElementById('theme');
         let nombreAleatoire = Math.floor(Math.random() * 8) + 1;
-        console.log(questionPacket.data.questions[0].themeid);
+        //   console.log(questionPacket.data.questions[0].themeid);
         switch (parseInt(questionPacket.data.questions[0].themeid)){
             case 1:
                 document.body.style.backgroundImage = "url('../view/img/theme/1-antiquite/"+ nombreAleatoire +"-img-antiquite.jpg')";
@@ -186,7 +186,7 @@ export class Party{
                 theme.innerHTML = 'Epoque moderne';
                 break;
             case 4:
-                console.log("IN");
+                //console.log("IN");
                 document.body.style.backgroundImage = "url('../view/img/theme/4-contemp/"+ nombreAleatoire +"-img-contemp.jpg')";
                 theme.innerHTML = 'Epoque conptemporaine';
                 break;
@@ -203,8 +203,8 @@ export class Party{
         document.body.style.backgroundImage = "url('../view/assets/background.png')";
         this.inMiniJeux = false;
         let answer = new AnswerPacket(this.currentClient, this.id, arrayofAnswers);
-        console.log("sending :");
-        console.log(answer);
+        //console.log("sending :");
+        //console.log(answer);
         answer.handle(this.socket);
         this.quiz = null;
     };

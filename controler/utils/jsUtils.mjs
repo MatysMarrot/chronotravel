@@ -5,7 +5,7 @@ export async function retreiveSession(){
             "Content-type": "application/json; charset=UTF-8"
         }
     }).then(function (reponse) {
-        console.log(reponse);
+       // console.log(reponse);
         return reponse.json();
     }).catch(error => console.log(error));
 }

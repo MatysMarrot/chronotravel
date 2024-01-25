@@ -26,7 +26,7 @@ function leave(){
 
         if (partyId == null || clientId == null){
             socket.close(0, "Unable to find pid or cid !");
-            console.log("Unable to find pid or cid !");
+            //console.log("Unable to find pid or cid !");
             window.location("./waitroom.ctrl.php");
         }
 
@@ -53,7 +53,7 @@ function start(){
         //Si on ne trouve pas un des deux en session
         if (partyId == null || clientId == null){
             socket.close(0, "Unable to find pid or cid !");
-            console.log("Unable to find pid or cid !");
+            //console.log("Unable to find pid or cid !");
             window.location("./waitroom.ctrl.php");
         }
 
@@ -78,7 +78,7 @@ socket.addEventListener("open", function (event) {
         //Si on ne trouve pas un des deux en session
         if (partyId == null || clientId == null){
             socket.close(0, "Unable to find pid or cid !");
-            console.log("Unable to find pid or cid !");
+            //console.log("Unable to find pid or cid !");
             window.location("./waitroom.ctrl.php");
         }
 
@@ -119,7 +119,7 @@ socket.addEventListener("message", function (event) {
         console.log("Could not parse: " + event.data);
     }
 
-    console.log(data.action);
+   // console.log(data.action);
     switch (data.action) {
         case "playerJoin":
             let msg1 = document.getElementById('error');
@@ -132,7 +132,7 @@ socket.addEventListener("message", function (event) {
             window.location.href = "../controler/board.ctrl.php";
             break;
         case "playerLeave":
-            console.log(data);
+            //console.log(data);
             const playerNameToRemove = data.name;
 
             for(let i = 0; i < pseudoEmplacements.length;i++){
@@ -142,11 +142,11 @@ socket.addEventListener("message", function (event) {
             }
             break;
         case "ownerLeft" :
-            console.log(data);
+         //   console.log(data);
             window.location = "../controler/home.ctrl.php";
             break;
         case "solo" :
-            console.log(data.action);
+          //  console.log(data.action);
             let msg2 = document.getElementById('error');
             msg2.style.color = 'red';
             msg2.innerHTML = 'Impossible de lancer la partie seul !';

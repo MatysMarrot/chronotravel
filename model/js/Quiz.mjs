@@ -73,7 +73,7 @@ export class QuizController extends AbstractMinijeu {
 
     start(arrayDeQuestions){
         this.alive = true;
-        console.log(arrayDeQuestions);
+        //console.log(arrayDeQuestions);
         //on set les questions
         this.questions = arrayDeQuestions;
         this.questionActuelle = 0;
@@ -95,7 +95,7 @@ export class QuizController extends AbstractMinijeu {
         let i = 0;
         for (const btn of this.radioButtons){
             if (i >= question.answers.length){
-                console.log("hid button " + i);
+                //console.log("hid button " + i);
                 this.buttons.item(i).style.display = "none";
                 i++;
                 continue;

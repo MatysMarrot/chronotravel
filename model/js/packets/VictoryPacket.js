@@ -8,7 +8,7 @@ export class VictoryPacket extends AbstractPacket{
         super(-1, Party.id);
 
         for (let winner of data.winners){
-            console.log(winner);
+            //console.log(winner);
                 this.winners.push(Party.players.get(winner.id).login);
         }
     }

@@ -39,7 +39,7 @@ socket.addEventListener("error", function (event) {
 
 // Écouter les messages
 socket.addEventListener("message", function (event) {
-    console.log("event");
+   // console.log("event");
     let info;
     try {
         info = JSON.parse(event.data);
@@ -50,7 +50,7 @@ socket.addEventListener("message", function (event) {
 
     //Si pas d'action dans la data
     //Ne doit pas arriver mais on est prudent ici
-    console.log("Valeur de action : " + info.action);
+  //  console.log("Valeur de action : " + info.action);
     if (info.action == null) {
         console.log("data.action EST NULL");
         return;
@@ -58,15 +58,15 @@ socket.addEventListener("message", function (event) {
 
     //Si c'est un packet create
     if (info.action === "create" && partie == null) {
-        console.log("CREATION OBJET PARTIE");
+     //   console.log("CREATION OBJET PARTIE");
         partie = new Party(document.getElementById("board"), info, socket);
-        console.log(partie);
-        console.log(info.action);
-        console.log(info.partyid);
+      //  console.log(partie);
+      //  console.log(info.action);
+      //  console.log(info.partyid);
         return;
     }
 
-    console.log(info);
+   //console.log(info);
     partie.handlePacket(info);
 
 });

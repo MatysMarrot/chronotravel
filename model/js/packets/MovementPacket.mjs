@@ -10,7 +10,7 @@ export class MovementPacket extends AbstractPacket {
         this.playersMovement = new Map();
 
         for (let players of data.players){
-            console.log(players.id,players.movement);
+            //console.log(players.id,players.movement);
             this.playersMovement.set(players.id, players.movement);
         }
 

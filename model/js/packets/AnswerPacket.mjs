@@ -19,7 +19,7 @@ export class AnswerPacket extends AbstractPacket {
             "nbrRightAnswers": this.answersBoolean.filter((answer) => answer === true).length,
         }
 
-        console.log("Answer data: " + JSON.stringify(data));
+        //console.log("Answer data: " + JSON.stringify(data));
 
         socket.send(JSON.stringify(data));
 
