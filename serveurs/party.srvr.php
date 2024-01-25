@@ -144,7 +144,7 @@ class PartyImpl implements MessageComponentInterface{
     public static function get(){
         if (self::$instance == null){
             self::$instance = new PartyImpl();
-            echo "Server created on port " . APP_PORT . "\n\n";
+            //echo "Server created on port " . APP_PORT . "\n\n";
             //self::$instance->run();
         }
 

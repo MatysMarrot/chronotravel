@@ -240,7 +240,7 @@ class ServerImpl implements MessageComponentInterface
                 ),
                 1313
             );
-            echo "Server created on port " . 1313 . "\n\n";
+            //echo "Server created on port " . 1313 . "\n\n";
             //self::$instance->run();
         }
 
