@@ -11,14 +11,16 @@ abstract class User {
     protected string $firstname;
     protected string $login;
     protected string $password;
-
-    public function __construct($lastname,$firstname,$login,$password){
+    protected bool $validate;
+    protected string $email;
+    public function __construct($lastname,$firstname,$login,$password, $email){
 
         $this->id = -1; // Objet pas créer dans la BD
         $this->lastname = $lastname;
         $this->firstname = $firstname;
         $this->login = $login;
         $this->password = $password;
+        $this->email = $email;
     }
 
     //TODO 

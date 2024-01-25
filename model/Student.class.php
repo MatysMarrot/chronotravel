@@ -19,10 +19,11 @@ class Student extends User {
         $data[] = $this->password;
         $data[] = 0;
         $data[] = Student::ROLE_ID;
-        
+        $data[] = false;
+        $data[] = $this->email;
 
         // A MODIFIER QUAND LA BD SERA FAITE
-        $query = "INSERT INTO Person (lastname,name,login,password, currency, roleid) VALUES (?,?,?,?,?,?)";
+        $query = "INSERT INTO Person (lastname,name,login,password, currency, roleid, validate, mail) VALUES (?,?,?,?,?,?,?,?)";
 
         $dao = DAO::get();
 
@@ -36,6 +37,12 @@ class Student extends User {
         $data = [$this->id, "000000"];
         $dao->exec($query, $data);
 
+        // Confirmation par les responsables légaux
+        $email = $this->email;
+        $sujet="Confirmation de création de compte";
+        $message = "192.168.14.112/Projet_Sae/main/controler/validate.ctrl.php?{$this->id}";
+        $header="From:contact.chronotravel@gmail.com";
+        mail($email, $sujet, $message, $header);
     }
 
     // return null si pas trouvé, un objet student sinon

@@ -37,9 +37,9 @@ if(count($_POST) == 0){
         // Il n'ya pas le mail et le login dans la BD, on peut enregistrer le compte
         $newAccount = null;
         if (isMailUniversitaire($mail)){
-            $newAccount = new Teacher($_POST['lastname'],$_POST['firstName'],strtolower($login),password_hash($_POST['password'], PASSWORD_BCRYPT));
+            $newAccount = new Teacher($_POST['lastname'],$_POST['firstName'],strtolower($login),password_hash($_POST['password'], $mail, PASSWORD_BCRYPT));
         } else {
-            $newAccount = new Student($_POST['lastname'],$_POST['firstName'],strtolower($login),password_hash($_POST['password'], PASSWORD_BCRYPT));
+            $newAccount = new Student($_POST['lastname'],$_POST['firstName'],strtolower($login),password_hash($_POST['password'], $mail, PASSWORD_BCRYPT));
         }
         
         

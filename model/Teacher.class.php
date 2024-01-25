@@ -18,9 +18,9 @@ class Teacher extends User {
         $data[] = $this->login;
         $data[] = $this->password;
         $data[] = Teacher::ROLE_ID;
-
+        $data[] = $this->email;
         // A MODIFIER QUAND LA BD SERA FAITE
-        $query = "INSERT INTO Person (lastname,name,login,password,roleID) VALUES (?,?,?,?,?)";
+        $query = "INSERT INTO Person (lastname,name,login,password,roleID, mail) VALUES (?,?,?,?,?,?)";
 
         $dao = DAO::get();
 
