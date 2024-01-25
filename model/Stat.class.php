@@ -17,7 +17,7 @@ class Stat implements JsonSerializable {
 
     public static function getStatOf(int $playerId) : ?Stat {
         $dao = DAO::get();
-        $query = "SELECT * from stat WHERE playerid=? ORDER BY gameplayed";
+        $query = "SELECT * from stat WHERE playerid=? ORDER BY numgames";
         $statTable = $dao->query($query, [$playerId]);
         if(count($statTable) == 0) {
             return null;
@@ -25,7 +25,7 @@ class Stat implements JsonSerializable {
             $student = Student::readStudent($playerId);
             $stat = [];
             foreach ($statTable as $row) {
-                $statPerGame = new StatPerGame($row["gameplayed"], $row["gamewon"], $row["antiquityanswer"], $row["middleageanswer"], $row["contemporaryanswer"], $row["modernanswer"], $row["antiquitycorrectanswer"], $row["middleagecorrectanswer"], $row["contemporarycorrectanswer"], $row["moderncorrectanswer"]);
+                $statPerGame = new StatPerGame($row["numgames"], $row["numgameswon"], $row["ancienthistoryscore"], $row["middleagesscore"], $row["contemporaryscore"], $row["modernhistoryscore"], $row["ancienthistorycorrectanswers"], $row["middleagescorrectanswers"], $row["contemporarycorrectanswers"], $row["modernhistorycorrectanswers"]);
                 $stat[] = $statPerGame;
             }
             return new Stat($student, $stat);

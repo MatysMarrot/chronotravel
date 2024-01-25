@@ -17,10 +17,10 @@
     //$studentsPosition = $party->getStudentPosition(); //Student1 => Case1, Student2 => Case2 etc ...
 
     $studentsPosition = [
-        107 => ["case" => 31, "classement" => 0, "gain" => 1],
-        126 => ["case" => 15, "classement" => 0, "gain" => 4],
-        128 => ["case" => 16, "classement" => 0, "gain" => 3],
-        109 => ["case" => 31, "classement" => 0, "gain" => 1],
+        112 => ["case" => 31, "classement" => 0, "gain" => 1],
+        107 => ["case" => 15, "classement" => 0, "gain" => 4],
+        109 => ["case" => 16, "classement" => 0, "gain" => 3],
+        128 => ["case" => 31, "classement" => 0, "gain" => 1],
     ];
 
     uasort($studentsPosition, function ($a, $b) {
@@ -73,7 +73,7 @@
                 </ul>
         
                 <div class=\"div_skin\">
-                    <img id=\"skin\" src=\"{$emplacementSkin}skintest.png\" alt=\"personnage\">";
+                    <img id=\"skin\" src=\"{$emplacementSkin}{$currentSkin[5]->getLocation()}\" alt=\"personnage\">";
 
                 if ($currentSkin[2] != null) {
                     $tableau .= "<img id=\"shirt\" src=\"{$emplacementSkin}{$currentSkin[2]->getLocation()}\" alt=\"Tee-shirt\">";

@@ -2,7 +2,7 @@
   <html lang="fr">
     <head>
       <meta charset="UTF-8">
-      <title>Chrono Travel- Gestion des élèves</title>
+      <title>ChronoTravel - Gérer mes classes</title>
       <link rel="stylesheet" type="text/css" href="../view/style/style.css">    
     </head>
 
@@ -48,6 +48,11 @@
                             <p>PAS D'ELEVES</p>
                         <?php else : ?>
                             <table class="tableau">
+                                <tr>
+                                    <th>Élèves</th>
+                                    <th>Statistiques</th>
+                                    <th>Supprimer de la classe</th>
+                                </tr>
                                 <?php foreach($students as $student) :?>
                                     <tr>
                                         <td><?=$student->getFirstName()?> <?=$student->getLastName()?></td>

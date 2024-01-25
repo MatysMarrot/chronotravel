@@ -65,7 +65,24 @@ class SkinObject {
     }
     public static function getAllSkinObjects() : array {
         $dao = DAO::get();
-        $query = "SELECT skinid, skinobject.name as name, price, location, skinpart.name as partname FROM skinobject JOIN skinpart ON skinobject.parts=skinpart.skinpartid ORDER BY parts";
+        $query = "SELECT skinid, skinobject.name as name, price, location, skinpart.name as partname 
+          FROM skinobject 
+          JOIN skinpart ON skinobject.parts = skinpart.skinpartid 
+          WHERE skinobject.part != 0 
+          ORDER BY parts";
+        $table = $dao->query($query);
+        $skins = [];
+        foreach ($table as $skin) {
+            $newSkin = new SkinObject($skin["skinid"], $skin["name"], $skin["price"], $skin["location"], $skin["partname"]);
+            $skins[] = $newSkin;
+        }
+        return $skins;
+    }
+
+    public static function getColorSkin() : array {
+        $dao = DAO::get();
+
+        $query = "SELECT so.skinid, so.name as name, price, location, sp.name as partname FROM skinobject so JOIN skinpart sp ON so.parts=sp.skinpartid WHERE so.parts=0";
         $table = $dao->query($query);
         $skins = [];
         foreach ($table as $skin) {
@@ -77,15 +94,15 @@ class SkinObject {
 
     public static function getCurrentSkinOfPlayer(int $playerId) : array {
         $dao = DAO::get();
-        $query = "SELECT hat, hair, teeshirt, pants, shoes FROM currentskin WHERE playerid=?";
+        $query = "SELECT hat, hair, teeshirt, pants, shoes, skincolor FROM currentskin WHERE playerid=?";
         $table = $dao->query($query, [$playerId]);
         $currentSkin = [];
         if(!count($table)) {
-            $dao->exec("INSERT INTO currentskin VALUES ($playerId, null, null, null, null, null, '000000')");
-            $currentSkin = [null, null, null, null, null];
+            $dao->exec("INSERT INTO currentskin VALUES ($playerId, null, null, null, null, null,25)");
+            $currentSkin = [null, null, null, null, null ,25];
         } else {
             $row = $table[0];
-            for($i=0; $i < 5; $i++) {
+            for($i=0; $i < 6; $i++) {
                 if($row[$i] != null) {
                     $query = "SELECT skinid, skinobject.name as name, price, location, skinpart.name as partname FROM skinobject JOIN skinpart ON skinobject.parts=skinpart.skinpartid WHERE skinid=?";
                     $table = $dao->query($query, [$row[$i]]);
@@ -110,7 +127,7 @@ class SkinObject {
     public static function getAllPossessedSkin(int $playerId) : array {
         $possessedSkin = [];
         $dao = DAO::get();
-        $query = "SELECT so.skinid, so.name as name, price, location, sp.name as partname FROM skinobject so JOIN playerskin ps ON so.skinid = ps.skinid JOIN skinpart sp ON so.parts=sp.skinpartid WHERE ps.playerid = ?";
+        $query = "SELECT so.skinid, so.name as name, price, location, sp.name as partname FROM skinobject so JOIN playerskin ps ON so.skinid = ps.skinid JOIN skinpart sp ON so.parts=sp.skinpartid WHERE ps.playerid = ? AND so.parts!=0";
         $table = $dao->query($query, [$playerId]);
         foreach($table as $skin) {
             $newSkin = new SkinObject($skin["skinid"], $skin["name"], $skin["price"], $skin["location"], $skin["partname"]);
@@ -121,7 +138,7 @@ class SkinObject {
     public static function getAllunpossessedSkin(int $playerId) : array {
         $possessedSkin = [];
         $dao = DAO::get();
-        $query = "SELECT so.skinid, so.name as name, price, location, sp.name as partname FROM skinobject so JOIN skinpart sp ON so.parts=sp.skinpartid LEFT JOIN playerskin ps ON so.skinid = ps.skinid AND ps.playerid = ? WHERE ps.playerid IS NULL";
+        $query = "SELECT so.skinid, so.name as name, price, location, sp.name as partname FROM skinobject so JOIN skinpart sp ON so.parts=sp.skinpartid LEFT JOIN playerskin ps ON so.skinid = ps.skinid AND ps.playerid = ? WHERE ps.playerid IS NULL AND so.parts!=0";
         $table = $dao->query($query, [$playerId]);
         foreach($table as $skin) {
             $newSkin = new SkinObject($skin["skinid"], $skin["name"], $skin["price"], $skin["location"], $skin["partname"]);
@@ -153,6 +170,13 @@ class SkinObject {
         }
         $dao->exec($query);
     }
+
+    public function toggleSkinColor(int $playerId) : void {
+        $dao = DAO::get();
+        $query = "UPDATE currentskin SET {$this->getParts()->value}={$this->getSkinId()} WHERE playerid={$playerId}";
+        $dao->exec($query);
+    }
+
     public function previewSkin(array &$currentSkin) {
         $index = Skinpart::getPosition($this->getParts());
         if($index != -1) {

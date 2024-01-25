@@ -4,7 +4,7 @@
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>ChronoTravel - Mes Tenues</title>
+      <title>ChronoTravel - Mes tenues</title>
       <link rel="stylesheet" href="../view/style/style.css">
     </head>
     <body>
@@ -18,7 +18,7 @@
             <h3>Prévisualisation</h3>
             <?php endif; ?>
             <div class="div_skin">
-                <img id="skin" src="<?=$emplacementSkin?>skintest.png" alt="personnage">
+                <img id="skincolor" src="<?=$emplacementSkin.$currentSkin[5]->getLocation()?>" alt="personnage">
                 <?php if($currentSkin[2] != null):?>
                 <img id="shirt" src="<?=$emplacementSkin.$currentSkin[2]->getLocation()?>" alt="Tee-shirt">
                 <?php endif; ?>
@@ -34,8 +34,13 @@
                 <?php if($currentSkin[4] != null):?>
                 <img id="shoes" src="<?=$emplacementSkin.$currentSkin[4]->getLocation()?>" alt="Chaussures">
                 <?php endif; ?>
-                <!--<h3 id="pseudo">PSEUDO</h3>-->
             </div>
+             <form class="skinColor-form" action="../controler/checkroom.ctrl.php" method="post">
+
+                    <?php foreach ($colorSkin as $color) : ?>
+                            <button type="submit" name="skinColor" value="<?=$color->getSkinId()?>"></button>
+                    <?php endforeach; ?>
+             </form>
         </section>
         <?php if($buyView): ?>
         <section class="buyView">
