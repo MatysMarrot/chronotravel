@@ -135,6 +135,20 @@ class ServerImpl implements MessageComponentInterface
                 return;
             }
 
+            /*
+             * TODO : Décommenter !!!!!
+            if(count($party->getPlayers()) == 1){
+                var_dump($party->getId());
+                var_dump($party->getPlayers());
+                $data = [
+                    "action" => "solo",
+                ];
+
+                $this->broadCast($party,json_encode($data));
+                return;
+            }
+            */
+
             $data = [
                 "action" => "start",
             ];

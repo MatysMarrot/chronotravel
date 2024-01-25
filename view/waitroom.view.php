@@ -14,10 +14,9 @@
             <h1>Lancement de la partie</h1>
             <!-- Arriver sur cette page une nouvelle partie est créer et un code est généré automatiquement-->
             <p>Partagez ce code pour inviter à jouer: <span class="bold">"<?=$_SESSION['roomCode']?>"</span></p>
-            
-            <!--Compte à rebours avant lancement automatique de la partie -->
-            <p>Temps restant: <span class="countdown"></p>
-            <script src="../controler/countdown.lobby.ctrl.js"></script>
+
+
+            <p id ="error"></p>
             <img class="skin" src="./assets/background.png" alt="">    
             <h2 id="player1">Pseudo</h2>
             <label for="code">Liste des autres joueurs:</label>

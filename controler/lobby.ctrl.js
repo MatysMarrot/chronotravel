@@ -119,9 +119,11 @@ socket.addEventListener("message", function (event) {
         console.log("Could not parse: " + event.data);
     }
 
+    console.log(data.action);
     switch (data.action) {
         case "playerJoin":
-            console.log(data);
+            let msg1 = document.getElementById('error');
+            msg1.innerHTML = '';
             for (let i = 0; i < data.names.length; i++) {
                 pseudoEmplacements.at(i).textContent = data.names[i];
             }
@@ -143,6 +145,13 @@ socket.addEventListener("message", function (event) {
             console.log(data);
             window.location = "../controler/home.ctrl.php";
             break;
+        case "solo" :
+            console.log(data.action);
+            let msg2 = document.getElementById('error');
+            msg2.style.color = 'red';
+            msg2.innerHTML = 'Impossible de lancer la partie seul !';
+            break;
+
     }
 });
 
