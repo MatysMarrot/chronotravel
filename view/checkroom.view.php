@@ -34,12 +34,11 @@
                 <?php if($currentSkin[4] != null):?>
                 <img id="shoes" src="<?=$emplacementSkin.$currentSkin[4]->getLocation()?>" alt="Chaussures">
                 <?php endif; ?>
-                <!--<h3 id="pseudo">PSEUDO</h3>-->
             </div>
              <form class="skinColor-form" action="../controler/checkroom.ctrl.php" method="post">
 
                     <?php foreach ($colorSkin as $color) : ?>
-                            <button id="skinChoose" type="submit" name="skinColor" value="<?=$color->getSkinId()?>"></button>
+                            <button type="submit" name="skinColor" value="<?=$color->getSkinId()?>"></button>
                     <?php endforeach; ?>
              </form>
         </section>

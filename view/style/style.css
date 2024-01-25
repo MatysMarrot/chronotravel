@@ -152,7 +152,7 @@ main {
 header#student_header {
   top: 0px;
   position: sticky;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   display: flex;
   justify-content: space-between;
 }
@@ -726,6 +726,7 @@ th[scope='col'] {
   justify-content: space-between;
   align-items: flex-start;
   padding: 15px;
+  height: 84%;
 }
 .checkroom section:first-child {
   width: 50%;
@@ -779,6 +780,7 @@ th[scope='col'] {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .checkroom .chooseSkin .unlockedSkin, .checkroom .chooseSkin .lockedSkin{
   width: 150px;
@@ -851,6 +853,48 @@ th[scope='col'] {
   width: 25%;
   height: 25%;
 }
+
+/* Checkroom skin color*/
+.skinColor-form{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0.5em;
+}
+
+.skinColor-form button{
+  width: 50px;
+  height: 35px;
+  border: 3px solid #a4a4a4;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.skinColor-form button:hover{
+  transition: all 0.5s;
+  transform: scale(1.05);
+  border: 3px solid #d9d9d9;
+}
+.skinColor-form button:nth-child(1){
+  background-color: #492300;
+}
+.skinColor-form button:nth-child(2){
+  background-color:#9c510f ;
+}
+.skinColor-form button:nth-child(3){
+  background-color: #f1a74d;
+}
+.skinColor-form button:nth-child(4){
+  background-color: #f9c977;
+}
+
+.chooseSkin{
+  overflow: auto;
+  height: 80%;
+}
+
+
 /* Affichage des skin */
 .div_skin {
   position: relative;
@@ -1194,28 +1238,5 @@ i.material-symbols-outlined:hover {
   margin: 0;
 }
 
-.skinColor-form{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-#skinChoose{
-  width: 50px;
-  height: 35px;
-  border: 3px solid #a4a4a4;
-}
-#skinChoose:nth-child(1){
-  background-color: #492300;
-}
-#skinChoose:nth-child(2){
-  background-color:#9c510f ;
-}
-#skinChoose:nth-child(3){
-  background-color: #f1a74d;
-}
-#skinChoose:nth-child(4){
-  background-color: #f9c977;
-}
 
 
