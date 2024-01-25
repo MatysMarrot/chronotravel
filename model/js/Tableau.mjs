@@ -74,13 +74,30 @@ export class Tableau {
                 this.listeCellules.push(row.cells[row.cells.length - 1]);
             }
         }
-
+        this.idTravel();
     }
     clear() {
         let i = 0;
         for (let cells of this.listeCellules) {
             cells.textContent = i;
             i++;
+        }
+    }
+
+    idTravel(){
+        var couleur;
+        for (let cells of this.listeCellules) {
+            var i = cells.id;
+            if (i < 8) {
+                couleur = '#FB8B24';
+            } else if (i >= 8 && i < 16) {
+                couleur = '#E36414';
+            } else if (i >= 16 && i < 24) {
+                couleur = '#9A031E';
+            } else {
+                couleur = '#5F0F40';
+            }
+            cells.style.backgroundColor = couleur;
         }
     }
 }

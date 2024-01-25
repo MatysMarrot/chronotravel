@@ -29,8 +29,8 @@ body {
 .board_available{
     height: 100px;
     width: 100px;
-    background-color: aqua;
     border: 2px solid rgb(0, 0, 0);
+    border-radius: 10px;
 }
 
 .board tr:first-child>.board_available:first-child{
