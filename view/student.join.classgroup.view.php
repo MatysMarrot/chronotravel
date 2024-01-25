@@ -2,7 +2,7 @@
   <html lang="fr">
     <head>
       <meta charset="UTF-8">
-      <title>Chrono Travel- Rejoindre une partie</title>
+      <title>ChronoTravel - Rejoindre une classe</title>
       <link rel="stylesheet" type="text/css" href="../view/style/style.css">
       </head>
 
