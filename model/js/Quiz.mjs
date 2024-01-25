@@ -8,7 +8,7 @@ export class QuizController extends AbstractMinijeu {
     party;
     qcmContainer;
     jeuContainer;
-
+    functionTimer = () => this.endIfOutOfTime();
 
     buttons;
     buttonsLabels;
@@ -80,7 +80,7 @@ export class QuizController extends AbstractMinijeu {
         this.setQuestion();
         this.show();
 
-        setTimeout(() =>this.endIfOutOfTime(),30000);
+        setTimeout(this.functionTimer,30000);
     }
 
     setQuestion(){
@@ -140,6 +140,7 @@ export class QuizController extends AbstractMinijeu {
 
         //Si on est a la dernière question
         if (this.questionActuelle === this.questions.length){
+            clearTimeout(this.functionTimer);
             this.end();
             return;
         }
