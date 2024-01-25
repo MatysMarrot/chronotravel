@@ -305,7 +305,7 @@ class Party
 
             $dao = DAO::get();
 
-            $query = "UPDATE STAT SET $erascore = $erascore + ?, $eraCorrect = $eraCorrect + ? WHERE playerid = ? AND partyid = ?";
+            $query = "UPDATE STAT SET ". $erascore ." = ". $erascore . " + ?, ". $eraCorrect ." = ". $eraCorrect ."+ ? WHERE playerid = ? AND partyid = ?";
             $dao->query($query, array($packet->getNbrQuestions(), $packet->getNbrRightAnswers(), $packet->getId(), $packet->getPartyid()));
         }
 
@@ -348,8 +348,8 @@ class Party
         foreach ($this->getPlayers() as $students) {
             $subscribers[] = $students->getId();
 
-            //$query = "INSERT INTO stat (playerid,partyid) VALUES (?,?)";
-            //$dao->exec($query,[$students->getId(),$this->id]);
+            $query = "INSERT INTO stat (playerid,partyid) VALUES (?,?)";
+            var_dump($dao->query($query,[$students->getId(),$this->id]));
         }
 
         echo "Broadcasting";
