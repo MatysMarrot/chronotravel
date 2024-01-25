@@ -100,6 +100,7 @@ export class QuizController extends AbstractMinijeu {
             }
 
             this.mapReponsesbutton.set(btn, question.answers.at(i));
+            this.buttonsLabels.item(i).innerText = question.answers.at(i).content;
             btn.display = "block";
             i++;
         }

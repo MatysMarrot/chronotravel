@@ -39,7 +39,4 @@
     <div id="selectedAnswerDisplay">
         Réponse sélectionnée : <span id="selectedAnswerText"></span>
     </div>
-
-    <button id="hideButton">Cacher les éléments</button>
-
 </div>

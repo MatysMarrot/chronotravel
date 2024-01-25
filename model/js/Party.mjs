@@ -95,7 +95,9 @@ export class Party{
                 packet = new LeavePacket(this,parsedData);
             }break;
             case "victory":{
+                console.log(parsedData);
                 packet = new VictoryPacket(this,parsedData);
+                console.log(packet);
             }
 
         }
@@ -131,19 +133,19 @@ export class Party{
             return;
         }
 
-        this.isOver = false;
+        this.isOver = true;
         switch (winners.length) {
             case 1: {
-                alert("Le gagnant est " + winners.at(0));
+                alert("Le gagnant est " + winners[0]);
             } break;
 
             default: {
                 let msg = 'Les gagants sont ';
                 for (let i = 0; i < winners.length-2; i++){
-                    msg += winners.at(i) + ", ";
+                    msg += winners[i] + ", ";
                 }
 
-                msg += winners.at(winners.length -1) + " ! ";
+                msg += winners[winners.length -1] + " ! ";
                 alert(msg);
             }
         }

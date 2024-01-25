@@ -31,12 +31,6 @@
 
     <body>
         <div id="jeu">
-
-            <div id="canvas-container">
-                <button id="revealButton">Révéler les éléments</button>
-                <canvas id="myCanvas"></canvas>
-            </div>
-
             <table id="board"></table>
 
             <div id="content">
