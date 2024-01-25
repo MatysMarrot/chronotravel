@@ -9,7 +9,7 @@ class DAO {
     private PDO $db;
     
     //voir https://www.php.net/manual/fr/ref.pdo-pgsql.php
-    private string $database = "pgsql:host=192.168.14.212;dbname=chronotravel_template";
+    private string $database = "pgsql:host=192.168.14.212;dbname=chronotravel_prod";
     //private string $database = 'sqlite:' . __DIR__ . '/../sql/chrono.db';
     private string $user = "chemine";
     private string $password = "Chronotravel";

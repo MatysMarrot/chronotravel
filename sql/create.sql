@@ -156,8 +156,7 @@ CREATE TABLE PlayerSkin (
 
 CREATE TABLE Stat (
     playerId INT REFERENCES Person(id),
-    NumGames INT DEFAULT 0,
-    NumGamesWon INT DEFAULT 0,
+    won BOOLEAN DEFAULT false,
     AncientHistoryScore INT DEFAULT 0,
     MiddleAgesScore INT DEFAULT 0,
     ModernHistoryScore INT DEFAULT 0,
@@ -167,5 +166,5 @@ CREATE TABLE Stat (
     ModernHistoryCorrectAnswers INT DEFAULT 0,
     ContemporaryCorrectAnswers INT DEFAULT 0,
     partyid INT,
-    PRIMARY KEY (playerId)
+    PRIMARY KEY (playerId,partyid)
 );
