@@ -1,9 +1,5 @@
 <head>
-    <style>
-        #qcm {
-            background-image: url('<?php echo $backgroundImage; ?>');
-        }
-    </style>
+
 </head>
 
 <div id="qcm">
@@ -11,7 +7,7 @@
         <h1>Question à réponse unique</h1>
     </header>
     <div id="question">
-        <h2><?php echo $theme; ?></h2>
+        <h2 id ="theme"></h2>
         <h3>Question</h3>
     </div>
     <table id="answerTable">

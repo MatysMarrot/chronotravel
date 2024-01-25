@@ -40,7 +40,7 @@
 
         <div id="minijeu">
             <?php
-            include('../controler/quiz.ctrl.php');
+            include('../view/quiz.view.php');
             ?>
         </div>
 

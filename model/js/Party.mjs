@@ -167,21 +167,43 @@ export class Party{
         this.inMiniJeux = true;
         this.quiz = new QuizController(this);
         this.quiz.show();
+        let theme = document.getElementById('theme');
+        let nombreAleatoire = Math.floor(Math.random() * 8) + 1;
+        console.log(questionPacket.data.questions[0].themeid);
+        switch (parseInt(questionPacket.data.questions[0].themeid)){
+            case 1:
+                document.body.style.backgroundImage = "url('../view/img/theme/1-antiquite/"+ nombreAleatoire +"-img-antiquite.jpg')";
+                theme.innerHTML = 'Antiquité';
+                break;
+            case 2:
+                document.body.style.backgroundImage = "url('../view/img/theme/2-moyenage/1-img-moyenage.jpg')";
+                theme.innerHTML = 'Moyen-Age';
+                break;
+            case 3:
+                document.body.style.backgroundImage = "url('../view/img/theme/3-moderne/"+ nombreAleatoire +"-img-moderne.jpg')";
+                theme.innerHTML = 'Epoque moderne';
+                break;
+            case 4:
+                console.log("IN");
+                document.body.style.backgroundImage = "url('../view/img/theme/4-contemp/"+ nombreAleatoire +"-img-contemp.jpg')";
+                theme.innerHTML = 'Epoque conptemporaine';
+                break;
+
+        }
+        //document.body.style.background = 'red';
         this.quiz.start(questionPacket.questions);
+
     }
 
     endMinigame(arrayofAnswers){
         if(this.quiz == null) return;
         this.quiz.hide();
-
-
-
+        document.body.style.backgroundImage = "url('../view/assets/background.png')";
         this.inMiniJeux = false;
         let answer = new AnswerPacket(this.currentClient, this.id, arrayofAnswers);
         console.log("sending :");
         console.log(answer);
         answer.handle(this.socket);
-
         this.quiz = null;
     };
 
