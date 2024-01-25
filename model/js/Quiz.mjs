@@ -34,7 +34,7 @@ export class QuizController extends AbstractMinijeu {
         this.jeuContainer = document.getElementById("jeu")
         this.radioButtons = document.querySelectorAll('input[type="radio"]');
 
-        this.radioButtons.forEach(btn => btn.addEventListener('click',() => this.next(btn)));
+        this.radioButtons.forEach(btn => btn.addEventListener('click',() => this.changeColor(btn)));
 
 
     }
@@ -80,7 +80,7 @@ export class QuizController extends AbstractMinijeu {
         this.setQuestion();
         this.show();
 
-        setTimeout(() =>this.endIfOutOfTime(),10000);
+        setTimeout(() =>this.endIfOutOfTime(),30000);
     }
 
     setQuestion(){
@@ -110,11 +110,33 @@ export class QuizController extends AbstractMinijeu {
 
     }
 
+    changeColor(button){
+        let isRightAnswer = Boolean(this.mapReponsesbutton.get(button).correct);
+        let cell = button.parentNode; // .closest c'est le plus proche père qui est de classe .answer
+        cell.style.backgroundColor = isRightAnswer ? 'green' : 'red' ;
+        this.radioButtons.forEach(function(radioButton) {
+            if (radioButton.checked === true) {
+                let cell = radioButton.closest('.answer');
+                radioButton.disabled = true;
+            }
+        });
+        setTimeout(() => this.next(button),500);
+    }
+
     //Function apellé quand on clique sur un bouton
     next(button){
         let isRightAnswer = Boolean(this.mapReponsesbutton.get(button).correct);
+        let cell = button.parentNode; // .closest c'est le plus proche père qui est de classe .answer
+        cell.style.backgroundColor = "#0059FF" ;
         this.answers.push(isRightAnswer);
         this.questionActuelle++;
+
+        this.radioButtons.forEach(function(radioButton) {
+            if (radioButton.checked === true) {
+                cell = radioButton.closest('.answer');
+                radioButton.disabled = false;
+            }
+        });
 
         //Si on est a la dernière question
         if (this.questionActuelle === this.questions.length){
