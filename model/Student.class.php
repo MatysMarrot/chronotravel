@@ -33,7 +33,7 @@ class Student extends User {
 
         $this->id = $dao->lastInsertId();
         $query = "INSERT INTO currentskin VALUES (?, null, null, null, null, null, ?)";
-        $data = [$this->id, "000000"];
+        $data = [$this->id, "24"];
         $dao->exec($query, $data);
 
     }
