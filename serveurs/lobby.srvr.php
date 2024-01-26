@@ -39,6 +39,12 @@ class ServerImpl implements MessageComponentInterface
         $this->clientIdConn = array();
     }
 
+    /**
+     * @param Party $party
+     * @param string $data
+     * @return true
+     * Envoie le packet (data) à tout les clients javascript des joueurs appartenant à la party
+     */
     private function broadCast(Party $party, string $data)
     {
 
@@ -52,12 +58,23 @@ class ServerImpl implements MessageComponentInterface
         return true;
     }
 
+    /**
+     * @param ConnectionInterface $conn
+     * @return void
+     * Fonction d'ouverture d'une connexion
+     */
     public function onOpen(ConnectionInterface $conn)
     {
         $this->clients->attach($conn);
         echo "New connection! ({$conn->resourceId}).\n";
     }
 
+    /**
+     * @param ConnectionInterface $conn
+     * @param $msg
+     * @return false|void
+     * Gère l'arrivée de packet venant des clients javascript
+     */
     public function onMessage(ConnectionInterface $conn, $msg)
     {
         //echo sprintf("New message from '%s': %s\n", $conn->resourceId, $msg);
@@ -77,6 +94,7 @@ class ServerImpl implements MessageComponentInterface
             return;
         }
 
+        // Gestion d'un joueur qui rejoins la salle d'attente
         if ($decoded['action'] == "JOIN") {
             echo sprintf("%d has joined party %d\n", $decoded['cid'], $decoded['pid']);
             $this->clientIdConn[$decoded['cid']] = $conn;
@@ -87,7 +105,6 @@ class ServerImpl implements MessageComponentInterface
 
 
             if ($table[0][0] == 4) {
-                //TODO : Envoyer un json_encode
                 $conn->send("PARTY IS FULL");
                 $conn->close();
                 return false;
@@ -129,12 +146,15 @@ class ServerImpl implements MessageComponentInterface
             ];
 
             $this->broadCast($party, json_encode($data));
+
+            // Gestion de la création de la partie
         } elseif ($decoded['action'] == "START") {
 
             if ($party->getOwnerId() != $decoded['cid']) {
                 return;
             }
 
+            // On regarde si le joueur est seul, si il est seul on ne lance pas la partie
             if(count($party->getPlayers()) == 1){
                 var_dump($party->getId());
                 var_dump($party->getPlayers());
@@ -159,6 +179,7 @@ class ServerImpl implements MessageComponentInterface
             }
 
 
+            // Gestion des joueurs qui quittent la partie
         } elseif ($decoded['action'] == "LEAVE") {
             echo sprintf("%d is leaving party %d\n", $decoded['cid'], $decoded['pid']);
 
@@ -168,6 +189,11 @@ class ServerImpl implements MessageComponentInterface
 
     }
 
+    /**
+     * @param ConnectionInterface $conn
+     * @return void
+     * Gère les joueurs qui quittent la page et la partie
+     */
     public function onClose(ConnectionInterface $conn)
     {
 
@@ -193,6 +219,14 @@ class ServerImpl implements MessageComponentInterface
         echo "Connection {$conn->resourceId} is gone.\n";
     }
 
+    /**
+     * @param $player
+     * @param $party
+     * @return void
+     * Supprime de la party le joueur qui quitte ou supprime la partie
+     * lorsque plus personne n'est dans la salle d'attente ou que le créateur
+     * du groupe quitte
+     */
     public function close($player, $party)
     {
 
@@ -229,6 +263,9 @@ class ServerImpl implements MessageComponentInterface
         $conn->close();
     }
 
+    /**
+     * @return IoServer
+     */
     public static function get()
     {
         if (self::$instance == null) {
@@ -240,8 +277,6 @@ class ServerImpl implements MessageComponentInterface
                 ),
                 1313
             );
-            //echo "Server created on port " . 1313 . "\n\n";
-            //self::$instance->run();
         }
 
         return self::$instance;

@@ -90,6 +90,12 @@ class PartyImpl implements MessageComponentInterface{
         $conn->close();
     }
 
+    /**
+     * @param ConnectionInterface $conn
+     * @param $msg
+     * @return void
+     * Gère l'arrivée de packet venant des clients javascript
+     */
     function onMessage(ConnectionInterface $conn, $msg)
     {
         echo sprintf("New message from '%s': %s\n", $conn->resourceId, $msg);
@@ -99,12 +105,14 @@ class PartyImpl implements MessageComponentInterface{
         if (!$decoded['action']) {
             return;
         }
+        // Gestion de l'arrivée des joueurs
         if ($decoded['action'] == Action::JOIN->value) {
             echo sprintf("Received '%s' from %s\n",$decoded['action'], $conn->resourceId);
 
             $packet = new JoinPacket($decoded);
             $this->clientIdConn[$decoded['id']] = $conn;
 
+            // Si la partie n'est pas déjà stocké on la stocke
             if(!isset($this->parties[$decoded['partyId']])){
                 $this->parties[$decoded['partyId']] = Party::getPartyFromId($decoded['partyId']);
             }
@@ -112,13 +120,14 @@ class PartyImpl implements MessageComponentInterface{
             $party->addPackets($packet);
 
             var_dump($party->getPartyState());
-            //Si on a suffisament de joueurs
+            //Si on a suffisament de joueurs et que la partie n'est toujours pas lancé on initialise la partie
             if ($party->getPartyState() == 1 && count($party->getPackets()) == count($party->getPlayers())){
                 var_dump("INIT GAME");
                 $party->initGame();
             }
         }
 
+        // Gestion de la réception des questions d'un joueur
         else if($decoded['action'] == Action::ANSWER->value){
             echo sprintf("Received '%s' from %s\n",$decoded['action'], $conn->resourceId);
             $packet = new AnswerPacket($decoded);
@@ -141,15 +150,23 @@ class PartyImpl implements MessageComponentInterface{
         }
     }
 
+    /**
+     * @return PartyImpl|null
+     */
     public static function get(){
         if (self::$instance == null){
             self::$instance = new PartyImpl();
-            //echo "Server created on port " . APP_PORT . "\n\n";
-            //self::$instance->run();
         }
 
         return self::$instance;
     }
+
+    /**
+     * @param array $subscribers
+     * @param string $data
+     * @return true
+     * Envoie le packet (data) à tout les clients javascript des joueurs (subscribers)
+     */
     public function broadcast(array $subscribers, string $data)
     {
         foreach ($subscribers as $subscriber){
