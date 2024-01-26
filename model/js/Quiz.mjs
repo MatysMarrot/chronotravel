@@ -100,9 +100,11 @@ export class QuizController extends AbstractMinijeu {
                 i++;
                 continue;
             }
-
+            btn.disabled = false;
             this.mapReponsesbutton.set(btn, question.answers.at(i));
             this.buttonsLabels.item(i).innerText = question.answers.at(i).content;
+
+
             this.buttons.item(i).style.display = "";
             i++;
             if (i >= 4){break;}
@@ -115,10 +117,9 @@ export class QuizController extends AbstractMinijeu {
         let cell = button.parentNode; // .closest c'est le plus proche père qui est de classe .answer
         cell.style.backgroundColor = isRightAnswer ? 'green' : 'red' ;
         this.radioButtons.forEach(function(radioButton) {
-            if (radioButton.checked === true) {
-                let cell = radioButton.closest('.answer');
+
                 radioButton.disabled = true;
-            }
+
         });
         setTimeout(() => this.next(button),500);
     }
@@ -132,10 +133,8 @@ export class QuizController extends AbstractMinijeu {
         this.questionActuelle++;
 
         this.radioButtons.forEach(function(radioButton) {
-            if (radioButton.checked === true) {
                 cell = radioButton.closest('.answer');
                 radioButton.disabled = false;
-            }
         });
 
         //Si on est a la dernière question
