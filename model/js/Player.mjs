@@ -1,6 +1,9 @@
 import "./Student.mjs";
 import {Student} from "./Student.mjs";
 export class Player {
+    //Représente un joueur localement
+    //Contient un objet student (id + login), une position
+
     student;
     position;
     id;
@@ -14,6 +17,8 @@ export class Player {
     constructor(id,login, position = 0) {
         this.student = new Student(id,login);
         this.position = position;
+
+        //Doublon mais j'ai trop peur de supprimer
         this.id = id;
         this.login = login;
     }

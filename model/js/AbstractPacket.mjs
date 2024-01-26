@@ -1,5 +1,9 @@
 //import {Party} from "../model/js/Party.mjs";
 export class AbstractPacket{
+    //Classe mère de tout les packets
+    //Fausse abstraction car Javascript
+    //Contenu dans packet.doc.md
+
     id;
     partyId;
 
@@ -8,14 +12,6 @@ export class AbstractPacket{
         this.id = id;
         this.partyId = partyid;
     }
-
-    // get id(){
-    //     return this.id;
-    // }
-    //
-    // get partyid(){
-    //     return this.partyid;
-    // }
 
     handle(partie){};
 }
