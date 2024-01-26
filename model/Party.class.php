@@ -321,7 +321,7 @@ class Party
 
         foreach($this->packets as $packet){
             if (!$packet instanceof AnswerPacket){
-                echo "Pas le bon packet reçu\n";
+                echo "Mauvais packet reçu\n";
                 return;
             }
 
