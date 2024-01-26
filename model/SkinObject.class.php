@@ -4,11 +4,11 @@ require_once(__DIR__ . '/Student.class.php');
 require_once(__DIR__ . '/enum/Skinpart.enum.php');
 
 class SkinObject {
-    private int $skinId;
-    private string $name;
-    private int $price;
-    private string $location;
-    private Skinpart $parts;
+    private int $skinId; //L'identifiant du skin en db
+    private string $name; //Son nom
+    private int $price; //Son prix
+    private string $location; //Chemin vers l'image
+    private Skinpart $parts; //Partie du skin
 
     /**
      * @param int $skinId
@@ -60,9 +60,18 @@ class SkinObject {
         return $this->parts;
     }
 
+    /**
+     * @return string
+     * Obtenir le nom associé à l'Enum de la partie du Skin
+     */
     public function getFrenchSkinPart(): string {
         return $this->parts->name;
     }
+
+    /**
+     * @return array
+     * Obtenir tous les SkinObjects en DB
+     */
     public static function getAllSkinObjects() : array {
         $dao = DAO::get();
         $query = "SELECT skinid, skinobject.name as name, price, location, skinpart.name as partname 
@@ -79,6 +88,10 @@ class SkinObject {
         return $skins;
     }
 
+    /**
+     * @return array
+     * Obtenir les couleurs de peau
+     */
     public static function getColorSkin() : array {
         $dao = DAO::get();
 
@@ -92,6 +105,11 @@ class SkinObject {
         return $skins;
     }
 
+    /**
+     * @param int $playerId L'ID du joueur
+     * @return array
+     * Obtenir le skin porté par un joueur
+     */
     public static function getCurrentSkinOfPlayer(int $playerId) : array {
         $dao = DAO::get();
         $query = "SELECT hat, hair, teeshirt, pants, shoes, skincolor FROM currentskin WHERE playerid=?";
@@ -117,6 +135,11 @@ class SkinObject {
         return $currentSkin;
     }
 
+    /**
+     * @param int $playerId l'ID du joueur
+     * @return bool
+     * Checker si le cosmétique est porté par un joueur
+     */
     public function isPossessedBy(int $playerId) : bool {
         $dao = DAO::get();
         $query = "SELECT * FROM playerskin WHERE playerid=? AND skinid=?";
@@ -124,6 +147,11 @@ class SkinObject {
         return count($table)!=0;
     }
 
+    /**
+     * @param int $playerId l'ID du joueur
+     * @return array
+     * Obtenir tous les cosmétiques possédés par un joueur
+     */
     public static function getAllPossessedSkin(int $playerId) : array {
         $possessedSkin = [];
         $dao = DAO::get();
@@ -135,6 +163,12 @@ class SkinObject {
         }
         return $possessedSkin;
     }
+
+    /**
+     * @param int $playerId
+     * @return array
+     * Obtenir tous les cosmétiques non-possédés par un joueur
+     */
     public static function getAllunpossessedSkin(int $playerId) : array {
         $possessedSkin = [];
         $dao = DAO::get();
@@ -146,6 +180,12 @@ class SkinObject {
         }
         return $possessedSkin;
     }
+
+    /**
+     * @param int $skinId
+     * @return SkinObject
+     * Obtenir un cosmétique à partir de son ID en DB
+     */
     public static function getSkin(int $skinId) : SkinObject {
         $dao = DAO::get();
         $query = "SELECT so.skinid, so.name as name, price, location, sp.name as partname FROM skinobject so JOIN skinpart sp ON so.parts=sp.skinpartid WHERE skinid=?";
@@ -155,12 +195,23 @@ class SkinObject {
         return $newSkin;
     }
 
+    /**
+     * @param int $playerId l'ID du joueur
+     * @return bool
+     * Savoir si un joueur équipe le cosmétique actuellement
+     */
     public function isEquiped(int $playerId) : bool {
         $dao = DAO::get();
         $query = "SELECT {$this->getParts()->value} FROM currentskin WHERE playerid={$playerId}";
         $table = $dao->query($query);
         return $table[0][$this->getParts()->value]!=null;
     }
+
+    /**
+     * @param int $playerId l'ID du joueur
+     * @return void
+     * Activer le cosmétique sur un joueur
+     */
     public function toggleSkin(int $playerId) : void {
         $dao = DAO::get();
         if($this->isEquiped($playerId)) {
@@ -171,12 +222,23 @@ class SkinObject {
         $dao->exec($query);
     }
 
+    /**
+     * @param int $playerId l'ID du joueur
+     * @return void
+     * Changer la couleur de peau d'un joueur
+     */
+
     public function toggleSkinColor(int $playerId) : void {
         $dao = DAO::get();
         $query = "UPDATE currentskin SET {$this->getParts()->value}={$this->getSkinId()} WHERE playerid={$playerId}";
         $dao->exec($query);
     }
 
+    /**
+     * @param array $currentSkin Le skin
+     * @return array
+     * Obtenir un aperçu d'un skin
+     */
     public function previewSkin(array &$currentSkin) {
         $index = Skinpart::getPosition($this->getParts());
         if($index != -1) {
@@ -184,6 +246,13 @@ class SkinObject {
         }
         return $currentSkin;
     }
+
+    /**
+     * @param Student $student
+     * @return void
+     * Consulter si un Student a acheté le cosmétique
+     * @see Student
+     */
     public function isBuyBy(Student $student) {
         $dao = DAO::get();
         $query = "INSERT INTO playerskin VALUES (?,?)";

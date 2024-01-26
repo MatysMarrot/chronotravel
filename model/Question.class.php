@@ -7,13 +7,13 @@ require_once(__DIR__ . '/Answer.class.php');
 
 class Question
 {
-    private int $id;
-    private string $content;
-    private int $themeid;
+    private int $id; //L'id de la question en DB
+    private string $content; //Le contenu de la question
+    private int $themeid; //L'ID de l'époque de la question
 
-    private array $answers;
+    private array $answers; //Les réponses associées à la question
 
-
+    //CONSTRUCTOR
     private function __construct($id, $content, $themeid)
     {
         $this->id = $id;
@@ -22,6 +22,7 @@ class Question
         $this->answers = $this->readAnswers();
     }
 
+    //GETTERS
     public function getId(): int
     {
         return $this->id;
@@ -33,6 +34,10 @@ class Question
     }
 
 
+    /**
+     * @return array|null
+     * Obtenir les réponses de la question
+     */
     private function readAnswers(): ?array
     {
         $dao = DAO::get();
@@ -75,6 +80,10 @@ class Question
         return $this->themeid;
     }
 
+    /**
+     * @return void
+     * Afficher les infos de la question
+     */
     public function display(): void
     {
         echo "Question ID: " . $this->getId() . PHP_EOL;
@@ -90,6 +99,11 @@ class Question
         }
     }
 
+    /**
+     * @return Answer|null
+     * @throws Exception
+     * Obtenir la première bonne réponse de la question
+     */
     public function getRightAnswer(): ?Answer
     {
         foreach ($this->answers as $answer) {
@@ -100,11 +114,13 @@ class Question
 
         // No right answer found
         throw new Exception("Il n'y a pas de réponse correcte à la question " . $this->getId());
-        return null;
     }
 
+    /**
+     * @return Question|null
+     * Récupérer une question aléatoire
+     */
 
-// Méthode pour récupérer une question aléatoire depuis la base de données
     public static function getRandomQuestion(): ?Question
     {
 
@@ -125,6 +141,11 @@ class Question
         return null;
     }
 
+    /**
+     * @param Era $era
+     * @return Question|null
+     * Récupérer une question aléatoire en fonction de l'époque
+     */
     public static function getRandomQuestionByEra(Era $era): ?Question
     {
 

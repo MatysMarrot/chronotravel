@@ -13,18 +13,18 @@ require_once(__DIR__ . "/../serveurs/party.srvr.php");
 class Party
 {
 
-    private array $playerPosition = [];
-    private int $ownerid;
+    private array $playerPosition = []; // La position des joueurs sous forme de liste
+    private int $ownerid; //L'identifiant de l'hôte de la partie (le créateur)
     private array $players; // liste des élèves
     private string $code; // code de la game
     private int $id; // laisser la BD gérer
     private $era; // thème du plateau courant
-    private int $partyState = 0;
-    private array $questions;
-    private PartyImpl $partyRoom;
-    private $packets;
+    private int $partyState = 0; //Etat de la partie
+    private array $questions; //Liste de questions
+    private PartyImpl $partyRoom; //Serveur de jeu
+    private $packets; //Les packets qui servent à communiquer entre le client et le serveur
 
-
+    //CONSTRUCTEUR
     public function __construct(int $ownerid)
     {
         $this->players = array();
@@ -33,6 +33,7 @@ class Party
         $this->partyRoom = PartyImpl::get();
     }
 
+    //GETTERS
     public function getEra(): Era
     {
         return $this->era;
@@ -84,7 +85,11 @@ class Party
     }
 
 
-    // ajoute un élève à la partie
+    /**
+     * @param int $cid l'ID du client (joueur)
+     * @return void
+     * Insérer un joueur dans la partie
+     */
     public function addPlayer(int $cid)
     {
         if (count($this->players) >= 4) {
@@ -95,6 +100,13 @@ class Party
         }
     }
 
+    //DEPRECATED
+    /**
+     * @param int $size Le nombre de questions
+     * @param Era $era L'époque des questions
+     * @return void
+     * Obtenir x questions suivant une époque
+     */
     public function fetchQuestions(int $size, Era $era)
     {
         for ($i = 0; $i < 10; $i++) {
@@ -103,6 +115,11 @@ class Party
 
     }
 
+    //DEPECATED
+    /**
+     * @return void
+     * Envoyer les questions aux clients
+     */
     public function broadcastQuestions()
     {
         $data = json_encode($this->getQuestions());

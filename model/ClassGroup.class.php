@@ -6,16 +6,17 @@ require_once(__DIR__ . '/../controler/utils/Utils.php');
 
 class ClassGroup{
 
-    private int $id; // Laisser la BD gérer
+    private int $id; // ID de la classe (Laisser la BD gérer)
     private Teacher $owner; // propriétaire du groupe de classe
     private array $students = []; // la liste des élèves du groupe de classe
-    private string $name;
-    private string $code;
+    private string $name; //Nom de la classe
+    private string $code; //Code d'accès de la classe
 
+    //Constructeur
     public function __construct(Teacher $owner){
         $this->owner = $owner;
     }
-
+    //GETTERS
     public function getStudents(){
         return $this->students;
     }
@@ -36,6 +37,7 @@ class ClassGroup{
         return $this->code;
     }
 
+    //SETTER
     public function setName($name){
         $dao = DAO::get();
         $this->name = $name;
@@ -254,6 +256,11 @@ class ClassGroup{
         return $class;
     }
 
+    /**
+     * @param Student $student
+     * @return void
+     * Supprimer un élève du groupe de classe
+     */
     public function removeStudent(Student $student){
 
         $dao = DAO::get();

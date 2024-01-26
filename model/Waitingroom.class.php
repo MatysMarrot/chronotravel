@@ -1,10 +1,11 @@
 <?php
 class WaitingRoom{
-    private int $id;
-    private array $subscribers;
-    private int $ownerId;
-    private int $size;
-    
+    private int $id; //ID de la salle d'attente en DB
+    private array $subscribers; //Ses membres
+    private int $ownerId; //l'ID de son hôte
+    private int $size; //Sa taille
+
+    //CONSTRUCTOR
     public function __construct(int $partyid, int $owner) {
         $this->id = $partyid;
         $this->subscribers = array();
