@@ -3,7 +3,10 @@ const LINES = 5;
 const CELL_SIZE = 10;
 
 export class Board {
-    canva;
+    //DEPRECATED
+    //Classe représentant le tableau HTML du plateau
+
+    canva;              //Canva
     constructor(canva) {
         if (!canva instanceof HTMLElement){
             throw new Error("canva should be HTMLElement not " + canva.className);
@@ -12,21 +15,25 @@ export class Board {
         this.canva = canva;
     }
 
+    //Affiche le plateau
     showCanvas() {
         this.canva.style.display = "block";
         this.resizeCanvas();
         this.drawCanvas();
     }
 
+    //Montre le plateau
     hideCanvas() {
         this.canva.style.display = "none";
     }
 
+    //met le tableau a la bonne taille
     resizeCanvas() {
         this.canva.width = window.innerWidth;
         this.canva.height = window.innerHeight;
     }
 
+    //Dessine des cases
     drawCell(ctx, x, y, isAvailable) {
         ctx.beginPath();
         ctx.rect(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
@@ -35,6 +42,7 @@ export class Board {
         ctx.stroke();
     }
 
+    //Dessine le plateau
     drawCanvas() {
         const ctx = this.canva.getContext("2d");
 
@@ -61,12 +69,4 @@ export class Board {
             this.drawCell(ctx, i, 3, true);
         }
     }
-
-    //TODO :
-    /*window.addEventListener('resize', function () {
-        if (document.getElementById("myCanvas").style.display === "block") {
-            resizeCanvas();
-            drawCanvas();
-        });
-    }*/
 }
