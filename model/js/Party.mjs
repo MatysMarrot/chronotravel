@@ -12,45 +12,36 @@ import {retrieveSessionFromDiv} from "../../controler/utils/jsUtils.mjs";
 import {QuizController} from "./Quiz.mjs";
 
 export class Party{
-    board;
-    id;
-    currentClient;
-    players;
-    isOver = false;
-    inMiniJeux = false;
-    socket;
-    quiz;
+    //Représente une partie de manière locale
+
+    board;                  //objet plateau
+    id;                     //Id de la partie
+    currentClient;          //Session PHP restoré par une technique ninja occulte
+    players;                //Map idJoueur -> Player object
+    isOver = false;         //Boolean sur l'etat de vie de la partie
+    inMiniJeux = false;     //Boolean sur l'etat actuel des mini-jeux
+    socket;                 //Socket de connection avec le PHP
+    quiz;                   //Objet quiz
 
     constructor(board, json, socket) {
-        /**
-         * FORME DU JSON:
-         * {
-         *     partyId: int
-         *     currentClient: int
-         *     players{
-         *         student{
-         *             id: int
-         *             login: string
-         *         }
-         *     }
-         *
-         * }
-         */
+        //Construit a partir d'un JoinPacket
+        //Documentation technique dans packet.doc.md
 
-        //console.log(json);
-
-        this.board = new Tableau(board);
+        this.board = new Tableau(board);                //Nouveau tableau a partir du tableau HTML
         this.id = json.partyid;
-        this.currentClient = retrieveSessionFromDiv().id;
+        this.currentClient = retrieveSessionFromDiv().id;           //session PHP du client (pour des infos tels que l'id du client)
+
+        //On crée une nouvelle map
         this.players = new Map();
         for (let joueurs of json.players){
+            //On lit tout les joueurs dans le packet
             this.players.set(joueurs.id,new Player(joueurs.id,joueurs.login,0));
-            //this.players.push();
         }
 
 
         this.socket = socket;
 
+        //On dessines le tableau avec les joueurs qu'on vient de recevoir
         this.drawPlayerPosition();
 
     }
@@ -72,6 +63,10 @@ export class Party{
     }
 
     handlePacket(parsedData){
+        //Fonction de traitement des packets:
+        //Crée un objet packet en fonction de la propriété "action" du packet
+        //Doc dispo dans packet.doc.md
+
         let packet = null;
         //On identifie le type de packet recu !
         switch (parsedData.action) {
