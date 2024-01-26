@@ -139,12 +139,14 @@ class Party
         }
 
         if($winners){
+            // S'il existe des gagnants on envoie un packet de victoire aux joueurs
             $packet = new VictoryPacket($this->id,$winners);
             $encode = $packet->stringify();
             var_dump($encode);
             $this->partyRoom->broadcast($subscribers,$encode);
         }
         else{
+            // S'il n'y a pas de gagnants on relance un mini jeux
             $this->startMinigame();
         }
 
@@ -298,10 +300,8 @@ class Party
      */
     public function startMinigame()
     {
-        echo "Sending questions";
         $this->packets = [];
         $packet = new QuestionPacket($this->id,$this->getPlayers(),$this->playerPosition);
-        // TODO : mettre pour chaque player
         $subscribers = [];
         foreach ($this->getPlayers() as $students) {
             $subscribers[] = $students->getId();
@@ -321,7 +321,7 @@ class Party
 
         foreach($this->packets as $packet){
             if (!$packet instanceof AnswerPacket){
-                echo "man faut passer un answer packet ici !\n";
+                echo "Mauvais packet reçu\n";
                 return;
             }
 
