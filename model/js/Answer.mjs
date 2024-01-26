@@ -1,9 +1,10 @@
 export class Answer{
+    //Représentation d'une réponse en JS
 
-    id;
-    questionid;
-    content;
-    correct;
+    id;                 //Id de la réponse en BDD
+    questionid;         //Id de la question
+    content;            //Texte de la réponse
+    correct;            //Boolean pour si la réponse est correcte ou pas
 
     constructor(data) {
         this.id = data.id;
