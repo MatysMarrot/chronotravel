@@ -1,4 +1,5 @@
 export class Student {
+    //Représente un student en JS
 
     id;
     login;
