@@ -3,16 +3,16 @@ include_once(__DIR__."/../model/DAO.class.php");
 include_once(__DIR__."/../model/Student.class.php");
 include_once(__DIR__."/../model/Stat.class.php");
 class StatPerGame implements JsonSerializable {
-    private int $gamePlayed;
-    private int $gameWin;
-    private int $antiquityAnswer;
-    private int $middleAgeAnswer;
-    private int $contemporaryAnswer;
-    private int $modernAnswer;
-    private int $antiquityCorrectAnswer;
-    private int $middleAgeCorrectAnswer;
-    private int $contemporaryCorrectAnswer;
-    private int $modernCorrectAnswer;
+    private int $gamePlayed; //Le nombre de parties jouées
+    private int $gameWin; //Le nombre de parties gagnées
+    private int $antiquityAnswer; // Le nb de réponses en Antiquité
+    private int $middleAgeAnswer;// Le nb de réponses en Moyen Âge
+    private int $contemporaryAnswer; // Le nb de réponses en Epoque Contemporaine
+    private int $modernAnswer; // Le nb de réponses en Temps Modernes
+    private int $antiquityCorrectAnswer; // Le nb de réponses justes en Antiquité
+    private int $middleAgeCorrectAnswer; // Le nb de réponses justes en Moyen Âge
+    private int $contemporaryCorrectAnswer; // Le nb de réponses justes en Epoque contemporaine
+    private int $modernCorrectAnswer; // Le nb de réponses justes en Temps Modernes
 
     /**
      * @param int $gamePlayed
@@ -39,6 +39,7 @@ class StatPerGame implements JsonSerializable {
         $this->modernCorrectAnswer = $modernCorrectAnswer;
     }
 
+    //GETTERS
     /**
      * @return int
      */
@@ -118,6 +119,11 @@ class StatPerGame implements JsonSerializable {
     {
         return $this->modernCorrectAnswer;
     }
+
+    /**
+     * @return mixed
+     * Sérialiser la statistique
+     */
     public function jsonSerialize(): mixed {
         return [
             'gamePlayed' => $this->getGamePlayed(),

@@ -7,10 +7,10 @@ abstract class User {
 
 
     protected int $id; // Laisser la BD gérer
-    protected string $lastname;
-    protected string $firstname;
-    protected string $login;
-    protected string $password;
+    protected string $lastname; //Nom de famille
+    protected string $firstname; //Prénom
+    protected string $login; //Login
+    protected string $password; //Mot de passe
 
     public function __construct($lastname,$firstname,$login,$password){
 
@@ -48,11 +48,6 @@ abstract class User {
 
     public function getId(){
         return $this->id;
-    }
-
-    //TEMPORAIRE POUR TESTER
-    public function setId($id){
-        $this->id = $id;
     }
 
     

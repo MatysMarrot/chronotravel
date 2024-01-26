@@ -5,7 +5,7 @@ require_once(__DIR__ . '/User.abstract.php');
 class Student extends User {
 
     const ROLE_ID = 1; // type de l'utilisateur dans la bd
-    private int $currency;
+    private int $currency; //Sa monnaie
 
     /**
      * @return void
@@ -72,6 +72,12 @@ class Student extends User {
     public function getCurrency() : int{
         return $this->currency;
     }
+
+    /**
+     * @return array
+     * @throws Exception
+     * Obtenir le nom du professeur et de la classe de l'élève
+     */
     public function getClassAndTeacherName() : array {
         $dao = DAO::get();
         $query = "SELECT c.name AS class_name, p.name AS teacher_name FROM studentclass sc JOIN class c ON sc.classid = c.id JOIN classteacher ct ON c.id = ct.classid JOIN person p ON ct.teacherid = p.id WHERE sc.studentid = ?";
