@@ -9,20 +9,25 @@
     //Démarrer la session
     session_start();
     $view = new View();
+
+    //Chemin des images skin et position
     $emplacementSkin = "/assets/skin/";
     $emplacementPosition = "/assets/position/";
+
     //Récupérer la party
     $party = $_SESSION['party'];
 
     //$studentsPosition = $party->getStudentPosition(); //Student1 => Case1, Student2 => Case2 etc ...
 
+    //Liste : id=> [ "case"(position sur le plateau), "classement" => 0, "gain" => (chronocoins gagné selon la position)]
     $studentsPosition = [
-        112 => ["case" => 31, "classement" => 0, "gain" => 1],
-        107 => ["case" => 15, "classement" => 0, "gain" => 4],
-        109 => ["case" => 16, "classement" => 0, "gain" => 3],
-        128 => ["case" => 31, "classement" => 0, "gain" => 1],
+        112 => ["case" => 31, "classement" => 0, "gain" => 0],
+        107 => ["case" => 15, "classement" => 0, "gain" => 0],
+        109 => ["case" => 16, "classement" => 0, "gain" => 0],
+        128 => ["case" => 31, "classement" => 0, "gain" => 0],
     ];
 
+    //Trier la liste selon la position sur le plateau dans l'odre décroissant (case 31, case 15..)
     uasort($studentsPosition, function ($a, $b) {
         if ($a['classement'] == $b['classement']) {
             return $b['case'] - $a['case'];
@@ -37,7 +42,7 @@
     "id2" => ["case" => 15, "classement" =>0, "gain"=> 0],
     */
 
-    //Gestion des égalités
+    //Attribution de la position dans le classement avec la gestion des égalités
     $oldPosition = 0;
     $i = 1;
     foreach ($studentsPosition as $id => $student) {
@@ -57,6 +62,8 @@
     "id3" => ["case" => 16, "classement" =>3, "gain"=> 3],
     "id2" => ["case" => 15, "classement" =>4, "gain"=> 4],
     */
+
+    //fonction pour attribuer les gains aux joueurs selon leur position dans le classement
     $gainCalculator = new Gain();
 
 
@@ -101,5 +108,4 @@
     }
     $view->assign("tableau", $tableau);
     $view->display('score.board.view.php');
-
 ?>

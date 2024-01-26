@@ -57,11 +57,10 @@ if(!isset($_SESSION["id"])) {
 
     //Gestion de la couleur de peau
     $selectedSkinId = $_POST["skinColor"] ?? 0;
-    if($selectedSkinId != 0) { // cela vérifie que le joueur à bien cliquer sur un cosmétique
-        $selectedSkin = SkinObject::getSkin($selectedSkinId); // récupère l'objet du cosmétique
-        // si le joueur possède le cosmétique (il l'a acheté mais il n'en est pas forcément équipé
-        $selectedSkin->toggleSkinColor($playerId); // Retire le cosmétique s'il en est équipé ou lui équipe s'il ne la pas équipé
-        // Récupère les cosmétiques possédés par le joueur et ceux non possédés
+    if($selectedSkinId != 0) { // cela vérifie que le joueur à bien cliquer sur une couleur
+        $selectedSkin = SkinObject::getSkin($selectedSkinId); // récupère la couleur
+        //Affecte la couleur au personnage
+        $selectedSkin->toggleSkinColor($playerId);
         $possessedSkin = SkinObject::getAllPossessedSkin($playerId);
         $unpossessedSkin = SkinObject::getAllunpossessedSkin($playerId);
         $colorSkin = SkinObject::getColorSkin();

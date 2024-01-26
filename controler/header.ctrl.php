@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+//Affiche l'en-tête selon la personne qui est connecté
 if(!isset($_SESSION['id'])){
     include(__DIR__."/../view/header.unknown.viewpart.php");
 }
@@ -21,7 +21,6 @@ elseif($_SESSION['roleid'] == 1){
         } else {
             $isDys = $_SESSION["isDys"] ?? 0;
         }
-        //var_dump($isDys);
     } else {
         header("Location: login.view.php");
         exit();
